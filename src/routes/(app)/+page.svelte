@@ -21,8 +21,8 @@
               <img class="inline-block rounded-full h-9 w-9" src="/avatar.jpg" alt="Chris Jayden avatar" />
             </div>
             <div class="ml-3">
-              <p class="text-sm font-medium text-white group-hover:text-gray-100">Chris Jayden</p>
-              <p class="text-xs font-medium text-gray-200 group-hover:text-white">Maker</p>
+              <p class="mb-0 text-sm font-medium text-white group-hover:text-gray-100">Chris Jayden</p>
+              <p class="mb-0 text-xs font-medium text-gray-200 group-hover:text-white">Maker</p>
             </div>
           </div>
         </a>
@@ -76,7 +76,7 @@
                     </div>
                     {#if post.author}
                       <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">{post.author.name}</p>
+                        <p class="mb-0 text-sm font-medium text-gray-900">{post.author.name}</p>
                         <div class="flex space-x-1 text-sm text-gray-500">
                           <time datetime="2020-03-16">
                             {new Date(post.date).toLocaleDateString()}
