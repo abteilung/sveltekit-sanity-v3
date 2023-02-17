@@ -4,11 +4,12 @@ const postFields = groq`
   _id,
   name,
   title,
+  subtitle,
   date,
   postContent,
-  coverImage,
+  mainImage,
   "slug": slug.current,
-  "author": author->{name, picture},
+  "author": author->{name, image},
 `;
 
 export const settingsQuery = groq`*[_type == "settings"][0]{title}`;

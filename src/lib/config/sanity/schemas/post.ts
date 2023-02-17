@@ -22,6 +22,11 @@ export default defineType({
 	type: 'document',
 	fields: [
 		{
+			name: 'subtitle',
+			title: 'eyebrow (H1)',
+			type: 'string',
+		},
+		{
 			name: 'title',
 			title: 'Title',
 			type: 'string',
@@ -38,20 +43,38 @@ export default defineType({
 			validation: (Rule) => Rule.required(),
 		},
 		{
+			name: 'teaser',
+			title: 'Teaser',
+			type: 'blockContent',
+		},
+		{
 			name: 'postContent',
 			title: 'Content',
 			type: 'text',
 		},
 		{
-			name: 'coverImage',
+			name: 'mainImage',
 			title: 'Cover Image',
 			type: 'image',
 			options: {
 				hotspot: true,
 			},
+			fields: [
+			{
+				name: "alt",
+				title: "Accessibility label for the image",
+				description:
+					'Help make the site more accessible & SEO-friendly with a short textual description of the image, such as "screenshot of the dashboard app"',
+				type: "string",
+				validation: Rule => Rule.required(),
+				options: {
+					isHighlighted: true,
+					},
+				},
+			],      
 		},
 		{
-			name: 'date',
+			name: 'publishedAt',
 			title: 'Date',
 			type: 'datetime',
 		},
@@ -61,12 +84,18 @@ export default defineType({
 			type: 'reference',
 			to: [{ type: authorType.name }],
 		},
+		{
+			name: 'categories',
+			title: 'Categories',
+			type: 'array',
+			of: [{type: 'reference', to: {type: 'category'}}],
+		  },
 	],
 	preview: {
 		select: {
 			title: 'title',
 			author: 'author.name',
-			media: 'coverImage',
+			media: 'mainImage',
 		},
 		prepare(selection) {
 			const { author } = selection;

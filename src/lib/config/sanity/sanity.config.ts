@@ -9,6 +9,13 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 /*------------------------------------*/
 
 /*-------------- SCHEMAS --------------*/
+import blockContent from '$lib/config/sanity/schemas/helpers/blockContent';
+
+import categoryType from '$lib/config/sanity/schemas/category';
+import accordionsType from '$lib/config/sanity/schemas/accordions';
+import accordionType from '$lib/config/sanity/schemas/accordion';
+import faqType from '$lib/config/sanity/schemas/faq';
+import galleryType from '$lib/config/sanity/schemas/gallery';
 import authorType from '$lib/config/sanity/schemas/author';
 import postType from '$lib/config/sanity/schemas/post';
 /*------------------------------------*/
@@ -20,7 +27,8 @@ export default defineConfig({
 	title: app.appName + ' - Studio',
 	schema: {
 		// If you want more content types, you can add them to this array
-		types: [ postType, authorType]
+
+types: [ postType, authorType, accordionsType, accordionType, categoryType, faqType, galleryType, blockContent]
 	},
 	plugins: [
 		deskTool({

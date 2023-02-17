@@ -7,7 +7,7 @@
 </script>
 
 {#if !embedded}
-  <div class="bg-gray-900  px-4 py-2 sm:px-6 lg:px-8">
+  <div class="bg-alert px-4 py-2 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
       <div class="flex flex-row items-center justify-between">
         <div class="flex items-center">
@@ -15,11 +15,11 @@
             <img class="inline-block mr-3 h-8 w-8 rounded-full" src={$data.profileImage} alt="" />
           {/if}
 
-          <p class="truncate text-sm font-medium text-white">
+          <p class="truncate text-sm font-medium text-white mb-0">
             <span class="hidden sm:inline font-bold">Hi {$data?.name ? $data.name : "there"}!</span>
             <span> This page is a draft.</span>
             <span class="hidden md:inline hover:underline">
-              <a rel="external" href="/api/exit-preview">Exit?</a>
+              <a rel="external" class="underline" href="/api/exit-preview">Exit?</a>
             </span>
           </p>
         </div>
@@ -28,7 +28,7 @@
           <a
             rel="external"
             href="/api/exit-preview"
-            class="flex items-center justify-center rounded-md border border-transparent bg-gray-800 px-3 py-1 text-sm font-medium text-white shadow-sm hover:bg-black"
+            class="flex items-center justify-center rounded-md border border-transparent bg-dark px-3 py-1 text-sm font-medium text-white shadow-sm hover:bg-black"
           >
             Exit
           </a>

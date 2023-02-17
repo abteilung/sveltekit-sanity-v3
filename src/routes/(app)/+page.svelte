@@ -42,10 +42,10 @@
             <a href="/posts/{post.slug}">
               <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <div class="flex-shrink-0">
-                 {#if post.coverImage}
+                 {#if post.mainImage}
                   <img
                     class="h-48 w-full object-cover"
-                    src={urlForImage(post.coverImage).crop("focalpoint").width(826).height(384).url()}
+                    src={urlForImage(post.mainImage).crop("focalpoint").width(826).height(384).url()}
                     alt=""
                   />
                  {/if}
@@ -59,7 +59,7 @@
                       </p>
 
                       <p class="mt-3 text-base text-gray-500">
-                        {post.postContent.slice(0, 100)}...
+                        <!-- {post.postContent.slice(0, 100)}... -->
                       </p>
                     </div>
                   </div>
@@ -69,7 +69,7 @@
                         {#if post.author}
                           <img
                             class="h-10 w-10 rounded-full"
-                            src={urlForImage(post.author.picture).crop("focalpoint").width(256).height(256).url()}
+                            src={urlForImage(post.author.image).crop("focalpoint").width(256).height(256).url()}
                             alt=""
                           />
                         {/if}
