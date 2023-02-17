@@ -11,13 +11,19 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 /*-------------- SCHEMAS --------------*/
 import blockContent from '$lib/config/sanity/schemas/helpers/blockContent';
 
-import categoryType from '$lib/config/sanity/schemas/category';
+import settingsType from '$lib/config/sanity/schemas/documents/settings';
+
+import categoryType from '$lib/config/sanity/schemas/documents/category';
 import accordionsType from '$lib/config/sanity/schemas/accordions';
 import accordionType from '$lib/config/sanity/schemas/accordion';
-import faqType from '$lib/config/sanity/schemas/faq';
+import faqType from '$lib/config/sanity/schemas/documents/faq';
 import galleryType from '$lib/config/sanity/schemas/gallery';
-import authorType from '$lib/config/sanity/schemas/author';
-import postType from '$lib/config/sanity/schemas/post';
+import authorType from '$lib/config/sanity/schemas/documents/author';
+import postType from '$lib/config/sanity/schemas/documents/post';
+import caseStudyType from '$lib/config/sanity/schemas/documents/caseStudy';
+import productType from '$lib/config/sanity/schemas/documents/product';
+import serviceType from '$lib/config/sanity/schemas/documents/service';
+import categoryReferenceType from '$lib/config/sanity/schemas/documents/categoryReference';
 /*------------------------------------*/
 
 export default defineConfig({
@@ -28,7 +34,7 @@ export default defineConfig({
 	schema: {
 		// If you want more content types, you can add them to this array
 
-types: [ postType, authorType, accordionsType, accordionType, categoryType, faqType, galleryType, blockContent]
+types: [ postType, authorType, accordionsType, accordionType, categoryType, faqType, galleryType, blockContent, caseStudyType, productType, categoryReferenceType, serviceType, settingsType]
 	},
 	plugins: [
 		deskTool({

@@ -1,11 +1,11 @@
-import { CogIcon } from '@sanity/icons';
+import { GearSix } from 'phosphor-react'
 import { defineType } from 'sanity';
 
 export default defineType({
 	name: 'settings',
 	title: 'Settings',
 	type: 'document',
-	icon: CogIcon,
+	icon: GearSix,
 	fields: [
 		{
 			name: 'title',

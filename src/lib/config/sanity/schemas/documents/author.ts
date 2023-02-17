@@ -1,10 +1,10 @@
-import { UserIcon } from '@sanity/icons';
+import { User } from 'phosphor-react'
 import { defineType } from 'sanity';
 
 export default defineType({
 	name: 'author',
 	title: 'Author',
-	icon: UserIcon,
+	icon: User,
 	type: 'document',
 	fields: [
 		{

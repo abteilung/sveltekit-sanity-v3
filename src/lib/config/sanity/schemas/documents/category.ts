@@ -1,10 +1,10 @@
-// import { MdOutlineCategory } from 'react-icons/md'
+import { Tag } from 'phosphor-react'
 
 export default {
   name: 'category',
   title: 'Categories',
   type: 'document',
-//   icon: MdOutlineCategory,
+  icon: Tag,
   fields: [
     {
       name: 'title',
