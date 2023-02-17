@@ -2,6 +2,8 @@ import groq from 'groq';
 
 const postFields = groq`
   _id,
+  _type,
+  "category": categories[0]->,
   name,
   title,
   subtitle,

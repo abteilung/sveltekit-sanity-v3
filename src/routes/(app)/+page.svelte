@@ -52,7 +52,9 @@
                 </div>
                 <div class="flex flex-col justify-between flex-1 p-6 bg-white">
                   <div class="flex-1">
-                    <p class="text-sm font-medium text-indigo-600">Article</p>
+                    {#if post.category}
+                      <p class="text-sm font-medium text-indigo-600">{post.category?.title}</p>
+                    {/if}
                     <div class="block mt-2">
                       <p class="text-xl font-semibold text-gray-900">
                         {post.title}
