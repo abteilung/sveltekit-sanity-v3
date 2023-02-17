@@ -48,9 +48,9 @@ export default defineType({
 			type: 'blockContent',
 		},
 		{
-			name: 'postContent',
+			name: 'body',
 			title: 'Content',
-			type: 'text',
+			type: 'blockContent',
 		},
 		{
 			name: 'mainImage',

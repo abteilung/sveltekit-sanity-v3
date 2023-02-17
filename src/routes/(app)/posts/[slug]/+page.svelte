@@ -41,7 +41,7 @@
             </div>
             {/if}
             <div class="ml-3">
-              <p class="text-sm font-medium text-white">{$postData.post.author.name}</p>
+              <p class="text-sm font-medium text-white mb-0">{$postData.post.author.name}</p>
               <div class="flex space-x-1 text-sm text-gray-400">
                 <time datetime="2020-03-16">
                   {new Date($postData.post.date).toLocaleDateString()}
@@ -53,12 +53,12 @@
         {#if $postData.post.mainImage}
         <img
           class="h-92 w-full object-cover rounded-xl mb-10"
-          src={urlForImage($postData.post.mainImage).crop("focalpoint").width(1344).height(736).url()}
+          src={urlForImage($postData.post.mainImage).width(1344).height(736).url()}
           alt=""
         />
         {/if}
         <div>
-          {$postData.post.postContent}
+          {$postData.post.body}
         </div>
       </div>
     </div>

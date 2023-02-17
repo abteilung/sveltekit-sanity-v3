@@ -45,7 +45,7 @@
                  {#if post.mainImage}
                   <img
                     class="h-48 w-full object-cover"
-                    src={urlForImage(post.mainImage).crop("focalpoint").width(826).height(384).url()}
+                    src={urlForImage(post.mainImage).width(826).height(384).url()}
                     alt=""
                   />
                  {/if}

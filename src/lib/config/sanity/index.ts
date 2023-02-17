@@ -12,7 +12,7 @@ export const imageBuilder = createImageUrlBuilder(sanityConfig);
  * Read more: https://www.sanity.io/docs/image-url
  **/
 export const urlForImage = (source: SanityImageSource) => {
-	return imageBuilder.image(source).auto('format').fit('max');
+	return imageBuilder.image(source).auto('format').fit('crop');
 };
 
 export const sanityUser = createCurrentUserStore(sanityConfig);
