@@ -3,6 +3,7 @@
   import { postQuery } from "$lib/config/sanity/queries";
   import { urlForImage } from "$lib/config/sanity";
   import type { PageData } from "./$types";
+  import PortableBlock from '$lib/components/PortableBlock.svelte'
 
   export let data: PageData;
 
@@ -54,11 +55,13 @@
         <img
           class="h-92 w-full object-cover rounded-xl mb-10"
           src={urlForImage($postData.post.mainImage).width(1344).height(736).url()}
-          alt=""
+          alt={$postData.post.mainImage.alt}
         />
         {/if}
         <div>
-          {$postData.post.body}
+          {#if $postData.post.body}
+            <PortableBlock content={$postData.post.body} />
+          {/if}
         </div>
       </div>
     </div>

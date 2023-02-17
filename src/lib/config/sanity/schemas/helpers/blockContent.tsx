@@ -1,3 +1,6 @@
+import React from 'react'
+import cx from 'classnames'
+
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -9,6 +12,23 @@
  *    type: 'blockContent'
  *  }
  */
+
+
+ const Button = ({ isButton, styles, children }) => {
+  if (!isButton) return children
+
+  return (
+    <span
+      className={cx('btn', styles?.style, {
+        'is-large': styles?.isLarge,
+        'is-block': styles?.isBlock
+      })}
+    >
+      {children}
+    </span>
+  )
+}
+
 export default {
     title: 'Block Content',
     name: 'blockContent',
@@ -40,18 +60,42 @@ export default {
           ],
           // Annotations can be any object structure – e.g. a link or a footnote.
           annotations: [
-            {
-              title: 'URL',
-              name: 'link',
-              type: 'object',
-              fields: [
-                {
-                  title: 'URL',
-                  name: 'href',
-                  type: 'url',
+            { title: 'Link', name: 'link', type: 'object', component: Button,
+            fields: [
+              {
+                title: 'Link Type',
+                name: 'linkType',
+                type: 'string',
+                options: {
+                  list: [
+                    { title: 'Internal Page', value: 'internal' },
+                    { title: 'External URL', value: 'external' }
+                  ]
                 },
-              ],
-            },
+                initialValue: 'internal',
+                validation: Rule => Rule.required()
+              },
+              {
+                title: 'Internal Page',
+                name: 'page',
+                type: 'reference',
+                to: [
+                  { type: 'post' },
+                ],
+                hidden: ({ parent }) => parent.linkType !== 'internal'
+              },
+              {
+                title: 'External URL',
+                name: 'url',
+                type: 'url',
+                validation: Rule =>
+                  Rule.uri({
+                    scheme: ['http', 'https', 'mailto', 'tel']
+                  }),
+                hidden: ({ parent }) => parent.linkType !== 'external'
+              },
+            ]
+          },
           ],
         },
       },

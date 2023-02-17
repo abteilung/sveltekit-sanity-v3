@@ -43,16 +43,6 @@ export default defineType({
 			validation: (Rule) => Rule.required(),
 		},
 		{
-			name: 'teaser',
-			title: 'Teaser',
-			type: 'blockContent',
-		},
-		{
-			name: 'body',
-			title: 'Content',
-			type: 'blockContent',
-		},
-		{
 			name: 'mainImage',
 			title: 'Cover Image',
 			type: 'image',
@@ -72,6 +62,16 @@ export default defineType({
 					},
 				},
 			],      
+		},
+		{
+			name: 'teaser',
+			title: 'Teaser',
+			type: 'blockContent',
+		},
+		{
+			name: 'body',
+			title: 'Content',
+			type: 'blockContent',
 		},
 		{
 			name: 'publishedAt',

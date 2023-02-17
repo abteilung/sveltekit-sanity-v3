@@ -6,7 +6,15 @@ const postFields = groq`
   title,
   subtitle,
   date,
-  body,
+  body[] {
+    ...,
+    markDefs[] {
+      _type == "link" => {
+        ...,
+        "link": page -> {...}
+      }
+    }
+  },
   mainImage,
   "slug": slug.current,
   "author": author->{name, image},
