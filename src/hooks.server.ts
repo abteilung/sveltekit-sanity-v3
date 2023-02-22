@@ -10,7 +10,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		event.locals.previewMode = true;
 	}
 
-	const response = await resolve(event);
+	const response = await resolve(event, {
+		transformPageChunk: ({ html }) => (event.url.pathname.startsWith('/en') ? html.replace('%lang%', 'en') : html.replace('%lang%', 'de'))
+	});
 
 	return response;
 };

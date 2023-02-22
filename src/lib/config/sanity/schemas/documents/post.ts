@@ -64,11 +64,6 @@ export default defineType({
 			],      
 		},
 		{
-			name: 'teaser',
-			title: 'Teaser',
-			type: 'blockContent',
-		},
-		{
 			name: 'body',
 			title: 'Content',
 			type: 'blockContent',
