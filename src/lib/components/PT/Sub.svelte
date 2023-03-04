@@ -1,2 +1,1 @@
- <sub><slot /></sub>
-    
+<sub><slot /></sub>

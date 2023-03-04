@@ -1,4 +1,4 @@
-import { MdArrowDro } from 'react-icons/md'
+import {MdArrowDro} from 'react-icons/md'
 
 export default {
   title: 'Accordion',

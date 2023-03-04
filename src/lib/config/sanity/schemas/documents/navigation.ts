@@ -1,4 +1,4 @@
-import {File} from 'phosphor-react'
+import {Compass} from 'phosphor-react'
 import {defineType} from 'sanity'
 
 import authorType from './author'
@@ -16,16 +16,11 @@ import authorType from './author'
  */
 
 export default defineType({
-  name: 'page',
-  title: 'Page',
-  icon: File,
+  name: 'navigation',
+  title: 'Navigation',
+  icon: Compass,
   type: 'document',
   fields: [
-    {
-      name: 'subtitle',
-      title: 'eyebrow (H1)',
-      type: 'string'
-    },
     {
       name: 'title',
       title: 'Title',

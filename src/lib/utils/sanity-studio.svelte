@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { renderStudio, createConfig, type StudioProps } from "sanity";
-  import { onMount } from "svelte";
+  import {renderStudio, createConfig, type StudioProps} from 'sanity'
+  import {onMount} from 'svelte'
 
-  export let config: StudioProps["config"];
+  export let config: StudioProps['config']
 
-  let studioEl: HTMLDivElement;
+  let studioEl: HTMLDivElement
 
   onMount(() => {
     if (studioEl) {
-      const sanityConfig = createConfig(config);
+      const sanityConfig = createConfig(config)
 
-      renderStudio(studioEl, sanityConfig);
+      renderStudio(studioEl, sanityConfig)
     }
-  });
+  })
 </script>
 
 <svelte:head>

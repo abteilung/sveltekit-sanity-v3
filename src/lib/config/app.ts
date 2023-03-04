@@ -1,6 +1,5 @@
 const app = {
-	appName: 'Sanity Virtual Talk',
+  appName: 'Sanity Virtual Talk'
+}
 
-};
-
-export { app as default };
+export {app as default}

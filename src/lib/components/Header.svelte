@@ -1,38 +1,38 @@
 <script lang="ts">
-  import { writable } from "svelte/store";
-  import { browser } from "$app/environment";
-  import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
+  import {writable} from 'svelte/store'
+  import {browser} from '$app/environment'
+  import {fade} from 'svelte/transition'
+  import {onMount} from 'svelte'
 
-  const showMenu = writable(false);
+  const showMenu = writable(false)
 
   // Toggle showMenu
   const toggleMenu = () => {
-    showMenu.update((value) => !value);
-  };
+    showMenu.update((value) => !value)
+  }
 
   // Function set showMenu to false on click ESC key
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "Escape") {
-      showMenu.set(false);
+    if (event.key === 'Escape') {
+      showMenu.set(false)
     }
-  };
+  }
 
   // Menu Structore
   const menu = [
     {
-      title: "Home",
-      href: "/",
+      title: 'Home',
+      href: '/'
     },
     {
-      title: "About",
-      href: "/about",
+      title: 'About',
+      href: '/about'
     },
     {
-      title: "Contact",
-      href: "/contact",
-    },
-  ];
+      title: 'Contact',
+      href: '/contact'
+    }
+  ]
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
@@ -56,19 +56,15 @@
           Start with Sanity.io
         </a>
       </div>
-      <div 
-        class="relative z-50 text-white md:hidden"
-        on:click={() => toggleMenu()}
-      >{$showMenu}</div>
+      <div class="relative z-50 text-white md:hidden" on:click={() => toggleMenu()}>{$showMenu}</div>
     </div>
   </div>
-
 </div>
 
 {#if $showMenu}
-  <div 
-    in:fade={{ duration: 200 }}
-    out:fade={{ duration: 200 }}
+  <div
+    in:fade={{duration: 200}}
+    out:fade={{duration: 200}}
     class="absolute inset-0 top-0 left-0 z-10 flex items-center justify-center w-full h-full text-white bg-black/80 overlay"
   >
     <div>

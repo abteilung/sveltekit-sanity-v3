@@ -1,4 +1,4 @@
-import groq from 'groq';
+import groq from 'groq'
 
 const postFields = groq`
   _id,
@@ -20,7 +20,7 @@ const postFields = groq`
   mainImage,
   "slug": slug.current,
   "author": author->{name, image},
-`;
+`
 
 const modules = groq`
   ...,
@@ -75,17 +75,16 @@ const columns = groq`
   },
 `
 
-export const settingsQuery = groq`*[_type == "settings"][0]{title}`;
+export const settingsQuery = groq`*[_type == "settings"][0]{title}`
 
 export const postVisionQuery = groq`*[_type == "post"] | order(date desc, _updatedAt desc) {
   ...
-}`;
+}`
 
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
-}`;
-
+}`
 
 // Posts Stuff
 export const postQuery = groq`
@@ -102,23 +101,22 @@ export const postQuery = groq`
     content,
     ${postFields}
   }
-}`;
+}`
 
 export const allPostsQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
-}`;
+}`
 
 export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
-`;
+`
 
 export const postBySlugQuery = groq`
 *[_type == "post" && slug.current == $slug][0] {
   ${postFields}
 }
-`;
-
+`
 
 // Configure Page Blocks with modules and columns
 const pageBlocks = groq`{
@@ -144,16 +142,14 @@ const pageBlocks = groq`{
   },
 }`
 
-
 export const getPageBySlug = groq`
 *[_type == 'page' && slug.current == $slug && _id != 'frontPage']
 ${pageBlocks}
 [0]
 `
 
-
 // Navigation Stuff
-export const getMenuSettingsDoc = groq`*[_type == 'navigationSettings'][0]` 
+export const getMenuSettingsDoc = groq`*[_type == 'navigationSettings'][0]`
 
 const menuFirstLevel = groq`
   _key,

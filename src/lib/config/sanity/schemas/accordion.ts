@@ -4,13 +4,13 @@ export default {
   title: 'Accordion',
   name: 'accordion',
   type: 'object',
-//   icon: MdArrowDro,
+  //   icon: MdArrowDro,
   fields: [
     {
       title: 'Title',
       name: 'title',
       type: 'string'
-    },
+    }
     // {
     //   title: 'Content',
     //   name: 'content',

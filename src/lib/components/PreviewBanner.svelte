@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { sanityUser } from "$lib/config/sanity";
+  import {sanityUser} from '$lib/config/sanity'
 
-  export let embedded = false;
+  export let embedded = false
 
-  $: ({ data } = sanityUser());
+  $: ({data} = sanityUser())
 </script>
 
 {#if !embedded}
@@ -16,7 +16,7 @@
           {/if}
 
           <p class="truncate text-sm font-medium text-white mb-0">
-            <span class="hidden sm:inline font-bold">Hi {$data?.name ? $data.name : "there"}!</span>
+            <span class="hidden sm:inline font-bold">Hi {$data?.name ? $data.name : 'there'}!</span>
             <span> This page is a draft.</span>
             <span class="hidden md:inline hover:underline">
               <a rel="external" class="underline" href="/api/exit-preview">Exit?</a>

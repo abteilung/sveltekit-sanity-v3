@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { previewSubscription } from "$lib/config/sanity";
-  import { postQuery } from "$lib/config/sanity/queries";
-  import { urlForImage } from "$lib/config/sanity";
-  import type { PageData } from "./$types";
+  import {previewSubscription} from '$lib/config/sanity'
+  import {postQuery} from '$lib/config/sanity/queries'
+  import {urlForImage} from '$lib/config/sanity'
+  import type {PageData} from './$types'
   import PortableBlock from '$lib/components/PortableBlock.svelte'
 
-  export let data: PageData;
+  export let data: PageData
 
-  $: ({ initialData, previewMode, slug } = data);
-  $: ({ data: postData } = previewSubscription(postQuery, {
-    params: { slug },
+  $: ({initialData, previewMode, slug} = data)
+  $: ({data: postData} = previewSubscription(postQuery, {
+    params: {slug},
     initialData,
-    enabled: previewMode && !!slug,
-  }));
+    enabled: previewMode && !!slug
+  }))
 </script>
 
 <svelte:head>
-  <title>{$postData?.post?.title || "Post"}</title>
+  <title>{$postData?.post?.title || 'Post'}</title>
 </svelte:head>
 
 {#if $postData?.post}
@@ -32,14 +32,14 @@
           <h4 class="text-4xl font-bold">{$postData.post.title}</h4>
           <div class="mt-3 flex items-center">
             {#if $postData.post.author}
-            <div class="flex-shrink-0">
-              <span class="sr-only">Image</span>
-              <img
-                class="h-10 w-10 rounded-full"
-                src={urlForImage($postData.post.author.image).crop("focalpoint").width(256).height(256).url()}
-                alt=""
-              />
-            </div>
+              <div class="flex-shrink-0">
+                <span class="sr-only">Image</span>
+                <img
+                  class="h-10 w-10 rounded-full"
+                  src={urlForImage($postData.post.author.image).crop('focalpoint').width(256).height(256).url()}
+                  alt=""
+                />
+              </div>
             {/if}
             <div class="ml-3">
               <p class="text-sm font-medium text-white mb-0">{$postData.post.author.name}</p>
@@ -52,11 +52,11 @@
           </div>
         </div>
         {#if $postData.post.mainImage}
-        <img
-          class="h-92 w-full object-cover rounded-xl mb-10"
-          src={urlForImage($postData.post.mainImage).width(1344).height(736).url()}
-          alt={$postData.post.mainImage.alt}
-        />
+          <img
+            class="h-92 w-full object-cover rounded-xl mb-10"
+            src={urlForImage($postData.post.mainImage).width(1344).height(736).url()}
+            alt={$postData.post.mainImage.alt}
+          />
         {/if}
         <div>
           {#if $postData.post.body}

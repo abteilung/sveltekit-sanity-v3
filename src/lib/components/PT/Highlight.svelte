@@ -1,7 +1,7 @@
 <script lang="ts">
-    export let text: string;
+  export let text: string
 </script>
 
 <span class="highlight">
-    <slot />
+  <slot />
 </span>

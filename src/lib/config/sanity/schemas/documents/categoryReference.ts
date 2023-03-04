@@ -1,4 +1,4 @@
-import { Tag } from 'phosphor-react'
+import {Tag} from 'phosphor-react'
 
 export default {
   name: 'categoryReference',
@@ -9,7 +9,7 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'string',
-    },
-  ],
+      type: 'string'
+    }
+  ]
 }

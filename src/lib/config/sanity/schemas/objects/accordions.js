@@ -1,4 +1,4 @@
-import { MdArrowDropDown } from 'react-icons/md'
+import {MdArrowDropDown} from 'react-icons/md'
 
 export default {
   title: 'Accordion List',
@@ -10,14 +10,14 @@ export default {
       title: 'Accordions',
       name: 'items',
       type: 'array',
-      of: [{ type: 'accordion' }]
+      of: [{type: 'accordion'}]
     }
   ],
   preview: {
     select: {
       items: 'items'
     },
-    prepare({ items }) {
+    prepare({items}) {
       return {
         title: 'Accordion List',
         subtitle: `${items.length} item(s)`

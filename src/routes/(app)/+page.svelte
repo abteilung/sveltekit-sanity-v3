@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { urlForImage } from "$lib/config/sanity";
-  import type { PageData } from "./$types";
+  import {urlForImage} from '$lib/config/sanity'
+  import type {PageData} from './$types'
 
-  export let data: PageData;
+  export let data: PageData
 
-  $: ({ posts } = data);
+  $: ({posts} = data)
 </script>
 
 <svelte:head>
@@ -42,13 +42,13 @@
             <a href="/post/{post.slug}">
               <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <div class="flex-shrink-0">
-                 {#if post.mainImage}
-                  <img
-                    class="object-cover w-full h-48"
-                    src={urlForImage(post.mainImage).width(826).height(384).url()}
-                    alt={post.mainImage.alt}
-                  />
-                 {/if}
+                  {#if post.mainImage}
+                    <img
+                      class="object-cover w-full h-48"
+                      src={urlForImage(post.mainImage).width(826).height(384).url()}
+                      alt={post.mainImage.alt}
+                    />
+                  {/if}
                 </div>
                 <div class="flex flex-col justify-between flex-1 p-6 bg-white">
                   <div class="flex-1">
@@ -68,13 +68,13 @@
                   <div class="flex items-center mt-6">
                     <div class="flex-shrink-0">
                       <span class="sr-only">Author Image</span>
-                        {#if post.author}
-                          <img
-                            class="w-10 h-10 rounded-full"
-                            src={urlForImage(post.author.image).crop("focalpoint").width(256).height(256).url()}
-                            alt=""
-                          />
-                        {/if}
+                      {#if post.author}
+                        <img
+                          class="w-10 h-10 rounded-full"
+                          src={urlForImage(post.author.image).crop('focalpoint').width(256).height(256).url()}
+                          alt=""
+                        />
+                      {/if}
                     </div>
                     {#if post.author}
                       <div class="ml-3">

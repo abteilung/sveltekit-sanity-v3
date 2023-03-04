@@ -12,8 +12,7 @@ export default {
     {
       name: 'answer',
       type: 'text',
-      title: 'Answer',
+      title: 'Answer'
     }
   ]
 }
-

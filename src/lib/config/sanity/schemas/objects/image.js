@@ -8,30 +8,30 @@ export default {
       type: 'image',
       title: 'Image',
       options: {
-        hotspot: true,
+        hotspot: true
       },
       fields: [
         {
           name: 'alt',
           type: 'string',
-          title: 'Alternative text',
-        },
-      ],
-    },
+          title: 'Alternative text'
+        }
+      ]
+    }
   ],
   preview: {
     select: {
       images: 'image',
-      image: 'image',
+      image: 'image'
     },
     prepare(selection) {
-      const { images, image } = selection;
+      const {images, image} = selection
 
       return {
         title: `Gallery block of ${Object.keys(images).length} images`,
         subtitle: `Alt text: ${image.alt}`,
-        media: image,
-      };
-    },
-  },
-};
+        media: image
+      }
+    }
+  }
+}
