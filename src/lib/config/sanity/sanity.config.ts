@@ -13,18 +13,23 @@ import blockContent from '$lib/config/sanity/schemas/helpers/blockContent';
 
 import settingsType from '$lib/config/sanity/schemas/documents/settings';
 
+import postType from '$lib/config/sanity/schemas/documents/post';
+import pageType from '$lib/config/sanity/schemas/documents/page';
 import categoryType from '$lib/config/sanity/schemas/documents/category';
 import accordionsType from '$lib/config/sanity/schemas/accordions';
 import accordionType from '$lib/config/sanity/schemas/accordion';
 import faqType from '$lib/config/sanity/schemas/documents/faq';
 import galleryType from '$lib/config/sanity/schemas/gallery';
 import authorType from '$lib/config/sanity/schemas/documents/author';
-import postType from '$lib/config/sanity/schemas/documents/post';
 import caseStudyType from '$lib/config/sanity/schemas/documents/caseStudy';
 import productType from '$lib/config/sanity/schemas/documents/product';
 import serviceType from '$lib/config/sanity/schemas/documents/service';
 import categoryReferenceType from '$lib/config/sanity/schemas/documents/categoryReference';
 /*------------------------------------*/
+
+
+import {structure} from '$lib/config/sanity/structure/'
+
 
 export default defineConfig({
 	basePath: '/studio',
@@ -34,10 +39,15 @@ export default defineConfig({
 	schema: {
 		// If you want more content types, you can add them to this array
 
-types: [ postType, authorType, accordionsType, accordionType, categoryType, faqType, galleryType, blockContent, caseStudyType, productType, categoryReferenceType, serviceType, settingsType]
+	types: [ 
+		// Documents
+		pageType, postType, authorType, accordionsType, accordionType, categoryType, faqType, galleryType, blockContent, caseStudyType, productType, categoryReferenceType, serviceType, settingsType
+		// Components
+	]
 	},
 	plugins: [
 		deskTool({
+			structure: structure,
 			// `defaultDocumentNode is responsible for adding a “Preview” tab to the document pane
 			// You can add any React component to `S.view.component` and it will be rendered in the pane
 			// and have access to content in the form in real-time.

@@ -1,4 +1,4 @@
-import { Article } from 'phosphor-react'
+import { File } from 'phosphor-react'
 import { defineType } from 'sanity';
 
 import authorType from './author';
@@ -16,9 +16,9 @@ import authorType from './author';
  */
 
 export default defineType({
-	name: 'post',
-	title: 'Post',
-	icon: Article,
+	name: 'page',
+	title: 'Page',
+	icon: File,
 	type: 'document',
 	fields: [
 		{
@@ -80,10 +80,10 @@ export default defineType({
 			to: [{ type: authorType.name }],
 		},
 		{
-			name: 'category',
-			title: 'Category',
-			type: 'reference',
-			to: [{ type: 'category' }],
+			name: 'categories',
+			title: 'Categories',
+			type: 'array',
+			of: [{type: 'reference', to: {type: 'category'}}],
 		  },
 	],
 	preview: {
