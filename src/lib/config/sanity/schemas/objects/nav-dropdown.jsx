@@ -16,7 +16,7 @@ export default {
       title: 'Dropdown Items',
       name: 'dropdownItems',
       type: 'array',
-      of: [{ type: 'navPage' }, { type: 'navLink' }]
+      of: [{ type: 'navPage' }, { type: 'navLink' }, { type: 'navDropdown' }]
     },
     {
       name: 'featuredNote',
@@ -41,5 +41,21 @@ export default {
       ],
       validation: Rule => Rule.unique().max(2)
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      dropdownItems: 'dropdownItems',
+      featured: 'featured'
+    },
+    prepare({ title, dropdownItems, featured }) {
+      return {
+        title: title ?? 'Dropdown',
+        subtitle: `${dropdownItems?.length ?? 0} items${
+          featured?.length ? ` + ${featured.length} featured` : ''
+        }`,
+        media: ArrowBendRightDown
+      }
+    }
+  }
 }

@@ -37,7 +37,7 @@ export default {
     prepare({ title = 'Untitled', items = [] }) {
       return {
         title,
-        subtitle: `${items.length} link(s)`,
+        subtitle: `${items.length} link${items.length > 1 ? 's' : ''}`,
         media: List
       }
     }
