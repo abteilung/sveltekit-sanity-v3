@@ -66,16 +66,6 @@ export default defineType({
       validation: (rule) => rule.required()
     },
 
-    {
-      name: 'siteImage',
-      description: 'This field is the default siteImage of your Site.',
-      title: 'Site Image',
-      type: 'image',
-      group: 'site',
-      initialValue: 'https://blog.example.com/images/site-image.png',
-      validation: (rule) => rule.required()
-    },
-
     // Social
     {
       name: 'twitter',
