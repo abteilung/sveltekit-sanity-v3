@@ -58,7 +58,7 @@ export default defineType({
     },
     {
       name: 'favicon',
-      description: 'Add transparent PNG for favicon (min. 180px x 180px).',
+      description: 'Add transparent PNG for favicon (min. 512px x 512px).',
       title: 'Favicon',
       type: 'image',
       group: 'site',
