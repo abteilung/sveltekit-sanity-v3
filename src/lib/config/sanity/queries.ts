@@ -245,6 +245,9 @@ export const getSiteConfig = groq`
     "seo": {
       "googleSiteVerification": googleSiteVerification,
       "bingSiteVerification": bingSiteVerification,
+      themeColor,
+      backgroundColor,
+      display
     },
   }
 `

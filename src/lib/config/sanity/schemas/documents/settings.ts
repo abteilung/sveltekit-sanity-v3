@@ -162,6 +162,30 @@ export default defineType({
     },
 
     // SEO
+	{
+		name: 'themeColor',
+		title: 'Theme Color',
+		type: 'string',
+		description: 'Enter your theme color.',
+		group: 'seo',
+		initialValue: '#ffffff'
+	},
+	{
+		name: 'backgroundColor',
+		title: 'Background Color',
+		type: 'string',
+		description: 'Enter your background color.',
+		group: 'seo',
+		initialValue: '#ffffff'
+	},
+	{
+		name: 'display',
+		title: 'Display',
+		type: 'string',
+		description: 'Enter your display.',
+		group: 'seo',
+		initialValue: 'standalone'
+	},
     {
       name: 'googleSiteVerification',
       title: 'Google Site Verification',

@@ -38,8 +38,8 @@ const sitemap = (siteConfig) => `{
           "type": "image/png"
       }
   ],
-  "theme_color": "#fff",
-  "background_color": "#fff",
-  "display": "standalone"
+  "theme_color": "${siteConfig.themeColor ? siteConfig.themeColor : '#ffffff'}",
+  "background_color": "${siteConfig.backgroundColor ? siteConfig.backgroundColor : '#ffffff'}",
+  "display": "${siteConfig.display ? siteConfig.display : 'standalone'}",
 }
   `
