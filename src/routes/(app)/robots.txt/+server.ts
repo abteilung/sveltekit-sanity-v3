@@ -7,19 +7,19 @@ import {getSiteConfig} from '$lib/config/sanity/queries'
 
 // Get all Data for Sitemap
 export async function GET({req}) {
-	const siteConfig = await getSanityServerClient(false).fetch(getSiteConfig)
+  const siteConfig = await getSanityServerClient(false).fetch(getSiteConfig)
 
-	// Populate Body
-	const body = robots(siteConfig)
+  // Populate Body
+  const body = robots(siteConfig)
 
-	// Return Response
-	return new Response(body, {
-		headers: {
-			'Cache-Control': `max-age=0, s-maxage=${3600}`,
-			// content-Type Text/Plain
-			'Content-Type': 'text/plain'
-		}
-	})
+  // Return Response
+  return new Response(body, {
+    headers: {
+      'Cache-Control': `max-age=0, s-maxage=${3600}`,
+      // content-Type Text/Plain
+      'Content-Type': 'text/plain'
+    }
+  })
 }
 
 // Create Robots.txt

@@ -7,19 +7,19 @@ import {getSiteConfig, getAllPosts, getEvents} from '$lib/config/sanity/queries'
 
 // Get all Data for Sitemap
 export async function GET({req}) {
-	const siteConfig = await getSanityServerClient(false).fetch(getSiteConfig)
-	const posts = await getSanityServerClient(false).fetch(getAllPosts)
+  const siteConfig = await getSanityServerClient(false).fetch(getSiteConfig)
+  const posts = await getSanityServerClient(false).fetch(getAllPosts)
 
-	// Populate Body
-	const body = sitemap(siteConfig, posts)
+  // Populate Body
+  const body = sitemap(siteConfig, posts)
 
-	// Return Response
-	return new Response(body, {
-		headers: {
-			'Cache-Control': `max-age=0, s-maxage=${3600}`,
-			'Content-Type': 'application/xml'
-		}
-	})
+  // Return Response
+  return new Response(body, {
+    headers: {
+      'Cache-Control': `max-age=0, s-maxage=${3600}`,
+      'Content-Type': 'application/xml'
+    }
+  })
 }
 
 // Create Sitemap
@@ -38,14 +38,14 @@ const sitemap = (siteConfig, posts) => `<?xml version="1.0" encoding="UTF-8" ?>
         <priority>0.7</priority>
     </url>
     ${posts
-			.map(
-				(post) => `
+      .map(
+        (post) => `
         <url>
            <loc>${siteConfig.siteUrl}${post.href}</loc>
             <changefreq>daily</changefreq>
             <priority>0.7</priority>
         </url>
     `
-			)
-			.join('')}
+      )
+      .join('')}
 </urlset>`

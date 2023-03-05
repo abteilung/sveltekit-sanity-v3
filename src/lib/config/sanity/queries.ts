@@ -223,7 +223,6 @@ export const getSiteConfig = groq`
     title,
     description,
     siteUrl,
-    "logo": logo.asset->,
     "favicon": favicon.asset->,
     "social": {
       "twitter": twitter,
@@ -241,11 +240,11 @@ export const getSiteConfig = groq`
     "analytics": {
       "googleAnalytics": googleAnalytics,
       "googleTagManager": googleTagManager,
+      "plausibleAnalytics": plausibleAnalytics,
     },
     "seo": {
       "googleSiteVerification": googleSiteVerification,
       "bingSiteVerification": bingSiteVerification,
-      "yandexSiteVerification": yandexSiteVerification,
     },
   }
 `

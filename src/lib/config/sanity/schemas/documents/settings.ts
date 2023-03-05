@@ -6,6 +6,28 @@ export default defineType({
   title: 'Settings',
   type: 'document',
   icon: GearSix,
+  groups: [
+    {
+      name: 'site',
+      title: 'Site'
+    },
+    {
+      name: 'social',
+      title: 'Social'
+    },
+    {
+      name: 'contact',
+      title: 'Contact'
+    },
+    {
+      name: 'analytics',
+      title: 'Analytics'
+    },
+    {
+      name: 'seo',
+      title: 'SEO'
+    }
+  ],
   fields: [
     {
       name: 'title',
@@ -13,6 +35,7 @@ export default defineType({
       title: 'Title',
       type: 'string',
       initialValue: 'Blog.',
+      group: 'site',
       validation: (rule) => rule.required()
     },
     {
@@ -21,6 +44,7 @@ export default defineType({
       title: 'Description',
       type: 'string',
       initialValue: 'A blog built with Next.js and Sanity.io.',
+      group: 'site',
       validation: (rule) => rule.required()
     },
     {
@@ -28,33 +52,129 @@ export default defineType({
       description: 'This field is the default siteUrl of your Site.',
       title: 'Site URL',
       type: 'url',
+      group: 'site',
       initialValue: 'https://blog.example.com',
       validation: (rule) => rule.required()
     },
-	{ 
-		name: 'logo',
-		description: 'This field is the default logo of your Site.',
-		title: 'Logo',
-		type: 'image',
-		initialValue: 'https://blog.example.com/images/logo.png',
-		validation: (rule) => rule.required()
-	},
-	{
-		  name: 'favicon',
-		  description: 'This field is the default favicon of your Site.',
-		  title: 'Favicon',
-		  type: 'image',
-		  initialValue: 'https://blog.example.com/images/favicon.png',
-		  validation: (rule) => rule.required()
-	},
-	
+    {
+      name: 'favicon',
+      description: 'Add transparent PNG for favicon (min. 180px x 180px).',
+      title: 'Favicon',
+      type: 'image',
+      group: 'site',
+      initialValue: 'https://blog.example.com/images/favicon.png',
+      validation: (rule) => rule.required()
+    },
+
     {
       name: 'siteImage',
       description: 'This field is the default siteImage of your Site.',
       title: 'Site Image',
       type: 'image',
+      group: 'site',
       initialValue: 'https://blog.example.com/images/site-image.png',
       validation: (rule) => rule.required()
+    },
+
+    // Social
+    {
+      name: 'twitter',
+      title: 'Twitter',
+      type: 'string',
+      group: 'social'
+    },
+    {
+      name: 'facebook',
+      title: 'Facebook',
+      type: 'string',
+      group: 'social'
+    },
+    {
+      name: 'instagram',
+      title: 'Instagram',
+      type: 'string',
+      group: 'social'
+    },
+    {
+      name: 'github',
+      title: 'GitHub',
+      type: 'string',
+      group: 'social'
+    },
+    {
+      name: 'linkedin',
+      title: 'LinkedIn',
+      type: 'string',
+      group: 'social'
+    },
+    {
+      name: 'youtube',
+      title: 'YouTube',
+      type: 'string',
+      group: 'social'
+    },
+
+    // Contact
+    {
+      name: 'email',
+      title: 'Email',
+      type: 'string',
+      description: 'Enter your email address.',
+      group: 'contact'
+    },
+    {
+      name: 'phone',
+      title: 'Phone',
+      type: 'string',
+      description: 'Enter your phone number (+41 xx xxx xx xx).',
+      group: 'contact'
+    },
+    {
+      name: 'address',
+      title: 'Address',
+      type: 'text',
+      description: 'Enter your address.',
+      group: 'contact'
+    },
+
+    // Analytics
+    // Information
+    {
+      name: 'googleAnalytics',
+      title: 'Google Analytics',
+      type: 'string',
+      description: 'Enter your Google Analytics Tracking ID.',
+      group: 'analytics'
+    },
+    {
+      name: 'googleTagManager',
+      title: 'Google Tag Manager',
+      type: 'string',
+      description: 'Enter your Google Tag Manager ID.',
+      group: 'analytics'
+    },
+    {
+      name: 'plausibleAnalytics',
+      title: 'Plausible Analytics',
+      type: 'string',
+      description: 'Enter your Plausible Analytics domain.',
+      group: 'analytics'
+    },
+
+    // SEO
+    {
+      name: 'googleSiteVerification',
+      title: 'Google Site Verification',
+      type: 'string',
+      description: 'Enter your Google Site Verification ID.',
+      group: 'seo'
+    },
+    {
+      name: 'bingSiteVerification',
+      title: 'Bing Site Verification',
+      type: 'string',
+      description: 'Enter your Bing Site Verification ID.',
+      group: 'seo'
     }
   ]
 })
