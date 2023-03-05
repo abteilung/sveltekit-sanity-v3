@@ -1,6 +1,6 @@
 <script lang="ts">
   import {previewSubscription} from '$lib/config/sanity'
-  import {postQuery} from '$lib/config/sanity/queries'
+  import {getPostBySlug} from '$lib/config/sanity/queries'
   import {urlForImage} from '$lib/config/sanity'
   import type {PageData} from './$types'
   import PortableBlock from '$lib/components/PortableBlock.svelte'
@@ -8,7 +8,7 @@
   export let data: PageData
 
   $: ({initialData, previewMode, slug} = data)
-  $: ({data: postData} = previewSubscription(postQuery, {
+  $: ({data: postData} = previewSubscription(getPostBySlug, {
     params: {slug},
     initialData,
     enabled: previewMode && !!slug

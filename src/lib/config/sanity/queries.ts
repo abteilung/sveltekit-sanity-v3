@@ -19,6 +19,7 @@ const postFields = groq`
   },
   mainImage,
   "slug": slug.current,
+  "href": "/post/" + slug.current,
   "author": author->{name, image},
 `
 
@@ -87,7 +88,7 @@ export const indexQuery = groq`
 }`
 
 // Posts Stuff
-export const postQuery = groq`
+export const getPostBySlug = groq`
 {
   "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true][0]{
     content,
@@ -103,7 +104,7 @@ export const postQuery = groq`
   }
 }`
 
-export const allPostsQuery = groq`
+export const getAllPosts = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
@@ -215,3 +216,36 @@ export const getMenus = groq`
     ${menuLinkSection}
   },
 }`
+
+export const getSiteConfig = groq`
+  *[_type == 'settings'][0] {
+    ...,
+    title,
+    description,
+    siteUrl,
+    "logo": logo.asset->,
+    "favicon": favicon.asset->,
+    "social": {
+      "twitter": twitter,
+      "facebook": facebook,
+      "instagram": instagram,
+      "youtube": youtube,
+      "linkedin": linkedin,
+      "github": github,
+    },
+    "contact": {
+      "email": email,
+      "phone": phone,
+      "address": address,
+    },
+    "analytics": {
+      "googleAnalytics": googleAnalytics,
+      "googleTagManager": googleTagManager,
+    },
+    "seo": {
+      "googleSiteVerification": googleSiteVerification,
+      "bingSiteVerification": bingSiteVerification,
+      "yandexSiteVerification": yandexSiteVerification,
+    },
+  }
+`

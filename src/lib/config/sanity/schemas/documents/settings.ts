@@ -17,39 +17,40 @@ export default defineType({
     },
     {
       name: 'description',
-      description: 'This field is the fallback description of your Site.',
+      description: 'This field is the default description of your Site.',
       title: 'Description',
       type: 'string',
       initialValue: 'A blog built with Next.js and Sanity.io.',
       validation: (rule) => rule.required()
     },
     {
-      name: 'author',
-      description: 'This field is the fallback author of your Site.',
-      title: 'Author',
-      type: 'string',
-      initialValue: 'John Doe',
-      validation: (rule) => rule.required()
-    },
-    {
-      name: 'keywords',
-      description: 'This field is the fallback keywords of your Site.',
-      title: 'Keywords',
-      type: 'string',
-      initialValue: 'blog, nextjs, sanity',
-      validation: (rule) => rule.required()
-    },
-    {
       name: 'siteUrl',
-      description: 'This field is the fallback siteUrl of your Site.',
+      description: 'This field is the default siteUrl of your Site.',
       title: 'Site URL',
       type: 'url',
       initialValue: 'https://blog.example.com',
       validation: (rule) => rule.required()
     },
+	{ 
+		name: 'logo',
+		description: 'This field is the default logo of your Site.',
+		title: 'Logo',
+		type: 'image',
+		initialValue: 'https://blog.example.com/images/logo.png',
+		validation: (rule) => rule.required()
+	},
+	{
+		  name: 'favicon',
+		  description: 'This field is the default favicon of your Site.',
+		  title: 'Favicon',
+		  type: 'image',
+		  initialValue: 'https://blog.example.com/images/favicon.png',
+		  validation: (rule) => rule.required()
+	},
+	
     {
       name: 'siteImage',
-      description: 'This field is the fallback siteImage of your Site.',
+      description: 'This field is the default siteImage of your Site.',
       title: 'Site Image',
       type: 'image',
       initialValue: 'https://blog.example.com/images/site-image.png',
