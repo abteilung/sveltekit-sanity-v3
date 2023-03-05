@@ -40,6 +40,6 @@ const sitemap = (siteConfig) => `{
   ],
   "theme_color": "${siteConfig.themeColor ? siteConfig.themeColor : '#ffffff'}",
   "background_color": "${siteConfig.backgroundColor ? siteConfig.backgroundColor : '#ffffff'}",
-  "display": "${siteConfig.display ? siteConfig.display : 'standalone'}",
+  "display": "${siteConfig.display ? siteConfig.display : 'standalone'}"
 }
-  `
+`

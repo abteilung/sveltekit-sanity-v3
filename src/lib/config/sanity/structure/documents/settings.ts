@@ -16,7 +16,7 @@ export function settingsStructure(S) {
           S.listItem()
             .title('Site Navigation')
             .icon(Compass)
-            .child(S.document('navigation').schemaType('navigation').documentId('navigation').title('Navigation'))
+            .child(S.documentTypeList('menu').title('Navigation'))
         ])
     )
 }

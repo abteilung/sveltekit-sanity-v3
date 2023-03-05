@@ -1,5 +1,6 @@
 import {defineConfig, type Slug} from 'sanity'
 import {PostsPreview} from './components/PostsPreview'
+import { noteField } from 'sanity-plugin-note-field'
 import app from '../app'
 
 /*-------------- PLUGINS --------------*/
@@ -24,8 +25,14 @@ import authorType from '$lib/config/sanity/schemas/documents/author'
 import caseStudyType from '$lib/config/sanity/schemas/documents/caseStudy'
 import productType from '$lib/config/sanity/schemas/documents/product'
 import serviceType from '$lib/config/sanity/schemas/documents/service'
-import navigationType from '$lib/config/sanity/schemas/documents/navigation'
 import categoryReferenceType from '$lib/config/sanity/schemas/documents/categoryReference'
+
+// Navigatons
+import menu from './schemas/documents/menu'
+import navDropdown from './schemas/objects/nav-dropdown'
+import navPage from './schemas/objects/nav-page'
+import navLink from './schemas/objects/nav-link'
+
 /*------------------------------------*/
 
 import {structure} from '$lib/config/sanity/structure/'
@@ -53,10 +60,14 @@ export default defineConfig({
       productType,
       categoryReferenceType,
       serviceType,
-      navigationType,
-      settingsType
+      settingsType,
       // Components
-    ]
+	//   shcemas/objects
+	menu,
+	navDropdown, navPage, navLink
+	],
+	// If you want to add more schemas, you can add them here
+
   },
   plugins: [
     deskTool({
@@ -80,7 +91,8 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({
       defaultApiVersion: '2022-08-08'
-    })
+    }),
+	noteField(),
   ],
   document: {
     productionUrl: async (prev, {document}) => {
