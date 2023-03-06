@@ -1,10 +1,24 @@
 import groq from 'groq'
 
-const postFields = groq`
+const linkTypes = groq`
+  _type == "post" => {
+    "href": "/story/" + slug.current,
+  },
+  _type == "service" => {
+    "href": "/services/" + slug.current,
+  },
+  _type == "product" => {
+    "href": "/products/" + slug.current,
+  },
+  _type == "page" => {
+    "href": "/" + slug.current,
+  },
+`
+
+const documentFields = groq`
   _id,
   _type,
   "category": categories[0]->,
-  name,
   title,
   subtitle,
   date,
@@ -19,7 +33,7 @@ const postFields = groq`
   },
   mainImage,
   "slug": slug.current,
-  "href": "/post/" + slug.current,
+  ${linkTypes}
   "author": author->{name, image},
 `
 
@@ -41,11 +55,11 @@ const modules = groq`
   },
   _type == "postsGrid" => {
     "posts": *[
-      type == 'post' 
+      type == 'post'
       // No Drafts!
       && !(_id in path("drafts.**"))
     ]
-    ${postFields}
+    ${documentFields}
     | order(publishDate desc)
   },
 `
@@ -84,7 +98,7 @@ export const postVisionQuery = groq`*[_type == "post"] | order(date desc, _updat
 
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
+  ${documentFields}
 }`
 
 // Posts Stuff
@@ -92,21 +106,21 @@ export const getPostBySlug = groq`
 {
   "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true][0]{
     content,
-    ${postFields}
+    ${documentFields}
   },
   "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
     content,
-    ${postFields}
+    ${documentFields}
   },
   "morePosts": *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
     content,
-    ${postFields}
+    ${documentFields}
   }
 }`
 
 export const getAllPosts = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
+  ${documentFields}
 }`
 
 export const postSlugsQuery = groq`
@@ -115,7 +129,7 @@ export const postSlugsQuery = groq`
 
 export const postBySlugQuery = groq`
 *[_type == "post" && slug.current == $slug][0] {
-  ${postFields}
+  ${documentFields}
 }
 `
 
@@ -123,6 +137,7 @@ export const postBySlugQuery = groq`
 const pageBlocks = groq`{
   title,
   "slug": slug.current,
+  "href": "/" + slug.current,
   mainImage,
   imageGallery,
   "category": category[]->{title},
@@ -148,74 +163,6 @@ export const getPageBySlug = groq`
 ${pageBlocks}
 [0]
 `
-
-// Navigation Stuff
-export const getMenuSettingsDoc = groq`*[_type == 'navigationSettings'][0]`
-
-const menuFirstLevel = groq`
-  _key,
-  _id,
-  isMegaMenu,
-  "slug": slug.current,
-  linkType == "external" => {
-    "label": title,
-    "url": linkExternal,
-    "external": true,
-  },
-  linkType == "internal" => {
-    "label": target->title,
-    "url": "/" + target->slug.current + "/",
-    "external": false,
-    defined(title) => {
-      "label": title
-    },
-  },
-`
-
-const menuSecondLevel = groq`
-  links[] {
-    "url": target -> { "slug": slug.current, "label": title },
-    "label": target -> title,
-    "labelOverride": title,
-    linkType == "external" => {
-      "label": title,
-      "url": linkExternal,
-      "external": true,
-    },
-    linkType == "internal" => {
-      "label": target->title,
-      "url": "/" + target->slug.current + "/",
-      "external": false,
-      defined(title) => {
-        "label": title
-      },
-    },
-  }
-`
-
-const menuLinkSection = groq`
-  ${menuFirstLevel}
-  ${menuSecondLevel}
-`
-
-export const getMenus = groq`
-  ${getMenuSettingsDoc}
-  {
-    "navMenuHeader":  navMenuHeader->sections[],
-    "navMenuFooter":  navMenuFooter->sections[],
-    "navMenuMeta":    navMenuMeta->sections[],
-  },
-  {
-  navMenuHeader[] {
-    ${menuLinkSection}
-  },
-  navMenuFooter[] {
-    ${menuLinkSection}
-  },
-  navMenuMeta[] {
-    ${menuLinkSection}
-  },
-}`
 
 export const getSiteConfig = groq`
   *[_type == 'settings'][0] {
@@ -250,4 +197,37 @@ export const getSiteConfig = groq`
       display
     },
   }
+`
+
+// Navigations
+export const getMenus = groq`
+*[_type == 'menu'] {
+  "navigation": items[] {
+    title,
+    _type == 'navDropdown' => {
+      title,
+      dropdownItems [] {
+        _type,
+        title,
+        "page": page->{
+          title, subtitle, "slug": slug.current, "image": mainImage.asset->, "icon": productIcon.asset-> 
+        }
+      }
+    },
+    _type == 'navPage' => {
+      ...,
+      _type,
+      title,
+      "title": page->{title},
+      "subtitle": page->{subtitle},
+      "slug": page->{slug},
+      "image": page->{mainImage},
+      "icon": page->{productIcon},
+    },
+    _type == 'navLink' => {
+      ...,
+      _type
+    }
+  }
+}
 `

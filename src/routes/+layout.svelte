@@ -1,7 +1,6 @@
 <script lang="ts">
   // Sevelte imports
   import {page} from '$app/stores'
-  import Favicons from '$lib/components/Favicons.svelte'
 
   // Local imports
   import type {LayoutData} from './$types'
@@ -30,8 +29,6 @@
     href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Source+Sans+Pro:300,400,700,900&display=swap"
     rel="stylesheet"
   />
-
-  <Favicons iconImage={siteConfig.favicon} />
 </svelte:head>
 
 {#if showPreviewBanner}

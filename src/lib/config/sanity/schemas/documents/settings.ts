@@ -1,4 +1,4 @@
-import {GearSix} from 'phosphor-react'
+import {GearSix, Globe, TwitterLogo, AddressBook, MagnifyingGlass, ChartLineUp} from 'phosphor-react'
 import {defineType} from 'sanity'
 
 export default defineType({
@@ -9,23 +9,34 @@ export default defineType({
   groups: [
     {
       name: 'site',
-      title: 'Site'
+      title: 'Site',
+      description: 'Site settings',
+      default: true,
+      icon: Globe
     },
     {
       name: 'social',
-      title: 'Social'
+      title: 'Social',
+      description: 'Social settings',
+      icon: TwitterLogo
     },
     {
       name: 'contact',
-      title: 'Contact'
+      title: 'Contact',
+      description: 'Your contact information',
+      icon: AddressBook
     },
     {
       name: 'analytics',
-      title: 'Analytics'
+      title: 'Analytics',
+      description: 'Analytics settings',
+      icon: ChartLineUp
     },
     {
       name: 'seo',
-      title: 'SEO'
+      title: 'SEO',
+      description: 'SEO settings',
+      icon: MagnifyingGlass
     }
   ],
   fields: [
@@ -152,36 +163,29 @@ export default defineType({
     },
 
     // SEO
-	{
-		name: 'themeColor',
-		title: 'Theme Color',
-		type: 'string',
-		description: 'Enter your theme color.',
-		group: 'seo',
-		initialValue: '#ffffff'
-	},
-	{
-		name: 'backgroundColor',
-		title: 'Background Color',
-		type: 'string',
-		description: 'Enter your background color.',
-		group: 'seo',
-		initialValue: '#ffffff'
-	},
-	{
-		name: 'display',
-		title: 'Display',
-		type: 'string',
-		description: 'Enter your display.',
-		group: 'seo',
-		initialValue: 'standalone'
-	},
     {
-      name: 'googleSiteVerification',
-      title: 'Google Site Verification',
+      name: 'themeColor',
+      title: 'Theme Color',
       type: 'string',
-      description: 'Enter your Google Site Verification ID.',
-      group: 'seo'
+      description: 'Enter your theme color.',
+      group: 'seo',
+      initialValue: '#ffffff'
+    },
+    {
+      name: 'backgroundColor',
+      title: 'Background Color',
+      type: 'string',
+      description: 'Enter your background color.',
+      group: 'seo',
+      initialValue: '#ffffff'
+    },
+    {
+      name: 'display',
+      title: 'Display',
+      type: 'string',
+      description: 'Enter your display.',
+      group: 'seo',
+      initialValue: 'standalone'
     },
     {
       name: 'bingSiteVerification',

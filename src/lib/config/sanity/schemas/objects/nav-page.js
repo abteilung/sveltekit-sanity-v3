@@ -1,6 +1,6 @@
-import { LinkSimpleHorizontal } from 'phosphor-react'
+import {LinkSimpleHorizontal} from 'phosphor-react'
 
-import { getStaticRoute, getDynamicRoute } from '../../lib/helpers'
+import {getStaticRoute, getDynamicRoute} from '../../lib/helpers'
 
 export default {
   title: 'Page',
@@ -18,7 +18,7 @@ export default {
       title: 'Page',
       name: 'page',
       type: 'reference',
-      to: [{ type: 'page' }, { type: 'product' }, { type: 'post' }, { type: 'service' }]
+      to: [{type: 'page'}, {type: 'product'}, {type: 'post'}, {type: 'service'}]
     }
   ],
   preview: {
@@ -29,16 +29,13 @@ export default {
       pageType: 'page._type',
       pageSlug: 'page.slug.current'
     },
-    prepare({ title, referenceTitle, referenceImage, pageType, pageSlug }) {
+    prepare({title, referenceTitle, referenceImage, pageType, pageSlug}) {
       const isStatic = getStaticRoute(pageType)
       const isDynamic = getDynamicRoute(pageType)
 
       return {
-        title:  title || referenceTitle,
-        subtitle:
-          isStatic !== false
-            ? `/${isStatic}`
-            : `/${isDynamic ? `${isDynamic}/` : ''}${pageSlug}`,
+        title: title || referenceTitle,
+        subtitle: isStatic !== false ? `/${isStatic}` : `/${isDynamic ? `${isDynamic}/` : ''}${pageSlug}`,
         media: referenceImage
       }
     }

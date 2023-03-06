@@ -1,4 +1,4 @@
-import { ArrowBendRightDown, WarningCircle } from 'phosphor-react'
+import {ArrowBendRightDown, WarningCircle} from 'phosphor-react'
 
 export default {
   title: 'Dropdown',
@@ -16,7 +16,8 @@ export default {
       title: 'Dropdown Items',
       name: 'dropdownItems',
       type: 'array',
-      of: [{ type: 'navPage' }, { type: 'navLink' }, { type: 'navDropdown' }]
+      // Allow Dropdown Items to be either a Page or a Link (or another Dropdown)
+      of: [{type: 'navPage'}, {type: 'navLink'}, {type: 'navDropdown'}]
     },
     {
       name: 'featuredNote',
@@ -36,10 +37,10 @@ export default {
         {
           title: 'Product',
           type: 'reference',
-          to: [{ type: 'product' }]
+          to: [{type: 'product'}]
         }
       ],
-      validation: Rule => Rule.unique().max(2)
+      validation: (Rule) => Rule.unique().max(2)
     }
   ],
   preview: {
@@ -48,12 +49,10 @@ export default {
       dropdownItems: 'dropdownItems',
       featured: 'featured'
     },
-    prepare({ title, dropdownItems, featured }) {
+    prepare({title, dropdownItems, featured}) {
       return {
         title: title ?? 'Dropdown',
-        subtitle: `${dropdownItems?.length ?? 0} items${
-          featured?.length ? ` + ${featured.length} featured` : ''
-        }`,
+        subtitle: `${dropdownItems?.length ?? 0} items${featured?.length ? ` + ${featured.length} featured` : ''}`,
         media: ArrowBendRightDown
       }
     }

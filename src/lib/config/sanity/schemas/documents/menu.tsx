@@ -1,5 +1,5 @@
 import React from 'react'
-import { List } from 'phosphor-react'
+import {List} from 'phosphor-react'
 
 export default {
   title: 'Menu',
@@ -13,20 +13,21 @@ export default {
       type: 'string'
     },
     {
-      title: 'Slug',
+      title: 'Slug (ID required for References)',
       name: 'slug',
       type: 'slug',
       description: 'required',
       options: {
         source: 'title',
         maxLength: 30
-      }
+      },
+      validation: (Rule) => Rule.required()
     },
     {
       title: 'Nav Items',
       name: 'items',
       type: 'array',
-      of: [{ type: 'navPage' }, { type: 'navLink' }, { type: 'navDropdown' }]
+      of: [{type: 'navPage'}, {type: 'navLink'}, {type: 'navDropdown'}]
     }
   ],
   preview: {
@@ -34,7 +35,7 @@ export default {
       title: 'title',
       items: 'items'
     },
-    prepare({ title = 'Untitled', items = [] }) {
+    prepare({title = 'Untitled', items = []}) {
       return {
         title,
         subtitle: `${items.length} link${items.length > 1 ? 's' : ''}`,

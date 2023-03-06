@@ -13,10 +13,7 @@ export function settingsStructure(S) {
             .icon(Gear)
             .child(S.document('settings').schemaType('settings').documentId('settings').title('Settings')),
 
-          S.listItem()
-            .title('Site Navigation')
-            .icon(Compass)
-            .child(S.documentTypeList('menu').title('Navigation'))
+          S.listItem().title('Site Navigation').icon(Compass).child(S.documentTypeList('menu').title('Navigation'))
         ])
     )
 }

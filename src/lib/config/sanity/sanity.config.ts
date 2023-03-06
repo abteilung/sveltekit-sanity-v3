@@ -1,6 +1,6 @@
 import {defineConfig, type Slug} from 'sanity'
 import {PostsPreview} from './components/PostsPreview'
-import { noteField } from 'sanity-plugin-note-field'
+import {noteField} from 'sanity-plugin-note-field'
 import app from '../app'
 
 /*-------------- PLUGINS --------------*/
@@ -62,12 +62,13 @@ export default defineConfig({
       serviceType,
       settingsType,
       // Components
-	//   shcemas/objects
-	menu,
-	navDropdown, navPage, navLink
-	],
-	// If you want to add more schemas, you can add them here
-
+      //   shcemas/objects
+      menu,
+      navDropdown,
+      navPage,
+      navLink
+    ]
+    // If you want to add more schemas, you can add them here
   },
   plugins: [
     deskTool({
@@ -92,7 +93,7 @@ export default defineConfig({
     visionTool({
       defaultApiVersion: '2022-08-08'
     }),
-	noteField(),
+    noteField()
   ],
   document: {
     productionUrl: async (prev, {document}) => {
