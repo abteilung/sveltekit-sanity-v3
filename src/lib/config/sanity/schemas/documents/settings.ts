@@ -1,4 +1,4 @@
-import {GearSix, Globe, TwitterLogo, AddressBook, MagnifyingGlass, ChartLineUp} from 'phosphor-react'
+import {GearSix, Globe, ShareNetwork, Palette, AddressBook, MagnifyingGlass, ChartLineUp} from 'phosphor-react'
 import {defineType} from 'sanity'
 
 export default defineType({
@@ -7,37 +7,12 @@ export default defineType({
   type: 'document',
   icon: GearSix,
   groups: [
-    {
-      name: 'site',
-      title: 'Site',
-      description: 'Site settings',
-      default: true,
-      icon: Globe
-    },
-    {
-      name: 'social',
-      title: 'Social',
-      description: 'Social settings',
-      icon: TwitterLogo
-    },
-    {
-      name: 'contact',
-      title: 'Contact',
-      description: 'Your contact information',
-      icon: AddressBook
-    },
-    {
-      name: 'analytics',
-      title: 'Analytics',
-      description: 'Analytics settings',
-      icon: ChartLineUp
-    },
-    {
-      name: 'seo',
-      title: 'SEO',
-      description: 'SEO settings',
-      icon: MagnifyingGlass
-    }
+    { name: 'site', title: 'Site', description: 'Site settings', default: true, icon: Globe },
+    { name: 'theme', title: 'Theme', description: 'Theme settings', icon: Palette},
+    { name: 'social', title: 'Social', description: 'Social settings', icon: ShareNetwork },
+    { name: 'contact', title: 'Contact', description: 'Your contact information', icon: AddressBook },
+    { name: 'analytics', title: 'Analytics', description: 'Analytics settings', icon: ChartLineUp },
+    { name: 'seo', title: 'SEO', description: 'SEO settings', icon: MagnifyingGlass }
   ],
   fields: [
     {
@@ -45,7 +20,7 @@ export default defineType({
       description: 'This field is the title of your Site.',
       title: 'Title',
       type: 'string',
-      initialValue: 'Blog.',
+      initialValue: 'Site Title',
       group: 'site',
       validation: (rule) => rule.required()
     },
@@ -54,7 +29,7 @@ export default defineType({
       description: 'This field is the default description of your Site.',
       title: 'Description',
       type: 'string',
-      initialValue: 'A blog built with Next.js and Sanity.io.',
+      initialValue: 'A blog built with SvelteKit and Sanity.io.',
       group: 'site',
       validation: (rule) => rule.required()
     },
@@ -76,7 +51,23 @@ export default defineType({
       initialValue: 'https://blog.example.com/images/favicon.png',
       validation: (rule) => rule.required()
     },
-
+    // Theme
+    {
+      name: 'themeColor',
+      title: 'Theme Color',
+      type: 'string',
+      description: 'Enter your theme color.',
+      group: 'theme',
+      initialValue: '#ffffff'
+    },
+    {
+      name: 'backgroundColor',
+      title: 'Background Color',
+      type: 'string',
+      description: 'Enter your background color.',
+      group: 'theme',
+      initialValue: '#ffffff'
+    },
     // Social
     {
       name: 'twitter',
@@ -121,6 +112,7 @@ export default defineType({
       title: 'Email',
       type: 'string',
       description: 'Enter your email address.',
+      validation: (Rule) => Rule.regex(/.+@.+\..+/, {name: 'email'}),
       group: 'contact'
     },
     {
@@ -141,44 +133,35 @@ export default defineType({
     // Analytics
     // Information
     {
-      name: 'googleAnalytics',
-      title: 'Google Analytics',
       type: 'string',
+      name: 'googleAnalytics',
+      title: 'Google Analytics (UT)',
       description: 'Enter your Google Analytics Tracking ID.',
       group: 'analytics'
     },
     {
+      type: 'string',
+      name: 'googleAnalytics4',
+      title: 'Google Analytics 4 (GA4)',
+      description: 'To enable GA enter your Property ID',
+      group: 'analytics'
+    },
+    {
+      type: 'string',
       name: 'googleTagManager',
       title: 'Google Tag Manager',
-      type: 'string',
       description: 'Enter your Google Tag Manager ID.',
       group: 'analytics'
     },
     {
+      type: 'string',
       name: 'plausibleAnalytics',
       title: 'Plausible Analytics',
-      type: 'string',
       description: 'Enter your Plausible Analytics domain.',
       group: 'analytics'
     },
 
     // SEO
-    {
-      name: 'themeColor',
-      title: 'Theme Color',
-      type: 'string',
-      description: 'Enter your theme color.',
-      group: 'seo',
-      initialValue: '#ffffff'
-    },
-    {
-      name: 'backgroundColor',
-      title: 'Background Color',
-      type: 'string',
-      description: 'Enter your background color.',
-      group: 'seo',
-      initialValue: '#ffffff'
-    },
     {
       name: 'display',
       title: 'Display',
@@ -193,6 +176,6 @@ export default defineType({
       type: 'string',
       description: 'Enter your Bing Site Verification ID.',
       group: 'seo'
-    }
+    },
   ]
 })
