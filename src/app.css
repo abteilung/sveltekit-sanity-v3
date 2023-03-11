@@ -117,6 +117,15 @@
     @apply px-[20px] sm:px-[30px] md:px-[50px] xl:px-[100px] 2xl:px-[150px];
   }
 
+  #footer {
+    @apply 2xl:max-w-[1920px] mx-auto flex-none bg-dark;
+  }
+
+  .footerContent {
+    @apply p-[20px] sm:p-[30px] md:p-[50px] h-[350px];
+    @apply 2xl:container relative z-10;
+  }
+
   .navBar {
     @apply sticky z-50 top-0 md:flex md:flex-col flex-none shadow-xl h-16 sm:h-24;
     @apply md:min-h-screen h-fit w-full bg-white;

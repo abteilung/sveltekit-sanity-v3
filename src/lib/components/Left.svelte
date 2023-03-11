@@ -1,7 +1,8 @@
 <script lang="ts">
-  import {onMount} from 'svelte'
-  import {fade} from 'svelte/transition'
-  import Icons from '$lib/Components/Icons.svelte'
+import { onMount } from 'svelte'
+import { fade } from 'svelte/transition'
+	import Icons from '$lib/Components/Icons.svelte'
+
 
   // Menu object with title, href
   const menu = [
@@ -44,14 +45,14 @@
 
   let isLoaded: boolean = false
 
-  onMount(() => {
-    isLoaded = true
+  onMount (() => {
+	isLoaded = true
   })
 </script>
 
 <div class="navBar">
   <div class="h-full">
-    <Icons icon="logo" additionalClass="text-primary w-[123px] sm:w-[135px] md:w-full h-full md:h-auto py-4 md:py-0" />
+	<Icons icon="logo" additionalClass="text-primary w-[123px] sm:w-[135px] md:w-full h-full md:h-auto py-4 md:py-0" />
     <div class="mt-[100px] hidden md:block ">
       <ul>
         {#each menu as menuItem}
