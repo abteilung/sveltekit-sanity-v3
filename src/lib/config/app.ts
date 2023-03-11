@@ -1,5 +1,5 @@
 const app = {
-  appName: 'Sanity Virtual Talk'
+  appName: 'Abteilung Skeleton'
 }
 
 export {app as default}
