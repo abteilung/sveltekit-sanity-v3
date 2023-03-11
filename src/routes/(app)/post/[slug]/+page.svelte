@@ -3,7 +3,7 @@
   import {getPostBySlug} from '$lib/config/sanity/queries'
   import {urlForImage} from '$lib/config/sanity'
   import type {PageData} from './$types'
-  import PortableBlock from '$lib/components/PortableBlock.svelte'
+  import PortableBlock from '$lib/Components/PortableBlock.svelte'
 
   export let data: PageData
 

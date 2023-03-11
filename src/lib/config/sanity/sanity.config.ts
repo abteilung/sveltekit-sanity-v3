@@ -1,5 +1,5 @@
 import {defineConfig, type Slug} from 'sanity'
-import {PostsPreview} from './components/PostsPreview'
+import {PostsPreview} from './Components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
 import app from '../app'
 
