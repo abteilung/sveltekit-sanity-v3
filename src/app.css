@@ -41,7 +41,7 @@
   h1.h3,
   h2.h3,
   .h4.h3 {
-    @apply font-sans text-base md:text-2xl;
+    @apply font-sans text-base md:text-xl;
     @apply font-normal;
     @apply mb-2;
   }
@@ -85,5 +85,41 @@
 
   a {
     @apply transition-all duration-150;
+  }
+
+  /* Layout */
+
+  .wrapper {
+    @apply 2xl:max-w-[1920px] mx-auto md:flex shadow-xl overflow-x-clip;
+  }
+
+  .contentWrapper {
+    @apply min-h-fit flex flex-col bg-white w-full;
+  }
+
+  .contentArea {
+    @apply flex-grow relative;
+    @apply px-[20px] sm:px-[30px] md:px-[50px] xl:px-[100px] 2xl:px-[150px];
+  }
+
+  .mainContent {
+    /* @apply grid h-[1920px] grid-cols-6 sm:grid-cols-12; */
+    @apply my-[20px] sm:my-[30px] md:my-[50px] xl:my-[100px] 2xl:my-[150px];
+  }
+
+  #header {
+    @apply relative text-left bg-light;
+    @apply h-[225px] py-[30px] lg:py-[40px] xl:py-[50px] sm:h-[350px] xl:h-[450px];
+  }
+
+  .headerContent {
+    @apply lg:container relative z-10;
+    @apply px-[20px] sm:px-[30px] md:px-[50px] xl:px-[100px] 2xl:px-[150px];
+  }
+
+  .navBar {
+    @apply sticky z-50 top-0 md:flex md:flex-col flex-none shadow-xl h-16 sm:h-24;
+    @apply md:min-h-screen h-fit w-full bg-white;
+    @apply md:w-[260px] px-[20px] md:p-[30px] xl:w-[320px] lg:p-[40px] 2xl:w-[384px] xl:p-[50px];
   }
 }

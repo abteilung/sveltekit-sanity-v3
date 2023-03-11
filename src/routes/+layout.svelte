@@ -8,8 +8,8 @@
 
   // CSS imports
   import '../app.css'
-  import "@fontsource/roboto-condensed"
-  import "@fontsource/source-sans-pro"
+  import '@fontsource/roboto-condensed'
+  import '@fontsource/source-sans-pro'
 
   // Live Preveiew Banner
   import PreviewBanner from '$lib/Components/PreviewBanner.svelte'

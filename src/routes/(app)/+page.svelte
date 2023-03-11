@@ -11,13 +11,16 @@
   <title>Layout with left Navigation and revealing Footer</title>
 </svelte:head>
 
-
-  <div class="grid w-full grid-cols-3">
+<div class="grid w-full grid-cols-3">
   {#each posts as post}
     <div class="post">
-        <img src={urlForImage(post.mainImage).width(500).url()} />
-        <h2>{post.title}</h2>
-        <p>{post.excerpt}</p>
+      <a href={post.href} class="block space-y-4">
+        <img src={urlForImage(post.mainImage).width(500)} alt={post.title} />
+        <div>
+          <h4 class="mb-2">{post.subtitle}</h4>
+          <h3>{post.title}</h3>
+        </div>
+      </a>
     </div>
-    {/each}
-  </div>
+  {/each}
+</div>
