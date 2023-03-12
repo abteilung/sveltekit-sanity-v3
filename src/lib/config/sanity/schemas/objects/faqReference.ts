@@ -1,4 +1,4 @@
-import { Question } from '@phosphor-icons/react'
+import {Question} from '@phosphor-icons/react'
 // faq.js
 export default {
   name: 'faqReference',
@@ -11,12 +11,18 @@ export default {
       type: 'reference',
       title: 'Category',
       to: [{type: 'faqCategory'}]
-    },
-    {
-      name: 'answer',
-      type: 'text',
-      title: 'Answer'
     }
   ],
-
+  preview: {
+    select: {
+      title: 'category.title'
+    },
+    prepare({title}) {
+      return {
+        title,
+        subtitle: 'FAQ Category',
+        icon: Question
+      }
+    }
+  }
 }

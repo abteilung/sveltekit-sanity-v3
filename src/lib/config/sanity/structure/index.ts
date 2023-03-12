@@ -21,7 +21,7 @@ export const structure = (S) => {
       productsStructure(S),
       S.divider(),
       faqStructure(S),
-      
+      S.divider(),
       settingsStructure(S)
     ])
 }

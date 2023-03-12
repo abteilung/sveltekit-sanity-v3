@@ -11,8 +11,8 @@ export const imageBuilder = createImageUrlBuilder(sanityConfig)
  * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
  * Read more: https://www.sanity.io/docs/image-url
  **/
-export const urlForImage = (source: SanityImageSource) => {
-  return imageBuilder.image(source).auto('format').fit('crop')
+export const urlForImage = (source: SanityImageSource, width: number, height: number) => {
+  return imageBuilder.image(source).width(width).height(height).auto('format').fit('max')
 }
 
 export const sanityUser = createCurrentUserStore(sanityConfig)

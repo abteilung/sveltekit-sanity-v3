@@ -17,9 +17,14 @@ const linkTypes = groq`
 
 const modules = groq`
   ...,
+  _type == "image" => {
+    "alt": image.alt, 
+    "asset": image,
+    "customRatio": image.customRatio,
+  },
   _type == "customImage" => {
     "alt": image.alt, 
-    "asset": image.asset->,
+    "asset": image.asset ->,
     "customRatio": image.customRatio,
   },
   _type == "gallery" => {
@@ -63,10 +68,11 @@ const documentFields = groq`
   body[] {
     ${modules}
   },
-  "mainImage": mainImage.image,
+  mainImage,
+  "img": mainImage.image.asset ->,
   "slug": slug.current,
   ${linkTypes}
-  "author": author->{name, image},
+  "author": author->{name, "image": image.image},
 `
 
 const columns = groq`
@@ -146,7 +152,7 @@ export const getSiteConfig = groq`
     title,
     description,
     siteUrl,
-    "favicon": favicon.asset->,
+    "favicon": favicon,
     "social": {
       "twitter": twitter,
       "facebook": facebook,
@@ -186,7 +192,7 @@ export const getMenus = groq`
         _type,
         title,
         "page": page->{
-          title, subtitle, "slug": slug.current, "image": mainImage.asset->, "icon": productIcon.asset-> 
+          title, subtitle, "slug": slug.current, "image": mainImage, "icon": productIcon 
         }
       }
     },

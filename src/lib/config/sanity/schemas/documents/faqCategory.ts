@@ -1,4 +1,4 @@
-import { SealQuestion } from '@phosphor-icons/react'
+import {SealQuestion} from '@phosphor-icons/react'
 // faq.js
 export default {
   name: 'faqCategory',
@@ -9,7 +9,7 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Category',
-    },
-  ],
+      title: 'Category'
+    }
+  ]
 }

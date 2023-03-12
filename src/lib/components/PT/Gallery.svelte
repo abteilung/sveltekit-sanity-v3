@@ -37,7 +37,7 @@
   {#each value.images as slide, i}
     <li id={i} class:active={i === index} class="h-96 aspect-[16/9] relative max-w-full">
       <img
-        src={urlForImage(slide.image).width(800).height(600)}
+        src={urlForImage(slide.image, 800, 600)}
         alt={slide.image.alt}
         width="800"
         height="600"

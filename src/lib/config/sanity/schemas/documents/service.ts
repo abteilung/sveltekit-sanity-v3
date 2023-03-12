@@ -34,8 +34,11 @@ export default {
     {
       name: 'mainImage',
       title: 'Main image',
-      type: 'customImage',
-      description: '💡 highest quality possible without upscaling the image (up to 2500px).'
+      type: 'image',
+      validation: (Rule) => Rule.required(),
+      options: {
+        hotspot: true
+      },    
     },
     {
       name: 'youtube',

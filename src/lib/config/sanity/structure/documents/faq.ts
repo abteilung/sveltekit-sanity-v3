@@ -10,7 +10,10 @@ export function faqStructure(S) {
         .items([
           S.listItem().title('FAQ').icon(Question).child(S.documentTypeList('faq').title('FAQ')),
           S.divider(),
-          S.listItem().title('FAQ Categories').icon(SealQuestion).child(S.documentTypeList('faqCategory').title('FAQ Categories'))
+          S.listItem()
+            .title('FAQ Categories')
+            .icon(SealQuestion)
+            .child(S.documentTypeList('faqCategory').title('FAQ Categories'))
         ])
     )
 }

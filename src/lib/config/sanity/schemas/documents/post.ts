@@ -45,7 +45,11 @@ export default defineType({
     {
       name: 'mainImage',
       title: 'Cover Image',
-      type: 'customImage'
+      type: 'image',
+      validation: (Rule) => Rule.required(),
+      options: {
+        hotspot: true
+      }
     },
     {
       name: 'body',

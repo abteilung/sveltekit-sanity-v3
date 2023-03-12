@@ -106,7 +106,7 @@ export default {
       type: 'customImage'
     },
     {
-      type: 'faq'
+      type: 'faqReference'
     },
     {
       type: 'gallery'

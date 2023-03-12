@@ -12,6 +12,8 @@
   import Code from './PT/Code.svelte'
   import Video from './PT/Video.svelte'
   import Testimonial from './PT/Testimonial.svelte'
+  import FAQ from './PT/FAQ.svelte'
+  import PostsGrid from './PT/PostsGrid.svelte'
 
   const components: any = {
     marks: {
@@ -31,6 +33,10 @@
       quote: Quote,
       code: Code,
       video: Video,
+
+      // Use to reference to a custom component
+      postsGrid: PostsGrid,
+      faqReference: FAQ,
       testimonialReference: Testimonial
     }
   }

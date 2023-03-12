@@ -63,6 +63,11 @@
     @apply font-sans text-sm;
   }
 
+  .eyebrow {
+    @apply font-sans text-sm font-normal uppercase tracking-wider;
+    @apply mb-2;
+  }
+
   .grid {
     @apply gap-[20px] lg:gap-[30px] xl:gap-[40px] 2xl:gap-[50px];
   }
@@ -106,7 +111,7 @@
   }
 
   .contentWrapper {
-    @apply min-h-fit flex flex-col bg-white max-w-full w-full;
+    @apply min-h-fit flex flex-col bg-white max-w-full;
   }
 
   .contentArea {

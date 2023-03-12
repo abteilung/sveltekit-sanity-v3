@@ -46,7 +46,10 @@ export default defineType({
       name: 'favicon',
       description: 'Add transparent PNG for favicon (min. 512px x 512px).',
       title: 'Favicon',
-      type: 'customImage',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
       group: 'site',
       initialValue: 'https://blog.example.com/images/favicon.png',
       validation: (rule) => rule.required()

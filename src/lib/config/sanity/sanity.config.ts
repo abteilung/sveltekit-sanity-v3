@@ -64,6 +64,7 @@ export default defineConfig({
       accordionType,
       categoryType,
       faqType,
+      faqCategory,
       galleryType,
       blockContent,
       caseStudyType,
@@ -77,7 +78,6 @@ export default defineConfig({
       testimonialReference,
       code,
       faqReference,
-      faqCategory,
       // Components
       //   shcemas/objects
       menu,
