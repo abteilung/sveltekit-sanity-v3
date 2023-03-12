@@ -1,10 +1,10 @@
-import {MdArrowDropDown} from 'react-icons/md'
+import {ArrowsOutLineVertical} from '@phosphor-icons/react'
 
 export default {
   title: 'Accordion List',
   name: 'accordions',
   type: 'object',
-  icon: MdArrowDropDown,
+  icon: ArrowsOutLineVertical,
   fields: [
     {
       title: 'Accordions',
@@ -20,7 +20,8 @@ export default {
     prepare({items}) {
       return {
         title: 'Accordion List',
-        subtitle: `${items.length} item(s)`
+        subtitle: `${items.length} item(s)`,
+        icon: ArrowsOutLineVertical
       }
     }
   }

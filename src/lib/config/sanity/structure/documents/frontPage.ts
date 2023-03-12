@@ -1,4 +1,4 @@
-import {Globe} from 'phosphor-react'
+import {Globe} from '@phosphor-icons/react'
 
 export function frontPageStructure(S) {
   return S.documentListItem()

@@ -1,4 +1,4 @@
-import {Article} from 'phosphor-react'
+import {Article} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import authorType from './author'
@@ -45,23 +45,7 @@ export default defineType({
     {
       name: 'mainImage',
       title: 'Cover Image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
-      fields: [
-        {
-          name: 'alt',
-          title: 'Accessibility label for the image',
-          description:
-            'Help make the site more accessible & SEO-friendly with a short textual description of the image, such as "screenshot of the dashboard app"',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-          options: {
-            isHighlighted: true
-          }
-        }
-      ]
+      type: 'customImage'
     },
     {
       name: 'body',

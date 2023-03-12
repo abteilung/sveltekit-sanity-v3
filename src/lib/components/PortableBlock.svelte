@@ -5,6 +5,13 @@
   import Highlight from './PT/Highlight.svelte'
   import Sup from './PT/Sup.svelte'
   import Sub from './PT/Sub.svelte'
+  import Image from './PT/Image.svelte'
+  import Accordion from './PT/Accordion.svelte'
+  import Gallery from './PT/Gallery.svelte'
+  import Quote from './PT/Quote.svelte'
+  import Code from './PT/Code.svelte'
+  import Video from './PT/Video.svelte'
+  import Testimonial from './PT/Testimonial.svelte'
 
   const components: any = {
     marks: {
@@ -16,6 +23,15 @@
     list: {
       bullet: Lists,
       number: Lists
+    },
+    types: {
+      customImage: Image,
+      accordions: Accordion,
+      gallery: Gallery,
+      quote: Quote,
+      code: Code,
+      video: Video,
+      testimonialReference: Testimonial
     }
   }
 

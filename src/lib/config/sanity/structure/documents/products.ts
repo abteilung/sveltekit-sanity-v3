@@ -1,4 +1,4 @@
-import {Storefront, Handshake} from 'phosphor-react'
+import {Storefront, Handshake} from '@phosphor-icons/react'
 
 export function productsStructure(S) {
   return S.listItem()

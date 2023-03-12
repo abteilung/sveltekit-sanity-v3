@@ -1,4 +1,4 @@
-import {Gear, Compass} from 'phosphor-react'
+import {Gear, Compass} from '@phosphor-icons/react'
 
 export function settingsStructure(S) {
   return S.listItem()

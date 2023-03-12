@@ -1,4 +1,4 @@
-import {Files} from 'phosphor-react'
+import {Files} from '@phosphor-icons/react'
 
 export function pageStructure(S) {
   return S.listItem().icon(Files).title('Pages').schemaType('page').child(

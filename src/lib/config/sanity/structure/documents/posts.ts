@@ -1,4 +1,4 @@
-import {Article, TreeStructure} from 'phosphor-react'
+import {Article, TreeStructure} from '@phosphor-icons/react'
 
 // Function to count all Posts and Categories
 

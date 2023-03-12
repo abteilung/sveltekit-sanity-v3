@@ -16,16 +16,23 @@ import settingsType from '$lib/config/sanity/schemas/documents/settings'
 
 import postType from '$lib/config/sanity/schemas/documents/post'
 import pageType from '$lib/config/sanity/schemas/documents/page'
+import testimonialType from '$lib/config/sanity/schemas/documents/testimonial'
 import categoryType from '$lib/config/sanity/schemas/documents/category'
-import accordionsType from '$lib/config/sanity/schemas/accordions'
-import accordionType from '$lib/config/sanity/schemas/accordion'
+import accordionsType from '$lib/config/sanity/schemas/objects/accordions'
+import accordionType from '$lib/config/sanity/schemas/objects/accordion'
 import faqType from '$lib/config/sanity/schemas/documents/faq'
-import galleryType from '$lib/config/sanity/schemas/gallery'
+import galleryType from '$lib/config/sanity/schemas/objects/gallery'
 import authorType from '$lib/config/sanity/schemas/documents/author'
 import caseStudyType from '$lib/config/sanity/schemas/documents/caseStudy'
 import productType from '$lib/config/sanity/schemas/documents/product'
 import serviceType from '$lib/config/sanity/schemas/documents/service'
 import categoryReferenceType from '$lib/config/sanity/schemas/documents/categoryReference'
+
+// Objects
+import video from './schemas/objects/video'
+import customImage from './schemas/objects/customImage'
+import testimonialReference from './schemas/objects/testimonialReference'
+import code from './schemas/objects/code'
 
 // Navigatons
 import menu from './schemas/documents/menu'
@@ -50,6 +57,7 @@ export default defineConfig({
       pageType,
       postType,
       authorType,
+      testimonialType,
       accordionsType,
       accordionType,
       categoryType,
@@ -61,6 +69,11 @@ export default defineConfig({
       categoryReferenceType,
       serviceType,
       settingsType,
+      // Objects
+      video,
+      customImage,
+      testimonialReference,
+      code,
       // Components
       //   shcemas/objects
       menu,

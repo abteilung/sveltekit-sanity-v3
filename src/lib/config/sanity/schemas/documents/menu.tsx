@@ -1,5 +1,5 @@
 import React from 'react'
-import {List} from 'phosphor-react'
+import {List} from '@phosphor-icons/react'
 
 export default {
   title: 'Menu',

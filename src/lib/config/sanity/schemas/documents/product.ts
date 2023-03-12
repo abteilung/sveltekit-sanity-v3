@@ -1,4 +1,4 @@
-import {Storefront} from 'phosphor-react'
+import {Storefront} from '@phosphor-icons/react'
 
 export default {
   name: 'product',
@@ -34,22 +34,8 @@ export default {
     {
       name: 'mainImage',
       title: 'Main image',
-      type: 'image',
-      description: '💡 highest quality possible without upscaling the image (up to 2500px).',
-      options: {hotspot: true},
-      fields: [
-        {
-          name: 'alt',
-          title: 'Accessibility label for the image',
-          description:
-            'Help make the site more accessible & SEO-friendly with a short textual description of the image, such as "screenshot of the dashboard app"',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-          options: {
-            isHighlighted: true
-          }
-        }
-      ]
+      type: 'customImage',
+      description: '💡 highest quality possible without upscaling the image (up to 2500px).'
     },
     {
       name: 'youtube',
@@ -59,23 +45,7 @@ export default {
     {
       name: 'productIcon',
       title: 'Product Icon',
-      type: 'image',
-      options: {
-        hotspot: false
-      },
-      fields: [
-        {
-          name: 'alt',
-          title: 'Accessibility label for the image',
-          description:
-            'Help make the site more accessible & SEO-friendly with a short textual description of the image, such as "screenshot of the dashboard app"',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-          options: {
-            isHighlighted: true
-          }
-        }
-      ]
+      type: 'customImage'
     },
     {
       name: 'body',

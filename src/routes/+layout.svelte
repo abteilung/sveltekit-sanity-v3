@@ -8,9 +8,15 @@
 
   // CSS imports
   import '../app.css'
-  import '@fontsource/roboto-condensed'
-  import '@fontsource/source-sans-pro'
+  // 300 is light
+  import '@fontsource/roboto-condensed/300.css'
 
+  // 400 is regular
+  import '@fontsource/source-sans-pro/400.css'
+  // 600 is semi-bold
+  import '@fontsource/source-sans-pro/600.css'
+  // 900 is black
+  import '@fontsource/source-sans-pro/900.css'
   // Live Preveiew Banner
   import PreviewBanner from '$lib/Components/PreviewBanner.svelte'
 

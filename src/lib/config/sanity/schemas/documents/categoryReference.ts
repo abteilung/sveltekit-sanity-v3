@@ -1,4 +1,4 @@
-import {Tag} from 'phosphor-react'
+import {Tag} from '@phosphor-icons/react'
 
 export default {
   name: 'categoryReference',

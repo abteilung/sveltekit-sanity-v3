@@ -1,4 +1,4 @@
-import {LinkSimpleHorizontal} from 'phosphor-react'
+import {LinkSimpleHorizontal} from '@phosphor-icons/react'
 
 import {getStaticRoute, getDynamicRoute} from '../../lib/helpers'
 

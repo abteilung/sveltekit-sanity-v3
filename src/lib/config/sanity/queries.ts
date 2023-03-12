@@ -15,32 +15,18 @@ const linkTypes = groq`
   },
 `
 
-const documentFields = groq`
-  _id,
-  _type,
-  "category": categories[0]->,
-  title,
-  subtitle,
-  date,
-  body[] {
-    ...,
-    markDefs[] {
-      _type == "link" => {
-        ...,
-        "link": page -> {...}
-      }
-    }
-  },
-  mainImage,
-  "slug": slug.current,
-  ${linkTypes}
-  "author": author->{name, image},
-`
-
 const modules = groq`
   ...,
   _type == "customImage" => {
-    "image": { "alt": alt, image, "asset": image.asset-> },
+    "alt": image.alt, 
+    "asset": image.asset-> 
+  },
+  _type == "gallery" => {
+    display, imagesPerRow, zoom,
+    "images": images[] {
+      alt,
+      "image": asset->,
+    }
   },
   _type == "accordions" => {
     "content": items[] {...}
@@ -59,9 +45,27 @@ const modules = groq`
       // No Drafts!
       && !(_id in path("drafts.**"))
     ]
-    ${documentFields}
     | order(publishDate desc)
   },
+`
+
+const documentFields = groq`
+  _id,
+  _type,
+  "category": categories[0]->,
+  title,
+  subtitle,
+  "date": coalesce(
+    publishedAt,
+    string(_createdAt)
+  ),
+  body[] {
+    ${modules}
+  },
+  "mainImage": mainImage.image,
+  "slug": slug.current,
+  ${linkTypes}
+  "author": author->{name, image},
 `
 
 const columns = groq`
@@ -94,11 +98,6 @@ export const settingsQuery = groq`*[_type == "settings"][0]{title}`
 
 export const postVisionQuery = groq`*[_type == "post"] | order(date desc, _updatedAt desc) {
   ...
-}`
-
-export const indexQuery = groq`
-*[_type == "post"] | order(date desc, _updatedAt desc) {
-  ${documentFields}
 }`
 
 // Posts Stuff
@@ -134,35 +133,11 @@ export const postBySlugQuery = groq`
 `
 
 // Configure Page Blocks with modules and columns
-const pageBlocks = groq`{
-  title,
-  "slug": slug.current,
-  "href": "/" + slug.current,
-  mainImage,
-  imageGallery,
-  "category": category[]->{title},
-  "author": author->{name, image},
-  "date": coalesce(
-    publishedAt,
-    string(_createdAt)
-  ),
-  content[] {
-    ${modules}
-    ${columns}
-    _type == 'slice' => {
-      "content": @->content[] {
-        ${modules}
-        ${columns}
-      }
-    }
-  },
-}`
 
 export const getPageBySlug = groq`
-*[_type == 'page' && slug.current == $slug && _id != 'frontPage']
-${pageBlocks}
-[0]
-`
+*[_type == 'page' && slug.current == $slug && _id != 'frontPage'][0] {
+  ${documentFields}
+}`
 
 export const getSiteConfig = groq`
   *[_type == 'settings'][0] {

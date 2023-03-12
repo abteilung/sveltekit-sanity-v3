@@ -3,17 +3,22 @@
 
   // Background Image from unsplash
   let showImage: boolean = false
-  const bgImage =
+  let bgImage =
     'https://images.unsplash.com/photo-1554734867-bf3c00a49371?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80'
+
+  // Use Store for Background Image
+  import {HeaderImage} from '$lib/Stores/Stores.ts'
+
+  const backgroundImage = HeaderImage.subscribe((value) => {
+    bgImage = value
+  })
 </script>
 
-<header id="header">
-  <div class="headerContent">
-    <h1 class="hidden xl:block">Grid XL</h1>
-    <h1 class="hidden lg:block xl:hidden">Grid LG</h1>
-    <h1 class="hidden md:block lg:hidden">Grid MD</h1>
-    <h1 class="hidden sm:block md:hidden">Grid SM</h1>
-    <h1 class="sm:hidden">Grid XS</h1>
+<header id="header" class="relative text-white overflow-hidden">
+  <div class="headerContent" />
+  <div class="absolute top-0 left-0 inset-0 isolate z-0">
+    <img src={bgImage} alt="background" class="absolute top-0 left-0 w-full h-full object-cover z-10" />
+    <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-black/00 z-20" />
   </div>
 </header>
 

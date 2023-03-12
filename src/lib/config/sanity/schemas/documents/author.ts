@@ -1,4 +1,4 @@
-import {User} from 'phosphor-react'
+import {User} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 export default defineType({
@@ -26,22 +26,8 @@ export default defineType({
     {
       name: 'image',
       title: 'Portrait Image',
-      type: 'image',
-      options: {hotspot: true},
-      validation: (Rule) => Rule.required(),
-      fields: [
-        {
-          name: 'alt',
-          title: 'Accessibility label for the image',
-          description:
-            'Help make the site more accessible & SEO-friendly with a short textual description of the image, such as "screenshot of the dashboard app"',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-          options: {
-            isHighlighted: true
-          }
-        }
-      ]
+      type: 'customImage',
+      validation: (Rule) => Rule.required()
     },
     {
       name: 'email',

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Circle} from 'phosphor-react'
+import {Circle} from '@phosphor-icons/react'
 
 export const getPtPreview = (content) => {
   switch (content._type) {

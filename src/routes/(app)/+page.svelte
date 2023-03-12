@@ -15,7 +15,9 @@
   {#each posts as post}
     <div class="post">
       <a href={post.href} class="block space-y-4">
-        <img src={urlForImage(post.mainImage).width(500).height(400)} alt={post.title} />
+        {#if post.mainImage}
+          <img src={urlForImage(post.mainImage).width(500).height(400)} alt={post.title} />
+        {/if}
         <div>
           <h4 class="mb-2">{post.subtitle}</h4>
           <h3>{post.title}</h3>

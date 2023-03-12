@@ -18,7 +18,6 @@
 <svelte:head>
   <title>{$postData?.post?.title || 'Post'}</title>
 </svelte:head>
-
 {#if $postData?.post}
   <div class="relative w-full bg-black min-h-screen px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
     <div class="relative mx-auto max-w-2xl">
@@ -29,7 +28,7 @@
 
         <div>
           <h1 class="h4">{$postData.post.subtitle}</h1>
-          <h4 class="text-4xl font-bold">{$postData.post.title}</h4>
+          <h4 class="text-4xl">{$postData.post.title}</h4>
           <div class="mt-3 flex items-center">
             {#if $postData.post.author}
               <div class="flex-shrink-0">

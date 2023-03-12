@@ -32,3 +32,34 @@
     ></svg
   >
 {/if}
+
+{#if icon === 'arrow-right'}
+  <svg
+    class={additionalClass}
+    width="22px"
+    height="16px"
+    viewBox="0 0 22 16"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <g
+      id="Home"
+      stroke="none"
+      stroke-width="1"
+      fill="none"
+      fill-rule="evenodd"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <g transform="translate(-1303.000000, -1212.000000)" id="Group-11" stroke="currentColor">
+        <g transform="translate(1286.000000, 1192.000000)">
+          <g id="icon-arrow-green" transform="translate(18.000000, 21.000000)">
+            <line x1="0" y1="7" x2="20" y2="7" id="Path" />
+            <polyline id="Path" points="13 0 20 7 13 14" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+{/if}

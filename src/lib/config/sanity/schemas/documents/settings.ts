@@ -1,4 +1,4 @@
-import {GearSix, Globe, ShareNetwork, Palette, AddressBook, MagnifyingGlass, ChartLineUp} from 'phosphor-react'
+import {GearSix, Globe, ShareNetwork, Palette, AddressBook, MagnifyingGlass, ChartLineUp} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 export default defineType({
@@ -7,12 +7,12 @@ export default defineType({
   type: 'document',
   icon: GearSix,
   groups: [
-    { name: 'site', title: 'Site', description: 'Site settings', default: true, icon: Globe },
-    { name: 'theme', title: 'Theme', description: 'Theme settings', icon: Palette},
-    { name: 'social', title: 'Social', description: 'Social settings', icon: ShareNetwork },
-    { name: 'contact', title: 'Contact', description: 'Your contact information', icon: AddressBook },
-    { name: 'analytics', title: 'Analytics', description: 'Analytics settings', icon: ChartLineUp },
-    { name: 'seo', title: 'SEO', description: 'SEO settings', icon: MagnifyingGlass }
+    {name: 'site', title: 'Site', description: 'Site settings', default: true, icon: Globe},
+    {name: 'theme', title: 'Theme', description: 'Theme settings', icon: Palette},
+    {name: 'social', title: 'Social', description: 'Social settings', icon: ShareNetwork},
+    {name: 'contact', title: 'Contact', description: 'Your contact information', icon: AddressBook},
+    {name: 'analytics', title: 'Analytics', description: 'Analytics settings', icon: ChartLineUp},
+    {name: 'seo', title: 'SEO', description: 'SEO settings', icon: MagnifyingGlass}
   ],
   fields: [
     {
@@ -46,7 +46,7 @@ export default defineType({
       name: 'favicon',
       description: 'Add transparent PNG for favicon (min. 512px x 512px).',
       title: 'Favicon',
-      type: 'image',
+      type: 'customImage',
       group: 'site',
       initialValue: 'https://blog.example.com/images/favicon.png',
       validation: (rule) => rule.required()
@@ -176,6 +176,6 @@ export default defineType({
       type: 'string',
       description: 'Enter your Bing Site Verification ID.',
       group: 'seo'
-    },
+    }
   ]
 })

@@ -1,10 +1,10 @@
-import {MdArrowDro} from 'react-icons/md'
+// import { MdArrowDro } from 'react-icons/md'
 
 export default {
   title: 'Accordion',
   name: 'accordion',
   type: 'object',
-  icon: MdArrowDro,
+  //   icon: MdArrowDro,
   fields: [
     {
       title: 'Title',
@@ -14,7 +14,7 @@ export default {
     {
       title: 'Content',
       name: 'content',
-      type: 'simplePortableText'
+      type: 'blockContent'
     }
   ],
   preview: {

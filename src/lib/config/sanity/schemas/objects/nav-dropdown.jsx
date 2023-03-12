@@ -1,4 +1,4 @@
-import {ArrowBendRightDown, WarningCircle} from 'phosphor-react'
+import {ArrowBendRightDown, WarningCircle} from '@phosphor-icons/react'
 
 export default {
   title: 'Dropdown',

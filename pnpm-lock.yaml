@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@fontsource/roboto-condensed': ^4.5.9
   '@fontsource/source-sans-pro': ^4.5.11
+  '@phosphor-icons/react': ^2.0.5
   '@portabletext/svelte': ^2.0.0
   '@portabletext/toolkit': ^2.0.1
   '@sanity/client': ^3.4.1
@@ -12,6 +13,8 @@ specifiers:
   '@sanity/ui': ^0.37.22
   '@sanity/vision': ^3.6.0
   '@sanity/webhook': ^2.0.0
+  '@slidy/core': ^3.7.3
+  '@slidy/svelte': ^3.4.2
   '@sveltejs/adapter-vercel': ^2.3.1
   '@sveltejs/kit': ^1.11.0
   '@tailwindcss/forms': ^0.5.3
@@ -40,6 +43,7 @@ specifiers:
   svelte-check: ^2.10.3
   svelte-preprocess: ^4.10.7
   svelte2tsx: ^0.5.23
+  swiper: ^9.1.0
   tailwindcss: ^3.2.7
   tailwindcss-hyphens: ^0.1.0
   ts-node: ^10.9.1
@@ -55,6 +59,7 @@ dependencies:
   '@sanity/ui': 0.37.22_lfoodr2hdmy7hzfgwjnbclkduy
   '@sanity/vision': 3.6.0_26idtpd4nozja4fdthxj3urb5y
   '@sanity/webhook': 2.0.0
+  '@slidy/core': 3.7.3
   groq: 2.33.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -66,8 +71,10 @@ dependencies:
 devDependencies:
   '@fontsource/roboto-condensed': 4.5.9
   '@fontsource/source-sans-pro': 4.5.11
+  '@phosphor-icons/react': 2.0.5_biqbaboplfbrettd7655fr4n2y
   '@portabletext/svelte': 2.0.0_svelte@3.56.0
   '@portabletext/toolkit': 2.0.1
+  '@slidy/svelte': 3.4.2_svelte@3.56.0
   '@sveltejs/adapter-vercel': 2.3.1_@sveltejs+kit@1.11.0
   '@sveltejs/kit': 1.11.0_svelte@3.56.0+vite@4.1.4
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
@@ -89,6 +96,7 @@ devDependencies:
   svelte-check: 2.10.3_bhcwx4nkvjpo6ndxq2hdyzqm2m
   svelte-preprocess: 4.10.7_r4odn5oi5o64vnzstvzna7mq74
   svelte2tsx: 0.5.23_rx3ssngbibhj4vpczagsdyy47u
+  swiper: 9.1.0
   tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
   tailwindcss-hyphens: 0.1.0
   ts-node: 10.9.1_lwgqdwokjtwlohdqtbb6s252kq
@@ -1027,6 +1035,18 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
+  /@phosphor-icons/react/2.0.5_biqbaboplfbrettd7655fr4n2y:
+    resolution:
+      {integrity: sha512-Ghohi+Dk+Y0RoI1vra3jH2QC3sO6C16a/Km0gfy05ONIsC62Vwn1SK2Qaim77VPyn1FS7qjMxocdi9kx6btvXg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>= 16.8'
+      react-dom: '>= 16.8'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: true
+
   /@polka/url/1.0.0-next.21:
     resolution:
       {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
@@ -1570,6 +1590,20 @@ packages:
       base64url: 3.0.1
       tslib: 2.5.0
     dev: false
+
+  /@slidy/core/3.7.3:
+    resolution:
+      {integrity: sha512-PfwB9WlYCbVywGipiB7sKSQGtg6UAbY4kYbORyRwqr2g3008KwaqE52WGBSOuxw9yOOs+tCwp9zhXMmOoR5bqQ==}
+
+  /@slidy/svelte/3.4.2_svelte@3.56.0:
+    resolution:
+      {integrity: sha512-hh/IEMkYZE4x0fJLS94KfFYR8bCz76LG9GlUw9cPKsRNIjcnwX4FqyqMIAQKsC8KQ/nNeY6CdmUr6y2zS/7GiA==}
+    peerDependencies:
+      svelte: ^3.42.4
+    dependencies:
+      '@slidy/core': 3.7.3
+      svelte: 3.56.0
+    dev: true
 
   /@sveltejs/adapter-vercel/2.3.1_@sveltejs+kit@1.11.0:
     resolution:
@@ -5348,7 +5382,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
 
   /react-fast-compare/3.2.0:
     resolution:
@@ -5919,7 +5952,6 @@ packages:
       {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /scroll-into-view-if-needed/2.2.31:
     resolution:
@@ -6117,6 +6149,11 @@ packages:
       {integrity: sha512-VBiJxFkxiXRlUIeyMQi8s4hgvKCSjtknJv/LVYbrgALPwf5zSKmEwV9Lst25AkvMDnvxODugjdl6KZgwKM1WYQ==}
     engines: {node: '>= 10.x'}
     dev: false
+
+  /ssr-window/4.0.2:
+    resolution:
+      {integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==}
+    dev: true
 
   /stream-each/1.2.3:
     resolution:
@@ -6357,6 +6394,14 @@ packages:
       pascal-case: 3.1.2
       svelte: 3.56.0
       typescript: 4.9.5
+    dev: true
+
+  /swiper/9.1.0:
+    resolution:
+      {integrity: sha512-Ck8CywwfUghkbUAHbxTAWyeUAcNrIDNJ6EnKFBGGcHDjeqbh0Jq08RbmD5fMu1a0oOv1eIkUGVkqNJy/asm+yA==}
+    engines: {node: '>= 4.7.0'}
+    dependencies:
+      ssr-window: 4.0.2
     dev: true
 
   /symbol-tree/3.2.4:
