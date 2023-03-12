@@ -15,7 +15,10 @@
   }
 </script>
 
+{value.customRatio}
+
 <img {src} {alt} />
+
 
 <style lang="postcss">
   img {

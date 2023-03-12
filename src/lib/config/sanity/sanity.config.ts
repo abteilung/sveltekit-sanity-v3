@@ -18,9 +18,10 @@ import postType from '$lib/config/sanity/schemas/documents/post'
 import pageType from '$lib/config/sanity/schemas/documents/page'
 import testimonialType from '$lib/config/sanity/schemas/documents/testimonial'
 import categoryType from '$lib/config/sanity/schemas/documents/category'
+import faqType from '$lib/config/sanity/schemas/documents/faq'
+import faqCategory from './schemas/documents/faqCategory'
 import accordionsType from '$lib/config/sanity/schemas/objects/accordions'
 import accordionType from '$lib/config/sanity/schemas/objects/accordion'
-import faqType from '$lib/config/sanity/schemas/documents/faq'
 import galleryType from '$lib/config/sanity/schemas/objects/gallery'
 import authorType from '$lib/config/sanity/schemas/documents/author'
 import caseStudyType from '$lib/config/sanity/schemas/documents/caseStudy'
@@ -33,6 +34,7 @@ import video from './schemas/objects/video'
 import customImage from './schemas/objects/customImage'
 import testimonialReference from './schemas/objects/testimonialReference'
 import code from './schemas/objects/code'
+import faqReference from './schemas/objects/faqReference'
 
 // Navigatons
 import menu from './schemas/documents/menu'
@@ -74,6 +76,8 @@ export default defineConfig({
       customImage,
       testimonialReference,
       code,
+      faqReference,
+      faqCategory,
       // Components
       //   shcemas/objects
       menu,

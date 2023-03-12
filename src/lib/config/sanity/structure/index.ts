@@ -5,6 +5,7 @@ import pageStructure from './documents/pages'
 import frontPageStructure from './documents/frontPage'
 import postsStructure from './documents/posts'
 import productsStructure from './documents/products'
+import faqStructure from './documents/faq'
 import settingsStructure from './documents/settings'
 
 export const structure = (S) => {
@@ -19,6 +20,8 @@ export const structure = (S) => {
       S.divider(),
       productsStructure(S),
       S.divider(),
+      faqStructure(S),
+      
       settingsStructure(S)
     ])
 }

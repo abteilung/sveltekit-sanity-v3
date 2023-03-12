@@ -19,7 +19,8 @@ const modules = groq`
   ...,
   _type == "customImage" => {
     "alt": image.alt, 
-    "asset": image.asset-> 
+    "asset": image.asset->,
+    "customRatio": image.customRatio,
   },
   _type == "gallery" => {
     display, imagesPerRow, zoom,
