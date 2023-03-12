@@ -1,6 +1,6 @@
 import {LinkSimpleHorizontal} from '@phosphor-icons/react'
 
-import {getStaticRoute, getDynamicRoute} from '$lib/helpers'
+import {getStaticRoute, getDynamicRoute} from '../../lib/helpers'
 
 export default {
   title: 'Page',

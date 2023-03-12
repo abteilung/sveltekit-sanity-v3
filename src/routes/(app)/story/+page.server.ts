@@ -1,16 +1,14 @@
 import {getSanityServerClient, overlayDrafts} from '$lib/config/sanity/client'
-import {postQuery} from '$lib/config/sanity/queries'
-import type {Post} from '../$lib/types'
+import {getPostBySlug} from '$lib/config/sanity/queries'
 import {error} from '@sveltejs/kit'
-import type {PageServerLoad} from './$types'
 
-export const load: PageServerLoad = async ({parent, params}) => {
+export const load = async ({parent, params}) => {
   const {previewMode} = await parent()
 
   const {post, morePosts} = await getSanityServerClient(previewMode).fetch<{
     post: Post
     morePosts: Post[]
-  }>(postQuery, {
+  }>(getPostBySlug, {
     slug: params.slug
   })
 
