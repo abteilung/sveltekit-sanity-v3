@@ -1,4 +1,4 @@
-import {getPreviewCookie} from '$lib/utils'
+import {getPreviewCookie} from './routes/lib/utils'
 import type {Handle} from '@sveltejs/kit'
 
 export const handle: Handle = async ({event, resolve}) => {

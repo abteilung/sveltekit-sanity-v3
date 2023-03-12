@@ -10,24 +10,24 @@ import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
 /*------------------------------------*/
 
 /*-------------- SCHEMAS --------------*/
-import blockContent from '$lib/config/sanity/schemas/helpers/blockContent'
+import blockContent from './schemas/helpers/blockContent'
 
-import settingsType from '$lib/config/sanity/schemas/documents/settings'
+import settingsType from './schemas/documents/settings'
 
-import postType from '$lib/config/sanity/schemas/documents/post'
-import pageType from '$lib/config/sanity/schemas/documents/page'
-import testimonialType from '$lib/config/sanity/schemas/documents/testimonial'
-import categoryType from '$lib/config/sanity/schemas/documents/category'
-import faqType from '$lib/config/sanity/schemas/documents/faq'
+import postType from './schemas/documents/post'
+import pageType from './schemas/documents/page'
+import testimonialType from './schemas/documents/testimonial'
+import categoryType from './schemas/documents/category'
+import faqType from './schemas/documents/faq'
 import faqCategory from './schemas/documents/faqCategory'
-import accordionsType from '$lib/config/sanity/schemas/objects/accordions'
-import accordionType from '$lib/config/sanity/schemas/objects/accordion'
-import galleryType from '$lib/config/sanity/schemas/objects/gallery'
-import authorType from '$lib/config/sanity/schemas/documents/author'
-import caseStudyType from '$lib/config/sanity/schemas/documents/caseStudy'
-import productType from '$lib/config/sanity/schemas/documents/product'
-import serviceType from '$lib/config/sanity/schemas/documents/service'
-import categoryReferenceType from '$lib/config/sanity/schemas/documents/categoryReference'
+import accordionsType from './schemas/objects/accordions'
+import accordionType from './schemas/objects/accordion'
+import galleryType from './schemas/objects/gallery'
+import authorType from './schemas/documents/author'
+import caseStudyType from './schemas/documents/caseStudy'
+import productType from './schemas/documents/product'
+import serviceType from './schemas/documents/service'
+import categoryReferenceType from './schemas/documents/categoryReference'
 
 // Objects
 import video from './schemas/objects/video'
@@ -44,7 +44,7 @@ import navLink from './schemas/objects/nav-link'
 
 /*------------------------------------*/
 
-import {structure} from '$lib/config/sanity/structure/'
+import {structure} from './structure'
 
 export default defineConfig({
   basePath: '/studio',

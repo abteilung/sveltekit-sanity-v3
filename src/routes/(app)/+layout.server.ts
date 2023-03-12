@@ -1,6 +1,6 @@
 import type {LayoutServerLoad} from './$types'
-import {getSanityServerClient} from '$lib/config/sanity/client'
-import {getSiteConfig, getMenus} from '$lib/config/sanity/queries'
+import {getSanityServerClient} from '../lib/config/sanity/client'
+import {getSiteConfig, getMenus} from '../lib/config/sanity/queries'
 
 // Types
 /** @type {import('@sveltejs/kit').RequestHandler} */

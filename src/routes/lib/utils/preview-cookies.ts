@@ -1,4 +1,4 @@
-import {isDev} from '$lib/config/environment'
+import {isDev} from '../config/environment'
 import type {Cookies} from '@sveltejs/kit'
 
 const cookieName = '__preview_mode'

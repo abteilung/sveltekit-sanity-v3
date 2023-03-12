@@ -1,4 +1,4 @@
-import {isProd} from '$lib/config/environment'
+import {isProd} from '../environment'
 
 export const sanityConfig = {
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID,

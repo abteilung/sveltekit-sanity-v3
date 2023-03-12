@@ -1,5 +1,5 @@
-import {getSanityServerClient, overlayDrafts} from '$lib/config/sanity/client'
-import {getAllPosts} from '$lib/config/sanity/queries'
+import {getSanityServerClient, overlayDrafts} from '../lib/config/sanity/client'
+import {getAllPosts} from '../lib/config/sanity/queries'
 import {error} from '@sveltejs/kit'
 import type {PageServerLoad} from './$types'
 

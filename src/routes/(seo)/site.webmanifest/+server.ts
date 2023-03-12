@@ -1,7 +1,7 @@
 // Get Queries from Sanity
-import {getSanityServerClient} from '$lib/config/sanity/client'
-import {getSiteConfig} from '$lib/config/sanity/queries'
-import {urlForImage} from '$lib/config/sanity'
+import {getSanityServerClient} from '../../lib/config/sanity/client'
+import {getSiteConfig} from '../../lib/config/sanity/queries'
+import {urlForImage} from '../../lib/config/sanity'
 
 // Types
 /** @type {import('@sveltejs/kit').RequestHandler} */
