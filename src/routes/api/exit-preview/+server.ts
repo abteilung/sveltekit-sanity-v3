@@ -1,5 +1,5 @@
 import type {RequestHandler} from './$types'
-import {clearPreviewCookie} from '../../lib/utils'
+import {clearPreviewCookie} from '../../../lib/utils'
 import {redirect} from '@sveltejs/kit'
 
 export const GET: RequestHandler = async ({request, cookies, url}) => {

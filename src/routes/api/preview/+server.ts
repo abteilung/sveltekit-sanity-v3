@@ -1,9 +1,9 @@
 import type {RequestHandler} from './$types'
 import {env} from '$env/dynamic/private'
 import {error, redirect} from '@sveltejs/kit'
-import {getSanityServerClient} from '../../lib/config/sanity/client'
-import {postBySlugQuery} from '../../lib/config/sanity/queries'
-import {setPreviewCookie} from '../../lib/utils'
+import {getSanityServerClient} from '../../../lib/config/sanity/client'
+import {postBySlugQuery} from '../../../lib/config/sanity/queries'
+import {setPreviewCookie} from '../../../lib/utils'
 
 export const GET: RequestHandler = async ({url, cookies, setHeaders}) => {
   const allParams = url.searchParams

@@ -1,6 +1,6 @@
 // Get Queries from Sanity
-import {getSanityServerClient} from '../../lib/config/sanity/client'
-import {getSiteConfig, getAllPosts, getEvents} from '../../lib/config/sanity/queries'
+import {getSanityServerClient} from '../../../lib/config/sanity/client'
+import {getSiteConfig, getAllPosts, getEvents} from '../../../lib/config/sanity/queries'
 
 // Types
 /** @type {import('@sveltejs/kit').RequestHandler} */
