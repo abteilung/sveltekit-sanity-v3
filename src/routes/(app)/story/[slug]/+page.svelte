@@ -31,11 +31,13 @@
     <div class="mt-3 flex items-center mb-12">
       {#if $postData.post.author}
         <div class="flex-shrink-0">
+          {#if $postData.post.author.image}
           <img
             class="h-10 w-10 rounded-full"
             src={urlForImage($postData.post.author.image, 128, 128)}
             alt={$postData.post.author.name}
           />
+          {/if}
         </div>
       {/if}
       <div class="ml-3">
