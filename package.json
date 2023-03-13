@@ -32,6 +32,7 @@
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-svelte3": "^4.0.0",
+    "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-svelte": "^2.9.0",
     "svelte": "^3.56.0",
@@ -55,13 +56,17 @@
     "@sanity/vision": "^3.6.0",
     "@sanity/webhook": "^2.0.0",
     "@slidy/core": "^3.7.3",
+    "@types/node": "^18.15.1",
     "groq": "^2.33.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
     "rxjs-operators": "^1.1.3",
     "sanity": "^3.6.0",
     "sanity-plugin-asset-source-unsplash": "^1.0.6",
-    "sanity-plugin-note-field": "^2.0.2"
+    "sanity-plugin-document-reference-by": "^1.0.1",
+    "sanity-plugin-note-field": "^2.0.2",
+    "styled-components": "^5.3.8"
   },
   "type": "module"
 }
