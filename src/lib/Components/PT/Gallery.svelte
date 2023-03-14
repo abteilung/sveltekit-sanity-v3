@@ -2,15 +2,20 @@
 <script lang="ts">
   // import function to register Swiper custom elements
   import {slidy} from '@slidy/core'
-
   import {urlForImage} from '$lib/config/sanity'
 
-  // register Swiper custom elements
+  import {onMount} from 'svelte'
 
-  export let portableText
+  import BlazeSlider from 'blaze-slider'
+  import 'blaze-slider/dist/blaze.css'
+
+  // register Swiper custom elements
+  export let portableText: any
   $: ({value} = portableText)
 
   let index = 0
+
+
 </script>
 
 <!-- {value.zoom}
@@ -19,6 +24,8 @@
 {value.imagesPerRow} -->
 
 <!-- {JSON.stringify(value.images)} -->
+
+<!-- Slidy Version -->
 <ul
   class="w-full gap-12 h-full flex min-w-[0px] overflow-hidden"
   use:slidy={{
@@ -26,7 +33,7 @@
     axis: 'x',
     align: 'middle',
     duration: 375,
-    clamp: false,
+    clamp: 1,
     snap: true,
     loop: true,
     gravity: 1.2,
@@ -46,3 +53,6 @@
     </li>
   {/each}
 </ul>
+
+
+

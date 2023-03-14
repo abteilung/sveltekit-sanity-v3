@@ -7,7 +7,7 @@
     'https://images.unsplash.com/photo-1554734867-bf3c00a49371?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80'
 
   // Use Store for Background Image
-  import {HeaderImage} from '$lib/Stores/Stores.ts'
+  import {HeaderImage} from '$lib/Stores/Stores'
 
   const backgroundImage = HeaderImage.subscribe((value) => {
     bgImage = value
