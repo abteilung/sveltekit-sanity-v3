@@ -38,7 +38,7 @@
     <li id={i} class:active={i === index} class="h-96 aspect-[16/9] relative max-w-full">
       <img
         src={urlForImage(slide.image, 800, 600)}
-        alt={slide.image.alt}
+        alt={slide.alt}
         width="800"
         height="600"
         class="w-full h-full object-cover"

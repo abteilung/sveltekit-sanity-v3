@@ -31,7 +31,7 @@ const modules = groq`
     display, imagesPerRow, zoom,
     ...,
     "images": images[] {
-      alt,
+      "alt": image.alt,
       "image": image.asset->,
     }
   },
