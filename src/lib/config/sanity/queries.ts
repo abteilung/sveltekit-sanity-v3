@@ -29,9 +29,10 @@ const modules = groq`
   },
   _type == "gallery" => {
     display, imagesPerRow, zoom,
+    ...,
     "images": images[] {
       alt,
-      "image": asset->,
+      "image": image.asset->,
     }
   },
   _type == "accordions" => {

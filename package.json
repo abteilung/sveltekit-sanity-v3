@@ -57,6 +57,7 @@
     "@sanity/webhook": "^2.0.0",
     "@slidy/core": "^3.7.3",
     "@types/node": "^18.15.1",
+    "blaze-slider": "^1.9.1",
     "groq": "^2.33.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
