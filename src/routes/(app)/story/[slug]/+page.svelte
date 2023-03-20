@@ -26,28 +26,28 @@
 </svelte:head>
 
 {#if $postData?.post}
-    <h1 class="eyebrow">{$postData.post.subtitle}</h1>
-    <h2 class="text-4xl leading-tight">{$postData.post.title}</h2>
-    <div class="mt-3 flex items-center mb-12">
-      {#if $postData.post.author}
-        <div class="flex-shrink-0">
-          {#if $postData.post.author.image}
+  <h1 class="eyebrow">{$postData.post.subtitle}</h1>
+  <h2 class="text-4xl leading-tight">{$postData.post.title}</h2>
+  <div class="mt-3 flex items-center mb-12">
+    {#if $postData.post.author}
+      <div class="flex-shrink-0">
+        {#if $postData.post.author.image}
           <img
             class="h-10 w-10 rounded-full"
             src={urlForImage($postData.post.author.image, 128, 128)}
             alt={$postData.post.author.name}
           />
-          {/if}
-        </div>
-      {/if}
-      <div class="ml-3">
-        <p class="text-sm font-medium mb-0">{$postData.post.author.name}</p>
-          <time datetime="2020-03-16">
-            {new Date($postData.post.date).toLocaleDateString()}
-          </time>
+        {/if}
       </div>
-    </div>
-    {#if $postData.post.body}
-      <PortableBlock content={$postData.post.body} />
     {/if}
+    <div class="ml-3">
+      <p class="text-sm font-medium mb-0">{$postData.post.author.name}</p>
+      <time datetime="2020-03-16">
+        {new Date($postData.post.date).toLocaleDateString()}
+      </time>
+    </div>
+  </div>
+  {#if $postData.post.body}
+    <PortableBlock content={$postData.post.body} />
+  {/if}
 {/if}

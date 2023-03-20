@@ -14,8 +14,6 @@
   $: ({value} = portableText)
 
   let index = 0
-
-
 </script>
 
 <!-- {value.zoom}
@@ -53,6 +51,3 @@
     </li>
   {/each}
 </ul>
-
-
-

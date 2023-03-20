@@ -38,6 +38,7 @@ import faqReference from './schemas/objects/faqReference'
 
 // Navigatons
 import menu from './schemas/documents/menu'
+import navigations from './schemas/documents/navigations'
 import navDropdown from './schemas/objects/nav-dropdown'
 import navPage from './schemas/objects/nav-page'
 import navLink from './schemas/objects/nav-link'
@@ -81,6 +82,7 @@ export default defineConfig({
       // Components
       //   shcemas/objects
       menu,
+      navigations,
       navDropdown,
       navPage,
       navLink

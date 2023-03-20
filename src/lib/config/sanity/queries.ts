@@ -1,6 +1,13 @@
 import groq from 'groq'
 
+// Construct our "home" and "error" page GROQ
+export const homeID = `*[_type=="generalSettings"][0].home->_id`
+export const shopID = `*[_type=="generalSettings"][0].shop->_id`
+export const errorID = `*[_type=="generalSettings"][0].error->_id`
+
+// Define URLs for all our link types
 const linkTypes = groq`
+  "href": slug.current,
   _type == "post" => {
     "href": "/story/" + slug.current,
   },
@@ -12,7 +19,45 @@ const linkTypes = groq`
   },
   _type == "page" => {
     "href": "/" + slug.current,
-  },
+  }
+`
+
+// Construct our "page" GROQ
+const page = `
+  "type": _type,
+  "slug": slug.current,
+  "isHome": _id == ${homeID},
+  "isShop": _id == ${shopID},
+  ${linkTypes},
+`
+
+// Construct our "link" GROQ
+const link = `
+  _key,
+  _type,
+  title,
+  "pageTitle": page -> title,
+  "subtitle": page -> subtitle,
+  subtitle,
+  "image": page->mainImage,
+  "icon": page->productIcon,
+  url,
+  "page": page->{
+    ${page}
+  }
+`
+
+// Construct our "image meta" GROQ
+export const imageMeta = `
+  "alt": coalesce(alt, asset->altText),
+  asset,
+  crop,
+  customRatio,
+  hotspot,
+  "id": asset->assetId,
+  "type": asset->mimeType,
+  "aspectRatio": asset->metadata.dimensions.aspectRatio,
+  "lqip": asset->metadata.lqip
 `
 
 const modules = groq`
@@ -72,7 +117,7 @@ const documentFields = groq`
   mainImage,
   "img": mainImage.image.asset ->,
   "slug": slug.current,
-  ${linkTypes}
+  ${linkTypes},
   "author": author->{name, "image": image.image},
 `
 
@@ -101,8 +146,6 @@ const columns = groq`
     }
   },
 `
-
-export const settingsQuery = groq`*[_type == "settings"][0]{title}`
 
 export const postVisionQuery = groq`*[_type == "post"] | order(date desc, _updatedAt desc) {
   ...
@@ -153,28 +196,28 @@ export const getSiteConfig = groq`
     title,
     description,
     siteUrl,
-    "favicon": favicon,
+    favicon,
     "social": {
-      "twitter": twitter,
-      "facebook": facebook,
-      "instagram": instagram,
-      "youtube": youtube,
-      "linkedin": linkedin,
-      "github": github,
+      twitter,
+      facebook,
+      instagram,
+      youtube,
+      linkedin,
+      github,
     },
     "contact": {
-      "email": email,
-      "phone": phone,
-      "address": address,
+      email,
+      phone,
+      address,
     },
     "analytics": {
-      "googleAnalytics": googleAnalytics,
-      "googleTagManager": googleTagManager,
-      "plausibleAnalytics": plausibleAnalytics,
+      googleAnalytics,
+      googleTagManager,
+      plausibleAnalytics,
     },
     "seo": {
-      "googleSiteVerification": googleSiteVerification,
-      "bingSiteVerification": bingSiteVerification,
+      googleSiteVerification,
+      bingSiteVerification,
       themeColor,
       backgroundColor,
       display
@@ -184,33 +227,66 @@ export const getSiteConfig = groq`
 
 // Navigations
 export const getMenus = groq`
-*[_type == 'menu'] {
-  "navigation": items[] {
-    title,
-    _type == 'navDropdown' => {
-      title,
-      dropdownItems [] {
-        _type,
-        title,
-        "page": page->{
-          title, subtitle, "slug": slug.current, "image": mainImage, "icon": productIcon 
-        }
-      }
+*[_type == 'navigationSettings'][0] {
+  navMenuHeader->{
+    items[]{
+      ${link},
+      dropdownItems[]{
+        ${link},
+      },
     },
-    _type == 'navPage' => {
-      ...,
-      _type,
-      title,
-      "title": page->{title},
-      "subtitle": page->{subtitle},
-      "slug": page->{slug},
-      "image": page->{mainImage},
-      "icon": page->{productIcon},
+  },
+  navMenuFooter->{
+    items[]{
+      ${link},
+      dropdownItems[]{
+        ${link},
+      },
     },
-    _type == 'navLink' => {
-      ...,
-      _type
-    }
-  }
+  },
+  navMenuMeta->{
+    items[]{
+      ${link},
+      dropdownItems[]{
+        ${link},
+      },
+    },
+  },
 }
+`
+
+// "navigation": items[] {
+//   title,
+//   _type == 'navDropdown' => {
+//     title,
+//     dropdownItems [] {
+//       _type,
+//       title,
+//       "page": page->{
+//         title, subtitle, "slug": slug.current, "image": mainImage, "icon": productIcon
+//       }
+//     }
+//   },
+//   _type == 'navPage' => {
+//     ...,
+//     _type,
+//     title,
+//     "title": page->{title},
+//     "subtitle": page->{subtitle},
+//     "slug": page->{slug},
+//     "image": page->{mainImage},
+//     "icon": page->{productIcon},
+//   },
+//   _type == 'navLink' => {
+//     ...,
+//     _type
+//   }
+// }
+
+export const site = groq`
+  "site": {
+    "title": settings.title,
+    "productsCounts": *[_type == "product"].length,
+    "menuDesktop"
+  }
 `

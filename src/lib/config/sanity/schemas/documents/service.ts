@@ -38,7 +38,7 @@ export default {
       validation: (Rule) => Rule.required(),
       options: {
         hotspot: true
-      },    
+      }
     },
     {
       name: 'youtube',

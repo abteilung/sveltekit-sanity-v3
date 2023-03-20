@@ -1,10 +1,10 @@
 <script lang="ts">
   import {onMount} from 'svelte'
-  import {fade} from 'svelte/transition'
   import Icons from '$lib/Components/Icons.svelte'
+  import navDropdown from '$lib/config/sanity/schemas/objects/nav-dropdown'
 
   // Menu object with title, href
-  const menu = [
+  export let menu = [
     {
       title: 'Home',
       href: '/',
@@ -27,18 +27,14 @@
   ]
 
   // Menu for meta objects
-  const meta = [
+  export let meta = [
     {
       title: 'Privacy Policy',
       href: '/privacy-policy'
     },
     {
-      title: 'Terms of Use',
-      href: '/terms-of-use'
-    },
-    {
-      title: 'Sitemap',
-      href: '/sitemap'
+      title: 'Imprint',
+      href: '/imprint'
     }
   ]
 
@@ -59,9 +55,15 @@
     </a>
     <div class="mt-[100px] hidden md:block ">
       <ul>
-        {#each menu as menuItem}
+        {#each menu.items as menuItem}
           <li>
-            <a href={menuItem.href}>{menuItem.title}</a>
+            <a href={menuItem.page?.href}>{menuItem.title || menuItem.pageTitle}</a>
+            {#if menuItem._type === 'navDropdown'}
+              (navDropdown)
+            {/if}
+            {#if menuItem._type === 'navLink'}
+              (navLink)
+            {/if}
           </li>
         {/each}
       </ul>
@@ -69,10 +71,13 @@
   </div>
   <div class="hidden md:flex mt-auto pt-[50px] mb-0">
     <div class="">
-      <ul class="">
-        {#each meta as metaItem}
+      <ul class="text-sm flex gap-4">
+        {#each meta.items as menuItem}
           <li>
-            <a href={metaItem.href}>{metaItem.title}</a>
+            <a class="whitespace-nowrap" href={menuItem.page?.href}>{menuItem.title || menuItem.pageTitle}</a>
+            {#if menuItem._type === 'navDropdown'}
+              ->
+            {/if}
           </li>
         {/each}
       </ul>

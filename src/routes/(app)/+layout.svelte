@@ -6,6 +6,7 @@
   import Footer from '$lib/Components/Footer.svelte'
   import Left from '$lib/Components/Left.svelte'
   import Favicons from '$lib/Components/Favicons.svelte'
+  import menu from '$lib/config/sanity/schemas/documents/menu'
 
   let isLoaded: boolean = false
 
@@ -15,6 +16,7 @@
 
   export let data: any
   $: ({siteConfig} = data)
+  $: ({menus} = data)
 </script>
 
 <svelte:head>
@@ -22,7 +24,7 @@
 </svelte:head>
 
 <div class="wrapper">
-  <Left />
+  <Left menu={menus.navMenuHeader} meta={menus.navMenuMeta} />
   <div class="contentWrapper">
     <Header />
     <div class="contentArea">
@@ -32,4 +34,6 @@
     </div>
   </div>
 </div>
-<Footer />
+
+<!-- {JSON.stringify(menus)} -->
+<Footer menu={menus.navMenuFooter} />

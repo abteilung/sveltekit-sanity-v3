@@ -13,17 +13,6 @@ export default {
       type: 'string'
     },
     {
-      title: 'Slug (ID required for References)',
-      name: 'slug',
-      type: 'slug',
-      description: 'required',
-      options: {
-        source: 'title',
-        maxLength: 30
-      },
-      validation: (Rule) => Rule.required()
-    },
-    {
       title: 'Nav Items',
       name: 'items',
       type: 'array',
