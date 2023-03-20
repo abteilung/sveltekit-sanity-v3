@@ -73,7 +73,21 @@
                 <ul class="subMenu hidden ml-8">
                   {#each menuItem.dropdownItems as submenu}
                     <li>
-                      <a href={submenu.page?.href}>{submenu.title || submenu.pageTitle}</a>
+                      {#if submenu._type === 'navDropdown'}
+                        <button on:click={toggleSubmenu}>{submenu.title || submenu.pageTitle}</button>
+                      {:else}
+                        <a href={submenu.page?.href}>{submenu.title || submenu.pageTitle}</a>
+                      {/if}
+
+                      {#if submenu.dropdownItems}
+                        <ul class="subMenu hidden ml-8">
+                          {#each submenu.dropdownItems as submenu}
+                            <li>
+                              <a href={submenu.page?.href}>{submenu.title || submenu.pageTitle}</a>
+                            </li>
+                          {/each}
+                        </ul>
+                      {/if}
                     </li>
                   {/each}
                 </ul>
