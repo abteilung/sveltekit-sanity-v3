@@ -8,10 +8,8 @@ export default defineType({
   icon: GearSix,
   groups: [
     {name: 'site', title: 'Site', description: 'Site settings', default: true, icon: Globe},
+    {name: 'general', title: 'General', description: 'General settings',  icon: Globe},
     {name: 'theme', title: 'Theme', description: 'Theme settings', icon: Palette},
-    {name: 'social', title: 'Social', description: 'Social settings', icon: ShareNetwork},
-    {name: 'contact', title: 'Contact', description: 'Your contact information', icon: AddressBook},
-    {name: 'analytics', title: 'Analytics', description: 'Analytics settings', icon: ChartLineUp},
     {name: 'seo', title: 'SEO', description: 'SEO settings', icon: MagnifyingGlass}
   ],
   fields: [
@@ -54,6 +52,7 @@ export default defineType({
       initialValue: 'https://blog.example.com/images/favicon.png',
       validation: (rule) => rule.required()
     },
+    
     // Theme
     {
       name: 'themeColor',
@@ -70,98 +69,6 @@ export default defineType({
       description: 'Enter your background color.',
       group: 'theme',
       initialValue: '#ffffff'
-    },
-    // Social
-    {
-      name: 'twitter',
-      title: 'Twitter',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'facebook',
-      title: 'Facebook',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'instagram',
-      title: 'Instagram',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'github',
-      title: 'GitHub',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'linkedin',
-      title: 'LinkedIn',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'youtube',
-      title: 'YouTube',
-      type: 'string',
-      group: 'social'
-    },
-
-    // Contact
-    {
-      name: 'email',
-      title: 'Email',
-      type: 'string',
-      description: 'Enter your email address.',
-      validation: (Rule) => Rule.regex(/.+@.+\..+/, {name: 'email'}),
-      group: 'contact'
-    },
-    {
-      name: 'phone',
-      title: 'Phone',
-      type: 'string',
-      description: 'Enter your phone number (+41 xx xxx xx xx).',
-      group: 'contact'
-    },
-    {
-      name: 'address',
-      title: 'Address',
-      type: 'text',
-      description: 'Enter your address.',
-      group: 'contact'
-    },
-
-    // Analytics
-    // Information
-    {
-      type: 'string',
-      name: 'googleAnalytics',
-      title: 'Google Analytics (UT)',
-      description: 'Enter your Google Analytics Tracking ID.',
-      group: 'analytics'
-    },
-    {
-      type: 'string',
-      name: 'googleAnalytics4',
-      title: 'Google Analytics 4 (GA4)',
-      description: 'To enable GA enter your Property ID',
-      group: 'analytics'
-    },
-    {
-      type: 'string',
-      name: 'googleTagManager',
-      title: 'Google Tag Manager',
-      description: 'Enter your Google Tag Manager ID.',
-      group: 'analytics'
-    },
-    {
-      type: 'string',
-      name: 'plausibleAnalytics',
-      title: 'Plausible Analytics',
-      description: 'Enter your Plausible Analytics domain.',
-      group: 'analytics'
     },
 
     // SEO

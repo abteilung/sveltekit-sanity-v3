@@ -2,6 +2,7 @@
 
 // Documents
 import pageStructure from './documents/pages'
+import navigationStructure from './documents/navigation'
 import frontPageStructure from './documents/frontPage'
 import postsStructure from './documents/posts'
 import productsStructure from './documents/products'
@@ -22,7 +23,9 @@ export const structure = (S) => {
       S.divider(),
       faqStructure(S),
       S.divider(),
-      settingsStructure(S)
+      settingsStructure(S),
+      S.divider(),
+      navigationStructure(S)
     ])
 }
 

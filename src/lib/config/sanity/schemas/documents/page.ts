@@ -46,7 +46,6 @@ export default defineType({
       name: 'mainImage',
       title: 'Cover Image',
       type: 'image',
-      validation: (Rule) => Rule.required(),
       options: {
         hotspot: true
       }

@@ -1,9 +1,9 @@
 import groq from 'groq'
 
 // Construct our "home" and "error" page GROQ
-export const homeID = `*[_type=="generalSettings"][0].home->_id`
-export const shopID = `*[_type=="generalSettings"][0].shop->_id`
-export const errorID = `*[_type=="generalSettings"][0].error->_id`
+export const homeID = `*[_type=="settings"][0].home->_id`
+export const shopID = `*[_type=="settings"][0].shop->_id`
+export const errorID = `*[_type=="settings"][0].error->_id`
 
 // Define URLs for all our link types
 const linkTypes = groq`
@@ -192,7 +192,7 @@ export const getPageBySlug = groq`
 }`
 
 export const getSiteConfig = groq`
-  *[_type == 'settings'][0] {
+  *[_type == 'settingsContact'][0] {
     ...,
     title,
     description,
@@ -258,34 +258,6 @@ export const getMenus = groq`
   },
 }
 `
-
-// "navigation": items[] {
-//   title,
-//   _type == 'navDropdown' => {
-//     title,
-//     dropdownItems [] {
-//       _type,
-//       title,
-//       "page": page->{
-//         title, subtitle, "slug": slug.current, "image": mainImage, "icon": productIcon
-//       }
-//     }
-//   },
-//   _type == 'navPage' => {
-//     ...,
-//     _type,
-//     title,
-//     "title": page->{title},
-//     "subtitle": page->{subtitle},
-//     "slug": page->{slug},
-//     "image": page->{mainImage},
-//     "icon": page->{productIcon},
-//   },
-//   _type == 'navLink' => {
-//     ...,
-//     _type
-//   }
-// }
 
 export const site = groq`
   "site": {
