@@ -1,7 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte'
   import Icons from '$lib/Components/Icons.svelte'
-  import navDropdown from '$lib/config/sanity/schemas/objects/nav-dropdown'
 
   // Menu object with title, href
   export let menu = [
@@ -43,6 +42,17 @@
   onMount(() => {
     isLoaded = true
   })
+
+  // Button to toggle submenus
+  const toggleSubmenu = (e: any) => {
+    const target = e.target
+    const parent = target.parentNode
+    const subMenu = parent.querySelector('.subMenu')
+
+    if (subMenu) {
+      subMenu.classList.toggle('hidden')
+    }
+  }
 </script>
 
 <div class="navBar">
@@ -54,15 +64,26 @@
       />
     </a>
     <div class="mt-[100px] hidden md:block ">
-      <ul>
+      <ul class="multiLevelNavigation">
         {#each menu.items as menuItem}
           <li>
-            <a href={menuItem.page?.href}>{menuItem.title || menuItem.pageTitle}</a>
             {#if menuItem._type === 'navDropdown'}
-              (navDropdown)
-            {/if}
-            {#if menuItem._type === 'navLink'}
-              (navLink)
+              <button on:click={toggleSubmenu}>{menuItem.title || menuItem.pageTitle}</button>
+              {#if menuItem.dropdownItems}
+                <ul class="subMenu hidden ml-8">
+                  {#each menuItem.dropdownItems as submenu}
+                    <li>
+                      <a href={submenu.page?.href}>{submenu.title || submenu.pageTitle}</a>
+                    </li>
+                  {/each}
+                </ul>
+              {/if}
+            {:else if menuItem._type === 'navLink'}
+              <a href={menuItem.url} target={menuItem.target}>{menuItem.title}</a>
+            {:else if menuItem._type === 'navPage'}
+              <a href={menuItem.page?.href}>{menuItem.title || menuItem.pageTitle}</a>
+            {:else}
+              <span class="text-sm text-alert">Link is of undefined type</span>
             {/if}
           </li>
         {/each}
@@ -84,3 +105,9 @@
     </div>
   </div>
 </div>
+
+<style lang="postcss">
+  .active {
+    @apply text-primary;
+  }
+</style>

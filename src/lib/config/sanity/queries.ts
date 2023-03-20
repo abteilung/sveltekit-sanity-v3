@@ -42,6 +42,7 @@ const link = `
   "image": page->mainImage,
   "icon": page->productIcon,
   url,
+  target,
   "page": page->{
     ${page}
   }
