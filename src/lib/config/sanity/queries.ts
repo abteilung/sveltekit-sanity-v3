@@ -235,9 +235,8 @@ export const getMenus = groq`
       dropdownItems[]{
         ${link},
         dropdownItems[]{
-        ${link},
-      },
-
+          ${link},
+        },
       },
     },
   },
