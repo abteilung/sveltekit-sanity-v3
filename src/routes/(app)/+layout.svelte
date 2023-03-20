@@ -6,7 +6,6 @@
   import Footer from '$lib/Components/Footer.svelte'
   import Left from '$lib/Components/Left.svelte'
   import Favicons from '$lib/Components/Favicons.svelte'
-  import menu from '$lib/config/sanity/schemas/documents/menu'
 
   let isLoaded: boolean = false
 
