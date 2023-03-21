@@ -192,7 +192,7 @@ export const getPageBySlug = groq`
 }`
 
 export const getSiteConfig = groq`
-  *[_type == 'settingsContact'][0] {
+  *[_type == 'settings'][0] {
     ...,
     title,
     description,
@@ -207,6 +207,7 @@ export const getSiteConfig = groq`
       github,
     },
     "contact": {
+      companyName,
       email,
       phone,
       address,
@@ -265,4 +266,14 @@ export const site = groq`
     "productsCounts": *[_type == "product"].length,
     "menuDesktop"
   }
+`
+
+export const getRedirects = groq`
+*[_type == 'redirect'] {
+  "from": fromPath.current,
+  "to": toPath,
+  "start": publishedAt,
+  "end": unpublishedAt,
+  statusCode
+}
 `
