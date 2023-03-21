@@ -207,6 +207,7 @@ export const getSiteConfig = groq`
       github,
     },
     "contact": {
+      companyName,
       email,
       phone,
       address,

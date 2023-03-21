@@ -13,6 +13,13 @@ export default defineType({
   fields: [
     // Contact
     {
+      name: 'companyName',
+      title: 'Company Name',
+      type: 'string',
+      description: 'Enter your company name.',
+      group: 'contact'
+    },
+    {
       name: 'email',
       title: 'Email',
       type: 'string',
@@ -27,6 +34,7 @@ export default defineType({
       description: 'Enter your phone number (+41 xx xxx xx xx).',
       group: 'contact'
     },
+    
     {
       name: 'address',
       title: 'Address',
