@@ -77,20 +77,20 @@ export default defineConfig({
       categoryReferenceType,
       serviceType,
       redirectType,
-      
+
       // Settings
       settingsType,
       settingsContactType,
       settingsAnalyticsType,
       settingsStoreType,
-      
+
       // Objects
       video,
       customImage,
       testimonialReference,
       code,
       faqReference,
-      
+
       // Components
       //   shcemas/objects
       menu,

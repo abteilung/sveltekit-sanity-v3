@@ -8,7 +8,7 @@ export default defineType({
   icon: GearSix,
   groups: [
     {name: 'site', title: 'Site', description: 'Site settings', default: true, icon: Globe},
-    {name: 'general', title: 'General', description: 'General settings',  icon: Globe},
+    {name: 'general', title: 'General', description: 'General settings', icon: Globe},
     {name: 'theme', title: 'Theme', description: 'Theme settings', icon: Palette},
     {name: 'seo', title: 'SEO', description: 'SEO settings', icon: MagnifyingGlass}
   ],
@@ -52,7 +52,7 @@ export default defineType({
       initialValue: 'https://blog.example.com/images/favicon.png',
       validation: (rule) => rule.required()
     },
-    
+
     // Theme
     {
       name: 'themeColor',

@@ -8,7 +8,7 @@ export default defineType({
   icon: GearSix,
   groups: [
     {name: 'contact', title: 'Contact', description: 'Your contact information', icon: AddressBook, default: true},
-    {name: 'social', title: 'Social', description: 'Social settings', icon: ShareNetwork},
+    {name: 'social', title: 'Social', description: 'Social settings', icon: ShareNetwork}
   ],
   fields: [
     // Contact
@@ -34,7 +34,7 @@ export default defineType({
       description: 'Enter your phone number (+41 xx xxx xx xx).',
       group: 'contact'
     },
-    
+
     {
       name: 'address',
       title: 'Address',
@@ -42,7 +42,7 @@ export default defineType({
       description: 'Enter your address.',
       group: 'contact'
     },
-    
+
     // Social
     {
       name: 'twitter',
@@ -79,6 +79,6 @@ export default defineType({
       title: 'YouTube',
       type: 'string',
       group: 'social'
-    },
+    }
   ]
 })

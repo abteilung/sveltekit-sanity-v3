@@ -6,10 +6,10 @@ export function navigationStructure(S) {
     .title('Navigations')
     .child(
       S.editor()
-      .title('Navigation Settings')
-      .id('navigationSettings')
-      .schemaType('navigationSettings')
-      .documentId('navigationSettings')
+        .title('Navigation Settings')
+        .id('navigationSettings')
+        .schemaType('navigationSettings')
+        .documentId('navigationSettings')
     )
 }
 

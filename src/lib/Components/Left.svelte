@@ -68,7 +68,6 @@
         <ul>
           {#each menu.items as menuItem}
             <li>
-
               <!-- Dropdown Navigation -->
               {#if menuItem._type === 'navDropdown'}
                 <button on:click={toggleSubmenu}>{menuItem.title || menuItem.pageTitle}</button>
@@ -77,7 +76,6 @@
                   <ul class="subMenu hidden ml-8">
                     {#each menuItem.dropdownItems as submenu}
                       <li>
-
                         <!-- Dropdown Navigation -->
                         {#if submenu._type === 'navDropdown'}
                           <button on:click={toggleSubmenu}>{submenu.title || submenu.pageTitle}</button>
@@ -94,13 +92,12 @@
                             {/each}
                           </ul>
                         {/if}
-
                       </li>
                     {/each}
                   </ul>
                 {/if}
-                  <!-- Just Links -->
-                {:else if menuItem._type === 'navLink'}
+                <!-- Just Links -->
+              {:else if menuItem._type === 'navLink'}
                 <a href={menuItem.url} target={menuItem.target}>{menuItem.title}</a>
 
                 <!-- Links to Pages -->

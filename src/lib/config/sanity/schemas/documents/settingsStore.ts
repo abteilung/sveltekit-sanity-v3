@@ -12,7 +12,7 @@ export default defineType({
       name: 'shopID',
       title: 'Shop ID',
       type: 'string',
-      description: 'Enter your email address.',
-    },
+      description: 'Enter your email address.'
+    }
   ]
 })
