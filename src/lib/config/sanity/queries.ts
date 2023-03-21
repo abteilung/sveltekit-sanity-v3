@@ -266,3 +266,13 @@ export const site = groq`
     "menuDesktop"
   }
 `
+
+export const getRedirects = groq`
+*[_type == 'redirect'] {
+  "from": fromPath.current,
+  "to": toPath,
+  "start": publishedAt,
+  "end": unpublishedAt,
+  statusCode
+}
+`
