@@ -193,12 +193,11 @@ export const getPageBySlug = groq`
 
 export const getSiteConfig = groq`
   *[_type == 'settings'][0] {
-    ...,
     title,
     description,
     siteUrl,
     favicon,
-    "social": {
+    "social": *[_type == 'settingsContact'][0] {
       twitter,
       facebook,
       instagram,
@@ -206,16 +205,16 @@ export const getSiteConfig = groq`
       linkedin,
       github,
     },
-    "contact": {
+    "contact": *[_type == 'settingsContact'][0] {
       companyName,
       email,
       phone,
       address,
     },
-    "analytics": {
-      googleAnalytics,
-      googleTagManager,
-      plausibleAnalytics,
+    "analytics": *[_type == 'settingsAnalytics'][0] {
+        googleAnalytics,
+        googleTagManager,
+        plausibleAnalytics,
     },
     "seo": {
       googleSiteVerification,
