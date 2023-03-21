@@ -192,7 +192,7 @@ export const getPageBySlug = groq`
 }`
 
 export const getSiteConfig = groq`
-  *[_type == 'settingsContact'][0] {
+  *[_type == 'settings'][0] {
     ...,
     title,
     description,

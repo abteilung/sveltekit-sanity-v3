@@ -13,6 +13,7 @@ import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
 import blockContent from './schemas/helpers/blockContent'
 
 import settingsType from './schemas/documents/settings'
+import redirectType from './schemas/documents/redirect'
 import settingsContactType from './schemas/documents/settingsContact'
 import settingsAnalyticsType from './schemas/documents/settingsAnalytics'
 import settingsStoreType from './schemas/documents/settingsStore'
@@ -75,6 +76,7 @@ export default defineConfig({
       productType,
       categoryReferenceType,
       serviceType,
+      redirectType,
       
       // Settings
       settingsType,

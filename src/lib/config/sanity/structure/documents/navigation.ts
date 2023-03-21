@@ -5,12 +5,12 @@ export function navigationStructure(S) {
     .icon(Compass)
     .title('Navigations')
     .child(
-        S.editor()
-        .title('Navigation Settings')
-        .id('navigationSettings')
-        .schemaType('navigationSettings')
-        .documentId('navigationSettings')
-        )
+      S.editor()
+      .title('Navigation Settings')
+      .id('navigationSettings')
+      .schemaType('navigationSettings')
+      .documentId('navigationSettings')
+    )
 }
 
 export default navigationStructure
