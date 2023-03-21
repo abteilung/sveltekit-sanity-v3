@@ -1,7 +1,7 @@
 import groq from 'groq'
 
 // Construct our "home" and "error" page GROQ
-export const homeID = `*[_type=="settings"][0].home->_id`
+export const homeID = `*[_id=="frontPage"][0]->_id`
 export const shopID = `*[_type=="settings"][0].shop->_id`
 export const errorID = `*[_type=="settings"][0].error->_id`
 

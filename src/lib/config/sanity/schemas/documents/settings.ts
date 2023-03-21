@@ -41,6 +41,14 @@ export default defineType({
       validation: (rule) => rule.required()
     },
     {
+      name: 'error',
+      description: 'This field is the Error page of your Site.',
+      title: 'Error',
+      type: 'reference',
+      to: [{type: 'page'}],
+      group: 'site',
+    },
+    {
       name: 'favicon',
       description: 'Add transparent PNG for favicon (min. 512px x 512px).',
       title: 'Favicon',
@@ -52,7 +60,7 @@ export default defineType({
       initialValue: 'https://blog.example.com/images/favicon.png',
       validation: (rule) => rule.required()
     },
-    
+
     // Theme
     {
       name: 'themeColor',
