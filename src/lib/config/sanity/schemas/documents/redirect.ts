@@ -67,9 +67,9 @@ export default {
 		prepare(selection) {
 			const { from, to, type, start, end } = selection;
 			return {
-				title: `${type}: ${from.current} 👉 ${to}`,
+				title: `${from.current} 👉 ${to}`,
 				// Format iso date to readable date
-				subtitle: `${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`,
+				subtitle: `${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`,
 			};
 		},
 	},
