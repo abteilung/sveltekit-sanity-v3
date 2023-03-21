@@ -69,7 +69,8 @@
     "sanity-plugin-asset-source-unsplash": "^1.0.6",
     "sanity-plugin-document-reference-by": "^1.0.1",
     "sanity-plugin-note-field": "^2.0.2",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "uuid": "^9.0.0"
   },
   "type": "module"
 }
