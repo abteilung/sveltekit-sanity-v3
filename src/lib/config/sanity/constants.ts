@@ -11,7 +11,7 @@ export const LOCKED_DOCUMENT_TYPES = ['settings', 'home', 'media.tag']
 // - cannot be created in the 'new document' menu
 // - cannot be duplicated, unpublished or deleted
 // - are from the Sanity Connect Shopify app - and can be linked to on Shopify
-export const SHOPIFY_DOCUMENT_TYPES = ['product', 'productVariant', 'collection']
+export const SHOPIFY_DOCUMENT_TYPES = ['shopifyProduct', 'shopifyProductVariant', 'shopifyCollection']
 
 // References to include in 'internal' links
 export const PAGE_REFERENCES = [
