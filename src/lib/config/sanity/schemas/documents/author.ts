@@ -33,12 +33,6 @@ export default defineType({
       name: 'email',
       title: 'E-Mail',
       type: 'string',
-      validation: (Rule) => Rule.required()
-    },
-    {
-      name: 'twitter',
-      title: 'Twitter',
-      type: 'string'
     },
     {
       name: 'bio',

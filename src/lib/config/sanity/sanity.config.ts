@@ -31,6 +31,7 @@ import accordionsType from './schemas/objects/accordions'
 import accordionType from './schemas/objects/accordion'
 import galleryType from './schemas/objects/gallery'
 import authorType from './schemas/documents/author'
+import memberType from './schemas/documents/member'
 import caseStudyType from './schemas/documents/caseStudy'
 import productType from './schemas/documents/product'
 import serviceType from './schemas/documents/service'
@@ -67,6 +68,7 @@ export default defineConfig({
       pageType,
       postType,
       authorType,
+      memberType,
       testimonialType,
       accordionsType,
       accordionType,

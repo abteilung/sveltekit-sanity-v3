@@ -9,6 +9,7 @@ import productsStructure from './documents/products'
 import faqStructure from './documents/faq'
 import settingsStructure from './documents/settings'
 import redirectsStructure from './documents/redirects'
+import personsStructure from './documents/persons'
 
 export const structure = (S) => {
   return S.list()
@@ -20,6 +21,7 @@ export const structure = (S) => {
       postsStructure(S),
       productsStructure(S),
       S.divider(),
+      personsStructure(S),
       faqStructure(S),
       S.divider(),
       settingsStructure(S),
