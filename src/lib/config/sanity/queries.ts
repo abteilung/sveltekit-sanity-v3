@@ -209,7 +209,7 @@ export const getSiteConfig = groq`
       companyName,
       email,
       phone,
-      address,
+      locations[],
     },
     "analytics": *[_type == 'settingsAnalytics'][0] {
         googleAnalytics,

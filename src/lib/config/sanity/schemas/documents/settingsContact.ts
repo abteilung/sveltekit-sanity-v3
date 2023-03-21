@@ -1,4 +1,4 @@
-import {GearSix, ShareNetwork, AddressBook} from '@phosphor-icons/react'
+import {GearSix, ShareNetwork, AddressBook, Factory} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 export default defineType({
@@ -34,12 +34,54 @@ export default defineType({
       description: 'Enter your phone number (+41 xx xxx xx xx).',
       group: 'contact'
     },
-
     {
-      name: 'address',
-      title: 'Address',
-      type: 'blockContent',
-      description: 'Enter your address.',
+      name: 'locations',
+      title: 'Locations',
+      type: 'array',
+      // Build an array of objects
+      of: [
+        {
+          type: 'object',
+          icon: Factory,
+          fields: [
+            {
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              description: 'Enter the name of the location.'
+            },
+            {
+              name: 'address',
+              title: 'Address',
+              type: 'string',
+              description: 'Enter the address of the location.'
+            },
+            {
+              name: 'city',
+              title: 'City',
+              type: 'string',
+              description: 'Enter the city of the location.'
+            },
+            {
+              name: 'zip',
+              title: 'ZIP',
+              type: 'string',
+              description: 'Enter the ZIP of the location.'
+            },
+            {
+              name: 'country',
+              title: 'Country',
+              type: 'string',
+              description: 'Enter the country of the location.'
+            },
+            {
+              name: 'availability',
+              type: 'availability',
+            }
+          ]
+        }
+      ],
+      description: 'Enter your Business Locations.',
       group: 'contact'
     },
 

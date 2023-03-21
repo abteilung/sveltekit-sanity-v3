@@ -1,4 +1,6 @@
 import {defineConfig, type Slug} from 'sanity'
+import {availability} from 'sanity-plugin-availability'
+
 import {PostsPreview} from './Components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
 import app from '../app'
@@ -124,7 +126,8 @@ export default defineConfig({
     visionTool({
       defaultApiVersion: '2022-08-08'
     }),
-    noteField()
+    noteField(),
+    availability()
   ],
   document: {
     productionUrl: async (prev, {document}) => {
