@@ -28,7 +28,6 @@ import accordionType from './schemas/objects/accordion'
 import galleryType from './schemas/objects/gallery'
 import authorType from './schemas/documents/author'
 import caseStudyType from './schemas/documents/caseStudy'
-import productType from './schemas/documents/product'
 import serviceType from './schemas/documents/service'
 import categoryReferenceType from './schemas/documents/categoryReference'
 
@@ -38,6 +37,22 @@ import customImage from './schemas/objects/customImage'
 import testimonialReference from './schemas/objects/testimonialReference'
 import code from './schemas/objects/code'
 import faqReference from './schemas/objects/faqReference'
+
+// Shopify
+import productType from './schemas/documents/shop-product'
+import collectionType from './schemas/documents/shop-collection'
+import variantType from './schemas/documents/shop-variant'
+
+import productOptionType from './schemas/objects/product-option-value'
+import shopifyCollection from './schemas/objects/shopifyCollection'
+import shopifyCollectionRule from './schemas/objects/shopifyCollectionRule'
+import shopifyProduct from './schemas/objects/shopifyProduct'
+import shopifyProductVariant from './schemas/objects/shopifyProductVariant'
+
+import filter from './schemas/documents/filter'
+import productOption from './schemas/objects/productOption'
+import productHotspots from './schemas/objects/productHotspots'
+import productWithVariant from './schemas/objects/productWithVariant'
 
 // Navigatons
 import menu from './schemas/documents/menu'
@@ -72,7 +87,6 @@ export default defineConfig({
       galleryType,
       blockContent,
       caseStudyType,
-      productType,
       categoryReferenceType,
       serviceType,
       
@@ -88,6 +102,23 @@ export default defineConfig({
       testimonialReference,
       code,
       faqReference,
+
+      // Shopify
+      filter,
+      shopifyProduct,
+      productType,
+      collectionType,
+      variantType,
+      productOptionType,
+
+      // shopifyCollection,
+      // shopifyCollectionRule,
+      // shopifyProduct,
+      shopifyProductVariant,
+      
+      productOption,
+      productHotspots,
+      productWithVariant,
       
       // Components
       //   shcemas/objects

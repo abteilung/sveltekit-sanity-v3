@@ -8,6 +8,7 @@ import postsStructure from './documents/posts'
 import productsStructure from './documents/products'
 import faqStructure from './documents/faq'
 import settingsStructure from './documents/settings'
+import shopMenu from './documents/shop'
 
 export const structure = (S) => {
   return S.list()
@@ -18,6 +19,8 @@ export const structure = (S) => {
       pageStructure(S),
       postsStructure(S),
       productsStructure(S),
+      S.divider(),
+      shopMenu(S),
       S.divider(),
       faqStructure(S),
       S.divider(),

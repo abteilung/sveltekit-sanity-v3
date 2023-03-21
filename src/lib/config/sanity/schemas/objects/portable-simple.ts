@@ -1,0 +1,1 @@
+// Define simple Portable Text Configuration
