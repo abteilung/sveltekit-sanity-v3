@@ -8,6 +8,7 @@ import app from '../app'
 /*-------------- PLUGINS --------------*/
 import {visionTool} from '@sanity/vision'
 import {deskTool} from 'sanity/desk'
+import {media} from 'sanity-plugin-media'
 import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
 /*------------------------------------*/
 
@@ -126,6 +127,7 @@ export default defineConfig({
     visionTool({
       defaultApiVersion: '2022-08-08'
     }),
+    media(),
     noteField(),
     availability()
   ],
