@@ -51,8 +51,6 @@ import shopifyProductVariant from './schemas/objects/shopifyProductVariant'
 
 import filter from './schemas/documents/filter'
 import productOption from './schemas/objects/productOption'
-import productHotspots from './schemas/objects/productHotspots'
-import productWithVariant from './schemas/objects/productWithVariant'
 
 // Navigatons
 import menu from './schemas/documents/menu'
@@ -117,8 +115,6 @@ export default defineConfig({
       shopifyProductVariant,
       
       productOption,
-      productHotspots,
-      productWithVariant,
       
       // Components
       //   shcemas/objects
