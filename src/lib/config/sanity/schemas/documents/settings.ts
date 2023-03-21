@@ -6,6 +6,14 @@ export default defineType({
   title: 'Settings',
   type: 'document',
   icon: GearSix,
+  // Initialvalue for display
+  initialValue: {
+    display: 'standalone',
+    title: 'Site Title',
+    description: 'A blog built with SvelteKit and Sanity.io.',
+    siteUrl: 'https://example.com',
+  },
+
   groups: [
     {name: 'site', title: 'Site', description: 'Site settings', default: true, icon: Globe},
     {name: 'general', title: 'General', description: 'General settings', icon: Globe},
@@ -78,14 +86,6 @@ export default defineType({
       type: 'string',
       description: 'Enter your display.',
       group: 'seo',
-      initialValue: 'standalone'
     },
-    {
-      name: 'bingSiteVerification',
-      title: 'Bing Site Verification',
-      type: 'string',
-      description: 'Enter your Bing Site Verification ID.',
-      group: 'seo'
-    }
   ]
 })
