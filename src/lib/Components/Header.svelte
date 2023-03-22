@@ -12,10 +12,14 @@
   const backgroundImage = HeaderImage.subscribe((value) => {
     bgImage = value
   })
+
+  export let pageTitle: string = 'Page Title'
 </script>
 
 <header id="header" class="relative text-white overflow-hidden">
-  <div class="headerContent" />
+  <div class="headerContent">
+    <slot />
+  </div>
   <div class="absolute top-0 left-0 inset-0 isolate z-0">
     <img src={bgImage} alt="background" class="absolute top-0 left-0 w-full h-full object-cover z-10" />
     <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-black/00 z-20" />
