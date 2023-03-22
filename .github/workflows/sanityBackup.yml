@@ -2,7 +2,7 @@ name: Backup Routine
 on:
   schedule:
     # Runs at 04:00 UTC on the 1st and 17th of every month
-    - cron: "*/10 * * * *"
+    - cron: "*/10 * */7 * *"
 jobs:
   backup-dataset:
     runs-on: self-hosted
