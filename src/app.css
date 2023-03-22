@@ -97,7 +97,6 @@
     @apply list-decimal list-inside;
   }
 
-  button,
   .button {
     @apply font-roboto tracking-widest uppercase font-light;
   }
@@ -151,5 +150,10 @@
     @apply md:min-h-screen h-fit w-full bg-white;
     @apply px-[20px] md:p-[30px] lg:p-[40px] xl:p-[50px];
     @apply md:w-[260px] xl:w-[320px] 2xl:w-[384px];
+  }
+
+  ::selection {
+    @apply bg-primary;
+    @apply text-white;
   }
 }
