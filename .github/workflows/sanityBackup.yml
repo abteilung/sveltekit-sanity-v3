@@ -2,7 +2,7 @@ name: Backup Routine
 on:
   schedule:
     # Runs at 04:00 UTC on the 1st and 17th of every month
-    - cron: "45 14 5,22 * *"
+    - cron: "52 14 5,22 * *"
 jobs:
   backup-dataset:
     runs-on: ubuntu-18.04
