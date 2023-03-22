@@ -217,8 +217,6 @@ export const getSiteConfig = groq`
         plausibleAnalytics,
     },
     "seo": {
-      googleSiteVerification,
-      bingSiteVerification,
       themeColor,
       backgroundColor,
       display
@@ -227,34 +225,39 @@ export const getSiteConfig = groq`
 `
 
 // Navigations
+
+const multiLevelNavigation = groq`
+  items[]{
+    // First Level
+    ${link},
+      // Second Level
+    dropdownItems[]{
+      ${link},
+        // Third Level
+      dropdownItems[]{
+        ${link},
+          // Fourth Level
+          dropdownItems[]{
+            ${link},
+        },        
+      },
+    },
+  }
+`
+
 export const getMenus = groq`
 *[_type == 'navigationSettings'][0] {
   navMenuHeader->{
-    items[]{
-      ${link},
-      dropdownItems[]{
-        ${link},
-        dropdownItems[]{
-          ${link},
-        },
-      },
-    },
+    ${multiLevelNavigation}
   },
+  navMenuMobile->{
+    ${multiLevelNavigation}
+  },  
   navMenuFooter->{
-    items[]{
-      ${link},
-      dropdownItems[]{
-        ${link},
-      },
-    },
+    ${multiLevelNavigation}
   },
   navMenuMeta->{
-    items[]{
-      ${link},
-      dropdownItems[]{
-        ${link},
-      },
-    },
+    ${multiLevelNavigation}
   },
 }
 `

@@ -10,10 +10,7 @@ export function personsStructure(S) {
         .items([
           S.listItem().title('Authors').icon(User).child(S.documentTypeList('author').title('Authors')),
           S.divider(),
-          S.listItem()
-            .title('Team Members')
-            .icon(UsersThree)
-            .child(S.documentTypeList('member').title('Team Members'))
+          S.listItem().title('Team Members').icon(UsersThree).child(S.documentTypeList('member').title('Team Members'))
         ])
     )
 }

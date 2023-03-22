@@ -23,8 +23,8 @@ export default {
       title: 'Categories',
       description:
         'Select all categories that apply to this question. If no categories are selected, this question will not be displayed.',
-        // Initialvalue for Category
-        of: [{ type: 'reference', to: [{type: 'faqCategory'}] }]
+      // Initialvalue for Category
+      of: [{type: 'reference', to: [{type: 'faqCategory'}]}]
     }
   ],
   preview: {

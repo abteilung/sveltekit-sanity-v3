@@ -8,17 +8,17 @@ export default defineType({
   type: 'document',
   fields: [
     {
-        name: 'author',
-        title: 'Author',
-        type: 'reference',
-        to: [{type: 'author'}]
+      name: 'author',
+      title: 'Author',
+      type: 'reference',
+      to: [{type: 'author'}]
     },
     {
       name: 'role',
       title: 'Role',
       type: 'string',
       validation: (Rule) => Rule.required()
-    },
+    }
   ],
 
   preview: {

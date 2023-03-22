@@ -11,7 +11,7 @@ export default defineType({
     display: 'standalone',
     title: 'Site Title',
     description: 'A blog built with SvelteKit and Sanity.io.',
-    siteUrl: 'https://example.com',
+    siteUrl: 'https://example.com'
   },
 
   groups: [
@@ -85,7 +85,7 @@ export default defineType({
       title: 'Display',
       type: 'string',
       description: 'Enter your display.',
-      group: 'seo',
-    },
+      group: 'seo'
+    }
   ]
 })

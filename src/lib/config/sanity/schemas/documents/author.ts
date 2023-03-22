@@ -32,7 +32,7 @@ export default defineType({
     {
       name: 'email',
       title: 'E-Mail',
-      type: 'string',
+      type: 'string'
     },
     {
       name: 'bio',

@@ -76,7 +76,7 @@ export default defineType({
             },
             {
               name: 'availability',
-              type: 'availability',
+              type: 'availability'
             }
           ]
         }
