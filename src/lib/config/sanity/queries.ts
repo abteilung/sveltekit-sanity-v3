@@ -225,7 +225,6 @@ export const getSiteConfig = groq`
 `
 
 // Navigations
-
 const multiLevelNavigation = groq`
   items[]{
     // First Level
@@ -270,10 +269,10 @@ export const site = groq`
   }
 `
 
-export const getRedirects = groq`
-*[_type == 'redirect'] {
-  "from": fromPath.current,
-  "to": toPath,
+export const getRedirectBySlug = groq`
+*[_type == 'redirect' && fromPath.current == $slug][0] {
+  "fromPath": fromPath.current,
+  toPath,
   "start": publishedAt,
   "end": unpublishedAt,
   statusCode
