@@ -154,22 +154,22 @@ const documentFields = groq`
 // Posts Stuff
 export const getPostBySlug = groq`
 {
-  "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true][0]{
+  "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true && (startDate < now() || startDate == null) && (endDate == null || endDate > now())][0]{
     content,
     ${documentFields}
   },
-  "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
+  "post": *[_type == "post" && slug.current == $slug && (startDate < now() || startDate == null) && (endDate == null || endDate > now())] | order(_updatedAt desc) [0] {
     content,
     ${documentFields}
   },
-  "morePosts": *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
+  "morePosts": *[_type == "post" && slug.current != $slug && (startDate < now() || startDate == null) && (endDate == null || endDate > now())] | order(date desc, _updatedAt desc) [0...2] {
     content,
     ${documentFields}
   }
 }`
 
 export const getAllPosts = groq`
-*[_type == "post"] | order(date desc, _updatedAt desc) {
+*[_type == "post" && defined(slug.current) && (startDate < now() || startDate == null) && (endDate == null || endDate > now())] | order(date desc, _updatedAt desc) {
   ${documentFields}
 }`
 
@@ -178,7 +178,7 @@ export const postSlugsQuery = groq`
 `
 
 export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {
+*[_type == "post" && slug.current == $slug && (startDate < now() || startDate == null) && (endDate == null || endDate > now())][0] {
   ${documentFields}
 }
 `
@@ -186,7 +186,7 @@ export const postBySlugQuery = groq`
 // Configure Page Blocks with modules and columns
 
 export const getPageBySlug = groq`
-*[_type == 'page' && slug.current == $slug && _id != 'frontPage'][0] {
+*[_type == 'page' && slug.current == $slug && _id != 'frontPage' && (startDate < now() || startDate == null) && (endDate == null || endDate > now())] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 
