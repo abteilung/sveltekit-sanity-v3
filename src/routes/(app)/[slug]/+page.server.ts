@@ -5,13 +5,15 @@ import {error} from '@sveltejs/kit'
 // export const prerender = 'auto';
 
 export const load = async ({parent, params}) => {
-  const page = await getSanityServerClient(false).fetch(getPageBySlug, {slug: params.slug})
+  const page = async () => {
+    return await getSanityServerClient(false).fetch(getPageBySlug, {slug: params.slug})
+  }
 
   if (!page) {
     throw error(404, 'Page not found')
   } else {
     return {
-      page
+      page: page()
     }
   }
 }
