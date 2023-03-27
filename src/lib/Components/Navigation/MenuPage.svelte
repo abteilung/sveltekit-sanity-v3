@@ -1,10 +1,10 @@
 <script lang="ts">
-    // Store Imports
-    import { page } from '$app/stores'
+  // Store Imports
+  import {page} from '$app/stores'
 
-    export let menuItem: string
+  export let menuItem: string
 
-  // set ActiveClass 
+  // set ActiveClass
   let activeClass: string = ''
 
   $: {
@@ -16,7 +16,6 @@
       }
     }
   }
-
 </script>
 
 {#if menuItem._type === 'navPage'}

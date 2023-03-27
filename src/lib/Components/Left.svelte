@@ -48,7 +48,7 @@
         additionalClass="text-primary w-[123px] sm:w-[135px] md:w-full h-full md:h-auto py-4 md:py-0"
       />
     </a>
-    <div class="mt-[100px] hidden md:block ">
+    <div class="mt-[100px] hidden md:block">
       <MultilevelNavigation {menu} {width} />
     </div>
   </div>

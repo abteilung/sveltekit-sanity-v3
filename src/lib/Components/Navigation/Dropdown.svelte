@@ -1,6 +1,6 @@
 <script lang="ts">
-    // Store Imports
-    import { page } from '$app/stores'
+  // Store Imports
+  import {page} from '$app/stores'
 
   // Component Imports
   import MenuLink from '$lib/Components/Navigation/MenuLink.svelte'
@@ -39,7 +39,7 @@
             <button on:click={toggleSubmenu}>{submenu.title || submenu.pageTitle}</button>
           {/if}
           {#if submenu.dropdownItems}
-            <Dropdown menuItem={submenu}/>
+            <Dropdown menuItem={submenu} />
           {/if}
         </li>
       {/each}

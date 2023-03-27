@@ -24,7 +24,7 @@
           </p>
         </div>
 
-        <div class="w-auto flex-shrink-0  sm:mt-0 ">
+        <div class="w-auto flex-shrink-0 sm:mt-0">
           <a
             rel="external"
             href="/api/exit-preview"

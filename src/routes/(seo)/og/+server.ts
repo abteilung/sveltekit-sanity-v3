@@ -1,5 +1,5 @@
-import { ImageResponse } from '$lib/ogSettings';
-import type { RequestHandler } from '@sveltejs/kit';
+import {ImageResponse} from '$lib/ogSettings'
+import type {RequestHandler} from '@sveltejs/kit'
 
 const template = `
  <div tw="bg-gray-50 flex w-full h-full items-center justify-center">
@@ -18,27 +18,31 @@ const template = `
       </div>
     </div>
   </div>
-`;
-const fontFile400 = await fetch('https://raw.githubusercontent.com/etherCorps/sveltekit-og/main/static/inter-latin-ext-400-normal.woff');
-const fontFile700 = await fetch('https://raw.githubusercontent.com/etherCorps/sveltekit-og/main/static/inter-latin-ext-700-normal.woff');
-const fontData400: ArrayBuffer = await fontFile400.arrayBuffer();
-const fontData700: ArrayBuffer = await fontFile700.arrayBuffer();
+`
+const fontFile400 = await fetch(
+  'https://raw.githubusercontent.com/etherCorps/sveltekit-og/main/static/inter-latin-ext-400-normal.woff'
+)
+const fontFile700 = await fetch(
+  'https://raw.githubusercontent.com/etherCorps/sveltekit-og/main/static/inter-latin-ext-700-normal.woff'
+)
+const fontData400: ArrayBuffer = await fontFile400.arrayBuffer()
+const fontData700: ArrayBuffer = await fontFile700.arrayBuffer()
 
 export const GET: RequestHandler = async () => {
-	return await ImageResponse(template, {
-		height: 250,
-		width: 500,
-		fonts: [
-			{
-				name: 'Inter Latin',
-				data: fontData400,
-				weight: 400
-			},
-			{
-				name: 'Inter Latin',
-				data: fontData700,
-				weight: 700
-			}
-		]
-	});
-};
+  return await ImageResponse(template, {
+    height: 250,
+    width: 500,
+    fonts: [
+      {
+        name: 'Inter Latin',
+        data: fontData400,
+        weight: 400
+      },
+      {
+        name: 'Inter Latin',
+        data: fontData700,
+        weight: 700
+      }
+    ]
+  })
+}

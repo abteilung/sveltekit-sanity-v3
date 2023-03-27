@@ -275,6 +275,7 @@ export const getRedirectBySlug = groq`
   toPath,
   "start": publishedAt,
   "end": unpublishedAt,
-  statusCode
+  statusCode,
+  "isWithinTimerange": (publishedAt < now() || publishedAt == null) && (unpublishedAt == null || unpublishedAt > now()),
 }
 `

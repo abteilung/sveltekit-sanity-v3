@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores'
+  import {page} from '$app/stores'
 
   // Component Imports
   import Dropdown from '$lib/Components/Navigation/Dropdown.svelte'
@@ -9,7 +9,7 @@
   // API
   export let menu: any = []
   export let width
-  
+
   // set activeClass if page is active
 </script>
 
