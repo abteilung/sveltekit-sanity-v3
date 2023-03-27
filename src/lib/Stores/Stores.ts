@@ -4,4 +4,4 @@ import {writable, type Writable} from 'svelte/store'
 export const HeaderImage: Writable<string> = writable('')
 
 // Store for Cookie Banner
-export const cookieVisibility = writable(true)
+export const cookieVisibility = writable(false);
