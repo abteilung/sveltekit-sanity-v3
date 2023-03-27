@@ -35,7 +35,6 @@
     })
   }
 
-  // Function to goto
 </script>
 
 {#if $cookieVisibility}
