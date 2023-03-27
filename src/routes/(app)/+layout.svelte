@@ -6,6 +6,7 @@
   import Footer from '$lib/Components/Footer.svelte'
   import Left from '$lib/Components/Left.svelte'
   import Favicons from '$lib/Components/Favicons.svelte'
+  import CookieBanner from '$lib/Components/CookieBanner.svelte'
   import menu from '$lib/config/sanity/schemas/documents/menu'
 
   let isLoaded: boolean = false
@@ -17,6 +18,7 @@
   export let data: any
   $: ({siteConfig} = data)
   $: ({menus} = data)
+  $: ({dsgvo} = data)
 </script>
 
 <svelte:head>
@@ -37,3 +39,5 @@
 
 <!-- {JSON.stringify(menus)} -->
 <Footer menu={menus.navMenuFooter} />
+
+<CookieBanner {dsgvo} />

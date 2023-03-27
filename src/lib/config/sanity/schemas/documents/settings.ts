@@ -1,4 +1,4 @@
-import {GearSix, Globe, ShareNetwork, Palette, AddressBook, MagnifyingGlass, ChartLineUp} from '@phosphor-icons/react'
+import {GearSix, Globe, ShareNetwork, Palette, AddressBook, MagnifyingGlass, Scales} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 export default defineType({
@@ -8,17 +8,24 @@ export default defineType({
   icon: GearSix,
   // Initialvalue for display
   initialValue: {
-    display: 'standalone',
     title: 'Site Title',
     description: 'A blog built with SvelteKit and Sanity.io.',
-    siteUrl: 'https://example.com'
+    siteUrl: 'https://example.com',
+
+    // DSGVO
+    cookieBanner: true,
+    cookieBannerText: 'This website uses cookies to ensure you get the best experience on our website.',
+    cookieBannerLinkText: 'Accept',
+    cookieExpires: 21
   },
 
   groups: [
     {name: 'site', title: 'Site', description: 'Site settings', default: true, icon: Globe},
     {name: 'general', title: 'General', description: 'General settings', icon: Globe},
+    {name: 'entryPages', title: 'Entry Pages', description: 'Entry Pages settings', icon: ShareNetwork},
     {name: 'theme', title: 'Theme', description: 'Theme settings', icon: Palette},
-    {name: 'seo', title: 'SEO', description: 'SEO settings', icon: MagnifyingGlass}
+    {name: 'seo', title: 'SEO', description: 'SEO settings', icon: MagnifyingGlass},
+    {name: 'dsgvo', title: 'DSGVO', description: 'DSGVO settings', icon: Scales}
   ],
   fields: [
     {
@@ -62,30 +69,135 @@ export default defineType({
     },
 
     // Theme
-    {
-      name: 'themeColor',
-      title: 'Theme Color',
-      type: 'string',
-      description: 'Enter your theme color.',
-      group: 'theme',
-      initialValue: '#ffffff'
-    },
-    {
-      name: 'backgroundColor',
-      title: 'Background Color',
-      type: 'string',
-      description: 'Enter your background color.',
-      group: 'theme',
-      initialValue: '#ffffff'
-    },
+    // {
+    //   name: 'themeColor',
+    //   title: 'Theme Color',
+    //   type: 'string',
+    //   description: 'Enter your theme color.',
+    //   group: 'theme',
+    //   initialValue: '#ffffff'
+    // },
+    // {
+    //   name: 'backgroundColor',
+    //   title: 'Background Color',
+    //   type: 'string',
+    //   description: 'Enter your background color.',
+    //   group: 'theme',
+    //   initialValue: '#ffffff'
+    // },
 
     // SEO
+    // {
+    //   name: 'display',
+    //   title: 'Display',
+    //   type: 'string',
+    //   description: 'Enter your display.',
+    //   group: 'seo'
+    // },
+    // EntryPages
     {
-      name: 'display',
-      title: 'Display',
+      name: 'home',
+      title: 'Home Page',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: 'Add Home Page.',
+      group: 'entryPages'
+    },
+    {
+      name: 'shop',
+      title: 'Shop Page',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: 'Add Shop Page.',
+      group: 'entryPages'
+    },
+    // DSGVO
+    {
+      name: 'imprint',
+      title: 'Imprint Page',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: 'Add Imprint Page.',
+      group: 'dsgvo'
+    },
+    {
+      name: 'privacy',
+      title: 'Privacy Page',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: 'Add Privacy Page.',
+      group: 'dsgvo'
+    },
+    {
+      name: 'terms',
+      title: 'Terms Page',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: 'Add Terms Page.',
+      group: 'dsgvo'
+    },
+    {
+      name: 'cookieBanner',
+      title: 'Cookie Banner',
+      type: 'boolean',
+      description: 'Add Cookie Banner.',
+      group: 'dsgvo'
+    },
+    {
+      name: 'cookeExpires',
+      title: 'Cooke Expires',
+      type: 'number',
+      description: 'Add Cooke Expires.',
+      group: 'dsgvo',
+      // Show only if cookieBanner is set
+      hidden: ({parent}) => !parent.cookieBanner
+    },
+    {
+      name: 'cookieBannerText',
+      title: 'Cookie Banner Text',
       type: 'string',
-      description: 'Enter your display.',
-      group: 'seo'
+      description: 'Add Cookie Banner Text.',
+      group: 'dsgvo',
+      // Show only if cookieBanner is set
+      hidden: ({parent}) => !parent.cookieBanner
+    },
+    {
+      name: 'cookieBannerLink',
+      title: 'Cookie Banner Link',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: 'Show Cookie Banner Link.',
+      group: 'dsgvo',
+      // Show only if cookieBanner is set
+      hidden: ({parent}) => !parent.cookieBanner
+    },
+    {
+      name: 'cookieBannerLinkText',
+      title: 'Cookie Banner Link Text',
+      type: 'string',
+      description: 'Add Cookie Banner Link Text.',
+      group: 'dsgvo',
+      // Show only if cookieBanner is set
+      hidden: ({parent}) => !parent.cookieBanner || !parent.cookieBannerLink
+    },
+    {
+      name: 'cookieBannerMoreLink',
+      title: 'Cookie Banner More Link',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: 'Show Cookie Banner More Link.',
+      group: 'dsgvo',
+      // Show only if cookieBanner is set
+      hidden: ({parent}) => !parent.cookieBanner
+    },
+    {
+      name: 'cookieBannerMoreLinkText',
+      title: 'Cookie Banner More Link Text',
+      type: 'string',
+      description: 'Add Cookie Banner More Link Text.',
+      group: 'dsgvo',
+      // Show only if cookieBanner is set
+      hidden: ({parent}) => !parent.cookieBanner || !parent.cookieBannerMoreLink
     }
   ]
 })

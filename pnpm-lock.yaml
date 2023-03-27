@@ -34,6 +34,7 @@ specifiers:
   eslint-config-prettier: ^8.8.0
   eslint-plugin-svelte3: ^4.0.0
   groq: ^2.33.2
+  js-cookie: ^3.0.1
   postcss: ^8.4.21
   prettier: ^2.8.6
   prettier-plugin-svelte: ^2.10.0
@@ -104,6 +105,7 @@ devDependencies:
   eslint: 8.36.0
   eslint-config-prettier: 8.8.0_eslint@8.36.0
   eslint-plugin-svelte3: 4.0.0_wzem237sbvnwe7n34ytc5phasy
+  js-cookie: 3.0.1
   postcss: 8.4.21
   prettier: 2.8.6
   prettier-plugin-svelte: 2.10.0_bzjcbf5vweu43cmyrxgltnmf74
@@ -4948,6 +4950,12 @@ packages:
       {integrity: sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==}
     engines: {node: '>=0.10.0'}
     dev: false
+
+  /js-cookie/3.0.1:
+    resolution:
+      {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: true
 
   /js-sdsl/4.4.0:
     resolution:

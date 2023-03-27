@@ -19,7 +19,6 @@ import settingsType from './schemas/documents/settings'
 import redirectType from './schemas/documents/redirect'
 import settingsContactType from './schemas/documents/settingsContact'
 import settingsAnalyticsType from './schemas/documents/settingsAnalytics'
-import settingsStoreType from './schemas/documents/settingsStore'
 
 import postType from './schemas/documents/post'
 import pageType from './schemas/documents/page'
@@ -87,7 +86,6 @@ export default defineConfig({
       settingsType,
       settingsContactType,
       settingsAnalyticsType,
-      settingsStoreType,
 
       // Objects
       video,

@@ -25,15 +25,15 @@ export function settingsStructure(S) {
                 .title('Contact Settings')
             ),
 
-          S.listItem()
-            .title('Shop Settings')
-            .icon(Storefront)
-            .child(
-              S.document('settingsStore')
-                .schemaType('settingsStore')
-                .documentId('settingsStore')
-                .title('Contact Settings')
-            ),
+          // S.listItem()
+          //   .title('Shop Settings')
+          //   .icon(Storefront)
+          //   .child(
+          //     S.document('settingsStore')
+          //       .schemaType('settingsStore')
+          //       .documentId('settingsStore')
+          //       .title('Contact Settings')
+          //   ),
 
           S.listItem()
             .title('Analytics Settings')

@@ -61,7 +61,6 @@ export const imageMeta = `
   "lqip": asset->metadata.lqip
 `
 
-
 const modules = groq`
   ...,
   _type == "image" => {
@@ -72,7 +71,6 @@ const modules = groq`
   _type == "customImage" => {
     "alt": image.alt, 
     "asset": image.asset ->,
-    "lqip": image.asset.metadata.lqip,
     "customRatio": image.customRatio,
   },
   _type == "gallery" => {
@@ -240,6 +238,38 @@ const multiLevelNavigation = groq`
       },
     },
   }
+`
+
+export const getDsgvoSettings = groq`
+*[_type == 'settings'][0] {
+  "menu": {
+    "imprint": imprint -> {
+      title,
+      ${linkTypes}
+    },
+    "privacy": privacy -> {
+      title,
+      ${linkTypes}
+    },
+    "terms": terms -> {
+      title,
+      ${linkTypes}
+    },
+  },
+  cookieBanner,
+  cookieBannerText,
+  cookieBannerLink -> {
+    ${linkTypes}
+  },
+  cookieBannerLinkText,
+  cookieBannerButtonText,
+  cookieBannerMoreLink -> {
+    ${linkTypes}
+  },
+  cookieBannerMoreLinkText,
+  cookieExpires,
+  siteUrl,
+}
 `
 
 export const getMenus = groq`

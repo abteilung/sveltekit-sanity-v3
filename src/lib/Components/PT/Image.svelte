@@ -16,7 +16,11 @@
   }
 </script>
 
-<div style="background-image: url({lqip}); background-color: {bgColor}; width: {width}px; height: {value.customRatio ? Math.round(width / value.customRatio) : height}px">
+<div
+  style="background-image: url({lqip}); background-color: {bgColor}; width: {width}px; height: {value.customRatio
+    ? Math.round(width / value.customRatio)
+    : height}px"
+>
   <img src={urlForImage(src, width, value.customRatio ? Math.round(width / value.customRatio) : height)} {alt} />
 </div>
 
