@@ -42,7 +42,9 @@
   <div class="flex justify-between items-center cookie-bar p-8 bg-black text-white fixed bottom-4 left-4 w-1/2 z-50">
     <div>
       <p class="mb-0">{dsgvo.cookieBannerText}</p>
-      <a href={dsgvo.cookieBannerMoreLink.href} class="text-white mb-0 underline">{dsgvo.cookieBannerMoreLinkText}</a>
+      {#if dsgvo.cookieBannerMoreLink.href}
+        <a href={dsgvo.cookieBannerMoreLink.href} class="text-white mb-0 underline">{dsgvo.cookieBannerMoreLinkText}</a>
+      {/if}
     </div>
     <div class="space-x-4 flex items-center">
       <button class="bg-white whitespace-nowrap text-black px-6 py-2" on:click={acceptCookies}
