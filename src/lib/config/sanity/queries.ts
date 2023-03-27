@@ -185,7 +185,7 @@ export const postBySlugQuery = groq`
 // Configure Page Blocks with modules and columns
 
 export const getPageBySlug = groq`
-*[_type == 'page' && slug.current == $slug && _id != 'frontPage' && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+*[(_type == 'page' && slug.current == $slug && _id != 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 
