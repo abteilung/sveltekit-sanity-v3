@@ -7,7 +7,7 @@ export const load = async ({parent, params}) => {
   const page = await getSanityServerClient(false).fetch(getPageBySlug, {slug: params.slug})
   const pageRedirects = await getSanityServerClient(false).fetch(getRedirectBySlug, {slug: params.slug})
 
-  if (pageRedirects && pageRedirects.isWithinTimerange) {
+  if (pageRedirects) {
     throw redirect(pageRedirects.statusCode, pageRedirects.toPath)
   }
 

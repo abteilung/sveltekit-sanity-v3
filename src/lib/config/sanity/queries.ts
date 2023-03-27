@@ -301,12 +301,11 @@ export const site = groq`
 `
 
 export const getRedirectBySlug = groq`
-*[_type == 'redirect' && fromPath.current == $slug][0] {
+*[_type == 'redirect' && fromPath.current == $slug && (publishedAt < now() || publishedAt == null) && (unpublishedAt == null || unpublishedAt > now())][0] {
   "fromPath": fromPath.current,
   toPath,
   "start": publishedAt,
   "end": unpublishedAt,
   statusCode,
-  "isWithinTimerange": (publishedAt < now() || publishedAt == null) && (unpublishedAt == null || unpublishedAt > now()),
 }
 `
