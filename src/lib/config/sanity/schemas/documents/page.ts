@@ -1,4 +1,4 @@
-import {File} from '@phosphor-icons/react'
+import {File, EyeSlash} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import authorType from './author'
@@ -132,11 +132,20 @@ export default defineType({
     select: {
       title: 'title',
       author: 'author.name',
-      media: 'mainImage'
+      media: 'mainImage',
+      startDate: 'startDate',
+      endDate: 'endDate',
+      isHidden: 'isHidden',
+      isFeatured: 'isFeatured',
     },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+    prepare({title, author, media,isHidden, startDate, endDate, isFeatured}) {
+      return {
+        title: isFeatured ? `🔥 ${title}` : title,
+        // Human readable short Date
+        subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : '' } ${endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''}`,
+        // Use Icon instead of Image if isHidden is true
+        media: isHidden ? EyeSlash : media,
+      }
     }
   }
 })
