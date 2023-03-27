@@ -61,11 +61,14 @@ export const imageMeta = `
   "lqip": asset->metadata.lqip
 `
 
+
 const modules = groq`
   ...,
   _type == "image" => {
-    "alt": image.alt, 
+    "alt": coalesce(image.alt, image.asset->altText), 
     "asset": image,
+    "lqip": image->metadata.lqip,
+    "bgColor": image->metadata.palette.dominant.background,
     "customRatio": image.customRatio,
   },
   _type == "customImage" => {
@@ -102,26 +105,6 @@ const modules = groq`
   },
 `
 
-const documentFields = groq`
-  _id,
-  _type,
-  "category": categories[0]->,
-  title,
-  subtitle,
-  "date": coalesce(
-    publishedAt,
-    string(_createdAt)
-  ),
-  body[] {
-    ${modules}
-  },
-  mainImage,
-  "img": mainImage.image.asset ->,
-  "slug": slug.current,
-  ${linkTypes},
-  "author": author->{name, "image": image.image},
-`
-
 const columns = groq`
   _type == 'columns' => {
     "content": {
@@ -148,9 +131,25 @@ const columns = groq`
   },
 `
 
-export const postVisionQuery = groq`*[_type == "post"] | order(date desc, _updatedAt desc) {
-  ...
-}`
+const documentFields = groq`
+  _id,
+  _type,
+  "category": categories[0]->,
+  title,
+  subtitle,
+  "date": coalesce(
+    publishedAt,
+    string(_createdAt)
+  ),
+  body[] {
+    ${modules}
+  },
+  mainImage,
+  "img": mainImage.image.asset ->,
+  "slug": slug.current,
+  ${linkTypes},
+  "author": author->{name, "image": image.image},
+`
 
 // Posts Stuff
 export const getPostBySlug = groq`
