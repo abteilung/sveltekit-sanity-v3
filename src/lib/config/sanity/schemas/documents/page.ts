@@ -78,9 +78,9 @@ export default defineType({
     },
     {
       name: 'publishedAt',
-      title: 'Date',
+      title: 'Publishing Date',
       type: 'datetime',
-      group: 'default',
+      group: 'visibility',
     },
     {
       name: 'author',

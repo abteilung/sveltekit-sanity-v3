@@ -18,7 +18,10 @@
     <div class="post">
       <a href={post.href} class="block space-y-4">
         {#if post.mainImage}
-          {JSON.stringify(post.mainImage.asset)}
+          {JSON.stringify(post.mainImage.image)}
+          {#if post.mainImage}
+          {post.mainImage.image}
+          {/if}
         {/if}
         <div>
           <h4 class="mb-2">{post.subtitle}</h4>

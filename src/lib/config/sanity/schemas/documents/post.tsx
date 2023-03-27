@@ -1,19 +1,7 @@
-import {Article} from '@phosphor-icons/react'
+import {Article, EyeSlash} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import authorType from './author'
-
-/**
- * This file is the schema definition for a post.
- *
- * Here you'll be able to edit the different fields that appear when you
- * create or edit a post in the studio.
- *
- * Here you can see the different schema types that are available:
-
-  https://www.sanity.io/docs/schema-types
-
- */
 
 export default defineType({
   name: 'post',
@@ -90,9 +78,9 @@ export default defineType({
     },
     {
       name: 'publishedAt',
-      title: 'Date',
+      title: 'Publishing Date',
       type: 'datetime',
-      group: 'default'
+      group: 'visibility'
     },
     {
       name: 'author',
@@ -143,11 +131,20 @@ export default defineType({
     select: {
       title: 'title',
       author: 'author.name',
-      media: 'mainImage'
+      media: 'mainImage',
+      startDate: 'startDate',
+      endDate: 'endDate',
+      isHidden: 'isHidden',
+      isFeatured: 'isFeatured',
     },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+    prepare({title, author, media,isHidden, startDate, endDate, isFeatured}) {
+      return {
+        title: isFeatured ? `🔥 ${title}` : title,
+        // Human readable short Date
+        subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : '' } ${endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''}`,
+        // Use Icon instead of Image if isHidden is true
+        media: isHidden ? EyeSlash : media,
+      }
     }
   }
 })
