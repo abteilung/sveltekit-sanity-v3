@@ -67,13 +67,12 @@ const modules = groq`
   _type == "image" => {
     "alt": coalesce(image.alt, image.asset->altText), 
     "asset": image,
-    "lqip": image->metadata.lqip,
-    "bgColor": image->metadata.palette.dominant.background,
     "customRatio": image.customRatio,
   },
   _type == "customImage" => {
     "alt": image.alt, 
     "asset": image.asset ->,
+    "lqip": image.asset.metadata.lqip,
     "customRatio": image.customRatio,
   },
   _type == "gallery" => {
