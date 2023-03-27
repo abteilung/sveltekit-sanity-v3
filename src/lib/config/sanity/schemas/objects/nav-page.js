@@ -18,7 +18,7 @@ export default {
       title: 'Page',
       name: 'page',
       type: 'reference',
-      to: [{type: 'page'}, {type: 'product'}, {type: 'post'}, {type: 'service'}]
+      to: [{type: 'page'}, {type: 'product'}, {type: 'post'}, {type: 'service'}, {type: 'meta'}]
     }
   ],
   preview: {
