@@ -19,6 +19,9 @@ const linkTypes = groq`
   },
   _type == "page" => {
     "href": "/" + slug.current,
+  },
+  _type == "meta" => {
+    "href": "/meta/" + slug.current,
   }
 `
 

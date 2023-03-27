@@ -22,6 +22,7 @@ import settingsAnalyticsType from './schemas/documents/settingsAnalytics'
 
 import postType from './schemas/documents/post'
 import pageType from './schemas/documents/page'
+import metaType from './schemas/documents/meta'
 import testimonialType from './schemas/documents/testimonial'
 import categoryType from './schemas/documents/category'
 import faqType from './schemas/documents/faq'
@@ -65,6 +66,7 @@ export default defineConfig({
     types: [
       // Documents
       pageType,
+      metaType,
       postType,
       authorType,
       memberType,
