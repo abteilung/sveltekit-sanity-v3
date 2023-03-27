@@ -5,6 +5,9 @@ export const homeID = `*[_type=="settings"][0].home->_id`
 export const shopID = `*[_type=="settings"][0].shop->_id`
 export const errorID = `*[_type=="settings"][0].error->_id`
 
+// Check if Dates are within a range (Publication Settings)
+const dateRangeChecker = `(publishedAt < now() || publishedAt == null) && (unpublishedAt == null || unpublishedAt > now())`
+
 // Define URLs for all our link types
 const linkTypes = groq`
   "href": slug.current,
@@ -99,7 +102,7 @@ const modules = groq`
     "posts": *[
       type == 'post'
       // No Drafts!
-      && !(_id in path("drafts.**"))
+     && !(_id in path("drafts.**"))
     ]
     | order(publishDate desc)
   },
@@ -154,31 +157,27 @@ const documentFields = groq`
 // Posts Stuff
 export const getPostBySlug = groq`
 {
-  "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true && (startDate < now() || startDate == null) && (endDate == null || endDate > now())][0]{
+  "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true && ${dateRangeChecker}][0]{
     content,
     ${documentFields}
   },
-  "post": *[_type == "post" && slug.current == $slug && (startDate < now() || startDate == null) && (endDate == null || endDate > now())] | order(_updatedAt desc) [0] {
+  "post": *[_type == "post" && slug.current == $slug && ${dateRangeChecker}] | order(_updatedAt desc) [0] {
     content,
     ${documentFields}
   },
-  "morePosts": *[_type == "post" && slug.current != $slug && (startDate < now() || startDate == null) && (endDate == null || endDate > now())] | order(date desc, _updatedAt desc) [0...2] {
+  "morePosts": *[_type == "post" && slug.current != $slug && ${dateRangeChecker}] | order(date desc, _updatedAt desc) [0...2] {
     content,
     ${documentFields}
   }
 }`
 
 export const getAllPosts = groq`
-*[_type == "post" && defined(slug.current) && (startDate < now() || startDate == null) && (endDate == null || endDate > now())] | order(date desc, _updatedAt desc) {
+*[_type == "post" && defined(slug.current) && ${dateRangeChecker}] | order(date desc, _updatedAt desc) {
   ${documentFields}
 }`
 
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
-`
-
 export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug && (startDate < now() || startDate == null) && (endDate == null || endDate > now())][0] {
+*[_type == "post" && slug.current == $slug && ${dateRangeChecker}][0] {
   ${documentFields}
 }
 `
@@ -186,7 +185,7 @@ export const postBySlugQuery = groq`
 // Configure Page Blocks with modules and columns
 
 export const getPageBySlug = groq`
-*[_type == 'page' && slug.current == $slug && _id != 'frontPage' && (startDate < now() || startDate == null) && (endDate == null || endDate > now())] | order(_updatedAt desc)[0] {
+*[_type == 'page' && slug.current == $slug && _id != 'frontPage' && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 
@@ -300,8 +299,9 @@ export const site = groq`
   }
 `
 
+
 export const getRedirectBySlug = groq`
-*[_type == 'redirect' && fromPath.current == $slug && (publishedAt < now() || publishedAt == null) && (unpublishedAt == null || unpublishedAt > now())][0] {
+*[_type == 'redirect' && fromPath.current == $slug && ${dateRangeChecker}][0] {
   "fromPath": fromPath.current,
   toPath,
   "start": publishedAt,
