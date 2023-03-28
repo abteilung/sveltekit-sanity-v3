@@ -4,7 +4,8 @@
   import RichEditor from '$lib/Components/PageBuilder/RichEditor.svelte'
   import TeaserGrid from '$lib/Components/PageBuilder/TeaserGrid.svelte'
   import EmptySpace from '$lib/Components/PageBuilder/EmptySpace.svelte'
-
+    import Columns from '$lib/Components/PageBuilder/Columns.svelte'
+  
   export let blocks: any = []
 </script>
 
@@ -21,6 +22,9 @@
     {/if}
     {#if block._type === 'emptySpace'}
       <EmptySpace {block} />
+    {/if}
+    {#if block._type === 'columns'}
+      <Columns {block} />
     {/if}
   {/each}
 {/if}

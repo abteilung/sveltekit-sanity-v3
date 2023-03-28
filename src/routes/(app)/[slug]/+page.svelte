@@ -11,4 +11,6 @@
   <title>Layout with left Navigation and revealing Footer</title>
 </svelte:head>
 
-<PageBuilder blocks={page.content} />
+{#if page}
+  <PageBuilder blocks={page.content} />
+{/if}

@@ -49,6 +49,7 @@ import pageBuilder from './schemas/objects/pageBuilder'
 import richEditor from './schemas/objects/pageBuilder/richEditor'
 import teaserGrid from './schemas/objects/pageBuilder/teaserGrid'
 import emptySpace from './schemas/objects/pageBuilder/emptySpace'
+import columns from './schemas/objects/pageBuilder/columns'
 
 // Navigatons
 import menu from './schemas/documents/menu'
@@ -107,6 +108,7 @@ export default defineConfig({
       richEditor,
       teaserGrid,
       emptySpace,
+      columns,
 
       // Components
       //   shcemas/objects

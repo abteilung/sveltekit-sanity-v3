@@ -119,25 +119,29 @@ const modules = groq`
 
 const columns = groq`
   _type == 'columns' => {
+    ...,
     "content": {
-      "column_1": column_1[] {
+      "column_1": column_1.pageBuilder[] {
         ${modules}
       },
-      "column_2": column_2[] {
+      "column_2": column_2.pageBuilder[] {
         ${modules}
-        _type == 'slice' => {
-          "content": @->content[] {
-            ${modules}
-          }
-        }
+        // _type == 'slice' => {
+        //   "content": @->content[] {
+        //     ${modules}
+        //   }
+        // }
       },
-      "column_3": column_3[] {
+      "column_3": column_3.pageBuilder[] {
         ${modules}
-        _type == 'slice' => {
-          "content": @->content[] {
-            ${modules}
-          }
-        }
+        // _type == 'slice' => {
+        //   "content": @->content[] {
+        //     ${modules}
+        //   }
+        // }
+      },
+      "column_4": column_4.pageBuilder[] {
+        ${modules}
       },
     }
   },
@@ -155,10 +159,11 @@ const documentFields = groq`
   ),
   body[] {
     ${modules}
+    ${columns}
   },
   "content": content.pageBuilder[] {
-    ${columns}
     ${modules}
+    ${columns}
   },  
   ${mainImageMeta},
   "slug": slug.current,
