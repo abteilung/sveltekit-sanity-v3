@@ -56,7 +56,7 @@ const link = `
 
 // Construct our "image meta" GROQ
 // Is it really image->altText?
-export const imageMeta = `
+const imageMeta = `
   "alt": coalesce(image.alt, image->altText),
   "asset": image.asset,
   "crop": image.crop,
@@ -69,19 +69,26 @@ export const imageMeta = `
   "bgColor": image.asset->metadata.palette.dominant.background
 `
 
+const mainImageMeta = `
+  "alt": coalesce(mainImage.alt, mainImage->altText),
+  "asset": mainImage.asset,
+  "crop": mainImage.crop,
+  "customRatio": mainImage.customRatio,
+  "hotspot": mainImage.hotspot,
+  "id": mainImage.asset->assetId,
+  "type": mainImage.asset->mimeType,
+  "aspectRatio": mainImage.asset->metadata.dimensions.aspectRatio,
+  "lqip": mainImage.asset->metadata.lqip,
+  "bgColor": mainImage.asset->metadata.palette.dominant.background
+`
+
 const modules = groq`
   ...,
   _type == "image" => {
     ${imageMeta}
-    // "alt": coalesce(image.alt, image.asset->altText), 
-    // "asset": image,
-    // "customRatio": image.customRatio,
   },
   _type == "customImage" => {
     ${imageMeta}
-    // "alt": image.alt, 
-    // "asset": image.asset ->,
-    // "customRatio": image.customRatio,
   },
   _type == "gallery" => {
     display, imagesPerRow, zoom,
@@ -151,10 +158,7 @@ const documentFields = groq`
   body[] {
     ${modules}
   },
-  ${imageMeta},
-  mainImage,
-  // "image": mainImage.asset ->,
-  // "img": mainImage.image.asset ->,
+  ${mainImageMeta},
   "slug": slug.current,
   ${linkTypes},
   "author": author->{name, "image": image.image},

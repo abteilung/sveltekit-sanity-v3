@@ -33,11 +33,11 @@
             {#if $postData.post.author}
               <div class="flex-shrink-0">
                 <span class="sr-only">Image</span>
-                <img
+                <!-- <img
                   class="h-10 w-10 rounded-full"
                   src={urlForImage($postData.post.author.image).crop('focalpoint').width(256).height(256).url()}
                   alt=""
-                />
+                /> -->
               </div>
             {/if}
             <div class="ml-3">
@@ -50,13 +50,13 @@
             </div>
           </div>
         </div>
-        {#if $postData.post.mainImage}
+        <!-- {#if $postData.post.asset}
           <img
             class="h-92 w-full object-cover rounded-xl mb-10"
             src={urlForImage($postData.post.mainImage).width(1344).height(736).url()}
             alt={$postData.post.mainImage.alt}
           />
-        {/if}
+        {/if} -->
         <div>
           {#if $postData.post.body}
             <PortableBlock content={$postData.post.body} />

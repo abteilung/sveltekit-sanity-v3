@@ -18,7 +18,6 @@
     enabled: previewMode && !!slug
   }))
 
-  $: HeaderImage.set(urlForImage($postData.post.mainImage, 1344, 736))
 </script>
 
 <svelte:head>

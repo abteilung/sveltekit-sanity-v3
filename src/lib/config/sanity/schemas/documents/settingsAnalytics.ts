@@ -32,6 +32,12 @@ export default defineType({
       name: 'plausibleAnalytics',
       title: 'Plausible Analytics',
       description: 'Enter your Plausible Analytics domain.'
-    }
+    },
+    {
+      type: 'string',
+      name: 'sibTrackingV3',
+      title: 'Sendinblue Tracking V3',
+      description: 'Enter your Sendinblue Tracking ID.'
+    },
   ]
 })
