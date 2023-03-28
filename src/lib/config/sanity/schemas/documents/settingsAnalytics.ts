@@ -38,6 +38,6 @@ export default defineType({
       name: 'sibTrackingV3',
       title: 'Sendinblue Tracking V3',
       description: 'Enter your Sendinblue Tracking ID.'
-    },
+    }
   ]
 })

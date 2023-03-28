@@ -74,7 +74,6 @@ const mainImageMeta = `
   "bgColor": mainImage.asset->metadata.palette.dominant.background
 `
 
-
 const modules = groq`
   ...,
   _type == "image" => {
@@ -309,7 +308,6 @@ export const site = groq`
     "menuDesktop"
   }
 `
-
 
 export const getRedirectBySlug = groq`
 *[_type == 'redirect' && fromPath.current == $slug && ${dateRangeChecker}][0] {

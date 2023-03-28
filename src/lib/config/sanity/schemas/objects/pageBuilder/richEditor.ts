@@ -9,17 +9,17 @@ export default {
     {
       name: 'content',
       title: 'Rich Editor',
-      type: 'blockContent',
-    },
+      type: 'blockContent'
+    }
   ],
   preview: {
     select: {
       content: 'content'
     },
-    prepare({ content }) {
+    prepare({content}) {
       return {
         title: 'Rich Editor',
-        subtitle: content ? content[0].children[0].text : '',
+        subtitle: content ? content[0].children[0].text : ''
       }
     }
   }

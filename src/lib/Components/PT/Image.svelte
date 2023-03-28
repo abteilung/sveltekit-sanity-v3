@@ -1,8 +1,8 @@
 <script lang="ts">
   import {urlForImage} from '$lib/config/sanity'
-  
-  export let portableText: any;
-  
+
+  export let portableText: any
+
   export let width: number = 940
   export let height: number = 480
   export let alt: string = portableText.value.alt
@@ -13,10 +13,10 @@
 </script>
 
 <div class="w-full" style="background-size: cover; background-image: url({lqip}); background-color: {bgColor};">
-  <img 
-    src={urlForImage(src, width, customRatio ? Math.round(width / customRatio) : height)} 
-    width={width}px 
-    height={customRatio ? Math.round(width / customRatio) : height}px
-    {alt} 
+  <img
+    src={urlForImage(src, width, customRatio ? Math.round(width / customRatio) : height)}
+    width="{width}px"
+    height="{customRatio ? Math.round(width / customRatio) : height}px"
+    {alt}
   />
 </div>

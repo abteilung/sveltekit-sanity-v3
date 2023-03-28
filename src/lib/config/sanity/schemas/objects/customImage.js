@@ -19,7 +19,7 @@ export default {
           type: 'string',
           title: 'Alternative text',
           description: 'Important for SEO and accessiblity.',
-          validation: Rule => Rule.required(),
+          validation: (Rule) => Rule.required()
         },
         {
           name: 'customRatio',

@@ -11,13 +11,9 @@ export function pageStructure(S) {
           S.listItem()
             .title('Pages')
             .icon(Files)
-            .child(S.documentTypeList('page').title('Pages').filter('_type == "page" && (_id != "frontPage")'))
-          ,
+            .child(S.documentTypeList('page').title('Pages').filter('_type == "page" && (_id != "frontPage")')),
           S.divider(),
-          S.listItem()
-            .title('Meta Pages')
-            .icon(Files)
-            .child(S.documentTypeList('meta').title('Meta Pages'))
+          S.listItem().title('Meta Pages').icon(Files).child(S.documentTypeList('meta').title('Meta Pages'))
         ])
     )
 }

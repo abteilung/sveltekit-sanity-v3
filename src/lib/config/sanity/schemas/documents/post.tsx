@@ -19,7 +19,7 @@ export default defineType({
       title: 'Visibility',
       name: 'visibility',
       options: {collapsible: true}
-    },
+    }
   ],
 
   // 2 columns
@@ -28,12 +28,12 @@ export default defineType({
       name: 'dateColumns',
       title: 'Date Settings',
       options: {collapsible: false, columns: 2}
-    }, 
+    },
     {
       name: 'publicationSettings',
       title: 'Publication Settings',
       options: {collapsible: false, columns: 2}
-    },
+    }
   ],
 
   fields: [
@@ -135,15 +135,17 @@ export default defineType({
       startDate: 'startDate',
       endDate: 'endDate',
       isHidden: 'isHidden',
-      isFeatured: 'isFeatured',
+      isFeatured: 'isFeatured'
     },
-    prepare({title, author, media,isHidden, startDate, endDate, isFeatured}) {
+    prepare({title, author, media, isHidden, startDate, endDate, isFeatured}) {
       return {
         title: isFeatured ? `🔥 ${title}` : title,
         // Human readable short Date
-        subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : '' } ${endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''}`,
+        subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : ''} ${
+          endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''
+        }`,
         // Use Icon instead of Image if isHidden is true
-        media: isHidden ? EyeSlash : media,
+        media: isHidden ? EyeSlash : media
       }
     }
   }

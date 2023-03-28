@@ -17,7 +17,6 @@
     initialData,
     enabled: previewMode && !!slug
   }))
-
 </script>
 
 <svelte:head>
