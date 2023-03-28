@@ -104,6 +104,9 @@ const modules = groq`
       ...
     }
   },
+  _type == "emptySpace" => {
+    value
+  },
   _type == "teaserGrid" => {
     // No Drafts!
     "teasers": *[_type == ^.typeSelector] {

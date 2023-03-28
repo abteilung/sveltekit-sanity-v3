@@ -21,7 +21,7 @@
     src={urlForImage(src, width, customRatio ? Math.round(width / customRatio) : height)}
     width="{width}px"
     height="{customRatio ? Math.round(width / customRatio) : height}px"
-    class={additionalClass}
+    class={'w-full ' + additionalClass}
     {alt}
   />
 </div>

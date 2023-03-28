@@ -48,6 +48,7 @@ import faqReference from './schemas/objects/faqReference'
 import pageBuilder from './schemas/objects/pageBuilder'
 import richEditor from './schemas/objects/pageBuilder/richEditor'
 import teaserGrid from './schemas/objects/pageBuilder/teaserGrid'
+import emptySpace from './schemas/objects/pageBuilder/emptySpace'
 
 // Navigatons
 import menu from './schemas/documents/menu'
@@ -105,6 +106,7 @@ export default defineConfig({
       pageBuilder,
       richEditor,
       teaserGrid,
+      emptySpace,
 
       // Components
       //   shcemas/objects

@@ -14,7 +14,8 @@ export default {
       of: [
         {type: 'richEditor'},
         {type: 'teaserGrid'},
-        {type: 'customImage'}
+        {type: 'customImage'},
+        {type: 'emptySpace'}
         // {type: 'accordions'},
         // {type: 'gallery'},
         // {type: 'cta'},
