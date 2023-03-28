@@ -1,26 +1,21 @@
 <script lang="ts">
   import {urlForImage} from '$lib/config/sanity'
 
+  export let portableText: any;
   $: ({value} = portableText)
-  export let portableText
   export let width: number = 940
   export let height: number = 480
   export let alt: string = 'Image'
-  export let src: string = portableText.value.image
-  export let lqip: string = portableText.value.asset.metadata.lqip
-  export let bgColor: string = portableText.value.asset.metadata.palette.dominant.background
+  export let src: string = portableText.value.asset
+  // portableText.value.asset.metadata.lqip
+  export let lqip: string = ""
+  // portableText.value.asset.metadata.palette.dominant.background
+  export let bgColor: string = ""
   export let customRatio: number = 1.777
 
-  $: if (value.alt) {
-    alt = value.alt
-  }
 </script>
 
-<div
-  style="background-image: url({lqip}); background-color: {bgColor}; width: {width}px; height: {value.customRatio
-    ? Math.round(width / value.customRatio)
-    : height}px"
->
+<div style="background-image: url({value.lqip}); background-color: {value.bgColor};">
   <img src={urlForImage(src, width, value.customRatio ? Math.round(width / value.customRatio) : height)} {alt} />
 </div>
 

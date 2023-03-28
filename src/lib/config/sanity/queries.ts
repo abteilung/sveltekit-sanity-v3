@@ -55,29 +55,33 @@ const link = `
 `
 
 // Construct our "image meta" GROQ
+// Is it really image->altText?
 export const imageMeta = `
-  "alt": coalesce(alt, asset->altText),
-  asset,
-  crop,
-  customRatio,
-  hotspot,
-  "id": asset->assetId,
-  "type": asset->mimeType,
-  "aspectRatio": asset->metadata.dimensions.aspectRatio,
-  "lqip": asset->metadata.lqip
+  "alt": coalesce(image.alt, image->altText),
+  "asset": image.asset,
+  "crop": image.crop,
+  "customRatio": image.customRatio,
+  "hotspot": image.hotspot,
+  "id": image.asset->assetId,
+  "type": image.asset->mimeType,
+  "aspectRatio": image.asset->metadata.dimensions.aspectRatio,
+  "lqip": image.asset->metadata.lqip,
+  "bgColor": image.asset->metadata.palette.dominant.background
 `
 
 const modules = groq`
   ...,
   _type == "image" => {
-    "alt": coalesce(image.alt, image.asset->altText), 
-    "asset": image,
-    "customRatio": image.customRatio,
+    ${imageMeta}
+    // "alt": coalesce(image.alt, image.asset->altText), 
+    // "asset": image,
+    // "customRatio": image.customRatio,
   },
   _type == "customImage" => {
-    "alt": image.alt, 
-    "asset": image.asset ->,
-    "customRatio": image.customRatio,
+    ${imageMeta}
+    // "alt": image.alt, 
+    // "asset": image.asset ->,
+    // "customRatio": image.customRatio,
   },
   _type == "gallery" => {
     display, imagesPerRow, zoom,
@@ -147,8 +151,10 @@ const documentFields = groq`
   body[] {
     ${modules}
   },
+  ${imageMeta},
   mainImage,
-  "img": mainImage.image.asset ->,
+  // "image": mainImage.asset ->,
+  // "img": mainImage.image.asset ->,
   "slug": slug.current,
   ${linkTypes},
   "author": author->{name, "image": image.image},
