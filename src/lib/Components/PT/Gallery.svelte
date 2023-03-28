@@ -6,9 +6,6 @@
 
   import {onMount} from 'svelte'
 
-  import BlazeSlider from 'blaze-slider'
-  import 'blaze-slider/dist/blaze.css'
-
   // register Swiper custom elements
   export let portableText: any
   $: ({value} = portableText)
