@@ -1,5 +1,5 @@
 <script lang="ts">
-  import PortableBlock from '$lib/components/PortableBlock.svelte'
+  import PortableBlock from '$lib/Components/PortableBlock.svelte'
 
   export let block
   $: ({content} = block)
