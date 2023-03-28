@@ -3,7 +3,6 @@
 </script>
 
 <svelte:head>
-  {#if seoData.title}
     <title>{seoData.title}</title>
-  {/if}
+    <meta name="description" content={seoData.description} />
 </svelte:head>

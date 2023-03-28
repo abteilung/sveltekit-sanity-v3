@@ -4,6 +4,7 @@
   import {urlForImage} from '$lib/config/sanity'
   import type {PageData} from './$types'
   import PortableBlock from '$lib/Components/PortableBlock.svelte'
+  import PageSeo from '$lib/Components/PageSeo.svelte'
 
   import Header from '$lib/Components/Header.svelte'
 
@@ -20,7 +21,7 @@
 </script>
 
 <svelte:head>
-  <title>{$postData?.post?.title || 'Post'}</title>
+  <PageSeo seoData={$postData.post.seoData} />
 </svelte:head>
 
 {#if $postData?.post}

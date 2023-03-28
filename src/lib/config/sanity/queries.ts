@@ -152,7 +152,6 @@ const documentFields = groq`
   _type,
   "category": categories[0]->,
   title,
-  "seoTitle":  title + ' | ' + *[_type == 'settings'][0].title,
   subtitle,
   "date": coalesce(
     publishedAt,
@@ -170,6 +169,10 @@ const documentFields = groq`
   "slug": slug.current,
   ${linkTypes},
   "author": author->{name, "image": image.image},
+  "seoData": {
+    "title":  title + ' | ' + *[_type == 'settings'][0].title,
+    "description": pt::text(content[]),
+  },
 `
 
 // Posts Stuff
