@@ -105,7 +105,7 @@ const modules = groq`
     }
   },
   _type == "emptySpace" => {
-    value
+    value, showRule
   },
   _type == "teaserGrid" => {
     // No Drafts!

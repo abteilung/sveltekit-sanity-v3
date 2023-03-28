@@ -26,16 +26,23 @@ export default {
           }
         ]
       }
+    },
+    {
+      title: 'Show Rule',
+      name: 'showRule',
+      type: 'boolean'
     }
   ],
   preview: {
     select: {
-      title: 'value'
+      title: 'value',
+      subtitle: 'showRule'
     },
-    prepare({title: subtitle}) {
+    prepare({title, subtitle}) {
       return {
-        title: 'Vertical Spacer',
-        subtitle
+        title: title + ' Vertical Spacer',
+        // Show if the rule is shown
+        subtitle: subtitle ? 'Rule' : 'No Rule'
       }
     }
   }

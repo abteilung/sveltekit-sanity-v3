@@ -1,8 +1,14 @@
 <script lang="ts">
-    import classNames from 'classnames'
+  import classNames from 'classnames'
   export let block: string
 
-  $: ({value} = block)
+  let classes = ''
+
+  $: ({value, showRule} = block)
 </script>
 
-<div class={classNames("w-full m-0 block py-8", value == 'small' ? 'py-4' : 'py-12')} />
+<div class={classNames(classes, 'w-full m-0 block py-8', value == 'small' ? 'py-4' : 'py-12')}>
+  {#if showRule}
+    <hr class="w-1/6 mx-auto" />
+  {/if}
+</div>
