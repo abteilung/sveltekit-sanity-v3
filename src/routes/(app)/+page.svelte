@@ -1,30 +1,19 @@
 <script lang="ts">
   import {urlForImage} from '$lib/config/sanity'
   import type {PageData} from './$types'
-
-  import Image from '$lib/Components/PT/Image.svelte'
+  
+  import PageBuilder from '$lib/Components/PageBuilder/PageBuilder.svelte'
+  import Image from '$lib/Components/PageBuilder/Image.svelte'
 
   export let data: PageData
 
-  $: ({posts} = data)
+  $: ({page} = data)
 </script>
 
 <svelte:head>
-  <title>Layout with left Navigation and revealing Footer</title>
+  <title>{page.seoTitle}</title>
 </svelte:head>
 
-<div class="grid w-full grid-cols-2">
-  {#each posts as post}
-    <div class="post">
-      <a href={post.href} class="block space-y-4">
-        {#if post.image}
-          img: {JSON.stringify(post.image)}
-        {/if}
-        <div>
-          <h4 class="mb-2">{post.subtitle}</h4>
-          <h3>{post.title}</h3>
-        </div>
-      </a>
-    </div>
-  {/each}
-</div>
+{#if page}
+  <PageBuilder blocks={page.content} />
+{/if}

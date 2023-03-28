@@ -152,6 +152,7 @@ const documentFields = groq`
   _type,
   "category": categories[0]->,
   title,
+  "seoTitle":  title + ' | ' + *[_type == 'settings'][0].title,
   subtitle,
   "date": coalesce(
     publishedAt,
@@ -205,6 +206,13 @@ export const getPageBySlug = groq`
 *[(_type == 'page' && slug.current == $slug && _id != 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
+
+export const getHomepage = groq`
+*[(_type == 'page' && _id == 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+  ${documentFields}
+}`
+
+
 
 export const getSiteConfig = groq`
   *[_type == 'settings'][0] {
