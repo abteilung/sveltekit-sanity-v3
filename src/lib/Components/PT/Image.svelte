@@ -12,6 +12,11 @@
   export let customRatio: number = portableText.value.customRatio
 </script>
 
-<div class="w-full" style="background-image: url({lqip}); background-color: {bgColor};">
-  <img src={urlForImage(src, width, customRatio ? Math.round(width / customRatio) : height)} {alt} />
+<div class="w-full" style="background-size: cover; background-image: url({lqip}); background-color: {bgColor};">
+  <img 
+    src={urlForImage(src, width, customRatio ? Math.round(width / customRatio) : height)} 
+    width={width}px 
+    height={customRatio ? Math.round(width / customRatio) : height}px
+    {alt} 
+  />
 </div>

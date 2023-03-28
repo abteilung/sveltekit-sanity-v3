@@ -71,6 +71,12 @@ export default defineType({
       }
     },
     {
+      name: 'content',
+      title: 'Page Content',
+      type: 'pageBuilder',
+      group: 'default'
+    },
+    {
       name: 'body',
       title: 'Content',
       type: 'blockContent',

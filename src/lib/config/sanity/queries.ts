@@ -58,29 +58,23 @@ const link = `
 // Is it really image->altText?
 const imageMeta = `
   "alt": coalesce(image.alt, image->altText),
-  "asset": image.asset,
-  "crop": image.crop,
+  "asset": image,
   "customRatio": image.customRatio,
-  "hotspot": image.hotspot,
-  "id": image.asset->assetId,
   "type": image.asset->mimeType,
-  "aspectRatio": image.asset->metadata.dimensions.aspectRatio,
   "lqip": image.asset->metadata.lqip,
   "bgColor": image.asset->metadata.palette.dominant.background
 `
 
 const mainImageMeta = `
   "alt": coalesce(mainImage.alt, mainImage->altText),
-  "asset": mainImage.asset,
-  "crop": mainImage.crop,
+  "asset": mainImage,
   "customRatio": mainImage.customRatio,
-  "hotspot": mainImage.hotspot,
-  "id": mainImage.asset->assetId,
   "type": mainImage.asset->mimeType,
-  "aspectRatio": mainImage.asset->metadata.dimensions.aspectRatio,
   "lqip": mainImage.asset->metadata.lqip,
   "bgColor": mainImage.asset->metadata.palette.dominant.background
 `
+
+
 
 const modules = groq`
   ...,
@@ -104,17 +98,18 @@ const modules = groq`
   _type == "richEditor" => {
     content
   },
+  _type == "richEditor" => {
+    content
+  },
   _type == "slider" => {
     "slides": @->slides[] {
       ...
     }
   },
-  _type == "postsGrid" => {
-    "posts": *[
-      type == 'post'
-      // No Drafts!
-     && !(_id in path("drafts.**"))
-    ]
+  _type == "teaserGrid" => {
+    // No Drafts!
+    "teasers": *[_type == ^.typeSelector][0 ... 3] {
+      ... }
     | order(publishDate desc)
   },
 `
@@ -158,6 +153,10 @@ const documentFields = groq`
   body[] {
     ${modules}
   },
+  "content": content.pageBuilder[] {
+    ${columns}
+    ${modules}
+  },  
   ${mainImageMeta},
   "slug": slug.current,
   ${linkTypes},
@@ -223,6 +222,7 @@ export const getSiteConfig = groq`
         googleAnalytics,
         googleTagManager,
         plausibleAnalytics,
+        sibTrackingV3,
     },
     "seo": {
       themeColor,

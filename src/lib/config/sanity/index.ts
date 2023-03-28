@@ -12,7 +12,7 @@ export const imageBuilder = createImageUrlBuilder(sanityConfig)
  * Read more: https://www.sanity.io/docs/image-url
  **/
 export const urlForImage = (source: SanityImageSource, width: number, height: number) => {
-  return imageBuilder.image(source).width(width).height(height).auto('format').fit('max')
+	return imageBuilder.image(source).width(width).height(height).auto('format').fit('crop');
 }
 
 export const responsiveImage = (

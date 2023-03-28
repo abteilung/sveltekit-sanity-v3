@@ -17,7 +17,9 @@ export default {
         {
           name: 'alt',
           type: 'string',
-          title: 'Alternative text'
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+          validation: Rule => Rule.required(),
         },
         {
           name: 'customRatio',

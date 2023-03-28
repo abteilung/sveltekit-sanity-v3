@@ -44,6 +44,11 @@ import testimonialReference from './schemas/objects/testimonialReference'
 import code from './schemas/objects/code'
 import faqReference from './schemas/objects/faqReference'
 
+// PageBuilder
+import pageBuilder from './schemas/objects/pageBuilder'
+import richEditor from './schemas/objects/pageBuilder/richEditor'
+import teaserGrid from './schemas/objects/pageBuilder/teaserGrid'
+
 // Navigatons
 import menu from './schemas/documents/menu'
 import navigations from './schemas/documents/navigations'
@@ -95,6 +100,11 @@ export default defineConfig({
       testimonialReference,
       code,
       faqReference,
+
+      // PageBuilder
+      pageBuilder,
+      richEditor,
+      teaserGrid,
 
       // Components
       //   shcemas/objects
