@@ -75,7 +75,6 @@ const mainImageMeta = `
 `
 
 
-
 const modules = groq`
   ...,
   _type == "image" => {
@@ -108,8 +107,10 @@ const modules = groq`
   },
   _type == "teaserGrid" => {
     // No Drafts!
-    "teasers": *[_type == ^.typeSelector][0 ... 3] {
-      ... }
+    "teasers": *[_type == ^.typeSelector] {
+      ...,
+      ${linkTypes},
+    }
     | order(publishDate desc)
   },
 `
