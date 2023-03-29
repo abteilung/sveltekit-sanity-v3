@@ -4,7 +4,6 @@
   import {urlForImage} from '$lib/config/sanity'
   import type {PageData} from './$types'
   import PortableBlock from '$lib/Components/PortableBlock.svelte'
-  import PageSeo from '$lib/Components/PageSeo.svelte'
 
   import Header from '$lib/Components/Header.svelte'
 
