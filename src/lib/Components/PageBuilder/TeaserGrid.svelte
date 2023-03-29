@@ -1,8 +1,16 @@
 <script lang="ts">
   import classNames from 'classnames'
   import Image from '$lib/Components/PageBuilder/Image.svelte'
+import { fly } from 'svelte/transition'
 
-  import type {SwiperOptions} from 'swiper'
+    import { onMount } from 'svelte'
+
+let hidden = true
+onMount (() => {
+    hidden = false
+})
+
+
   import {Swiper, SwiperSlide} from 'swiper/svelte'
   import 'swiper/css'
 
@@ -70,7 +78,11 @@ itemSelector: {itemSelector}<br>
   <ul class={classNames('grid-cols-' + columns, 'grid')}>
     {#each teasers as teaser, i}
       {#if i < maxItems}
-        <li>
+      {#if hidden === false}
+        <li
+            in:fly={{ x: -50, y:-20, delay: i * 75, duration: 500, opacity: 0 }}
+
+        >
           <a href={teaser.href} class="block space-y-4 group">
             {#if teaser.mainImage}
               <Image block={teaser.mainImage} additionalClass="group-hover:scale-105 duration-300 transition-all" />
@@ -81,6 +93,7 @@ itemSelector: {itemSelector}<br>
             </div>
           </a>
         </li>
+        {/if}
       {/if}
     {/each}
   </ul>
