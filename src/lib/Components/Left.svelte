@@ -2,6 +2,32 @@
   import Icons from '$lib/Components/Icons.svelte'
   import MultilevelNavigation from '$lib/Components/Navigation/MultilevelNavigation.svelte'
 
+  import { onMount } from 'svelte'
+  import { cartCount } from '$lib/Stores/Shopify' 
+
+  let count: number = 0;
+
+  cartCount.subscribe((data) => {
+    count = data
+  })
+
+	onMount(() => {
+		const shopify = JSON.parse(localStorage.getItem('shopify'));
+		if (shopify) {
+			if (shopify.lines == 0) {
+				// empty from new cart
+				cartCount.set(0);
+			} else if (shopify.lines.edges == 0) {
+				// empty from clearing cart from cart.svelte
+				cartCount.set(0);
+			} else {
+				cartCount.set(shopify.lines.edges.length);
+			}
+		}
+	});
+
+
+
   // Menu object with title, href
   export let menu = [
     {
@@ -50,6 +76,8 @@
     </a>
     <div class="mt-[100px] hidden md:block">
       <MultilevelNavigation {menu} {width} />
+
+      Basket-Count: {count}
     </div>
   </div>
   <div class="hidden md:flex mt-auto pt-[50px] mb-0">
