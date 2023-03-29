@@ -21,7 +21,6 @@
 </script>
 
 <svelte:head>
-  <PageSeo seoData={$postData.post.seoData} />
 </svelte:head>
 
 {#if $postData?.post}

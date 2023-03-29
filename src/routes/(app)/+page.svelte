@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-  <PageSeo seoData={page.seoData} />
+  <!-- <PageSeo seoData={page.seoData} /> -->
 </svelte:head>
 
 {#if page}
