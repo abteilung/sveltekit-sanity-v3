@@ -1,4 +1,6 @@
 
+<!-- https://github.com/RickyRivas/shopify-sveltekit/blob/main/src/routes/products/%5Bhandle%5D.svelte -->
+
 <script lang="ts">
 
 import OptionToggler from '$lib/Components/Shop/OptionToggler.svelte';
