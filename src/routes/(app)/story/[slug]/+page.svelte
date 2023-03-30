@@ -41,9 +41,6 @@
   {/if}
 {/if}
 
-
-
-
 <!-- 
   {JSON.stringify(post.previous)}
   {JSON.stringify(post.next)} 
