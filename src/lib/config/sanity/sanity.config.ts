@@ -1,5 +1,6 @@
 import {defineConfig, type Slug} from 'sanity'
 import {availability} from 'sanity-plugin-availability'
+import { googleMapsInput } from "@sanity/google-maps-input";
 
 import {PostsPreview} from './Components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
@@ -43,6 +44,10 @@ import customImage from './schemas/objects/customImage'
 import testimonialReference from './schemas/objects/testimonialReference'
 import code from './schemas/objects/code'
 import faqReference from './schemas/objects/faqReference'
+
+import shopifyProduct from './schemas/objects/shopify/shopifyProduct'
+import shpifyProductVariant from './schemas/objects/shopify/shopifyProductVariant'
+import shopifyProductOption from './schemas/objects/shopify/shopifyProductOption'
 
 // PageBuilder
 import pageBuilder from './schemas/objects/pageBuilder'
@@ -103,6 +108,10 @@ export default defineConfig({
       code,
       faqReference,
 
+      shopifyProduct,
+      shpifyProductVariant,
+      shopifyProductOption,
+
       // PageBuilder
       pageBuilder,
       richEditor,
@@ -145,6 +154,9 @@ export default defineConfig({
     }),
     media(),
     noteField(),
+    googleMapsInput({
+      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    }),
     availability()
   ],
   document: {

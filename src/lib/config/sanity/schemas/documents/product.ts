@@ -1,20 +1,37 @@
 import {Storefront} from '@phosphor-icons/react'
+import {defineField, defineType} from 'sanity'
 
 export default {
   name: 'product',
   title: 'Products',
   type: 'document',
   icon: Storefront,
+  groups: [
+    {
+      name: 'default',
+      title: 'Default',
+      description: 'Default fields',
+      default: true
+    },
+    {
+      name: 'shopifySync',
+      title: 'Shopify Sync',
+      description: 'Fields that are synced from Shopify'
+    }
+  ],
   fields: [
     {
       name: 'subtitle',
       title: 'eyebrow (H1)',
-      type: 'string'
+      type: 'string',
+      group: 'default'
     },
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+      group: 'default'
     },
     {
       name: 'slug',
@@ -24,12 +41,28 @@ export default {
       options: {
         source: 'title',
         maxLength: 96
-      }
+      },
+      group: 'default'
     },
+
+    defineField({
+      name: 'store',
+      title: 'Shopify',
+      type: 'shopifyProduct',
+      description: 'Product data from Shopify (read-only)',
+      group: 'shopifySync',
+    }),    
     {
       name: 'teaser',
       title: 'Teaser',
-      type: 'blockContent'
+      type: 'blockContent',
+      group: 'default'
+    },
+    {
+      name: 'youtube',
+      title: 'Youtube',
+      type: 'string',
+      group: 'default'
     },
     {
       name: 'mainImage',
@@ -38,17 +71,20 @@ export default {
       validation: (Rule) => Rule.required(),
       options: {
         hotspot: true
-      }
-    },
-    {
-      name: 'youtube',
-      title: 'Youtube-Movie',
-      type: 'url'
+      },
+      group: 'default'
     },
     {
       name: 'productIcon',
       title: 'Product Icon',
-      type: 'customImage'
+      type: 'customImage',
+      group: 'default'
+    },
+    {
+      name: 'content',
+      title: 'Page Content',
+      type: 'pageBuilder',
+      group: 'default'
     },
     {
       name: 'body',
