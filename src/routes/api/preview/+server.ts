@@ -2,7 +2,7 @@ import type {RequestHandler} from './$types'
 import {env} from '$env/dynamic/private'
 import {error, redirect} from '@sveltejs/kit'
 import {getSanityServerClient} from '$lib/config/sanity/client'
-import {postBySlugQuery} from '$lib/config/sanity/queries'
+import {getPostBySlug} from '$lib/config/sanity/queries'
 import {setPreviewCookie} from '$lib/utils'
 
 export const GET: RequestHandler = async ({url, cookies, setHeaders}) => {
@@ -28,7 +28,7 @@ export const GET: RequestHandler = async ({url, cookies, setHeaders}) => {
 
   // Our query may vary depending on the type.
   if (type === 'post') {
-    const post = await getSanityServerClient(true).fetch(postBySlugQuery, {
+    const post = await getSanityServerClient(true).fetch(getPostBySlug, {
       slug
     })
 

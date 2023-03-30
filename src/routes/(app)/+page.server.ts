@@ -7,7 +7,7 @@ export const load = async ({parent, params}) => {
   const page = async () => {
     return await getSanityServerClient(false).fetch(getHomepage)
   }
-  
+
   if (!page) {
     throw error(404, 'Page not found')
   }

@@ -38,13 +38,15 @@
 >
   {#each value.images as slide, i}
     <li id={i} class:active={i === index} class="h-96 aspect-[16/9] relative max-w-full">
-      <img
-        src={urlForImage(slide.image, 800, 600)}
-        alt={slide.alt}
-        width="800"
-        height="600"
-        class="w-full h-full object-cover"
-      />
+      {#if slide.image}
+        <img
+          src={urlForImage(slide.image, 800, 600)}
+          alt={slide.alt}
+          width="800"
+          height="600"
+          class="w-full h-full object-cover"
+        />
+      {/if}
     </li>
   {/each}
 </ul>

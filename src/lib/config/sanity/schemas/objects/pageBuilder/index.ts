@@ -16,7 +16,7 @@ export default {
         {type: 'teaserGrid'},
         {type: 'customImage'},
         {type: 'emptySpace'},
-        {type: 'columns'},
+        {type: 'columns'}
         // {type: 'accordions'},
         // {type: 'gallery'},
         // {type: 'cta'},

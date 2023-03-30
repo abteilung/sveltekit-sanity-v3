@@ -5,23 +5,15 @@ import {error} from '@sveltejs/kit'
 export const load = async ({parent, params}) => {
   const {previewMode} = await parent()
 
-  const {post, morePosts} = await getSanityServerClient(previewMode).fetch<{
-    post: Post
-    morePosts: Post[]
-  }>(getPostBySlug, {
-    slug: params.slug
-  })
+  const post = async () => {
+    return await getSanityServerClient(false).fetch(getPostBySlug, {slug: params.slug})
+  }
 
   if (!post) {
     throw error(404, 'Post not found')
   }
 
   return {
-    previewMode,
-    slug: post?.slug || params.slug,
-    initialData: {
-      post,
-      morePosts: overlayDrafts(morePosts)
-    }
+    post: post()
   }
 }

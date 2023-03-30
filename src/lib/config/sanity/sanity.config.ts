@@ -1,6 +1,6 @@
 import {defineConfig, type Slug} from 'sanity'
 import {availability} from 'sanity-plugin-availability'
-import { googleMapsInput } from "@sanity/google-maps-input";
+import {googleMapsInput} from '@sanity/google-maps-input'
 
 import {PostsPreview} from './Components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
@@ -155,7 +155,7 @@ export default defineConfig({
     media(),
     noteField(),
     googleMapsInput({
-      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     }),
     availability()
   ],

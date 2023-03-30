@@ -50,8 +50,8 @@ export default {
       title: 'Shopify',
       type: 'shopifyProduct',
       description: 'Product data from Shopify (read-only)',
-      group: 'shopifySync',
-    }),    
+      group: 'shopifySync'
+    }),
     {
       name: 'teaser',
       title: 'Teaser',

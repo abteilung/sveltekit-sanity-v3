@@ -177,31 +177,25 @@ const documentFields = groq`
 
 // Posts Stuff
 export const getPostBySlug = groq`
-{
+*[_type == "post" && slug.current == $slug && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true && ${dateRangeChecker}][0]{
-    content,
     ${documentFields}
   },
-  "post": *[_type == "post" && slug.current == $slug && ${dateRangeChecker}] | order(_updatedAt desc) [0] {
-    content,
+  "current": *[_type == "post" && slug.current == $slug && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
     ${documentFields}
   },
-  "morePosts": *[_type == "post" && slug.current != $slug && ${dateRangeChecker}] | order(date desc, _updatedAt desc) [0...2] {
-    content,
+  "previous": *[_type == "post" && ^.publishedAt > publishedAt && ${dateRangeChecker}]|order(publishedAt desc)[0]{ 
+      ${documentFields}
+    },
+  "next": *[_type == "post" && ^.publishedAt < publishedAt && ${dateRangeChecker}]|order(publishedAt asc)[0]{ 
     ${documentFields}
-  }
+  },    
 }`
 
 export const getAllPosts = groq`
 *[_type == "post" && defined(slug.current) && ${dateRangeChecker}] | order(date desc, _updatedAt desc) {
   ${documentFields}
 }`
-
-export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug && ${dateRangeChecker}][0] {
-  ${documentFields}
-}
-`
 
 // Configure Page Blocks with modules and columns
 
@@ -214,8 +208,6 @@ export const getHomepage = groq`
 *[(_type == 'page' && _id == 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
-
-
 
 export const getSiteConfig = groq`
   *[_type == 'settings'][0] {

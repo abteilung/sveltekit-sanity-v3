@@ -12,26 +12,26 @@ export default defineField({
     defineField({
       title: 'Name',
       name: 'name',
-      type: 'string',
+      type: 'string'
     }),
     // Values
     defineField({
       title: 'Values',
       name: 'values',
       type: 'array',
-      of: [{type: 'string'}],
-    }),
+      of: [{type: 'string'}]
+    })
   ],
   preview: {
     select: {
-      name: 'name',
+      name: 'name'
     },
     prepare(selection) {
       const {name} = selection
 
       return {
-        title: name,
+        title: name
       }
-    },
-  },
+    }
+  }
 })

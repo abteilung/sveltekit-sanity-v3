@@ -1,16 +1,16 @@
 import {writable, type Writable} from 'svelte/store'
 
-import { postToShopify } from '../../routes/api/postToShopify';
+import {postToShopify} from '../../routes/api/postToShopify'
 
 export const products = writable([])
 export const productDetails = writable([])
 
 export const cartCount = writable(0)
 export const getProductDetails = async (handle) => {
-    // get product details when entering [handle].svelte
-    try {
-        const shopifyResponse = await postToShopify({
-            query: `
+  // get product details when entering [handle].svelte
+  try {
+    const shopifyResponse = await postToShopify({
+      query: `
                 query getProduct($handle: String!){
                     productByHandle(handle: $handle) {
                         id
@@ -52,23 +52,23 @@ export const getProductDetails = async (handle) => {
                     }
                 }
             `,
-            variables: {
-                handle: handle
-            }
-        })
+      variables: {
+        handle: handle
+      }
+    })
 
-        productDetails.set(shopifyResponse.productByHandle);
-        return shopifyResponse.productByHandle;
-    } catch (error) {
-        console.log(error)
-    }
+    productDetails.set(shopifyResponse.productByHandle)
+    return shopifyResponse.productByHandle
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-// fetch all products  
+// fetch all products
 export const getProducts = async () => {
-    try {
-        const shopifyResponse = await postToShopify({
-            query: `{
+  try {
+    const shopifyResponse = await postToShopify({
+      query: `{
             products(sortKey: TITLE, first: 100) {
             edges {
                 node {
@@ -111,9 +111,9 @@ export const getProducts = async () => {
             }
         }
       `
-        });
-        return shopifyResponse;
-    } catch (error) {
-        console.log(error, ';<')
-    }
+    })
+    return shopifyResponse
+  } catch (error) {
+    console.log(error, ';<')
+  }
 }

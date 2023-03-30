@@ -1,14 +1,9 @@
-import {
-    postToShopify
-  } from '../postToShopify';
-  
-  export const removeItemFromCart = async ({
-    cartId,
-    lineId
-  }) => {
-    try {
-      const shopifyResponse = await postToShopify({
-        query: `
+import {postToShopify} from '../postToShopify'
+
+export const removeItemFromCart = async ({cartId, lineId}) => {
+  try {
+    const shopifyResponse = await postToShopify({
+      query: `
           mutation removeItemFromCart($cartId: ID!, $lineIds: [ID!]!) {
             cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
               cart {
@@ -66,13 +61,13 @@ import {
             }
           }
         `,
-        variables: {
-          cartId,
-          lineIds: [lineId]
-        }
-      })
-      return shopifyResponse
-    } catch (e) {
-      console.log(e)
-    }
+      variables: {
+        cartId,
+        lineIds: [lineId]
+      }
+    })
+    return shopifyResponse
+  } catch (e) {
+    console.log(e)
   }
+}

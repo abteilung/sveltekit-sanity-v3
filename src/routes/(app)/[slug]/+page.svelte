@@ -6,8 +6,7 @@
   $: ({page} = data)
 </script>
 
-<svelte:head>
-</svelte:head>
+<svelte:head />
 
 {#if page}
   <PageBuilder blocks={page.content} />

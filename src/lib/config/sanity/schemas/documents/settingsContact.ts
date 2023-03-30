@@ -79,7 +79,6 @@ export default defineType({
               title: 'Geolocation',
               type: 'geopoint',
               description: 'Enter the geolocation of the location.'
-              
             },
             {
               name: 'availability',
