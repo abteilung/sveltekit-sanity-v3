@@ -19,6 +19,7 @@
 <header id="header" class="relative text-white overflow-hidden">
   <div class="headerContent">
     <slot />
+    {pageTitle}
   </div>
   <div class="absolute top-0 left-0 inset-0 isolate z-0">
     <img src={bgImage} alt="background" class="absolute top-0 left-0 w-full h-full object-cover z-10" />

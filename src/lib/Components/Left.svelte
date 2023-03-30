@@ -2,29 +2,16 @@
   import Icons from '$lib/Components/Icons.svelte'
   import MultilevelNavigation from '$lib/Components/Navigation/MultilevelNavigation.svelte'
 
-  import {onMount} from 'svelte'
-  import {cartCount} from '$lib/Stores/Shopify'
+  import SearchBar from '$lib/Components/Shop/SearchBar.svelte'
+  import {cartQuantity} from '$lib/Stores/Shopify'
+  import {createEventDispatcher} from 'svelte'
 
-  let count: number = 0
+  const dispatch = createEventDispatcher()
 
-  cartCount.subscribe((data) => {
-    count = data
-  })
-
-  onMount(() => {
-    const shopify = JSON.parse(localStorage.getItem('shopify'))
-    if (shopify) {
-      if (shopify.lines == 0) {
-        // empty from new cart
-        cartCount.set(0)
-      } else if (shopify.lines.edges == 0) {
-        // empty from clearing cart from cart.svelte
-        cartCount.set(0)
-      } else {
-        cartCount.set(shopify.lines.edges.length)
-      }
-    }
-  })
+  function openCart() {
+    dispatch('openCart', true)
+    console.log('openCart: ', openCart)
+  }
 
   // Menu object with title, href
   export let menu = [
@@ -75,7 +62,18 @@
     <div class="mt-[100px] hidden md:block">
       <MultilevelNavigation {menu} {width} />
 
-      Basket-Count: {count}
+      Basket-Count: {$cartQuantity}
+      <SearchBar />
+
+      <button on:click={openCart} class="relative my-2 mx-4">
+        <Icons strokeColor="#fff" type="cart" />
+        <div
+          data-test="cart-quantity"
+          class="absolute bottom-0 left-0 -ml-3 -mb-3 flex h-5 w-5 items-center justify-center rounded-full border border-black bg-white text-xs text-black"
+        >
+          {$cartQuantity}
+        </div>
+      </button>
     </div>
   </div>
   <div class="hidden md:flex mt-auto pt-[50px] mb-0">

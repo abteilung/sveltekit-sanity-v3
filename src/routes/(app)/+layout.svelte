@@ -9,11 +9,82 @@
   import CookieBanner from '$lib/Components/CookieBanner.svelte'
   import menu from '$lib/config/sanity/schemas/documents/menu'
 
-  let isLoaded: boolean = false
+  import ShoppingCart from '$lib/Components/Shop/ShoppingCart.svelte'
+  import {getCartItems} from '$lib/Stores/Shopify'
+  import {createCart} from '$lib/utils/shopify'
 
-  onMount(() => {
-    isLoaded = true
+  let cartId
+  let checkoutUrl
+  let cartCreatedAt
+  let cartItems = []
+  onMount(async () => {
+    if (typeof window !== 'undefined') {
+      cartId = JSON.parse(localStorage.getItem('cartId'))
+      cartCreatedAt = JSON.parse(localStorage.getItem('cartCreatedAt'))
+      checkoutUrl = JSON.parse(localStorage.getItem('cartUrl'))
+      let currentDate = Date.now()
+      let difference = currentDate - cartCreatedAt
+      let totalDays = Math.ceil(difference / (1000 * 3600 * 24))
+      let cartIdExpired = totalDays > 6
+      if (cartId === 'undefined' || cartId === 'null' || cartIdExpired) {
+        await callCreateCart()
+      }
+      await loadCart()
+      document.addEventListener('keydown', (e) => {
+        let keyCode = e.keyCode
+        if (keyCode === 27) {
+          showCart = false
+        }
+      })
+    }
   })
+  async function callCreateCart() {
+    const cartRes = await createCart()
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cartCreatedAt', Date.now())
+      localStorage.setItem('cartId', JSON.stringify(cartRes.body?.data?.cartCreate?.cart?.id))
+      localStorage.setItem('cartUrl', JSON.stringify(cartRes.body?.data?.cartCreate?.cart?.checkoutUrl))
+    }
+  }
+  async function loadCart() {
+    const res = await getCartItems()
+    cartItems = res?.body?.data?.cart?.lines?.edges
+  }
+  let showCart = false
+  let loading = false
+  async function openCart() {
+    await loadCart()
+    showCart = true
+  }
+  function hideCart() {
+    showCart = false
+  }
+  function getCheckoutUrl() {
+    window.open(checkoutUrl, '_blank')
+    loading = false
+  }
+  async function addToCart(event) {
+    await fetch('/cart.json', {
+      method: 'PATCH',
+      body: JSON.stringify({cartId: cartId, variantId: event.detail.body})
+    })
+    // Wait for the API to finish before updating cart items
+    await loadCart()
+    loading = false
+  }
+  async function removeProduct(event) {
+    await fetch('/cart.json', {
+      method: 'PUT',
+      body: JSON.stringify({
+        cartId,
+        lineId: event.detail.body.lineId,
+        quantity: event.detail.body.quantity,
+        variantId: event.detail.body.variantId
+      })
+    })
+    await loadCart()
+    loading = false
+  }
 
   export let data: any
   $: ({siteConfig} = data)
@@ -26,7 +97,7 @@
 </svelte:head>
 
 <div class="wrapper">
-  <Left menu={menus.navMenuHeader} meta={menus.navMenuMeta} />
+  <Left menu={menus.navMenuHeader} meta={menus.navMenuMeta} on:openCart={openCart} />
   <div class="contentWrapper">
     <Header />
     <div class="contentArea">
@@ -41,3 +112,14 @@
 <Footer menu={menus.navMenuFooter} />
 
 <CookieBanner {dsgvo} />
+
+{#if showCart}
+  <ShoppingCart
+    items={cartItems}
+    on:click={hideCart}
+    on:removeProduct={removeProduct}
+    on:addProduct={addToCart}
+    on:getCheckoutUrl={getCheckoutUrl}
+    bind:loading
+  />
+{/if}

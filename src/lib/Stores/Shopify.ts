@@ -1,115 +1,23 @@
-import {writable, type Writable} from 'svelte/store'
+import {writable} from 'svelte/store'
+import {loadCart} from '$lib/utils/shopify'
 
-import {postToShopify} from '../../routes/api/postToShopify'
+export const cartQuantity = writable('')
+export const cart = writable([])
+export const search = writable('')
 
-export const products = writable([])
-export const productDetails = writable([])
+export const getCartItems = async () => {
+  let cartId = JSON.parse(localStorage.getItem('cartId'))
 
-export const cartCount = writable(0)
-
-export const getProductDetails = async (handle) => {
-  // get product details when entering [handle].svelte
   try {
-    const shopifyResponse = await postToShopify({
-      query: `
-                query getProduct($handle: String!){
-                    productByHandle(handle: $handle) {
-                        
-                        id
-                        handle
-                        description
-                        title
-                        totalInventory
-                        variants(first: 5) {
-                          edges {
-                            node {
-                              id
-                              title
-                            }
-                          }
-                        }
-                        priceRange {
-                          maxVariantPrice {
-                            amount
-                            currencyCode
-                          }
-                          minVariantPrice {
-                            amount
-                            currencyCode
-                          }
-                        }
-                        images(first: 1) {
-                          edges {
-                            node {
-                              src
-                              altText
-                            }
-                          }
-                        }
+    const shopifyResponse = await loadCart(cartId)
 
-                    }
-                }
-            `,
-      variables: {
-        handle: handle
-      }
+    let sum = 0
+    shopifyResponse.body?.data?.cart?.lines?.edges?.forEach((d) => {
+      sum += d.node.quantity
     })
-    productDetails.set(shopifyResponse.productByHandle)
-    return shopifyResponse.productByHandle
-  } catch (error) {
-    console.log('RRR: ', error)
-  }
-}
-
-// fetch all products
-export const getProducts = async () => {
-  try {
-    const shopifyResponse = await postToShopify({
-      query: `{
-        products(sortKey: TITLE, first: 20) {
-            edges {
-              node {
-                id
-                handle
-                description
-                title
-                totalInventory
-                productType
-                variants(first: 5) {
-                  edges {
-                    node {
-                      id
-                      title
-                      price 
-                    }
-                  }
-                }
-                priceRange {
-                  maxVariantPrice {
-                    amount
-                    currencyCode
-                  }
-                  minVariantPrice {
-                    amount
-                    currencyCode
-                  }
-                }
-                images(first: 1) {
-                  edges {
-                    node {
-                      src
-                      altText
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `
-    })
+    cartQuantity.set(sum)
     return shopifyResponse
   } catch (error) {
-    console.log(error, ';<')
+    console.log(error)
   }
 }
