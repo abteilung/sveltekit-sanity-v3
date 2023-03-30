@@ -6,6 +6,7 @@ export const products = writable([])
 export const productDetails = writable([])
 
 export const cartCount = writable(0)
+
 export const getProductDetails = async (handle) => {
   // get product details when entering [handle].svelte
   try {
@@ -13,42 +14,39 @@ export const getProductDetails = async (handle) => {
       query: `
                 query getProduct($handle: String!){
                     productByHandle(handle: $handle) {
+                        
                         id
                         handle
                         description
                         title
                         totalInventory
-                        variants(first: 5){
-                            edges {
-                                node {
-                                    id
-                                    title
-                                    quantityAvailable
-                                    priceV2{
-                                        amount
-                                        currencyCode
-                                    }
-                                }
+                        variants(first: 5) {
+                          edges {
+                            node {
+                              id
+                              title
                             }
+                          }
                         }
-                        priceRange{
-                            maxVariantPrice {
-                                amount
-                                currencyCode
-                            }
-                            minVariantPrice {
-                                amount
-                                currencyCode
-                            }
+                        priceRange {
+                          maxVariantPrice {
+                            amount
+                            currencyCode
+                          }
+                          minVariantPrice {
+                            amount
+                            currencyCode
+                          }
                         }
-                        images(first:1) {
-                            edges {
-                                node {
-                                    src
-                                    altText
-                                }
+                        images(first: 1) {
+                          edges {
+                            node {
+                              src
+                              altText
                             }
+                          }
                         }
+
                     }
                 }
             `,
@@ -56,11 +54,10 @@ export const getProductDetails = async (handle) => {
         handle: handle
       }
     })
-
     productDetails.set(shopifyResponse.productByHandle)
     return shopifyResponse.productByHandle
   } catch (error) {
-    console.log(error)
+    console.log('RRR: ', error)
   }
 }
 
@@ -69,9 +66,9 @@ export const getProducts = async () => {
   try {
     const shopifyResponse = await postToShopify({
       query: `{
-            products(sortKey: TITLE, first: 100) {
+        products(sortKey: TITLE, first: 20) {
             edges {
-                node {
+              node {
                 id
                 handle
                 description
@@ -79,36 +76,35 @@ export const getProducts = async () => {
                 totalInventory
                 productType
                 variants(first: 5) {
-                    edges {
+                  edges {
                     node {
-                        id
-                        title
-                        quantityAvailable
-                        price
+                      id
+                      title
+                      price 
                     }
-                    }
+                  }
                 }
                 priceRange {
-                    maxVariantPrice {
+                  maxVariantPrice {
                     amount
                     currencyCode
-                    }
-                    minVariantPrice {
+                  }
+                  minVariantPrice {
                     amount
                     currencyCode
-                    }
+                  }
                 }
                 images(first: 1) {
-                    edges {
+                  edges {
                     node {
-                        src
-                        altText
+                      src
+                      altText
                     }
-                    }
+                  }
                 }
-                }
+              }
             }
-            }
+          }
         }
       `
     })

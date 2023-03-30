@@ -4,7 +4,7 @@ export const postToShopify = async ({query, variables}) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': import.meta.env.VITE_SHOPIFY_STOREFRONT_API_TOKEN
+        'X-Shopify-Storefront-Access-Token': import.meta.env.SHOPIFY_STOREFRONT_API_TOKEN
       },
       body: JSON.stringify({
         query,

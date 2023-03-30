@@ -1,7 +1,7 @@
 // Importing
 import {getProductDetails, cartCount, products, getProducts} from '$lib/Stores/Shopify'
 
-export async function load({params}) {
+export async function load({params, ctx}) {
   // getting the full product from shopify
 
   let handle = params.handle
