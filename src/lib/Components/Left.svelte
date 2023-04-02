@@ -66,14 +66,9 @@
               <div on:click={showSubMenus} on:click={storeSubMenu(menuItem.dropdownItems)}>
                 {menuItem.title}
               </div>
-            {:else if menuItem._type === 'navLink'}
-              <a on:click={hideSubMenus} class={activeClass} href={menuItem.url} target={menuItem.target}
-                >{menuItem.title}</a
-              >
             {:else}
-              <a on:click={hideSubMenus} class={activeClass} href={menuItem.page?.href}
-                >{menuItem.title || menuItem.pageTitle}</a
-              >
+            <MenuLink {menuItem} />
+            <MenuPage {menuItem} />
             {/if}
           </li>
         {/each}
