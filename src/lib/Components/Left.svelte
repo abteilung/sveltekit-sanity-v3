@@ -1,10 +1,15 @@
 <script lang="ts">
   import Icons from '$lib/Components/Icons.svelte'
-  import MultilevelNavigation from '$lib/Components/Navigation/MultilevelNavigation.svelte'
 
   import SearchBar from '$lib/Components/Shop/SearchBar.svelte'
   import {cartQuantity} from '$lib/Stores/Shopify'
+  import {showSubMenu, subMenuItemsStore} from '$lib/Stores/Navigation'
   import {createEventDispatcher} from 'svelte'
+
+  // Component Imports
+  import Dropdown from '$lib/Components/Navigation/Dropdown.svelte'
+  import MenuLink from '$lib/Components/Navigation/MenuLink.svelte'
+  import MenuPage from '$lib/Components/Navigation/MenuPage.svelte'
 
   const dispatch = createEventDispatcher()
 
@@ -14,27 +19,7 @@
   }
 
   // Menu object with title, href
-  export let menu = [
-    {
-      title: 'Home',
-      href: '/',
-      submenus: []
-    },
-    {
-      title: 'About',
-      href: '/about',
-      submenus: []
-    },
-    {
-      title: 'Services',
-      href: '/services'
-    },
-    {
-      title: 'Contact',
-      href: '/contact',
-      submenus: []
-    }
-  ]
+  export let menu: any = []
 
   // Menu for meta objects
   export let meta = [
@@ -48,20 +33,51 @@
     }
   ]
 
+  // Write submenus to navStore on Click
+  const storeSubMenu = (navItems) => {
+    subMenuItemsStore.set(navItems)
+  }
+
+  const hideSubMenus: any = () => {
+    showSubMenu.set(false)
+  }
+
+  const showSubMenus: any = () => {
+    showSubMenu.set(true)
+  }
+  export let activeClass: string = ''
+
   let width
 </script>
 
 <div class="navBar" bind:clientWidth={width}>
   <div class="h-full">
-    <a href="/">
+    <a href="/" on:click={hideSubMenus}>
       <Icons
         icon="logo"
         additionalClass="text-primary w-[123px] sm:w-[135px] md:w-full h-full md:h-auto py-4 md:py-0"
       />
     </a>
     <div class="mt-[100px] hidden md:block">
-      <MultilevelNavigation {menu} {width} />
-
+      <ul>
+        {#each menu.items as menuItem}
+          <li>
+            {#if menuItem._type === 'navDropdown'}
+              <div on:click={showSubMenus} on:click={storeSubMenu(menuItem.dropdownItems)}>
+                {menuItem.title}
+              </div>
+            {:else if menuItem._type === 'navLink'}
+              <a on:click={hideSubMenus} class={activeClass} href={menuItem.url} target={menuItem.target}
+                >{menuItem.title}</a
+              >
+            {:else}
+              <a on:click={hideSubMenus} class={activeClass} href={menuItem.page?.href}
+                >{menuItem.title || menuItem.pageTitle}</a
+              >
+            {/if}
+          </li>
+        {/each}
+      </ul>
       Basket-Count: {$cartQuantity}
       <SearchBar />
 

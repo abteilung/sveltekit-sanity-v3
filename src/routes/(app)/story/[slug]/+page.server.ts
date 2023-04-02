@@ -9,11 +9,11 @@ export const load = async ({parent, params}) => {
     return await getSanityServerClient(false).fetch(getPostBySlug, {slug: params.slug})
   }
 
-  if (!post) {
+  if (post) {
+    return {
+      post: post()
+    }
+  } else {
     throw error(404, 'Post not found')
-  }
-
-  return {
-    post: post()
   }
 }

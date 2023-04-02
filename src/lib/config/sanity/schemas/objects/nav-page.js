@@ -25,7 +25,7 @@ export default {
     select: {
       title: 'title',
       referenceTitle: 'page.title',
-      referenceImage: 'page.mainImage',
+      referenceImage: 'page.image',
       pageType: 'page._type',
       pageSlug: 'page.slug.current'
     },

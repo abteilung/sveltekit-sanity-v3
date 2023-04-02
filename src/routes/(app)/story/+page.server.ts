@@ -12,16 +12,15 @@ export const load = async ({parent, params}) => {
     slug: params.slug
   })
 
-  if (!post) {
-    throw error(404, 'Post not found')
-  }
-
-  return {
-    previewMode,
-    slug: post?.slug || params.slug,
-    initialData: {
-      post,
-      morePosts: overlayDrafts(morePosts)
+  if (post) {
+    return {
+      previewMode,
+      slug: post?.slug || params.slug,
+      initialData: {
+        post,
+        morePosts: overlayDrafts(morePosts)
+      }
     }
   }
+  throw error(404, 'Post not found')
 }

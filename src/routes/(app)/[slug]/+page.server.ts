@@ -9,11 +9,11 @@ export const load = async ({parent, params}) => {
     return await getSanityServerClient(false).fetch(getPageBySlug, {slug: params.slug})
   }
 
-  if (!page) {
-    throw error(404, 'Page not found')
-  } else {
+  if (page) {
     return {
       page: page()
     }
+  } else {
+    throw error(404, 'Page not found')
   }
 }

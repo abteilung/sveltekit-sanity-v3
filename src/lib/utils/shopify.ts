@@ -1,3 +1,5 @@
+// https://github.com/vercel/sveltekit-commerce
+
 export async function shopifyFetch({query, variables}) {
   const endpoint = import.meta.env.VITE_SHOPIFY_API_ENDPOINT
   const key = import.meta.env.VITE_SHOPIFY_STOREFRONT_API_TOKEN
@@ -103,73 +105,73 @@ export async function getAllProducts() {
 export async function getAllCollections() {
   return shopifyFetch({
     query: `{
-              collections(first: 5) {
-                edges {
-                  node {
-                      handle
-                      products(first: 5, sortKey: TITLE) {
-                          edges{
-                            node {
-                              id
-                              handle
-                              title
-                              description
-                              descriptionHtml
-                              options {
-                                  id
-                                  name
-                                  values
-                              }
-                              priceRange {
-                                    maxVariantPrice {
-                                        amount
-                                        currencyCode
-                                    }
-                                    minVariantPrice {
-                                        amount
-                                        currencyCode
-                                    }
-                                }
-                                variants(first: 5) {
-                                    pageInfo {
-                                        hasNextPage
-                                        hasPreviousPage
-                                    }
-                                    edges {
-                                        node {
-                                            id
-                                            title
-                                            sku
-                                            availableForSale
-                                            requiresShipping
-                                            selectedOptions {
-                                                name
-                                                value
-                                            }
-                                        }
-                                    }
-                                }
-                                images(first: 6) {
-                                    pageInfo {
-                                        hasNextPage
-                                        hasPreviousPage
-                                    }
-                                    edges {
-                                        node {
-                                            originalSrc
-                                            altText
-                                            width
-                                            height
-                                          }
-                                      }
-                                  }
-                              }
-                          }
-                      }
+      collections(first: 100) {
+        edges {
+          node {
+            handle
+            products(first: 25, sortKey: TITLE) {
+              edges {
+                node {
+                  id
+                  handle
+                  title
+                  description
+                  descriptionHtml
+                  options {
+                    id
+                    name
+                    values
                   }
+                  priceRange {
+                    maxVariantPrice {
+                      amount
+                      currencyCode
+                    }
+                    minVariantPrice {
+                      amount
+                      currencyCode
+                    }
+                  }
+                  variants(first: 25) {
+                    pageInfo {
+                      hasNextPage
+                      hasPreviousPage
+                    }
+                    edges {
+                      node {
+                        id
+                        title
+                        sku
+                        availableForSale
+                        requiresShipping
+                        selectedOptions {
+                          name
+                          value
+                        }
+                      }
+                    }
+                  }
+                  images(first: 6) {
+                    pageInfo {
+                      hasNextPage
+                      hasPreviousPage
+                    }
+                    edges {
+                      node {
+                        originalSrc
+                        altText
+                        width
+                        height
+                      }
+                    }
+                  }
+                }
               }
+            }
           }
-      }`
+        }
+      }
+    }`
   })
 }
 

@@ -80,8 +80,8 @@ itemSelector: {itemSelector}<br>
         {#if hidden === false}
           <li in:fly={{x: -50, y: -20, delay: i * 75, duration: 500, opacity: 0}}>
             <a href={teaser.href} class="block space-y-4 group">
-              {#if teaser.mainImage}
-                <Image block={teaser.mainImage} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+              {#if teaser.image}
+                <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
               {/if}
               <div>
                 <h4 class="mb-2">{teaser.subtitle}</h4>
@@ -101,8 +101,8 @@ itemSelector: {itemSelector}<br>
       {#if i < maxItems}
         <li class="py-2 my-2">
           <a href={teaser.href} class="grid items-top grid-cols-4 group">
-            {#if teaser.mainImage}
-              <Image block={teaser.mainImage} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+            {#if teaser.image}
+              <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
             {/if}
             <div class="col-span-3">
               <h4 class="mb-2">{teaser.subtitle}</h4>
@@ -157,8 +157,8 @@ itemSelector: {itemSelector}<br>
         {#if i < maxItems}
           <SwiperSlide>
             <a href={teaser.href} class="block space-y-4 group">
-              {#if teaser.mainImage}
-                <Image block={teaser.mainImage} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+              {#if teaser.image}
+                <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
               {/if}
               <div>
                 <h4 class="mb-2">{teaser.subtitle}</h4>

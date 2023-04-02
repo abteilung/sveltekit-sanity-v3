@@ -65,7 +65,7 @@ export default {
       group: 'default'
     },
     {
-      name: 'mainImage',
+      name: 'image',
       title: 'Main image',
       type: 'image',
       validation: (Rule) => Rule.required(),
@@ -97,7 +97,7 @@ export default {
     select: {
       title: 'title',
       subTitle: 'subtitle',
-      media: 'mainImage'
+      media: 'image'
     },
     prepare(selection) {
       const {subTitle} = selection

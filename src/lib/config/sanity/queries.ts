@@ -45,7 +45,7 @@ const link = `
   "pageTitle": page -> title,
   "subtitle": page -> subtitle,
   subtitle,
-  "image": page->mainImage,
+  "image": page->image,
   "icon": page->productIcon,
   url,
   target,
@@ -56,22 +56,17 @@ const link = `
 
 // Construct our "image meta" GROQ
 // Is it really image->altText?
+
 const imageMeta = `
+"image": {
   "alt": coalesce(image.alt, image->altText),
-  "asset": image,
+  "asset": image.asset ->,
+  "src": image,
   "customRatio": image.customRatio,
   "type": image.asset->mimeType,
   "lqip": image.asset->metadata.lqip,
   "bgColor": image.asset->metadata.palette.dominant.background
-`
-
-const mainImageMeta = `
-  "alt": coalesce(mainImage.alt, mainImage->altText),
-  "asset": mainImage,
-  "customRatio": mainImage.customRatio,
-  "type": mainImage.asset->mimeType,
-  "lqip": mainImage.asset->metadata.lqip,
-  "bgColor": mainImage.asset->metadata.palette.dominant.background
+}
 `
 
 const modules = groq`
@@ -112,6 +107,7 @@ const modules = groq`
     "teasers": *[_type == ^.typeSelector] {
       ...,
       ${linkTypes},
+      ${imageMeta}
     }
     | order(publishDate desc)
   },
@@ -165,7 +161,7 @@ const documentFields = groq`
     ${modules}
     ${columns}
   },  
-  ${mainImageMeta},
+  ${imageMeta},
   "slug": slug.current,
   ${linkTypes},
   "author": author->{name, "image": image.image},

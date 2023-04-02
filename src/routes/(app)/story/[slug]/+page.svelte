@@ -1,20 +1,22 @@
 <script lang="ts">
-  import {urlForImage} from '$lib/config/sanity'
+  // Import Types
   import type {PageData} from './$types'
-  import PortableBlock from '$lib/Components/PortableBlock.svelte'
 
+  // Import Components
+  import {urlForImage} from '$lib/config/sanity'
+  import PortableBlock from '$lib/Components/PortableBlock.svelte'
   import Header from '$lib/Components/Header.svelte'
 
-  import {HeaderImage} from '$lib/Stores/Stores.ts'
-
+  // Export Data
   export let data: PageData
-
   $: ({post} = data)
 </script>
 
 <svelte:head />
 
 {#if post}
+  <Header pageTitle={post.current.title} bgImage={post.current.image} />
+
   <h1 class="eyebrow">{post.current.subtitle}</h1>
   <h2 class="text-4xl leading-tight">{post.current.title}</h2>
   <div class="mt-3 flex items-center mb-12">

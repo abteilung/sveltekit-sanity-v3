@@ -7,7 +7,7 @@
   import Left from '$lib/Components/Left.svelte'
   import Favicons from '$lib/Components/Favicons.svelte'
   import CookieBanner from '$lib/Components/CookieBanner.svelte'
-  import menu from '$lib/config/sanity/schemas/documents/menu'
+  import Navigation from '$lib/Components/Navigation/Navigation.svelte'
 
   import ShoppingCart from '$lib/Components/Shop/ShoppingCart.svelte'
   import {getCartItems} from '$lib/Stores/Shopify'
@@ -98,13 +98,9 @@
 
 <div class="wrapper">
   <Left menu={menus.navMenuHeader} meta={menus.navMenuMeta} on:openCart={openCart} />
-  <div class="contentWrapper">
-    <Header />
-    <div class="contentArea">
-      <div class="mainContent">
-        <slot />
-      </div>
-    </div>
+  <div class="content relative">
+    <slot />
+    <Navigation />
   </div>
 </div>
 

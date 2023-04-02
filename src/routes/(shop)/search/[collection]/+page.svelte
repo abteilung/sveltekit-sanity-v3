@@ -18,7 +18,6 @@
 </svelte:head>
 
 <div>
-  {JSON.stringify(data.body.collections)}
   {#if collection}
     <ul class="grid grid-flow-row gap-4 sm:grid-cols-2 md:grid-cols-3">
       {#each collection.products.edges as product, i (i)}

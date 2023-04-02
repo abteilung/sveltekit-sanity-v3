@@ -62,7 +62,7 @@ export default defineType({
       validation: (Rule) => Rule.required()
     },
     {
-      name: 'mainImage',
+      name: 'image',
       title: 'Cover Image',
       type: 'image',
       group: 'default',
@@ -137,7 +137,7 @@ export default defineType({
     select: {
       title: 'title',
       author: 'author.name',
-      media: 'mainImage',
+      media: 'image',
       startDate: 'startDate',
       endDate: 'endDate',
       isHidden: 'isHidden',

@@ -38,6 +38,25 @@
           href="/search/spender">Spender</a
         >
       </li>
+
+      <li class="mt-2 text-sm text-gray-300">
+        <a
+          data-sveltekit-prefetch
+          data-testid="category-link"
+          aria-selected="true"
+          class="whitespace-nowrap hover:underline focus:underline"
+          href="/search/featured">Featured</a
+        >
+      </li>
+      <li class="mt-2 text-sm text-gray-300">
+        <a
+          data-sveltekit-prefetch
+          data-testid="category-link"
+          aria-selected="true"
+          class="whitespace-nowrap hover:underline focus:underline"
+          href="/search/clothes">Apparel</a
+        >
+      </li>
     </ul>
   </nav>
   <div class="min-h-screen">

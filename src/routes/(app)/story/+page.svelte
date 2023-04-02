@@ -1,10 +1,16 @@
 <script lang="ts">
+  // Import Types
+  import type {PageData} from './$types'
+
+  // Import Post Data
   import {previewSubscription} from '$lib/config/sanity'
   import {getPostBySlug} from '$lib/config/sanity/queries'
-  import {urlForImage} from '$lib/config/sanity'
-  import type {PageData} from './$types'
-  import PortableBlock from '$lib/Components/PortableBlock.svelte'
 
+  // Import Components
+  import PortableBlock from '$lib/Components/PortableBlock.svelte'
+  import Header from '$lib/Components/Header.svelte'
+
+  // Export Data
   export let data: PageData
 
   $: ({initialData, previewMode, slug} = data)
@@ -19,6 +25,7 @@
   <title>{$postData?.post?.title || 'Post'}</title>
 </svelte:head>
 {#if $postData?.post}
+  <Header pageTitle={$postData.post.title} bgImage={$postData.post.image} />
   <div class="relative w-full bg-black min-h-screen px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
     <div class="relative mx-auto max-w-2xl">
       <div class="w-full space-y-8">
@@ -53,8 +60,8 @@
         <!-- {#if $postData.post.asset}
           <img
             class="h-92 w-full object-cover rounded-xl mb-10"
-            src={urlForImage($postData.post.mainImage).width(1344).height(736).url()}
-            alt={$postData.post.mainImage.alt}
+            src={urlForImage($postData.post.image).width(1344).height(736).url()}
+            alt={$postData.post.image.alt}
           />
         {/if} -->
         <div>
