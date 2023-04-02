@@ -18,7 +18,7 @@ const linkTypes = groq`
     "href": "/services/" + slug.current,
   },
   _type == "product" => {
-    "href": "/products/" + slug.current,
+    "href": "/produkte/" + slug.current,
   },
   _type == "page" => {
     "href": "/" + slug.current,
@@ -197,6 +197,16 @@ export const getAllPosts = groq`
 
 export const getPageBySlug = groq`
 *[(_type == 'page' && slug.current == $slug && _id != 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+  ${documentFields}
+}`
+
+export const getServiceBySlug = groq`
+*[(_type == 'service' && slug.current == $slug) && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+  ${documentFields}
+}`
+
+export const getProductBySlug = groq`
+*[(_type == 'product' && slug.current == $slug) && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 

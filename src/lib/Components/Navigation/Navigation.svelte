@@ -4,6 +4,8 @@
 
   // cubicInOut
   import {cubicInOut} from 'svelte/easing'
+  import MenuLink from '$lib/Components/Navigation/MenuLink.svelte'
+  import MenuPage from '$lib/Components/Navigation/MenuPage.svelte'
 
   // Stores
   import {page} from '$app/stores'
@@ -34,7 +36,8 @@
             in:fly={{x: 150, y: -20, duration: 150, easing: cubicInOut, delay: i * 50}}
             out:fly={{x: -50, y: -20, duration: 150, easing: cubicInOut, delay: i * 50}}
           >
-            <a href={item.href} class="">{item.title}</a>
+            <MenuLink menuItem={item} />
+            <MenuPage menuItem={item} />
           </div>
         {/each}
       </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
   // Store Imports
   import {page} from '$app/stores'
+  import {showSubMenu} from '$lib/Stores/Navigation'
 
   export let menuItem: string
 
@@ -16,10 +17,14 @@
       }
     }
   }
+
+  const hideSubMenus: any = () => {
+    showSubMenu.set(false)
+  }
 </script>
 
 {#if menuItem._type === 'navPage'}
-  <a class={activeClass} href={menuItem.page?.href}>{menuItem.title || menuItem.pageTitle}</a>
+  <a on:click={hideSubMenus} class={activeClass} href={menuItem.page?.href}>{menuItem.title || menuItem.pageTitle}</a>
 {/if}
 
 <style lang="postcss">

@@ -1,7 +1,5 @@
 <script lang="ts">
   import Image from '$lib/Components/PageBuilder/Image.svelte'
-  // Background Image from unsplash
-  let showImage: boolean = false
   export let bgImage
 
   export let pageTitle: string = 'Page Title'
