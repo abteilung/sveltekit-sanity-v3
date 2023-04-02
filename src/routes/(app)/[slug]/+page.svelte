@@ -11,9 +11,9 @@
   $: ({page} = data)
 </script>
 
-<svelte:head />
-
 {#if page}
   <Header pageTitle={page.title} bgImage={page.image} />
-  <PageBuilder blocks={page.content} />
+  <div class="contentArea">
+    <PageBuilder blocks={page.content} />
+  </div>
 {/if}

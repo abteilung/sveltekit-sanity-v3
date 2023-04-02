@@ -9,9 +9,9 @@
   // Export Data
   export let data: PageData
   $: ({page} = data)
+  $: ({sack} = data)
 </script>
 
-<svelte:head />
 {#if page}
   <Header pageTitle={page.title} bgImage={page.image} />
   <PageBuilder blocks={page.content} />

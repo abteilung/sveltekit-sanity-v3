@@ -11,7 +11,6 @@
   $: ({page} = data)
 </script>
 
-<svelte:head />
 {#if page}
   <Header pageTitle={page.title} bgImage={page.image} />
   <PageBuilder blocks={page.content} />
