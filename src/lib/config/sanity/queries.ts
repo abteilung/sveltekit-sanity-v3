@@ -200,8 +200,18 @@ export const getPageBySlug = groq`
   ${documentFields}
 }`
 
+export const getAllServices = groq`
+*[(_type == 'service') && ${dateRangeChecker}] | order(_updatedAt desc) {
+  ${documentFields}
+}`
+
 export const getServiceBySlug = groq`
 *[(_type == 'service' && slug.current == $slug) && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+  ${documentFields}
+}`
+
+export const getAllProducts = groq`
+*[(_type == 'product') && ${dateRangeChecker}] | order(_updatedAt desc) {
   ${documentFields}
 }`
 

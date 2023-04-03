@@ -1,5 +1,5 @@
 import {getSanityServerClient} from '$lib/config/sanity/client'
-import {getSiteConfig, getMenus, getDsgvoSettings} from '$lib/config/sanity/queries'
+import {getSiteConfig, getMenus, getDsgvoSettings, getAllServices, getAllProducts} from '$lib/config/sanity/queries'
 
 export const load = async ({parent, locals: {previewMode}, url}) => {
   // Load these asynchronously for better performance
@@ -13,9 +13,20 @@ export const load = async ({parent, locals: {previewMode}, url}) => {
     return await getSanityServerClient(false).fetch(getDsgvoSettings)
   }
 
+  const services = async () => {
+    return await getSanityServerClient(false).fetch(getAllServices)
+  }
+
+  const products = async () => {
+    return await getSanityServerClient(false).fetch(getAllProducts)
+  }
+
+
   return {
     siteConfig: siteConfig(),
     menus: menus(),
-    dsgvo: dsgvo()
+    dsgvo: dsgvo(),
+    services: services(),
+    products: products(),
   }
 }

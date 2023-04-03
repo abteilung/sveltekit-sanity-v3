@@ -90,6 +90,8 @@
   $: ({siteConfig} = data)
   $: ({menus} = data)
   $: ({dsgvo} = data)
+  $: ({services} = data)
+  $: ({products} = data)
 </script>
 
 <svelte:head>
@@ -105,7 +107,7 @@
 </div>
 
 <!-- {JSON.stringify(menus)} -->
-<Footer {dsgvo} menu={menus.navMenuFooter} contact={siteConfig.contact} social={siteConfig.social} />
+<Footer {dsgvo} {products} {services} menu={menus.navMenuFooter} contact={siteConfig.contact} social={siteConfig.social} />
 
 {#if showCart}
   <ShoppingCart
