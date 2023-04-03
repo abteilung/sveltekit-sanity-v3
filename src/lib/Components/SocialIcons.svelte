@@ -23,7 +23,7 @@
           /></svg
         >
         {/if}
-        <span>{showIcons ? social.twitter : 'Twitter'}</span>
+        <span>{'Twitter'}</span>
       </a>
     {/if}
     {#if social.facebook}
@@ -63,7 +63,7 @@
           /></svg
         >
         {/if}
-        <span>{showIcons ? social.facebook : 'Facebook'}</span>
+        <span>{'Facebook'}</span>
       </a>
     {/if}
     {#if social.instagram}
@@ -96,7 +96,7 @@
           /><circle cx="180" cy="76" r="12" /></svg
         >
         {/if}
-        <span>{showIcons ? social.instagram : 'Instagram'}</span>
+        <span>{'Instagram'}</span>
       </a>
     {/if}
     {#if social.youtube}
@@ -120,7 +120,7 @@
           /></svg
         >
         {/if}
-        <span>{showIcons ? social.youtube : 'YouTube'}</span>
+        <span>{'YouTube'}</span>
       </a>
     {/if}
     {#if social.linkedin}
@@ -172,7 +172,7 @@
           /><circle cx="88" cy="84" r="12" /></svg
         >
         {/if}
-        <span>{showIcons ? social.linkedin : 'LinkedIn'}</span>
+        <span>{'LinkedIn'}</span>
       </a>
     {/if}
     {#if social.tiktok}
@@ -189,7 +189,7 @@
           /></svg
         >
         {/if}
-        <span>{showIcons ? social.tiktok : 'TikTok'}</span>
+        <span>{'TikTok'}</span>
       </a>
     {/if}
     {#if social.pinterest}
@@ -220,7 +220,7 @@
           /></svg
         >
         {/if}
-        <span>{showIcons ? social.pinterest : 'Pinterest'}</span>
+        <span>{'Pinterest'}</span>
       </a>
     {/if}
     {#if social.reddit}
@@ -260,7 +260,7 @@
           /></svg
         >
         {/if}
-        <span>{showIcons ? social.reddit : 'Reddit'}</span>
+        <span>{'Reddit'}</span>
       </a>
     {/if}
   </div>
