@@ -10,7 +10,6 @@
   export let data: PageData
   $: ({page} = data)
 </script>
-
 {#if page}
   <Header pageTitle={page.title} bgImage={page.image} />
   <PageBuilder blocks={page.content} />

@@ -5,7 +5,7 @@
   export let pageTitle: string = 'Page Title'
 </script>
 
-<header id="header" class="relative text-white overflow-hidden w-full">
+<header id="header" class="relative text-white overflow-hidden w-full mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[50px]">
   <div class="headerContent">
     <slot />
     {pageTitle}

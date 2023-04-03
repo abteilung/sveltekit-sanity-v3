@@ -119,6 +119,10 @@
     @apply px-[20px] sm:px-[30px] md:px-[50px] xl:px-[100px] 2xl:px-[150px];
   }
 
+  .content {
+    @apply bg-white w-full;
+  }
+
   .mainContent {
     /* @apply grid h-[1920px] grid-cols-6 sm:grid-cols-12; */
     @apply my-[20px] sm:my-[30px] md:my-[50px] xl:my-[100px] 2xl:my-[150px];
