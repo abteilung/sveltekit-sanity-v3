@@ -6,12 +6,12 @@
   import Footer from '$lib/Components/Footer.svelte'
   import Left from '$lib/Components/Left.svelte'
   import Favicons from '$lib/Components/Favicons.svelte'
-  import CookieBanner from '$lib/Components/CookieBanner.svelte'
   import Navigation from '$lib/Components/Navigation/Navigation.svelte'
 
   import ShoppingCart from '$lib/Components/Shop/ShoppingCart.svelte'
   import {getCartItems} from '$lib/Stores/Shopify'
   import {createCart} from '$lib/utils/shopify'
+  import settings from '$lib/config/sanity/schemas/documents/settings'
 
   let cartId
   let checkoutUrl
@@ -105,9 +105,7 @@
 </div>
 
 <!-- {JSON.stringify(menus)} -->
-<Footer menu={menus.navMenuFooter} />
-
-<CookieBanner {dsgvo} />
+<Footer {dsgvo} menu={menus.navMenuFooter} contact={siteConfig.contact} social={siteConfig.social} />
 
 {#if showCart}
   <ShoppingCart

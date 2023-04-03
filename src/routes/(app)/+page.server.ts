@@ -1,5 +1,5 @@
 import {getSanityServerClient, overlayDrafts} from '$lib/config/sanity/client'
-import {getAllPosts, getHomepage} from '$lib/config/sanity/queries'
+import {getHomepage} from '$lib/config/sanity/queries'
 import {error} from '@sveltejs/kit'
 
 // export const prerender = 'auto';
@@ -10,7 +10,8 @@ export const load = async ({parent, params}) => {
 
   if (page) {
     return {
-      page: page()
+      page: page(),
+      dsgvo: dsgvo()
     }
   }
   throw error(404)

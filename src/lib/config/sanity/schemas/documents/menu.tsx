@@ -16,7 +16,7 @@ export default {
       title: 'Nav Items',
       name: 'items',
       type: 'array',
-      of: [{type: 'navPage'}, {type: 'navLink'}, {type: 'navDropdown'}]
+      of: [{type: 'navPage'}, {type: 'navLink'}, {type: 'navDropdown'}, {type: 'navSection'}]
     }
   ],
   preview: {

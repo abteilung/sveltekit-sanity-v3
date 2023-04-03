@@ -127,6 +127,26 @@ export default defineType({
       title: 'YouTube',
       type: 'string',
       group: 'social'
+    },
+    {
+      name: 'tiktok',
+      title: 'TiKTok',
+      type: 'string',
+      group: 'social'
+    },
+    {
+      name: 'reddit',
+      title: 'Reddit',
+      type: 'string',
+      group: 'social'
+    },
+    {
+      name: 'pinterest',
+      title: 'Pinterest',
+      type: 'string',
+      group: 'social'
     }
+
+
   ]
 })

@@ -62,6 +62,7 @@ import navigations from './schemas/documents/navigations'
 import navDropdown from './schemas/objects/nav-dropdown'
 import navPage from './schemas/objects/nav-page'
 import navLink from './schemas/objects/nav-link'
+import navSection from './schemas/objects/nav-section'
 
 /*------------------------------------*/
 
@@ -125,7 +126,8 @@ export default defineConfig({
       navigations,
       navDropdown,
       navPage,
-      navLink
+      navLink,
+      navSection
     ]
     // If you want to add more schemas, you can add them here
   },

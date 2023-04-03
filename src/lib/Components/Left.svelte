@@ -67,8 +67,8 @@
                 {menuItem.title}
               </div>
             {:else}
-            <MenuLink {menuItem} />
-            <MenuPage {menuItem} />
+              <MenuLink {menuItem} />
+              <MenuPage {menuItem} />
             {/if}
           </li>
         {/each}

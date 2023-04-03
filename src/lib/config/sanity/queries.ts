@@ -228,10 +228,12 @@ export const getSiteConfig = groq`
       youtube,
       linkedin,
       github,
+      tiktok,
     },
     "contact": *[_type == 'settingsContact'][0] {
       companyName,
       email,
+      address,
       phone,
       locations[],
     },
