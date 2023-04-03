@@ -17,7 +17,6 @@
     "@fontsource/source-sans-pro": "^4.5.11",
     "@phosphor-icons/react": "2.0.6",
     "@portabletext/svelte": "^2.0.0",
-    "@portabletext/toolkit": "^2.0.1",
     "@resvg/resvg-js": "^2.4.1",
     "@sanity/google-maps-input": "^3.0.1",
     "@slidy/core": "^3.7.3",

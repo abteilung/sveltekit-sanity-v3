@@ -69,9 +69,6 @@ devDependencies:
   '@portabletext/svelte':
     specifier: ^2.0.0
     version: 2.0.0(svelte@3.58.0)
-  '@portabletext/toolkit':
-    specifier: ^2.0.1
-    version: 2.0.1
   '@resvg/resvg-js':
     specifier: ^2.4.1
     version: 2.4.1
