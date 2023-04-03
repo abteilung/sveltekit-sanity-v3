@@ -22,8 +22,9 @@
           </p>
         {/each}
         <p>
-          {contact.email}<br />
-          {contact.phone}
+          <a class="hover:text-primary" href="tel:{contact.phone.replace(/\s+/g, '')}">Anrufen: {contact.phone}</a>
+          <br />
+          <a class="hover:text-primary" href="mailto:{contact.email}">Schreiben: {contact.email}</a>
         </p>
       </div>
       <div>

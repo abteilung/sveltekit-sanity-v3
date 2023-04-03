@@ -28,6 +28,7 @@ export default {
           {title: 'Products', value: 'product'},
           {title: 'Posts', value: 'post'},
           {title: 'Events', value: 'event'},
+          {title: 'Brands', value: 'brand'},
           {title: 'Custom', value: 'custom'}
         ]
       }

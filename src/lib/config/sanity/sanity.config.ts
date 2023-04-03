@@ -37,6 +37,7 @@ import caseStudyType from './schemas/documents/caseStudy'
 import productType from './schemas/documents/product'
 import serviceType from './schemas/documents/service'
 import categoryReferenceType from './schemas/documents/categoryReference'
+import brandType from './schemas/documents/brand'
 
 // Objects
 import video from './schemas/objects/video'
@@ -96,6 +97,7 @@ export default defineConfig({
       categoryReferenceType,
       serviceType,
       redirectType,
+      brandType,
 
       // Settings
       settingsType,

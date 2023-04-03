@@ -14,7 +14,7 @@
   import 'swiper/css'
 
   export let block
-  $: ({title, teasers, maxItems, layout, itemSelector, columns} = block)
+  $: ({title, teasers, maxItems, layout, itemSelector, typeSelector, columns} = block)
 
   let touchMove = true
 
@@ -73,8 +73,23 @@ layout: {layout}<br>
 itemSelector: {itemSelector}<br> 
 -->
 
+
+
+{#if typeSelector === 'brand'}
+<ul class={classNames('grid-cols-' + columns/2 + ' lg:grid-cols-' + columns, 'grid')}>
+    {#each teasers as teaser, i}
+        {#if teaser.image}
+        <li>
+            <Image block={teaser.image} width=320 height=200 alt={teaser.title} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+        </li>
+        {/if}
+    {/each}
+</ul>
+
+{:else}
+
 {#if layout === 'grid'}
-  <ul class={classNames('grid-cols-' + columns, 'grid')}>
+  <ul class={classNames('md:grid-cols-' + columns, 'grid')}>
     {#each teasers as teaser, i}
       {#if i < maxItems}
         {#if hidden === false}
@@ -172,4 +187,11 @@ itemSelector: {itemSelector}<br>
   </div>
 {/if}
 
+
+{/if}
+
 <!-- Safelist: grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 -->
+<!-- Safelist: sm:grid-cols-1 sm:grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 -->
+<!-- Safelist: md:grid-cols-1 md:grid-cols-2 md:grid-cols-3 md:grid-cols-4 -->
+<!-- Safelist: lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 -->
+<!-- Safelist: xl:grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 -->

@@ -11,7 +11,6 @@ export const load = async ({parent, params}) => {
   if (page) {
     return {
       page: page(),
-      dsgvo: dsgvo()
     }
   }
   throw error(404)

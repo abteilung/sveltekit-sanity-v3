@@ -141,12 +141,12 @@
 
   #footer {
     @apply 2xl:max-w-[1920px] mx-auto flex-none;
+    @apply bg-black;
   }
 
   .footerContent {
     @apply p-[20px] sm:p-[30px] md:p-[50px] h-[350px];
     @apply 2xl:container relative z-10;
-    @apply bg-dark;
   }
 
   .navBar {

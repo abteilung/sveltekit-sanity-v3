@@ -106,8 +106,8 @@ const modules = groq`
     // No Drafts!
     "teasers": *[_type == ^.typeSelector] {
       ...,
+      ${imageMeta},
       ${linkTypes},
-      ${imageMeta}
     }
     | order(publishDate desc)
   },
@@ -214,6 +214,7 @@ export const getHomepage = groq`
 *[(_type == 'page' && _id == 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
+
 
 export const getSiteConfig = groq`
   *[_type == 'settings'][0] {
