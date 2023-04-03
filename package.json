@@ -14,7 +14,7 @@
   "devDependencies": {
     "@fontsource/roboto-condensed": "^4.5.9",
     "@fontsource/source-sans-pro": "^4.5.11",
-    "@phosphor-icons/react": "2.0.3",
+    "@phosphor-icons/react": "^2.0.8",
     "@portabletext/svelte": "^2.0.0",
     "@resvg/resvg-js": "^2.4.1",
     "@sanity/google-maps-input": "^3.0.1",
