@@ -15,11 +15,16 @@
 <svelte:head />
 
 {#if post}
-  <Header pageTitle={post.current.title} bgImage={post.current.image} />
+  <Header pageTitle={post.current.title} subTitle={post.current.subtitle} bgImage={post.current.image} />
 
   <div class="contentArea">
-    <h1 class="eyebrow">{post.current.subtitle}</h1>
-    <h2 class="text-4xl leading-tight">{post.current.title}</h2>
+    {#if post.current.subtitle}
+      <h1 class="h3 mb-0">{post.current.subtitle}</h1>
+      <h2 class="text-4xl">{post.current.title}</h2>
+    {:else}
+      <h1>{post.current.pageTitle}</h1>
+    {/if}
+
     <div class="mt-3 flex items-center mb-12">
       {#if post.current.author}
         <div class="flex-shrink-0">

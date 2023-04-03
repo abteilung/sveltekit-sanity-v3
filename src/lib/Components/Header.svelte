@@ -2,6 +2,7 @@
   import Image from '$lib/Components/PageBuilder/Image.svelte'
   export let bgImage
 
+  export let subTitle: string = 'Page Eyebrow (h1)'
   export let pageTitle: string = 'Page Title'
 </script>
 
@@ -11,7 +12,6 @@
 >
   <div class="headerContent">
     <slot />
-    {pageTitle}
   </div>
   <div class="absolute top-0 left-0 inset-0 isolate z-0">
     {#if bgImage}

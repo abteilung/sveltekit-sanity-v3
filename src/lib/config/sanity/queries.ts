@@ -227,7 +227,6 @@ export const getHomepage = groq`
   ${documentFields}
 }`
 
-
 export const getSiteConfig = groq`
   *[_type == 'settings'][0] {
     title,

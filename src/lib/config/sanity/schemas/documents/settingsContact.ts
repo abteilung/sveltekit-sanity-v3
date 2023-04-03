@@ -146,7 +146,5 @@ export default defineType({
       type: 'string',
       group: 'social'
     }
-
-
   ]
 })

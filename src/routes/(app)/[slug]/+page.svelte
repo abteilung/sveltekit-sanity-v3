@@ -12,8 +12,14 @@
 </script>
 
 {#if page}
-  <Header pageTitle={page.title} bgImage={page.image} />
+  <Header bgImage={page.image} />
   <div class="contentArea">
-    <PageBuilder blocks={page.content} />
+    {#if page.subtitle}
+      <h1 class="h3 mb-0">{page.subtitle}</h1>
+      <h2 class="text-4xl">{page.title}</h2>
+    {:else}
+      <h1>{page.title}</h1>
+    {/if}
   </div>
+  <PageBuilder blocks={page.content} />
 {/if}

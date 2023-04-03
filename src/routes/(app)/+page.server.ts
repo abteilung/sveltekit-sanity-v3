@@ -10,7 +10,7 @@ export const load = async ({parent, params}) => {
 
   if (page) {
     return {
-      page: page(),
+      page: page()
     }
   }
   throw error(404)

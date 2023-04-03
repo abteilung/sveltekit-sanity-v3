@@ -33,7 +33,7 @@
         <h3>Produkte</h3>
         <ul>
           {#each products as product}
-            {#if product.href}  
+            {#if product.href}
               <li>
                 <a href={product.href}>{product.subtitle || product.title}</a>
               </li>
@@ -41,22 +41,21 @@
           {/each}
         </ul>
       </div>
-      <div><h3>Services</h3>
+      <div>
+        <h3>Services</h3>
         <ul>
           {#each services as service}
-            {#if service.href}  
+            {#if service.href}
               <li>
                 <a href={service.href}>{service.subtitle || service.title}</a>
               </li>
             {/if}
           {/each}
         </ul>
-
-      
       </div>
       <div>
         <h3>Social</h3>
-        <SocialIcons {social} showIcons={true}  />
+        <SocialIcons {social} showIcons={true} />
       </div>
     </div>
     <hr />
@@ -74,7 +73,7 @@
 {JSON.stringify(dsgvo.menu)}
 
 {#if dsgvo}
-{dsgvo.privacy}
+  {dsgvo.privacy}
 {/if}
 
 <CookieBanner {dsgvo} />

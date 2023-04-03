@@ -24,6 +24,6 @@ export const load = async () => {
     menus: menus(),
     dsgvo: dsgvo(),
     services: services(),
-    products: products(),
+    products: products()
   }
 }

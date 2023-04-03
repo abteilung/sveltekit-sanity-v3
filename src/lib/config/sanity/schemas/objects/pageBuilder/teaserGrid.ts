@@ -10,6 +10,8 @@ export default {
     typeSelector: 'services',
     itemSelector: 'latest',
     layout: 'grid',
+    container: true,
+    bgColor: 'white',
     columns: 3
   },
   fields: [
@@ -87,7 +89,28 @@ export default {
           {title: '4', value: 4}
         ]
       }
-    }
+    },
+    {
+      name: 'container',
+      title: 'Container',
+      type: 'boolean'
+    },
+    {
+        name: 'bgColor',
+        title: 'Background Color',
+        type: 'string',
+        options: {
+            list: [
+                {title: 'White', value: 'white'},
+                {title: 'Gray', value: 'gray'},
+                {title: 'Dark', value: 'dark'},
+                {title: 'Black', value: 'black'},
+                {title: 'Primary', value: 'primary'},
+                {title: 'Accent', value: 'accent'},
+                {title: 'Alert', value: 'alert'},
+            ]
+        }
+    },
   ],
   preview: {
     select: {

@@ -63,7 +63,7 @@ export default {
             name: 'link',
             type: 'object',
             component: Button,
-            
+
             fields: [
               {
                 title: 'Link Type',

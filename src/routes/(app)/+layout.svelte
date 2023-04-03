@@ -6,6 +6,7 @@
   import Footer from '$lib/Components/Footer.svelte'
   import Left from '$lib/Components/Left.svelte'
   import Favicons from '$lib/Components/Favicons.svelte'
+  import Icons from '$lib/Components/Icons.svelte'
   import Navigation from '$lib/Components/Navigation/Navigation.svelte'
 
   import ShoppingCart from '$lib/Components/Shop/ShoppingCart.svelte'
@@ -88,7 +89,7 @@
   }
 
   export let data: any
-  
+
   $: ({siteConfig} = data)
   $: ({menus} = data)
   $: ({dsgvo} = data)
@@ -102,14 +103,33 @@
 
 <div class="wrapper">
   <Left menu={menus.navMenuHeader} meta={menus.navMenuMeta} on:openCart={openCart} />
-  <div class="content relative">
+  <div class="content">
+    <div class="fixed px-6 py-2 space-x-6 top-6 right-6 rounded-full bg-black text-white z-40">
+      <button on:click={openCart}>
+        <span class="relative">
+          <Icons strokeColor="white" type="cart" />
+          <div class="absolute -top-4 -right-4 flex items-center justify-center bg-primary w-6 h-6 rounded-full">
+            <div>{cartItems.length}</div>
+          </div>
+        </span>
+      </button>
+      <button> Funktion X </button>
+      <button> Funktion Y </button>
+    </div>
     <slot />
     <Navigation />
   </div>
 </div>
 
 <!-- {JSON.stringify(menus)} -->
-<Footer {dsgvo} {products} {services} menu={menus.navMenuFooter} contact={siteConfig.contact} social={siteConfig.social} />
+<Footer
+  {dsgvo}
+  {products}
+  {services}
+  menu={menus.navMenuFooter}
+  contact={siteConfig.contact}
+  social={siteConfig.social}
+/>
 
 {#if showCart}
   <ShoppingCart

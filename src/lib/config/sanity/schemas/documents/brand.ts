@@ -14,24 +14,24 @@ export default defineType({
       validation: (Rule) => Rule.required()
     },
     {
-        name: 'url',
-        title: 'URL',
-        type: 'url',
-        validation: (Rule) => Rule.required()
+      name: 'url',
+      title: 'URL',
+      type: 'url',
+      validation: (Rule) => Rule.required()
     },
     {
-        name: 'image',
-        title: 'Cover Image',
-        type: 'image',
-        options: {
-          hotspot: true
-        },
-        validation: (Rule) => Rule.required()
+      name: 'image',
+      title: 'Cover Image',
+      type: 'image',
+      options: {
+        hotspot: true
       },
-      {
+      validation: (Rule) => Rule.required()
+    },
+    {
       name: 'description',
       title: 'Description',
-      type: 'text',
+      type: 'text'
     }
   ],
 
