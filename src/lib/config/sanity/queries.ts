@@ -89,10 +89,12 @@ const modules = groq`
     "content": items[] {...}
   },
   _type == "richEditor" => {
-    content
-  },
-  _type == "richEditor" => {
-    content
+    content[] {
+      ...,
+      _type == "link" => {
+        ${link}
+      },
+    }
   },
   _type == "slider" => {
     "slides": @->slides[] {

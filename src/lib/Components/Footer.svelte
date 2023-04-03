@@ -71,4 +71,10 @@
   </div>
 </footer>
 
+{JSON.stringify(dsgvo.menu)}
+
+{#if dsgvo}
+{dsgvo.privacy}
+{/if}
+
 <CookieBanner {dsgvo} />

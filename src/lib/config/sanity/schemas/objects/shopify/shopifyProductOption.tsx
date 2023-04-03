@@ -1,11 +1,12 @@
-import {SunIcon} from '@sanity/icons'
+import {Option} from '@phosphor-icons/react'
+
 import {defineField} from 'sanity'
 
 export default defineField({
   title: 'Product option',
   name: 'productOption',
   type: 'object',
-  icon: SunIcon,
+  icon: Option,
   readOnly: true,
   fields: [
     // Name
