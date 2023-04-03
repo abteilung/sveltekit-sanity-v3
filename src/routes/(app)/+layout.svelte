@@ -8,10 +8,10 @@
   import Favicons from '$lib/Components/Favicons.svelte'
   import Navigation from '$lib/Components/Navigation/Navigation.svelte'
 
-  import ShoppingCart from '$lib/Components/Shop/ShoppingCart.svelte'
-  import {getCartItems} from '$lib/Stores/Shopify'
-  import {createCart} from '$lib/utils/shopify'
-  import settings from '$lib/config/sanity/schemas/documents/settings'
+  // import ShoppingCart from '$lib/Components/Shop/ShoppingCart.svelte'
+  // import {getCartItems} from '$lib/Stores/Shopify'
+  // import {createCart} from '$lib/utils/shopify'
+  // import settings from '$lib/config/sanity/schemas/documents/settings'
 
   let cartId
   let checkoutUrl
@@ -87,6 +87,7 @@
   }
 
   export let data: any
+  
   $: ({siteConfig} = data)
   $: ({menus} = data)
   $: ({dsgvo} = data)
