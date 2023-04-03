@@ -54,9 +54,6 @@ dependencies:
     version: 5.3.9(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
 
 devDependencies:
-  '@ethercorps/sveltekit-og':
-    specifier: ^1.2.2
-    version: 1.2.2(@resvg/resvg-js@2.4.1)(satori@0.4.4)(svelte@3.58.0)
   '@fontsource/roboto-condensed':
     specifier: ^4.5.9
     version: 4.5.9
@@ -1026,18 +1023,6 @@ packages:
   /@eslint/js@8.37.0:
     resolution: {integrity: sha512-x5vzdtOOGgFVDCUs81QRB2+liax8rFg3+7hqM+QhBG0/G3F1ZsoYl97UrqgHgQ9KKT7G6c4V+aTUCgu/n22v1A==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: true
-
-  /@ethercorps/sveltekit-og@1.2.2(@resvg/resvg-js@2.4.1)(satori@0.4.4)(svelte@3.58.0):
-    resolution: {integrity: sha512-O11pMpEF928/G9KS4iitO8CKmm4tZfk+x9g/luRo3UUn3QS/PSEdKtHB90reGSTd/nIzm1B+87I0FZYBxMDP1w==}
-    peerDependencies:
-      '@resvg/resvg-js': ^2.4.1
-      satori: ^0.4.1
-      svelte: ^3.54.0
-    dependencies:
-      '@resvg/resvg-js': 2.4.1
-      satori: 0.4.4
-      svelte: 3.58.0
     dev: true
 
   /@floating-ui/core@1.2.5:

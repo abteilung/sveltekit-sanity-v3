@@ -12,7 +12,6 @@
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@ethercorps/sveltekit-og": "^1.2.2",
     "@fontsource/roboto-condensed": "^4.5.9",
     "@fontsource/source-sans-pro": "^4.5.11",
     "@phosphor-icons/react": "2.0.6",
