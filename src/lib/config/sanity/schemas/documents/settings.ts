@@ -116,7 +116,7 @@ export default defineType({
       name: 'imprint',
       title: 'Imprint Page',
       type: 'reference',
-      to: [{type: 'page'}],
+      to: [{type: 'page'}, {type: 'meta'}],
       description: 'Add Imprint Page.',
       group: 'dsgvo'
     },
@@ -124,7 +124,7 @@ export default defineType({
       name: 'privacy',
       title: 'Privacy Page',
       type: 'reference',
-      to: [{type: 'page'}],
+      to: [{type: 'page'}, {type: 'meta'}],
       description: 'Add Privacy Page.',
       group: 'dsgvo'
     },
@@ -132,7 +132,7 @@ export default defineType({
       name: 'terms',
       title: 'Terms Page',
       type: 'reference',
-      to: [{type: 'page'}],
+      to: [{type: 'page'}, {type: 'meta'}],
       description: 'Add Terms Page.',
       group: 'dsgvo'
     },
