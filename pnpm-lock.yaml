@@ -61,8 +61,8 @@ devDependencies:
     specifier: ^4.5.11
     version: 4.5.11
   '@phosphor-icons/react':
-    specifier: 2.0.2
-    version: 2.0.2(react@18.2.0)
+    specifier: 2.0.3
+    version: 2.0.3(react-dom@18.2.0)(react@18.2.0)
   '@portabletext/svelte':
     specifier: ^2.0.0
     version: 2.0.0(svelte@3.58.0)
@@ -1221,13 +1221,15 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@phosphor-icons/react@2.0.2(react@18.2.0):
-    resolution: {integrity: sha512-wNzsvlVdvrsNnR5XU76oJJ598Bgx6WezdDtNn3bZbVJQ+X9bE4WEMZGHrQCFmmrn3eIuYW/B5Uqb0P4GFZSDJA==}
+  /@phosphor-icons/react@2.0.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-tmzahjYVuuz8AMrRZYo5Uieh0BfK0y/d5helQbcO2Nn9W9sWKJjDdwDWJTkIMrheRPqcG8k0c25zA5fD1axawA==}
     engines: {node: '>=10'}
     peerDependencies:
-      react: '>=16.8.0'
+      react: '>= 16.14'
+      react-dom: '>= 16.14'
     dependencies:
       react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /@polka/url@1.0.0-next.21:
