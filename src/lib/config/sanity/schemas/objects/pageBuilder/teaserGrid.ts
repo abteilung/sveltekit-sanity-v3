@@ -96,21 +96,21 @@ export default {
       type: 'boolean'
     },
     {
-        name: 'bgColor',
-        title: 'Background Color',
-        type: 'string',
-        options: {
-            list: [
-                {title: 'White', value: 'white'},
-                {title: 'Gray', value: 'gray'},
-                {title: 'Dark', value: 'dark'},
-                {title: 'Black', value: 'black'},
-                {title: 'Primary', value: 'primary'},
-                {title: 'Accent', value: 'accent'},
-                {title: 'Alert', value: 'alert'},
-            ]
-        }
-    },
+      name: 'bgColor',
+      title: 'Background Color',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'White', value: 'white'},
+          {title: 'Gray', value: 'gray'},
+          {title: 'Dark', value: 'dark'},
+          {title: 'Black', value: 'black'},
+          {title: 'Primary', value: 'primary'},
+          {title: 'Accent', value: 'accent'},
+          {title: 'Alert', value: 'alert'}
+        ]
+      }
+    }
   ],
   preview: {
     select: {
