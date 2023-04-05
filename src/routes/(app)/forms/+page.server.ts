@@ -5,8 +5,11 @@ import {z} from 'zod'
 import type {Actions, PageServerLoad} from '../../.svelte-kit/types/src/routes/$types'
 
 const schema = z.object({
-  name: z.string().min(1),
+  first_name: z.string().min(1),
+  last_name: z.string().min(1),
   email: z.string().email(),
+  phone: z.string(),
+  message: z.string(),
   // This is a date field, but we'll default it to the current date
   // so that it's always valid.
   // https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd

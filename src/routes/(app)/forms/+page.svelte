@@ -18,29 +18,37 @@
 {/if}
 
 <form method="POST" use:enhance>
-  <label for="name"
-    >Name<br />
-    <input type="text" name="name" data-invalid={$errors.name} bind:value={$form.name} />
-    {#if $errors.name}<div class="invalid">{$errors.name}</div>{/if}
-  </label>
-  <br /><br />
-  <label for="email"
-    >E-mail<br />
-    <input type="email" name="email" data-invalid={$errors.email} bind:value={$form.email} />
+  <div>
+    <input class={$errors.first_name ? 'invalid' : ''} type="text" placeholder="Vorname" name="first_name" data-invalid={$errors.first_name} bind:value={$form.first_name} />
+    {#if $errors.first_name}<div class="invalid">{$errors.first_name}</div>{/if}
+  </div>
+  <div>
+    <input class={$errors.last_name ? 'invalid' : ''} type="text" placeholder="Nachname" name="last_name" data-invalid={$errors.last_name} bind:value={$form.last_name} />
+    {#if $errors.last_name}<div class="invalid">{$errors.last_name}</div>{/if}
+  </div>
+  <div>
+    <input class={$errors.email ? 'invalid' : ''} type="email" placeholder="E-Mail" name="email" data-invalid={$errors.email} bind:value={$form.email} />
     {#if $errors.email}<div class="invalid">{$errors.email}</div>{/if}
-  </label>
-  <br /><br />
-
-  <label>
-    <input type="date" name="date" data-invalid={$errors.date} bind:value={$form.date} />
-  </label>
-  <br /><br />
-
-  <div><button>Submit</button></div>
+  </div>
+  <div>
+    <input class={$errors.phone ? 'invalid' : ''} type="text" placeholder="Telefonnummer" name="phone" data-invalid={$errors.phone} bind:value={$form.phone} />
+    {#if $errors.phone}<div class="invalid">{$errors.phone}</div>{/if}
+  </div>
+  <div>
+    <textarea class={$errors.message ? 'invalid' : ''} type="text" placeholder="Ihre Mitteilung" name="message" data-invalid={$errors.message} bind:value={$form.message} />
+    {#if $errors.message}<div class="invalid">{$errors.message}</div>{/if}
+  </div>
+  <div>
+    <button>Abschicken</button>
+  </div>
 </form>
 
 <style lang="postcss">
   .invalid {
-    @apply text-primary border-4 border-accent;
+    @apply text-primary text-sm;
+    @apply border-accent;
+  }
+  .valid {
+    @apply border-success;
   }
 </style>
