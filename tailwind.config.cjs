@@ -40,6 +40,8 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
-    require('tailwindcss-hyphens')
+    require('tailwindcss-hyphens'),
+    // If using VidStack
+    require('vidstack/tailwind.cjs')
   ]
 }
