@@ -1,7 +1,13 @@
 <script lang="ts">
   import {urlForImage} from '$lib/config/sanity'
+  import { onMount } from 'svelte'
 
   export let block
+  let isLoaded: boolean = false
+
+  onMount (() => {
+    isLoaded = true
+  })
 
   export let src: string = block.src
   export let width: number = 940
@@ -14,7 +20,6 @@
 </script>
 
 <div
-  class="w-full overflow-hidden"
   style="background-size: cover; background-image: url({lqip}); background-color: {bgColor};"
 >
   {#if src}

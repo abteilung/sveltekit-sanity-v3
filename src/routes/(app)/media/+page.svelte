@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {onMount} from 'svelte'
-
   import 'vidstack/styles/base.css'
 
   import {defineCustomElements} from 'vidstack/elements'

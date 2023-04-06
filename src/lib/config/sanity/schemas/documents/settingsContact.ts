@@ -93,57 +93,44 @@ export default defineType({
 
     // Social
     {
-      name: 'twitter',
-      title: 'Twitter',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'facebook',
-      title: 'Facebook',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'instagram',
-      title: 'Instagram',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'github',
-      title: 'GitHub',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'linkedin',
-      title: 'LinkedIn',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'youtube',
-      title: 'YouTube',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'tiktok',
-      title: 'TiKTok',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'reddit',
-      title: 'Reddit',
-      type: 'string',
-      group: 'social'
-    },
-    {
-      name: 'pinterest',
-      title: 'Pinterest',
-      type: 'string',
+      name: 'socialChannels',
+      title: 'Social Channels',
+      type: 'array',
+      // Build an array of objects
+      of: [
+        {
+          type: 'object',
+          icon: ShareNetwork,
+          fields: [
+            {
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              description: 'Enter the name of the social channel.'
+            },
+            {
+              name: 'url',
+              title: 'URL',
+              type: 'url',
+              description: 'Enter the URL of the social channel.'
+            },
+            {
+              name: 'image',
+              title: 'Icon Image',
+              type: 'image',
+              description: 'Enter the icon of the social channel.'
+            }
+          ],
+          preview: {
+            select: {
+              title: 'name',
+              media: 'image',
+              subtitle: 'url'
+            }
+          }
+        }
+      ],
+      description: 'Enter your social channels.',
       group: 'social'
     }
   ]

@@ -5,9 +5,12 @@
 
   import {onMount} from 'svelte'
 
+  let brandVisible: boolean = false
+
   let hidden = true
   onMount(() => {
     hidden = false
+    brandVisible = true
   })
 
   import {Swiper, SwiperSlide} from 'swiper/svelte'
@@ -75,22 +78,27 @@ layout: {layout}<br>
 itemSelector: {itemSelector}<br> 
 -->
     {#if typeSelector === 'brand'}
-      <ul class={classNames('grid-cols-' + columns / 2 + ' lg:grid-cols-' + columns, 'grid')}>
+      <ul class={classNames('overflow-hidden grid-cols-' + columns / 2 + ' lg:grid-cols-' + columns, 'grid  bg-light')}>
         {#each teasers as teaser, i}
           {#if teaser.image}
-            <li>
-              <Image
-                block={teaser.image}
-                width="320"
-                height="200"
-                alt={teaser.title}
-                additionalClass="group-hover:scale-105 duration-300 transition-all"
-              />
-            </li>
+            {#if brandVisible}
+              <li class="group" in:fly={{x: -50, y: -20, delay: i * 75, duration: 500, opacity: 0}}>
+                <a href={teaser.href} target="_blank">
+                  <Image
+                    block={teaser.image}
+                    width="483"
+                    height="244"
+                    alt={teaser.title}
+                    additionalClass="group-hover:scale-105 duration-300 transition-all"
+                  />
+                </a>
+              </li>
+            {/if}
           {/if}
         {/each}
       </ul>
     {:else}
+
       {#if layout === 'grid'}
         <ul class={classNames('md:grid-cols-' + columns, 'grid')}>
           {#each teasers as teaser, i}
@@ -99,7 +107,9 @@ itemSelector: {itemSelector}<br>
                 <li in:fly={{x: -50, y: -20, delay: i * 75, duration: 500, opacity: 0}}>
                   <a href={teaser.href} class="block space-y-4 group">
                     {#if teaser.image}
-                      <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+                      <div class="overflow-hidden">
+                        <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+                      </div>
                     {/if}
                     <div>
                       <h4 class="mb-2">{teaser.subtitle}</h4>
@@ -120,7 +130,9 @@ itemSelector: {itemSelector}<br>
               <li class="py-2 my-2">
                 <a href={teaser.href} class="grid items-top grid-cols-4 group">
                   {#if teaser.image}
-                    <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+                    <div class="overflow-hidden">
+                      <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+                    </div>
                   {/if}
                   <div class="col-span-3">
                     <h4 class="mb-2">{teaser.subtitle}</h4>
@@ -176,7 +188,9 @@ itemSelector: {itemSelector}<br>
                 <SwiperSlide>
                   <a href={teaser.href} class="block space-y-4 group">
                     {#if teaser.image}
-                      <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+                      <div class="overflow-hidden">
+                        <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+                      </div>
                     {/if}
                     <div>
                       <h4 class="mb-2">{teaser.subtitle}</h4>

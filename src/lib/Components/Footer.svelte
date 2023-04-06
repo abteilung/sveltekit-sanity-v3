@@ -5,7 +5,7 @@
   export let menu: any
   export let dsgvo: any
   export let contact: any
-  export let social: any
+  export let socialChannels: any
   export let products: any
   export let services: any
 </script>
@@ -55,7 +55,7 @@
       </div>
       <div>
         <h3>Social</h3>
-        <SocialIcons {social} showIcons={true} />
+        <SocialIcons {socialChannels} showIcons={true} />
       </div>
     </div>
     <hr />

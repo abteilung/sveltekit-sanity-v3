@@ -25,6 +25,9 @@ const linkTypes = groq`
   },
   _type == "meta" => {
     "href": "/meta/" + slug.current,
+  },
+  _type == "brand" => {
+    "href": url,
   }
 `
 
@@ -197,11 +200,18 @@ export const getAllPosts = groq`
 
 // Configure Page Blocks with modules and columns
 
+// Pages Queries
+export const getHomepage = groq`
+*[(_type == 'page' && _id == 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+  ${documentFields}
+}`
+
 export const getPageBySlug = groq`
 *[(_type == 'page' && slug.current == $slug && _id != 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 
+// Services Queries
 export const getAllServices = groq`
 *[(_type == 'service') && ${dateRangeChecker}] | order(_updatedAt desc) {
   ${documentFields}
@@ -212,6 +222,7 @@ export const getServiceBySlug = groq`
   ${documentFields}
 }`
 
+// Products Queries
 export const getAllProducts = groq`
 *[(_type == 'product') && ${dateRangeChecker}] | order(_updatedAt desc) {
   ${documentFields}
@@ -222,26 +233,14 @@ export const getProductBySlug = groq`
   ${documentFields}
 }`
 
-export const getHomepage = groq`
-*[(_type == 'page' && _id == 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
-  ${documentFields}
-}`
-
+// Site Config specific Queries
 export const getSiteConfig = groq`
   *[_type == 'settings'][0] {
     title,
     description,
     siteUrl,
     favicon,
-    "social": *[_type == 'settingsContact'][0] {
-      twitter,
-      facebook,
-      instagram,
-      youtube,
-      linkedin,
-      github,
-      tiktok,
-    },
+    "socialChannels": *[_type == 'settingsContact'][0].socialChannels[] { ..., ${imageMeta} },
     "contact": *[_type == 'settingsContact'][0] {
       companyName,
       email,
@@ -263,7 +262,7 @@ export const getSiteConfig = groq`
   }
 `
 
-// Navigations
+// Multilevel Navigation Queries
 const multiLevelNavigation = groq`
   items[]{
     // First Level
@@ -283,6 +282,24 @@ const multiLevelNavigation = groq`
   }
 `
 
+export const getMenus = groq`
+*[_type == 'navigationSettings'][0] {
+  navMenuHeader->{
+    ${multiLevelNavigation}
+  },
+  navMenuMobile->{
+    ${multiLevelNavigation}
+  },  
+  navMenuFooter->{
+    ${multiLevelNavigation}
+  },
+  navMenuMeta->{
+    ${multiLevelNavigation}
+  },
+}
+`
+
+// Get DSGVO specific Setetings
 export const getDsgvoSettings = groq`
 *[_type == 'settings'][0] {
   "menu": {
@@ -315,31 +332,8 @@ export const getDsgvoSettings = groq`
 }
 `
 
-export const getMenus = groq`
-*[_type == 'navigationSettings'][0] {
-  navMenuHeader->{
-    ${multiLevelNavigation}
-  },
-  navMenuMobile->{
-    ${multiLevelNavigation}
-  },  
-  navMenuFooter->{
-    ${multiLevelNavigation}
-  },
-  navMenuMeta->{
-    ${multiLevelNavigation}
-  },
-}
-`
 
-export const site = groq`
-  "site": {
-    "title": settings.title,
-    "productsCounts": *[_type == "product"].length,
-    "menuDesktop"
-  }
-`
-
+// Get Redirects
 export const getRedirectBySlug = groq`
 *[_type == 'redirect' && fromPath.current == $slug && ${dateRangeChecker}][0] {
   "fromPath": fromPath.current,
@@ -348,4 +342,19 @@ export const getRedirectBySlug = groq`
   "end": unpublishedAt,
   statusCode,
 }
+`
+
+
+
+
+
+
+
+// Do we need this?
+export const site = groq`
+  "site": {
+    "title": settings.title,
+    "productsCounts": *[_type == "product"].length,
+    "menuDesktop"
+  }
 `

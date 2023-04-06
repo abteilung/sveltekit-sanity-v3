@@ -128,7 +128,7 @@
   {services}
   menu={menus.navMenuFooter}
   contact={siteConfig.contact}
-  social={siteConfig.social}
+  socialChannels={siteConfig.socialChannels}
 />
 
 {#if showCart}
