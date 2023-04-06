@@ -24,7 +24,7 @@ layout: {layout}<br>
 itemSelector: {itemSelector}<br> 
 -->
     {#if typeSelector === 'brand'}
-      <ul class={classNames('overflow-hidden grid-cols-' + columns / 2 + ' lg:grid-cols-' + columns, 'grid  bg-light')}>
+      <ul class={classNames('overflow-hidden grid-cols-' + columns / 2 + ' md:grid-cols-' + Math.round(columns / 1.5) + ' lg:grid-cols-' + columns, 'grid  bg-light')}>
         {#each teasers as teaser, i}
           <BrandItem {teaser} {i} />
         {/each}

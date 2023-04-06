@@ -14,43 +14,30 @@
   $: activeSnapIndex = 0
   $: snapGridTotal = 1
   const breakpoints = {
-    320: {
-      slidesPerView: 2,
-      spaceBetween: 10,
-      slidesPerGroup: 2,
-
-      grid: {
-        rows: 2
-      }
-    },
     // when window width is >= 480px
     480: {
-      slidesPerView: 3,
+      slidesPerView: 1,
       spaceBetween: 10,
-      slidesPerGroup: 3,
-      grid: {
-        rows: 2
-      }
+      slidesPerGroup: 1,
     },
     // when window width is >= 640px
     640: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+      slidesPerGroup: 2,
+    },
+    // when window width is >= 980px
+    980: {
       slidesPerView: 3,
       spaceBetween: 10,
-      slidesPerGroup: 4,
-      grid: {
-        rows: 2
-      }
-    }
+      slidesPerGroup: 3,
+    },
     // when window width is >= 640px
-    // 1024: {
-    //     slidesPerView: 5,
-    //     spaceBetween: 10,
-    //     slidesPerGroup: 5,
-
-    //     grid: {
-    //         rows: 2
-    //     }
-    // }
+    1280: {
+      slidesPerView: 4,
+      spaceBetween: 10,
+      slidesPerGroup: 4,
+    }    
   }
 </script>
 
