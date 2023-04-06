@@ -332,7 +332,6 @@ export const getDsgvoSettings = groq`
 }
 `
 
-
 // Get Redirects
 export const getRedirectBySlug = groq`
 *[_type == 'redirect' && fromPath.current == $slug && ${dateRangeChecker}][0] {
@@ -343,12 +342,6 @@ export const getRedirectBySlug = groq`
   statusCode,
 }
 `
-
-
-
-
-
-
 
 // Do we need this?
 export const site = groq`

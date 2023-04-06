@@ -1,11 +1,11 @@
 <script lang="ts">
   import {urlForImage} from '$lib/config/sanity'
-  import { onMount } from 'svelte'
+  import {onMount} from 'svelte'
 
   export let block
   let isLoaded: boolean = false
 
-  onMount (() => {
+  onMount(() => {
     isLoaded = true
   })
 
@@ -19,9 +19,7 @@
   export let additionalClass: string = ''
 </script>
 
-<div
-  style="background-size: cover; background-image: url({lqip}); background-color: {bgColor};"
->
+<div style="background-size: cover; background-image: url({lqip}); background-color: {bgColor};">
   {#if src}
     <img
       src={urlForImage(src, width, customRatio ? Math.round(width / customRatio) : height)}

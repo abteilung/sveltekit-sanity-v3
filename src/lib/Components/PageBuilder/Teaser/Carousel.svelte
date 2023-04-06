@@ -1,0 +1,112 @@
+<script lang="ts">
+  import {fly} from 'svelte/transition'
+  import {Swiper, SwiperSlide} from 'swiper/svelte'
+  import 'swiper/css'
+
+  import IntersectionObserver from '$lib/Components/IntersectionObserver.svelte'
+  import Image from '$lib/Components/PageBuilder/Image.svelte'
+
+  export let teasers: any
+  export let maxItems: number
+  export let i: number
+
+  let swiper: Swiper
+  $: activeSnapIndex = 0
+  $: snapGridTotal = 1
+  const breakpoints = {
+    320: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+      slidesPerGroup: 2,
+
+      grid: {
+        rows: 2
+      }
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      slidesPerGroup: 3,
+      grid: {
+        rows: 2
+      }
+    },
+    // when window width is >= 640px
+    640: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      slidesPerGroup: 4,
+      grid: {
+        rows: 2
+      }
+    }
+    // when window width is >= 640px
+    // 1024: {
+    //     slidesPerView: 5,
+    //     spaceBetween: 10,
+    //     slidesPerGroup: 5,
+
+    //     grid: {
+    //         rows: 2
+    //     }
+    // }
+  }
+</script>
+
+<IntersectionObserver let:intersecting top={200} once={true}>
+  {#if intersecting}
+    <div class="flex items-center justify-between">
+      <button
+        type="button"
+        on:click={() => {
+          swiper?.slidePrev()
+        }}>prev</button
+      >
+      <span>{activeSnapIndex + 1} / {snapGridTotal}</span>
+      <button
+        type="button"
+        on:click={() => {
+          swiper?.slideNext()
+          console.log(swiper.snapIndex)
+        }}>next</button
+      >
+    </div>
+
+    <Swiper
+      spaceBetween={10}
+      slidesPerView="4"
+      {breakpoints}
+      on:slideChange={() => {
+        activeSnapIndex = swiper.snapIndex
+      }}
+      on:resize={() => {
+        snapGridTotal = swiper?.snapGrid.length
+      }}
+      on:swiper={(e) => {
+        swiper = e.detail[0]
+        activeSnapIndex = swiper.snapIndex
+        snapGridTotal = swiper?.snapGrid.length
+        console.log(swiper)
+      }}
+    >
+      {#each teasers as teaser, i}
+        {#if i < maxItems}
+          <SwiperSlide>
+            <a href={teaser.href} class="block space-y-4 group">
+              {#if teaser.image}
+                <div class="overflow-hidden">
+                  <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+                </div>
+              {/if}
+              <div>
+                <h4 class="mb-2">{teaser.subtitle}</h4>
+                <h3>{teaser.title}</h3>
+              </div>
+            </a>
+          </SwiperSlide>
+        {/if}
+      {/each}
+    </Swiper>
+  {/if}
+</IntersectionObserver>

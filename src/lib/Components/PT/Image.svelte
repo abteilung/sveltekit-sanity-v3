@@ -1,11 +1,11 @@
 <script lang="ts">
   import {urlForImage} from '$lib/config/sanity'
-  import { onMount } from 'svelte'
+  import {onMount} from 'svelte'
 
   export let portableText: any
   let isLoaded: boolean = false
 
-  onMount (() => {
+  onMount(() => {
     isLoaded = true
   })
 

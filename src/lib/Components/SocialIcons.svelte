@@ -15,7 +15,7 @@
     <a class="{textColor} flex items-center space-x-2" href={channel.url} target="_blank">
       {#if showIcons}
         {#if channel.image.asset}
-          <Image block={channel.image} additionalClass={iconSize} alt={channel.name}/>
+          <Image block={channel.image} additionalClass={iconSize} alt={channel.name} />
         {:else}
           <IconSocial icon={channel.name.toLowerCase()} />
         {/if}
