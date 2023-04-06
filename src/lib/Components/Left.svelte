@@ -2,6 +2,7 @@
   import Icons from '$lib/Components/Icons.svelte'
 
   import SearchBar from '$lib/Components/Shop/SearchBar.svelte'
+  import AnimatedHamburger from '$lib/Components/AnimatedHamburger.svelte'
   import {cartQuantity} from '$lib/Stores/Shopify'
   import {showSubMenu, subMenuItemsStore} from '$lib/Stores/Navigation'
   import {createEventDispatcher} from 'svelte'
@@ -10,6 +11,8 @@
   import Dropdown from '$lib/Components/Navigation/Dropdown.svelte'
   import MenuLink from '$lib/Components/Navigation/MenuLink.svelte'
   import MenuPage from '$lib/Components/Navigation/MenuPage.svelte'
+
+  export let navMenuMobile
 
   const dispatch = createEventDispatcher()
 
@@ -52,12 +55,15 @@
 
 <div class="navBar" bind:clientWidth={width}>
   <div class="h-full">
-    <a href="/" on:click={hideSubMenus}>
-      <Icons
-        icon="logo"
-        additionalClass="text-primary w-[123px] sm:w-[135px] md:w-full h-full md:h-auto py-4 md:py-0"
-      />
-    </a>
+    <div class="flex md:block justify-between items-center">
+      <a href="/" on:click={hideSubMenus}>
+        <Icons
+          icon="logo"
+          additionalClass="text-primary w-full md:w-full h-full md:h-auto py-4 md:py-0"
+        />
+      </a>
+      <AnimatedHamburger {navMenuMobile} />
+    </div>
     <div class="mt-[100px] hidden md:block">
       <ul>
         {#each menu.items as menuItem}

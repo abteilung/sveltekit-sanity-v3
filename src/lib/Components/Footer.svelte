@@ -2,6 +2,7 @@
   import Icons from '$lib/Components/Icons.svelte'
   import CookieBanner from '$lib/Components/CookieBanner.svelte'
   import SocialIcons from '$lib/Components/SocialIcons.svelte'
+  import MenuInline from '$lib/Components/Navigation/MenuInline.svelte'
   export let menu: any
   export let dsgvo: any
   export let contact: any
@@ -60,20 +61,12 @@
     </div>
     <hr />
     <div class="flex justify-between">
+      <MenuInline {menu} spacing="8" />
       <div>
-        <Icons />
-      </div>
-      <div>
-        <p>© 2021 - {new Date().getFullYear()} - {dsgvo.companyName}</p>
+        <p>© {new Date().getFullYear()} - {dsgvo.companyName}</p>
       </div>
     </div>
   </div>
 </footer>
-
-{JSON.stringify(dsgvo.menu)}
-
-{#if dsgvo}
-  {dsgvo.privacy}
-{/if}
 
 <CookieBanner {dsgvo} />

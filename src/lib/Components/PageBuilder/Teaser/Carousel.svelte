@@ -18,26 +18,26 @@
     480: {
       slidesPerView: 1,
       spaceBetween: 10,
-      slidesPerGroup: 1,
+      slidesPerGroup: 1
     },
     // when window width is >= 640px
     640: {
       slidesPerView: 2,
       spaceBetween: 10,
-      slidesPerGroup: 2,
+      slidesPerGroup: 2
     },
     // when window width is >= 980px
     980: {
       slidesPerView: 3,
       spaceBetween: 10,
-      slidesPerGroup: 3,
+      slidesPerGroup: 3
     },
     // when window width is >= 640px
     1280: {
       slidesPerView: 4,
       spaceBetween: 10,
-      slidesPerGroup: 4,
-    }    
+      slidesPerGroup: 4
+    }
   }
 </script>
 

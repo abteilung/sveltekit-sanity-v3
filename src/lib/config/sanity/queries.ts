@@ -316,6 +316,7 @@ export const getDsgvoSettings = groq`
       ${linkTypes}
     },
   },
+  "companyName": *[_type == 'settingsContact'][0].companyName,
   cookieBanner,
   cookieBannerText,
   cookieBannerLink -> {
