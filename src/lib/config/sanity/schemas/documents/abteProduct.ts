@@ -2,7 +2,7 @@ import {Storefront} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
 
 export default {
-  name: 'product',
+  name: 'abteProduct',
   title: 'Products',
   type: 'document',
   icon: Storefront,
@@ -12,11 +12,6 @@ export default {
       title: 'Default',
       description: 'Default fields',
       default: true
-    },
-    {
-      name: 'shopifySync',
-      title: 'Shopify Sync',
-      description: 'Fields that are synced from Shopify'
     }
   ],
   fields: [
@@ -51,14 +46,6 @@ export default {
       },
       group: 'default'
     },
-
-    defineField({
-      name: 'store',
-      title: 'Shopify',
-      type: 'shopifyProduct',
-      description: 'Product data from Shopify (read-only)',
-      group: 'shopifySync'
-    }),
     {
       name: 'teaser',
       title: 'Teaser',

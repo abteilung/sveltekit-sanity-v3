@@ -35,6 +35,7 @@ import authorType from './schemas/documents/author'
 import memberType from './schemas/documents/member'
 import caseStudyType from './schemas/documents/caseStudy'
 import productType from './schemas/documents/product'
+import abteProductType from './schemas/documents/abteProduct'
 import serviceType from './schemas/documents/service'
 import categoryReferenceType from './schemas/documents/categoryReference'
 import brandType from './schemas/documents/brand'
@@ -93,6 +94,7 @@ export default defineConfig({
       galleryType,
       blockContent,
       caseStudyType,
+      abteProductType,
       productType,
       categoryReferenceType,
       serviceType,

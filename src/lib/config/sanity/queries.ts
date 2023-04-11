@@ -17,7 +17,7 @@ const linkTypes = groq`
   _type == "service" => {
     "href": "/services/" + slug.current,
   },
-  _type == "product" => {
+  _type == "abteProduct" => {
     "href": "/produkte/" + slug.current,
   },
   _type == "page" => {
@@ -151,9 +151,11 @@ const columns = groq`
 const documentFields = groq`
   _id,
   _type,
+  likes,
   "category": categories[0]->,
   title,
   subtitle,
+  youtube,
   "date": coalesce(
     publishedAt,
     string(_createdAt)
@@ -224,12 +226,12 @@ export const getServiceBySlug = groq`
 
 // Products Queries
 export const getAllProducts = groq`
-*[(_type == 'product') && ${dateRangeChecker}] | order(_updatedAt desc) {
+*[(_type == 'abteProduct') && ${dateRangeChecker}] | order(_updatedAt desc) {
   ${documentFields}
 }`
 
 export const getProductBySlug = groq`
-*[(_type == 'product' && slug.current == $slug) && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+*[(_type == 'abteProduct' && slug.current == $slug) && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 
@@ -348,7 +350,7 @@ export const getRedirectBySlug = groq`
 export const site = groq`
   "site": {
     "title": settings.title,
-    "productsCounts": *[_type == "product"].length,
+    "productsCounts": *[_type == "abteProduct"].length,
     "menuDesktop"
   }
 `

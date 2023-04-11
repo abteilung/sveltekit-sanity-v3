@@ -102,7 +102,12 @@
 </svelte:head>
 
 <div class="wrapper">
-  <Left menu={menus.navMenuHeader} meta={menus.navMenuMeta} navMenuMobile={menus.navMenuMobile} on:openCart={openCart} />
+  <Left
+    menu={menus.navMenuHeader}
+    meta={menus.navMenuMeta}
+    navMenuMobile={menus.navMenuMobile}
+    on:openCart={openCart}
+  />
   <div class="content">
     <div class="fixed px-6 py-2 space-x-6 top-6 right-6 rounded-full bg-black text-white z-40">
       <button on:click={openCart}>

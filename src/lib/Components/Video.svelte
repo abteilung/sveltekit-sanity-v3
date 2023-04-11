@@ -1,13 +1,9 @@
 <script lang="ts">
   import {onMount} from 'svelte'
-  import {goto} from '$app/navigation'
-
   import plyr from 'plyr'
-  // Import Plyr CSS
   import 'plyr/dist/plyr.css'
 
   onMount(() => {
-    // init Plyr
     const player = new plyr('#player', {
       controls: [
         // 'play-large', // The large play button in the center
@@ -31,32 +27,7 @@
     })
   })
 
-  export let slug: string
-  export let title
-
-  // Import Components
-  import Header from '$lib/Components/Header.svelte'
-  import PageBuilder from '$lib/Components/PageBuilder/PageBuilder.svelte'
-
-  // Export Data
-  export let data: PageData
-  $: ({page} = data)
-
-  // Update Likes in Synity.io
-  const addLike = async () => {
-    const _id = page._id
-    const response = await fetch('/api/like', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({_id})
-    })
-    const data = await response.json()
-    console.log(data)
-    // goto(`/produkte/${slug}`)
-  }
-
+  export let videoID
   let videoType
 
   // Find out if it's youtube or vimeo
@@ -71,31 +42,10 @@
   }
 </script>
 
-{#if page}
-  <Header bgImage={page.image} />
-
-  {#if page.youtube}
-    getVideoType: {getVideoType(page.youtube)}<br /><br />
-    video-ID: {page.youtube}
-    <br /><br />
-  {/if}
-
-  <form>
-    <button class="bg-black text-white px-4 py-2" on:click={addLike}>Like</button>
-  </form>
-
-  Likes: {page.likes}
-  <br />
-
-  <div id="player" data-plyr-provider={videoType} data-plyr-embed-id={getVideoType(page.youtube)} />
-
-  <div class="contentArea">
-    {#if page.subtitle}
-      <h1 class="h3 mb-0">{page.subtitle}</h1>
-      <h2 class="text-4xl">{page.title}</h2>
-    {:else}
-      <h1>{page.title}</h1>
-    {/if}
-  </div>
-  <PageBuilder blocks={page.content} />
+{#if videoID}
+    <div 
+        id="player" 
+        data-plyr-provider={videoType} 
+        data-plyr-embed-id={getVideoType(page.youtube)} 
+    />
 {/if}

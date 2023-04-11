@@ -12,6 +12,13 @@ export const previewClient = createClient({
   useCdn: false,
   token: env.SANITY_API_READ_TOKEN || env.SANITY_API_WRITE_TOKEN || ''
 })
+
+export const writeClient = createClient({
+  ...sanityConfig,
+  useCdn: false,
+  token: env.SANITY_API_WRITE_TOKEN || ''
+})
+
 export const client = createClient(sanityConfig)
 export const getSanityServerClient = (usePreview: boolean) => (usePreview ? previewClient : client)
 

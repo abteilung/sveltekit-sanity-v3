@@ -3,7 +3,7 @@
   export let onClick = (): void => {
     open = !open
   }
-  import { fade } from 'svelte/transition'
+  import {fade} from 'svelte/transition'
 
   export let navMenuMobile: any
 
@@ -14,16 +14,15 @@
   export let ariaLabel = 'toggle menu'
   export let width: string | number = 60
 
-// set open to false on ESC
-    const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-            open = false
-        }
+  // set open to false on ESC
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      open = false
     }
+  }
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
-    
 
 <button
   on:click={onClick}
@@ -45,29 +44,27 @@
   </svg>
 </button>
 
-
 {#if open}
-<div 
-class="bg-black/80 inset-0 fixed top-0 left-0 w-full h-full flex items-center text-white"
-in:fade={{ duration: 400 }}
-out:fade={{ duration: 400 }}
->
+  <div
+    class="bg-black/80 inset-0 fixed top-0 left-0 w-full h-full flex items-center text-white"
+    in:fade={{duration: 400}}
+    out:fade={{duration: 400}}
+  >
     <div class="container">
-        {#if navMenuMobile}
-            <ul>
-                {#each navMenuMobile.items as menuItem}
-                    <li on:click={onClick}>
-                        <MenuLink {menuItem} />
-                        <MenuPage {menuItem} />
-                        <Dropdown {menuItem} expanded={true}/>
-                    </li>
-                {/each}
-            </ul>
-        {/if}
+      {#if navMenuMobile}
+        <ul>
+          {#each navMenuMobile.items as menuItem}
+            <li on:click={onClick}>
+              <MenuLink {menuItem} />
+              <MenuPage {menuItem} />
+              <Dropdown {menuItem} expanded={true} />
+            </li>
+          {/each}
+        </ul>
+      {/if}
     </div>
-</div>
+  </div>
 {/if}
-
 
 <style lang="postcss">
   :root {

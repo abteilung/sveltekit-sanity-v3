@@ -8,7 +8,7 @@ export function productsStructure(S) {
       S.list()
         .title('Products & Services')
         .items([
-          S.listItem().title('Products').icon(Storefront).child(S.documentTypeList('product').title('Products')),
+          S.listItem().title('Products').icon(Storefront).child(S.documentTypeList('abteProduct').title('Products')),
           S.divider(),
           S.listItem().title('Services').icon(Handshake).child(S.documentTypeList('service').title('Services'))
         ])

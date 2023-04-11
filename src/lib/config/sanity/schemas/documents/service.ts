@@ -42,7 +42,7 @@ export default {
     },
     {
       name: 'youtube',
-      title: 'Youtube-Movie',
+      title: 'Youtube or Vimeo URL',
       type: 'url'
     },
     {
