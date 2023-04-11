@@ -1,5 +1,5 @@
 // Writable
-// Path: src/lib/Stores/Navigation.ts
+// Path: src/lib/stores/navigation.ts
 import {writable, type Writable} from 'svelte/store'
 
 export const navStore: Writable<Navigation> = writable({

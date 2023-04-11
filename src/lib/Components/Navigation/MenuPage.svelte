@@ -1,7 +1,7 @@
 <script lang="ts">
   // Store Imports
   import {page} from '$app/stores'
-  import {showSubMenu} from '$lib/Stores/Navigation'
+  import {showSubMenu} from '$lib/stores/navigation'
 
   export let menuItem: string
 

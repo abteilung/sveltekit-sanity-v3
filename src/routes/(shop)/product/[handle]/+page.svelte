@@ -2,7 +2,7 @@
   import GridTile from '$lib/Components/Shop/GridTile.svelte'
   import DescriptionToggle from '$lib/Components/Shop/DescriptionToggle.svelte'
   import Icons from '$lib/Components/Icons.svelte'
-  import {getCartItems} from '$lib/Stores/Shopify.ts'
+  import {getCartItems} from '$lib/stores/shopify'
 
   /** @type {import('./$types').PageData} */
   export let data

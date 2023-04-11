@@ -9,7 +9,7 @@
 
   // Stores
   import {page} from '$app/stores'
-  import {showSubMenu, subMenuItemsStore} from '$lib/Stores/Navigation'
+  import {showSubMenu, subMenuItemsStore} from '$lib/stores/navigation'
 
   // empty store on ESC click
   function closeNavigation(event: KeyboardEvent) {

@@ -2,7 +2,7 @@
   import Cookies from 'js-cookie'
   import {onMount} from 'svelte'
 
-  import {cookieVisibility} from '$lib/Stores/Stores'
+  import {cookieVisibility} from '$lib/stores/stores'
 
   export let dsgvo: any
 

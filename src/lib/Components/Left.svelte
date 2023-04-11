@@ -3,8 +3,8 @@
 
   import SearchBar from '$lib/Components/Shop/SearchBar.svelte'
   import AnimatedHamburger from '$lib/Components/AnimatedHamburger.svelte'
-  import {cartQuantity} from '$lib/Stores/Shopify'
-  import {showSubMenu, subMenuItemsStore} from '$lib/Stores/Navigation'
+  import {cartQuantity} from '$lib/stores/shopify'
+  import {showSubMenu, subMenuItemsStore} from '$lib/stores/navigation'
   import {createEventDispatcher} from 'svelte'
 
   // Component Imports

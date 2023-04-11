@@ -10,7 +10,7 @@
   import Navigation from '$lib/Components/Navigation/Navigation.svelte'
 
   import ShoppingCart from '$lib/Components/Shop/ShoppingCart.svelte'
-  import {getCartItems} from '$lib/Stores/Shopify'
+  import {getCartItems} from '$lib/stores/shopify'
   import {createCart} from '$lib/utils/shopify'
   // This line causes Vercel to crash. Is it even needed or an autopilot import???
   // import settings from '$lib/config/sanity/schemas/documents/settings'
