@@ -160,4 +160,8 @@
     @apply bg-primary;
     @apply text-white;
   }
+
+  .modal-open {
+    @apply overflow-hidden;
+  }
 }

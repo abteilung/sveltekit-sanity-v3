@@ -1,7 +1,7 @@
 <script lang="ts">
   import {onMount} from 'svelte'
   import {goto} from '$app/navigation'
-  import Video from '$lib/Components/Video.svelte'
+  import Modal from '$lib/Components/Modal.svelte'
 
   export let slug: string
   export let title
@@ -32,6 +32,7 @@
 
 {#if page}
   <Header bgImage={page.image} />
+  <Modal />
 
   <form>
     <button class="bg-black text-white px-4 py-2" on:click={addLike}>Like</button>
@@ -39,8 +40,6 @@
 
   Likes: {page.likes}
   <br />
-
-  <Video video={page.youtube} />
 
   <div class="contentArea">
     {#if page.subtitle}

@@ -40,13 +40,8 @@
       return url.split('/')[3]
     }
   }
-
 </script>
 
 {#if video}
-    <div 
-        id="player" 
-        data-plyr-provider={videoType} 
-        data-plyr-embed-id={getVideoType(video)} 
-    />
+  <div id="player" data-plyr-provider={videoType} data-plyr-embed-id={getVideoType(video)} />
 {/if}
