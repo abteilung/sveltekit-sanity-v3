@@ -5,7 +5,7 @@
   // Import Components
   import {urlForImage} from '$lib/config/sanity'
   import PortableBlock from '$lib/Components/PortableBlock.svelte'
-  import Header from '$lib/Components/Header.svelte'
+  import Header from '$lib/Components/Header/Header.svelte'
 
   // Export Data
   export let data: PageData

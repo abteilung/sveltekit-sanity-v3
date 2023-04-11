@@ -3,7 +3,7 @@
   import type {PageData} from './$types'
 
   // Import Components
-  import Header from '$lib/Components/Header.svelte'
+  import Header from '$lib/Components/Header/Header.svelte'
   import PageBuilder from '$lib/Components/PageBuilder/PageBuilder.svelte'
 
   // Export Data
