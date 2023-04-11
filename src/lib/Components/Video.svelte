@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {onMount} from 'svelte'
+  import {onMount, onDestroy} from 'svelte'
   import plyr from 'plyr'
   import 'plyr/dist/plyr.css'
 
@@ -27,7 +27,7 @@
     })
   })
 
-  export let videoID
+  export let video = page.youtube
   let videoType
 
   // Find out if it's youtube or vimeo
@@ -40,12 +40,13 @@
       return url.split('/')[3]
     }
   }
+
 </script>
 
-{#if videoID}
+{#if video}
     <div 
         id="player" 
         data-plyr-provider={videoType} 
-        data-plyr-embed-id={getVideoType(page.youtube)} 
+        data-plyr-embed-id={getVideoType(video)} 
     />
 {/if}
