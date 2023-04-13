@@ -346,7 +346,7 @@ export const getDsgvoSettings = groq`
 
 // Get Redirects
 export const getRedirectBySlug = groq`
-*[_type == 'redirect' && fromPath.current == $slug && pub.isHidden != true && ${visibilityChecker}][0] {
+*[_type == 'redirect' && fromPath.current == $slug && ${visibilityChecker}][0] {
   "fromPath": fromPath.current,
   toPath,
   "start": pub.publishedAt,
