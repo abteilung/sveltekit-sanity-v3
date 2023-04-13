@@ -1,6 +1,6 @@
 // Get Queries from Sanity
 import {getSanityServerClient} from '$lib/config/sanity/client'
-import {getSiteConfig, getAllPosts, getEvents} from '$lib/config/sanity/queries'
+import {getSiteConfig, getSitemap} from '$lib/config/sanity/queries'
 
 // Types
 /** @type {import('@sveltejs/kit').RequestHandler} */
@@ -8,10 +8,10 @@ import {getSiteConfig, getAllPosts, getEvents} from '$lib/config/sanity/queries'
 // Get all Data for Sitemap
 export async function GET({req}) {
   const siteConfig = await getSanityServerClient(false).fetch(getSiteConfig)
-  const posts = await getSanityServerClient(false).fetch(getAllPosts)
+  const sitemapEntries = await getSanityServerClient(false).fetch(getSitemap)
 
   // Populate Body
-  const body = sitemap(siteConfig, posts)
+  const body = sitemap(siteConfig, sitemapEntries)
 
   // Return Response
   return new Response(body, {
@@ -23,7 +23,7 @@ export async function GET({req}) {
 }
 
 // Create Sitemap
-const sitemap = (siteConfig, posts) => `<?xml version="1.0" encoding="UTF-8" ?>
+const sitemap = (siteConfig, sitemapEntries) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
     xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
@@ -37,13 +37,12 @@ const sitemap = (siteConfig, posts) => `<?xml version="1.0" encoding="UTF-8" ?>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
-    ${posts
+    ${sitemapEntries
       .map(
-        (post) => `
+        (sitemapEntry) => `
         <url>
-           <loc>${siteConfig.siteUrl}${post.href}</loc>
-            <changefreq>daily</changefreq>
-            <priority>0.7</priority>
+          <loc>${siteConfig.siteUrl}${sitemapEntry.href}</loc>
+          <lastmod>${sitemapEntry.updatedAt.split('T')[0]}</lastmod>
         </url>
     `
       )

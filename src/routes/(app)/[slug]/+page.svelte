@@ -10,6 +10,7 @@
   export let data: PageData
   $: ({page} = data)
 </script>
+
 <h1>PAGE</h1>
 
 {#if page}

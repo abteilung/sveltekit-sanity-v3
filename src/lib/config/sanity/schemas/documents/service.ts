@@ -98,7 +98,7 @@ export default {
       title: 'Visibility',
       type: 'visibility',
       group: 'visibility'
-    },
+    }
   ],
 
   preview: {

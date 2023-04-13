@@ -42,14 +42,13 @@ export default {
       },
       group: 'redirect'
     },
-       // Visibility
-       {
-        name: 'pub',
-        title: 'Visibility',
-        type: 'visibility',
-        group: 'publication'
-      },
-  
+    // Visibility
+    {
+      name: 'pub',
+      title: 'Visibility',
+      type: 'visibility',
+      group: 'publication'
+    }
   ],
   preview: {
     select: {
@@ -58,7 +57,7 @@ export default {
       type: 'statusCode',
       hidden: 'pub.isHidden',
       start: 'pub.publishedAt',
-      end: 'pub.unpublishedAt',
+      end: 'pub.unpublishedAt'
     },
     prepare(selection) {
       const {from, to, type, start, end, hidden} = selection
@@ -69,7 +68,16 @@ export default {
         // const now = new Date().toISOString().split('T')[0]
         // subtitle: `${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
         // Check if now() is within start and end
-        subtitle: ` ${hidden != true && new Date().toISOString().split('T')[0] > start && new Date().toISOString().split('T')[0] < end || hidden != true && start == null && end == null || hidden != true && new Date().toISOString().split('T')[0] < end || hidden != true && new Date().toISOString().split('T')[0] > start && end == null ? '🟢' : '🔴'} ${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
+        subtitle: ` ${
+          (hidden != true &&
+            new Date().toISOString().split('T')[0] > start &&
+            new Date().toISOString().split('T')[0] < end) ||
+          (hidden != true && start == null && end == null) ||
+          (hidden != true && new Date().toISOString().split('T')[0] < end) ||
+          (hidden != true && new Date().toISOString().split('T')[0] > start && end == null)
+            ? '🟢'
+            : '🔴'
+        } ${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
       }
     }
   }

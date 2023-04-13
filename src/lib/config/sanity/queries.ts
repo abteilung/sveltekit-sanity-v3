@@ -160,6 +160,7 @@ const columns = groq`
 const documentFields = groq`
   _id,
   _type,
+  _updatedAt,
   likes,
   "category": categories[0]->,
   title,
@@ -243,9 +244,6 @@ export const getProductBySlug = groq`
 *[(_type == 'abteProduct' && slug.current == $slug) && ${visibilityChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
-
-
-
 
 // Site Config specific Queries
 export const getSiteConfig = groq`
@@ -347,7 +345,6 @@ export const getDsgvoSettings = groq`
 }
 `
 
-
 // Get Redirects
 export const getRedirectBySlug = groq`
 *[_type == 'redirect' && fromPath.current == $slug && ${visibilityChecker}][0] {
@@ -370,4 +367,11 @@ export const site = groq`
     "productsCounts": *[_type == "abteProduct"].length,
     "menuDesktop"
   }
+`
+
+export const getSitemap = groq`
+*[defined(slug)]{
+  "updatedAt": _updatedAt,
+  ${linkTypes},
+}
 `

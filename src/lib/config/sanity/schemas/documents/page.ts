@@ -28,7 +28,7 @@ export default defineType({
       name: 'twoCols',
       title: '',
       options: {collapsible: false, columns: 2}
-    },
+    }
   ],
 
   fields: [
@@ -98,7 +98,7 @@ export default defineType({
       title: 'Visibility',
       type: 'visibility',
       group: 'visibility'
-    },
+    }
     // {
     //   fieldset: 'twoCols',
     //   name: 'isHidden',

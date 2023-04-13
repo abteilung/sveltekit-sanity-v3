@@ -109,7 +109,7 @@ export default defineType({
       title: 'Visibility',
       type: 'visibility',
       group: 'visibility'
-    },
+    }
   ],
   preview: {
     select: {
