@@ -119,11 +119,10 @@ export default defineType({
       startDate: 'pub.startDate',
       endDate: 'pub.endDate',
       isHidden: 'pub.isHidden',
-      isFeatured: 'pub.isFeatured'
     },
-    prepare({title, author, media, isHidden, startDate, endDate, isFeatured}) {
+    prepare({title, author, media, isHidden, startDate, endDate}) {
       return {
-        title: isFeatured ? `🔥 ${title}` : title,
+        title: title,
         // Human readable short Date
         subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : ''} ${
           endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''

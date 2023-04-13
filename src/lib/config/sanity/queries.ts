@@ -7,7 +7,6 @@ export const errorID = `*[_type=="settings"][0].error->_id`
 
 // Check if Dates are within a range (Publication Settings)
 const visibilityChecker = `pub.isHidden != true && (pub.publishedAt < now() || pub.publishedAt == null) && (pub.unpublishedAt == null || pub.unpublishedAt > now())`
-
 // Define URLs for all our link types
 const linkTypes = groq`
   "href": slug.current,
@@ -347,16 +346,12 @@ export const getDsgvoSettings = groq`
 
 // Get Redirects
 export const getRedirectBySlug = groq`
-*[_type == 'redirect' && fromPath.current == $slug && ${visibilityChecker}][0] {
+*[_type == 'redirect' && fromPath.current == $slug && pub.isHidden != true && ${visibilityChecker}][0] {
   "fromPath": fromPath.current,
   toPath,
   "start": pub.publishedAt,
   "end": pub.unpublishedAt,
   statusCode,
-  "isActive": pub.isHidden != true && now() > pub.publishedAt && now() < pub.unpublishedAt
-    || pub.isHidden != true && !defined(pub.publishedAt) && !defined(pub.unpublishedAt)
-    || pub.isHidden != true && now() < pub.unpublishedAt 
-    || pub.isHidden != true && now() > pub.publishedAt && !defined(pub.unpublishedAt)  
 }
 `
 
@@ -370,8 +365,11 @@ export const site = groq`
 `
 
 export const getSitemap = groq`
-*[defined(slug)]{
-  "updatedAt": _updatedAt,
-  ${linkTypes},
+{
+  "siteUrl": *[_type == 'settings'][0].siteUrl,
+  "sitePages": *[defined(slug) && ${visibilityChecker}] | order(_updatedAt desc) {
+    "updatedAt": _updatedAt,
+    ${linkTypes},
+  }
 }
 `

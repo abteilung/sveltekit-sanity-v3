@@ -11,7 +11,7 @@ export const load = async ({parent, params}) => {
 
   const pageRedirect = await getSanityServerClient(false).fetch(getRedirectBySlug, {slug: params.slug})
 
-  if (pageRedirect.isActive == true) {
+  if (pageRedirect) {
     throw redirect(pageRedirect.statusCode, pageRedirect.toPath)
   } else if (page) {
     return {

@@ -1,4 +1,4 @@
-import {Storefront} from '@phosphor-icons/react'
+import {Storefront, Calendar} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
 
 export default {
@@ -17,7 +17,9 @@ export default {
       name: 'shopifySync',
       title: 'Shopify Sync',
       description: 'Fields that are synced from Shopify'
-    }
+    },
+    {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
+
   ],
   fields: [
     {
@@ -97,7 +99,16 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
+    },
+
+    // Visibility
+    {
+      name: 'pub',
+      title: 'Visibility',
+      type: 'visibility',
+      group: 'publication'
     }
+
   ],
 
   preview: {

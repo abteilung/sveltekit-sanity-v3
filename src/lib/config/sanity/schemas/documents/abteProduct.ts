@@ -1,4 +1,4 @@
-import {Storefront} from '@phosphor-icons/react'
+import {Storefront, Calendar} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
 
 export default {
@@ -12,7 +12,9 @@ export default {
       title: 'Default',
       description: 'Default fields',
       default: true
-    }
+    },
+    {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
+
   ],
   fields: [
     {
@@ -84,20 +86,42 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
+    },
+
+    // Visibility
+    {
+      name: 'pub',
+      title: 'Visibility',
+      type: 'visibility',
+      group: 'publication'
     }
   ],
 
   preview: {
     select: {
       title: 'title',
-      subTitle: 'subtitle',
-      media: 'image'
+      subtitle: 'subtitle',
+      media: 'image',
+      start: 'pub.publishedAt',
+      end: 'pub.unpublishedAt',
+      hidden: 'pub.isHidden',
     },
     prepare(selection) {
-      const {subTitle} = selection
-      return Object.assign({}, selection, {
-        subtitle: subTitle && `${subTitle}`
-      })
+      const {title, subtitle, start, end, hidden, media} = selection
+      return {
+        title,
+        subtitle: ` ${
+          (hidden != true &&
+            new Date().toISOString().split('T')[0] > start &&
+            new Date().toISOString().split('T')[0] < end) ||
+          (hidden != true && start == null && end == null) ||
+          (hidden != true && new Date().toISOString().split('T')[0] < end) ||
+          (hidden != true && new Date().toISOString().split('T')[0] > start && end == null)
+            ? ''
+            : '🔴'
+        } ${subtitle} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`,
+        media: media
+      }
     }
   }
 }
