@@ -6,13 +6,24 @@ export default {
   type: 'object',
   icon: SquaresFour,
   // Default Values
+  fieldsets: [
+    {
+      name: 'itemsSettings',
+      title: 'Count and Offset',
+      options: {
+        columns: 2
+      }
+    }
+  ],
   initialValue: {
     typeSelector: 'services',
     itemSelector: 'latest',
     layout: 'grid',
     container: true,
     bgColor: 'white',
-    columns: 3
+    columns: 3,
+    maxItems: 99,
+    skipItems: 0
   },
   fields: [
     {
@@ -51,7 +62,14 @@ export default {
     {
       name: 'maxItems',
       title: 'Max Items to show',
-      type: 'number'
+      type: 'number',
+      fieldset: 'itemsSettings'
+    },
+    {
+      name: 'skipItems',
+      title: 'Skip Items (Offset)',
+      type: 'number',
+      fieldset: 'itemsSettings'
     },
     //   {
     //     title: 'Limit to Categories',

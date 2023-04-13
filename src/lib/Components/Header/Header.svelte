@@ -1,35 +1,30 @@
 <script lang="ts">
-  	import {browser} from '$app/environment'
-    import {applyAction, enhance} from '$app/forms'
+  import {browser} from '$app/environment'
+  import {applyAction, enhance} from '$app/forms'
 
-    import ThemeToggleIcon from './ThemeToggleIcon.svelte'
-
+  import ThemeToggleIcon from './ThemeToggleIcon.svelte'
 
   import Image from '$lib/Components/PageBuilder/Image.svelte'
   export let bgImage
   import {theme} from '$lib/stores/theme'
-	import type {Theme} from '../../../hooks.server'
-
+  import type {Theme} from '../../../hooks.server'
 
   export let subTitle: string = 'Page Eyebrow (h1)'
   export let pageTitle: string = 'Page Title'
 
-
-	const deriveNextTheme = (theme: Theme): Theme => {
-		switch (theme) {
-			case 'dark':
-				return 'light'
-			case 'light':
-				return 'dark'
-			case 'auto':
-			default:
-				if (!browser) return 'auto'
-				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'
-		}
-	}
-	$: nextTheme = deriveNextTheme($theme)
-
-
+  const deriveNextTheme = (theme: Theme): Theme => {
+    switch (theme) {
+      case 'dark':
+        return 'light'
+      case 'light':
+        return 'dark'
+      case 'auto':
+      default:
+        if (!browser) return 'auto'
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'
+    }
+  }
+  $: nextTheme = deriveNextTheme($theme)
 </script>
 
 <header
@@ -38,26 +33,23 @@
 >
   <div class="headerContent">
     <slot />
-    
-    
-		<form
-			method="POST"
-			action="/?/theme"
-			use:enhance={async () => {
-				$theme = nextTheme
 
-				return async ({result}) => {
-					await applyAction(result)
-				}
-			}}
-		>
-			<input name="theme" value={nextTheme} hidden />
-			<button class="w-8">
-				<ThemeToggleIcon />
-			</button>
-		</form>
+    <form
+      method="POST"
+      action="/?/theme"
+      use:enhance={async () => {
+        $theme = nextTheme
 
-
+        return async ({result}) => {
+          await applyAction(result)
+        }
+      }}
+    >
+      <input name="theme" value={nextTheme} hidden />
+      <button class="w-8">
+        <ThemeToggleIcon />
+      </button>
+    </form>
   </div>
   <div class="absolute top-0 left-0 inset-0 isolate z-0">
     {#if bgImage}

@@ -1,12 +1,10 @@
-import {File, EyeSlash} from '@phosphor-icons/react'
+import {Planet, EyeSlash} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
-import authorType from './author'
-
 export default defineType({
-  name: 'page',
-  title: 'Page',
-  icon: File,
+  name: 'landingPage',
+  title: 'Landing Page (Product)',
+  icon: Planet,
   type: 'document',
   groups: [
     {
@@ -25,10 +23,15 @@ export default defineType({
   // 2 columns
   fieldsets: [
     {
-      name: 'twoCols',
-      title: '',
+      name: 'dateColumns',
+      title: 'Date Settings',
       options: {collapsible: false, columns: 2}
     },
+    {
+      name: 'publicationSettings',
+      title: 'Publication Settings',
+      options: {collapsible: false, columns: 2}
+    }
   ],
 
   fields: [
@@ -78,12 +81,12 @@ export default defineType({
       group: 'default'
     },
     {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      group: 'default',
-      to: [{type: authorType.name}]
+      name: 'publishedAt',
+      title: 'Publishing Date',
+      type: 'datetime',
+      group: 'visibility'
     },
+
     {
       name: 'categories',
       title: 'Categories',
@@ -94,42 +97,43 @@ export default defineType({
 
     // Visibility
     {
-      name: 'pub',
-      title: 'Visibility',
-      type: 'visibility',
+      fieldset: 'publicationSettings',
+      name: 'isFeatured',
+      title: 'Featured',
+      type: 'boolean',
       group: 'visibility'
     },
-    // {
-    //   fieldset: 'twoCols',
-    //   name: 'isHidden',
-    //   title: 'Hidden',
-    //   type: 'boolean',
-    //   group: 'visibility'
-    // },
-    // {
-    //   fieldset: 'twoCols',
-    //   name: 'startDate',
-    //   title: 'Start Date',
-    //   type: 'datetime',
-    //   group: 'visibility'
-    // },
-    // {
-    //   name: 'endDate',
-    //   fieldset: 'twoCols',
-    //   title: 'End Date',
-    //   type: 'datetime',
-    //   group: 'visibility'
-    // }
+    {
+      fieldset: 'publicationSettings',
+      name: 'isHidden',
+      title: 'Hidden',
+      type: 'boolean',
+      group: 'visibility'
+    },
+    {
+      fieldset: 'dateColumns',
+      name: 'startDate',
+      title: 'Start Date',
+      type: 'datetime',
+      group: 'visibility'
+    },
+    {
+      name: 'endDate',
+      fieldset: 'dateColumns',
+      title: 'End Date',
+      type: 'datetime',
+      group: 'visibility'
+    }
   ],
   preview: {
     select: {
       title: 'title',
       author: 'author.name',
       media: 'image',
-      startDate: 'pub.startDate',
-      endDate: 'pub.endDate',
-      isHidden: 'pub.isHidden',
-      isFeatured: 'pub.isFeatured'
+      startDate: 'startDate',
+      endDate: 'endDate',
+      isHidden: 'isHidden',
+      isFeatured: 'isFeatured'
     },
     prepare({title, author, media, isHidden, startDate, endDate, isFeatured}) {
       return {

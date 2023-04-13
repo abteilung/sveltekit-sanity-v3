@@ -1,6 +1,3 @@
-import {fail, type Actions} from '@sveltejs/kit'
-import {isValidTheme} from '../../hooks.server'
-
 import {getSanityServerClient} from '$lib/config/sanity/client'
 import {getSiteConfig, getMenus, getDsgvoSettings, getAllServices, getAllProducts} from '$lib/config/sanity/queries'
 

@@ -1,10 +1,10 @@
-import {Atom} from '@phosphor-icons/react'
+import {Trophy} from '@phosphor-icons/react'
 
 export default {
-  name: 'casestudy',
+  name: 'caseStudy',
   title: 'Case Studies',
   type: 'document',
-  icon: Atom,
+  icon: Trophy,
   fields: [
     {
       name: 'subtitle',
@@ -35,7 +35,6 @@ export default {
         hotspot: true
       }
     },
-
     {
       name: 'youtube',
       title: 'Youtube or Vimeo URL',
@@ -43,15 +42,9 @@ export default {
     },
     {
       name: 'categories',
-      title: 'Categories',
+      title: 'Belongs to…',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'categoryReference'}}]
-    },
-    {
-      name: 'productReferences',
-      title: 'Product References',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'product'}, {type: 'service'}]}]
+      of: [{type: 'reference', to: {type: 'landingPage'}}]
     },
     {
       name: 'body',

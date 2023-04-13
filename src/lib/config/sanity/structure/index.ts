@@ -2,6 +2,9 @@
 
 // Documents
 import pageStructure from './documents/pages'
+import caseStudyStructure from './documents/caseStudies'
+import landingPageStructure from './documents/landingPages'
+import landingPageFeatureStructure from './documents/landingPageFeatures'
 import navigationStructure from './documents/navigation'
 import frontPageStructure from './documents/frontPage'
 import postsStructure from './documents/posts'
@@ -11,6 +14,7 @@ import settingsStructure from './documents/settings'
 import redirectsStructure from './documents/redirects'
 import personsStructure from './documents/persons'
 import brandsStructure from './documents/brands'
+import clientsStructure from './documents/clients'
 
 export const structure = (S) => {
   return S.list()
@@ -22,10 +26,15 @@ export const structure = (S) => {
       postsStructure(S),
       productsStructure(S),
       S.divider(),
+      landingPageStructure(S),
+      landingPageFeatureStructure(S),
+      S.divider(),
       personsStructure(S),
       faqStructure(S),
       S.divider(),
       brandsStructure(S),
+      clientsStructure(S),
+      caseStudyStructure(S),
       S.divider(),
       settingsStructure(S),
       S.divider(),

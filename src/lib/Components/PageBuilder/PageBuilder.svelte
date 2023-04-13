@@ -18,7 +18,7 @@
       <RichEditor {block} />
     {/if}
     {#if block._type === 'teaserGrid'}
-      <TeaserGrid {block} />
+      <TeaserGrid {block} skipItems="2" maxItems="4" />
     {/if}
     {#if block._type === 'emptySpace'}
       <EmptySpace {block} />

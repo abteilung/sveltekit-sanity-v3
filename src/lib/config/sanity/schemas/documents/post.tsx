@@ -105,43 +105,21 @@ export default defineType({
 
     // Visibility
     {
-      fieldset: 'publicationSettings',
-      name: 'isFeatured',
-      title: 'Featured',
-      type: 'boolean',
+      name: 'pub',
+      title: 'Visibility',
+      type: 'visibility',
       group: 'visibility'
     },
-    {
-      fieldset: 'publicationSettings',
-      name: 'isHidden',
-      title: 'Hidden',
-      type: 'boolean',
-      group: 'visibility'
-    },
-    {
-      fieldset: 'dateColumns',
-      name: 'startDate',
-      title: 'Start Date',
-      type: 'datetime',
-      group: 'visibility'
-    },
-    {
-      name: 'endDate',
-      fieldset: 'dateColumns',
-      title: 'End Date',
-      type: 'datetime',
-      group: 'visibility'
-    }
   ],
   preview: {
     select: {
       title: 'title',
       author: 'author.name',
       media: 'image',
-      startDate: 'startDate',
-      endDate: 'endDate',
-      isHidden: 'isHidden',
-      isFeatured: 'isFeatured'
+      startDate: 'pub.startDate',
+      endDate: 'pub.endDate',
+      isHidden: 'pub.isHidden',
+      isFeatured: 'pub.isFeatured'
     },
     prepare({title, author, media, isHidden, startDate, endDate, isFeatured}) {
       return {

@@ -46,6 +46,12 @@ export default defineType({
           lists: []
         }
       ]
+    },
+    {
+      name: 'categories',
+      title: 'Belongs to…',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'landingPage'}}]
     }
   ],
 

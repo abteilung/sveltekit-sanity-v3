@@ -18,6 +18,12 @@ export default defineType({
       title: 'Role',
       type: 'string',
       validation: (Rule) => Rule.required()
+    },
+    {
+      name: 'categories',
+      title: 'Belongs to…',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'landingPage'}}]
     }
   ],
 

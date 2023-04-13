@@ -42,33 +42,34 @@ export default {
       },
       group: 'redirect'
     },
-    {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-      group: 'publication'
-    },
-    {
-      name: 'unpublishedAt',
-      title: 'Unpublished at',
-      type: 'datetime',
-      group: 'publication'
-    }
+       // Visibility
+       {
+        name: 'pub',
+        title: 'Visibility',
+        type: 'visibility',
+        group: 'publication'
+      },
+  
   ],
   preview: {
     select: {
       from: 'fromPath',
       to: 'toPath',
       type: 'statusCode',
-      start: 'publishedAt',
-      end: 'unpublishedAt'
+      hidden: 'pub.isHidden',
+      start: 'pub.publishedAt',
+      end: 'pub.unpublishedAt',
     },
     prepare(selection) {
-      const {from, to, type, start, end} = selection
+      const {from, to, type, start, end, hidden} = selection
       return {
         title: `${from.current} 👉 ${to}`,
         // Format iso date to readable date
-        subtitle: `${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
+        // today's Date
+        // const now = new Date().toISOString().split('T')[0]
+        // subtitle: `${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
+        // Check if now() is within start and end
+        subtitle: ` ${hidden != true && new Date().toISOString().split('T')[0] > start && new Date().toISOString().split('T')[0] < end || hidden != true && start == null && end == null || hidden != true && new Date().toISOString().split('T')[0] < end || hidden != true && new Date().toISOString().split('T')[0] > start && end == null ? '🟢' : '🔴'} ${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
       }
     }
   }

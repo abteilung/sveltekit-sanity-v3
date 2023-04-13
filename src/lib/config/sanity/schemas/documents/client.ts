@@ -1,10 +1,10 @@
-import {AppleLogo} from '@phosphor-icons/react'
+import {ShootingStar} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
-export default {
-  name: 'brand',
-  title: 'Brand',
-  icon: AppleLogo,
+export default defineType({
+  name: 'client',
+  title: 'Client',
+  icon: ShootingStar,
   type: 'document',
   fields: [
     {
@@ -21,7 +21,7 @@ export default {
     },
     {
       name: 'image',
-      title: 'Brand Logo Image',
+      title: 'Client Logo Image',
       type: 'image',
       options: {
         hotspot: true
@@ -46,16 +46,16 @@ export default {
       title: 'title',
       url: 'url',
       image: 'image',
+      description: 'description',
       categories: 'categories'
     },
     prepare({title, url, image, description, categories}) {
       return {
-        title: title,
-        // Get Titles of References from Array of References
+        title,
         subtitle: categories && categories.map((category) => category.title).join(', '),
-
+        description: description,
         media: image
       }
     }
   }
-}
+})

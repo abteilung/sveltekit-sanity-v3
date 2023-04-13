@@ -1,4 +1,4 @@
-import {SelectionAll, WarningCircle} from '@phosphor-icons/react'
+import {SelectionAll} from '@phosphor-icons/react'
 
 export default {
   title: 'Section',

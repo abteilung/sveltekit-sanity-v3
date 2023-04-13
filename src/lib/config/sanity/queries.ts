@@ -6,7 +6,7 @@ export const shopID = `*[_type=="settings"][0].shop->_id`
 export const errorID = `*[_type=="settings"][0].error->_id`
 
 // Check if Dates are within a range (Publication Settings)
-const dateRangeChecker = `(publishedAt < now() || publishedAt == null) && (unpublishedAt == null || unpublishedAt > now())`
+const visibilityChecker = `pub.isHidden != true && (pub.publishedAt < now() || pub.publishedAt == null) && (pub.unpublishedAt == null || pub.unpublishedAt > now())`
 
 // Define URLs for all our link types
 const linkTypes = groq`
@@ -109,13 +109,22 @@ const modules = groq`
   },
   _type == "teaserGrid" => {
     // No Drafts!
-    "teasers": *[_type == ^.typeSelector] {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}] {
       ...,
       ${imageMeta},
       ${linkTypes},
     }
     | order(publishDate desc)
   },
+  // _type == "teaserGrid" && defined(maxItems) || defined(skipItems) => {
+  //   // No Drafts!
+  //   "teasers": *[_type == ^.typeSelector][$skipItems..$maxItems] {
+  //     ...,
+  //     ${imageMeta},
+  //     ${linkTypes},
+  //   }
+  //   | order(publishDate desc)
+  // },
 `
 
 const columns = groq`
@@ -157,7 +166,7 @@ const documentFields = groq`
   subtitle,
   youtube,
   "date": coalesce(
-    publishedAt,
+    pub.publishedAt,
     string(_createdAt)
   ),
   body[] {
@@ -180,23 +189,23 @@ const documentFields = groq`
 
 // Posts Stuff
 export const getPostBySlug = groq`
-*[_type == "post" && slug.current == $slug && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
-  "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true && ${dateRangeChecker}][0]{
+*[_type == "post" && slug.current == $slug && ${visibilityChecker}] | order(_updatedAt desc)[0] {
+  "draft": *[_type == "post" && slug.current == $slug && defined(draft) && draft == true && ${visibilityChecker}][0]{
     ${documentFields}
   },
-  "current": *[_type == "post" && slug.current == $slug && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+  "current": *[_type == "post" && slug.current == $slug && ${visibilityChecker}] | order(_updatedAt desc)[0] {
     ${documentFields}
   },
-  "previous": *[_type == "post" && ^.publishedAt > publishedAt && ${dateRangeChecker}]|order(publishedAt desc)[0]{ 
+  "previous": *[_type == "post" && ^.publishedAt > publishedAt && ${visibilityChecker}]|order(publishedAt desc)[0]{ 
       ${documentFields}
     },
-  "next": *[_type == "post" && ^.publishedAt < publishedAt && ${dateRangeChecker}]|order(publishedAt asc)[0]{ 
+  "next": *[_type == "post" && ^.publishedAt < publishedAt && ${visibilityChecker}]|order(publishedAt asc)[0]{ 
     ${documentFields}
   },    
 }`
 
 export const getAllPosts = groq`
-*[_type == "post" && defined(slug.current) && ${dateRangeChecker}] | order(date desc, _updatedAt desc) {
+*[_type == "post" && defined(slug.current) && ${visibilityChecker}] | order(date desc, _updatedAt desc) {
   ${documentFields}
 }`
 
@@ -204,36 +213,39 @@ export const getAllPosts = groq`
 
 // Pages Queries
 export const getHomepage = groq`
-*[(_type == 'page' && _id == 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+*[(_type == 'page' && _id == 'frontPage') && ${visibilityChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 
 export const getPageBySlug = groq`
-*[(_type == 'page' && slug.current == $slug && _id != 'frontPage') && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+*[(_type == 'page' && slug.current == $slug && _id != 'frontPage') && ${visibilityChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 
 // Services Queries
 export const getAllServices = groq`
-*[(_type == 'service') && ${dateRangeChecker}] | order(_updatedAt desc) {
+*[(_type == 'service') && ${visibilityChecker}] | order(_updatedAt desc) {
   ${documentFields}
 }`
 
 export const getServiceBySlug = groq`
-*[(_type == 'service' && slug.current == $slug) && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+*[(_type == 'service' && slug.current == $slug) && ${visibilityChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
 
 // Products Queries
 export const getAllProducts = groq`
-*[(_type == 'abteProduct') && ${dateRangeChecker}] | order(_updatedAt desc) {
+*[(_type == 'abteProduct') && ${visibilityChecker}] | order(_updatedAt desc) {
   ${documentFields}
 }`
 
 export const getProductBySlug = groq`
-*[(_type == 'abteProduct' && slug.current == $slug) && ${dateRangeChecker}] | order(_updatedAt desc)[0] {
+*[(_type == 'abteProduct' && slug.current == $slug) && ${visibilityChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
 }`
+
+
+
 
 // Site Config specific Queries
 export const getSiteConfig = groq`
@@ -335,14 +347,19 @@ export const getDsgvoSettings = groq`
 }
 `
 
+
 // Get Redirects
 export const getRedirectBySlug = groq`
-*[_type == 'redirect' && fromPath.current == $slug && ${dateRangeChecker}][0] {
+*[_type == 'redirect' && fromPath.current == $slug && ${visibilityChecker}][0] {
   "fromPath": fromPath.current,
   toPath,
-  "start": publishedAt,
-  "end": unpublishedAt,
+  "start": pub.publishedAt,
+  "end": pub.unpublishedAt,
   statusCode,
+  "isActive": pub.isHidden != true && now() > pub.publishedAt && now() < pub.unpublishedAt
+    || pub.isHidden != true && !defined(pub.publishedAt) && !defined(pub.unpublishedAt)
+    || pub.isHidden != true && now() < pub.unpublishedAt 
+    || pub.isHidden != true && now() > pub.publishedAt && !defined(pub.unpublishedAt)  
 }
 `
 

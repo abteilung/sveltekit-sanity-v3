@@ -23,6 +23,8 @@ import settingsAnalyticsType from './schemas/documents/settingsAnalytics'
 
 import postType from './schemas/documents/post'
 import pageType from './schemas/documents/page'
+import landingPageType from './schemas/documents/landingPage'
+import landingPageFeatureType from './schemas/documents/landingPageFeature'
 import metaType from './schemas/documents/meta'
 import testimonialType from './schemas/documents/testimonial'
 import categoryType from './schemas/documents/category'
@@ -38,7 +40,9 @@ import productType from './schemas/documents/product'
 import abteProductType from './schemas/documents/abteProduct'
 import serviceType from './schemas/documents/service'
 import categoryReferenceType from './schemas/documents/categoryReference'
+import clientType from './schemas/documents/client'
 import brandType from './schemas/documents/brand'
+import brandCategory from './schemas/documents/categoryBrand'
 
 // Objects
 import video from './schemas/objects/video'
@@ -66,6 +70,9 @@ import navPage from './schemas/objects/nav-page'
 import navLink from './schemas/objects/nav-link'
 import navSection from './schemas/objects/nav-section'
 
+// Fragments
+import visibility from './schemas/fragments/visibility'
+
 /*------------------------------------*/
 
 import {structure} from './structure'
@@ -81,6 +88,8 @@ export default defineConfig({
     types: [
       // Documents
       pageType,
+      landingPageType,
+      landingPageFeatureType,
       metaType,
       postType,
       authorType,
@@ -99,7 +108,9 @@ export default defineConfig({
       categoryReferenceType,
       serviceType,
       redirectType,
+      clientType,
       brandType,
+      brandCategory,
 
       // Settings
       settingsType,
@@ -131,7 +142,10 @@ export default defineConfig({
       navDropdown,
       navPage,
       navLink,
-      navSection
+      navSection,
+
+      // Fragments
+      visibility
     ]
     // If you want to add more schemas, you can add them here
   },

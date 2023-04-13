@@ -1,7 +1,7 @@
 export const load = async ({locals: {previewMode}, locals, url}) => {
   const isPreview = previewMode && url.searchParams.get('isPreview') === 'true'
 
-  const { theme, locale } = locals;
+  const {theme, locale} = locals
 
   return {
     theme,

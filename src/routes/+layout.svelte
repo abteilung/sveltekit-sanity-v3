@@ -2,7 +2,7 @@
   // Sevelte imports
   import {page} from '$app/stores'
   import {browser} from '$app/environment'
-	import {theme} from '$lib/stores/theme'
+  import {theme} from '$lib/stores/theme'
 
   // Local imports
   import type {LayoutData} from './$types'
@@ -28,7 +28,7 @@
   const previewRouteIds = ['/(app)/posts/[slug]']
 
   $theme = data.theme
-	$: browser && (document.documentElement.dataset.theme = $theme)
+  $: browser && (document.documentElement.dataset.theme = $theme)
 
   $: ({previewMode, previewModeEmbed: embedded} = data)
   $: showPreviewBanner = previewMode && previewRouteIds.includes($page.route.id || '')
