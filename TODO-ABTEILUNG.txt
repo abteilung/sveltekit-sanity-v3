@@ -1,8 +1,14 @@
-Pagination:
+Pagination with Sveltekit:
 https://www.youtube.com/watch?v=G-tafjJzfQo
+
+Minimal Pagination with Sanity.io:
+https://hdoro.dev/minimal-sanity-io-pagination
 
 Working Shop-Example with Basket:
 https://github.com/finlayacourt/sveltekit-ecommerce
 
 Full Screen BG Video:
 https://rishabhp.github.io/bideo.js/
+
+Sveltekit Shopify Auth:
+https://github.com/unlocomqx/sveltekit-shopify-auth

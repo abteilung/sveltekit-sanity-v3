@@ -132,7 +132,7 @@ export default {
           {title: 'YAML', value: 'yaml'},
           {title: 'Markdown', value: 'markdown'},
           {title: 'bash', value: 'bash'},
-          {title: 'Groq', value: 'groq'},
+          {title: 'Groq', value: 'groq'}
         ]
       }
     }

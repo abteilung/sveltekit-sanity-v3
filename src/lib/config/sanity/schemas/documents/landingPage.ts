@@ -2,7 +2,7 @@ import {Planet, Calendar} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import {getVisibilityState} from '../../lib/helpers'
-import { getSwatch } from "../../lib/helpers";
+import {getSwatch} from '../../lib/helpers'
 
 export default defineType({
   name: 'landingPage',
@@ -108,7 +108,7 @@ export default defineType({
         // Human readable short Date
         subtitle: getVisibilityState(startDate, endDate, hidden) + ` ${url}`,
         // Use Icon instead of Image if isHidden is true
-        media: color?.hex ? getSwatch(color.hex.toUpperCase()) : media,
+        media: color?.hex ? getSwatch(color.hex.toUpperCase()) : media
       }
     }
   }

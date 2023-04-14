@@ -4,8 +4,6 @@ import {defineType} from 'sanity'
 import authorType from './author'
 import {getVisibilityState} from '../../lib/helpers'
 
-
-
 export default defineType({
   name: 'post',
   title: 'Post',
@@ -110,8 +108,7 @@ export default defineType({
     },
     prepare({title, author, media, hidden, startDate, endDate}) {
       return {
-
-        title:  title,
+        title: title,
 
         subtitle: getVisibilityState(startDate, endDate, hidden) + ` by ${author}`,
         // Human readable short Date

@@ -2,7 +2,7 @@ import {defineConfig, type Slug} from 'sanity'
 import {availability} from 'sanity-plugin-availability'
 import {googleMapsInput} from '@sanity/google-maps-input'
 import {codeInput} from '@sanity/code-input'
-import { colorInput } from "@sanity/color-input";
+import {colorInput} from '@sanity/color-input'
 
 import {PostsPreview} from './Components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'

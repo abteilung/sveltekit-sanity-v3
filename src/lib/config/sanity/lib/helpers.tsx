@@ -91,7 +91,6 @@ export const excludeCurrentReferences = ({parent}) => {
   }
 }
 
-
 export const getVisibilityState = (start, end, isHidden, showGreen) => {
   const now = new Date().getTime()
   const startDate = start ? new Date(start).getTime() : null
@@ -99,10 +98,8 @@ export const getVisibilityState = (start, end, isHidden, showGreen) => {
   const showGreenBullet = showGreen || false
 
   if (isHidden) {
-    return ('🔴 ')
-  } else if (
-      (startDate < now || startDate == null) && (endDate == null || endDate > now)
-    ) {
+    return '🔴 '
+  } else if ((startDate < now || startDate == null) && (endDate == null || endDate > now)) {
     return showGreenBullet ? '🟢 ' : ' '
   } else {
     return '🔴 '

@@ -16,7 +16,7 @@ export default defineType({
     },
     {
       title: 'Visibility',
-      name: 'visibility',
+      name: 'visibility'
     }
   ],
 
@@ -26,7 +26,7 @@ export default defineType({
       name: 'twoCols',
       title: '',
       options: {collapsible: false, columns: 2}
-    },
+    }
   ],
 
   fields: [
@@ -96,7 +96,7 @@ export default defineType({
       title: 'Visibility',
       type: 'visibility',
       group: 'visibility'
-    },
+    }
   ],
   preview: {
     select: {

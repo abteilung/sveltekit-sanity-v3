@@ -70,9 +70,11 @@ export default {
         // subtitle: `${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
         // Check if now() is within start and end
 
-        subtitle:  getVisibilityState(startDate, endDate, hidden) + `(${type}) ${startDate ? `from ${startDate.split('T')[0]}` : ''} ${endDate ? `until ${endDate.split('T')[0]}` : ''}`
-        
-        
+        subtitle:
+          getVisibilityState(startDate, endDate, hidden) +
+          `(${type}) ${startDate ? `from ${startDate.split('T')[0]}` : ''} ${
+            endDate ? `until ${endDate.split('T')[0]}` : ''
+          }`
       }
     }
   }
