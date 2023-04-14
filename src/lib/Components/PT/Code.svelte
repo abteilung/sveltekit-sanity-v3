@@ -8,14 +8,14 @@
     import markdown from "svelte-highlight/languages/markdown";
     import yaml from "svelte-highlight/languages/yaml"; 
 
-    import atomOneDark from "svelte-highlight/styles/atom-one-dark";
+    import tokyoNightDark from "svelte-highlight/styles/tokyo-night-dark";
 
     export let portableText: any
     $: ({value} = portableText)
 </script>
 
 <svelte:head>
-  {@html atomOneDark}
+  {@html tokyoNightDark}
 </svelte:head>
 
 {#if value.language == "javascript"}
