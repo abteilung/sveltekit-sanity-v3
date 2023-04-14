@@ -21,7 +21,7 @@
     "@slidy/core": "^3.7.3",
     "@slidy/svelte": "^3.4.2",
     "@sveltejs/adapter-vercel": "^2.4.1",
-    "@sveltejs/kit": "^1.15.4",
+    "@sveltejs/kit": "^1.15.5",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.9",
@@ -60,6 +60,7 @@
   "dependencies": {
     "@sanity/client": "^3.4.1",
     "@sanity/code-input": "^4.1.0",
+    "@sanity/color-input": "^3.0.2",
     "@sanity/groq-store": "^1.1.5",
     "@sanity/image-url": "^1.0.2",
     "@sanity/ui": "^0.37.22",

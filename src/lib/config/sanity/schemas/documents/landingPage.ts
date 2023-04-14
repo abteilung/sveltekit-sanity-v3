@@ -1,5 +1,8 @@
-import {Planet, EyeSlash} from '@phosphor-icons/react'
+import {Planet, Calendar} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
+
+import {getVisibilityState} from '../../lib/helpers'
+import { getSwatch } from "../../lib/helpers";
 
 export default defineType({
   name: 'landingPage',
@@ -7,17 +10,8 @@ export default defineType({
   icon: Planet,
   type: 'document',
   groups: [
-    {
-      title: 'Default',
-      name: 'default',
-      options: {collapsible: true},
-      default: true
-    },
-    {
-      title: 'Visibility',
-      name: 'visibility',
-      options: {collapsible: true}
-    }
+    {name: 'default', title: 'Default', description: 'Default fields', default: true},
+    {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
 
   // 2 columns
@@ -49,14 +43,10 @@ export default defineType({
       validation: (Rule) => Rule.required()
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: 'url',
+      title: 'URL',
+      type: 'url',
       group: 'default',
-      options: {
-        source: 'title',
-        maxLength: 96
-      },
       validation: (Rule) => Rule.required()
     },
     {
@@ -67,6 +57,12 @@ export default defineType({
       options: {
         hotspot: true
       }
+    },
+    {
+      name: 'color',
+      title: 'Color',
+      type: 'color',
+      group: 'default'
     },
     {
       name: 'content',
@@ -81,13 +77,6 @@ export default defineType({
       group: 'default'
     },
     {
-      name: 'publishedAt',
-      title: 'Publishing Date',
-      type: 'datetime',
-      group: 'visibility'
-    },
-
-    {
       name: 'categories',
       title: 'Categories',
       type: 'array',
@@ -97,53 +86,29 @@ export default defineType({
 
     // Visibility
     {
-      fieldset: 'publicationSettings',
-      name: 'isFeatured',
-      title: 'Featured',
-      type: 'boolean',
-      group: 'visibility'
-    },
-    {
-      fieldset: 'publicationSettings',
-      name: 'isHidden',
-      title: 'Hidden',
-      type: 'boolean',
-      group: 'visibility'
-    },
-    {
-      fieldset: 'dateColumns',
-      name: 'startDate',
-      title: 'Start Date',
-      type: 'datetime',
-      group: 'visibility'
-    },
-    {
-      name: 'endDate',
-      fieldset: 'dateColumns',
-      title: 'End Date',
-      type: 'datetime',
-      group: 'visibility'
+      name: 'pub',
+      title: 'Visibility',
+      type: 'visibility',
+      group: 'publication'
     }
   ],
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      url: 'url',
+      color: 'color',
       media: 'image',
-      startDate: 'startDate',
-      endDate: 'endDate',
-      isHidden: 'isHidden',
-      isFeatured: 'isFeatured'
+      startDate: 'pub.publishedAt',
+      endDate: 'pub.unpublishedAt',
+      hidden: 'pub.isHidden'
     },
-    prepare({title, author, media, isHidden, startDate, endDate, isFeatured}) {
+    prepare({title, url, media, hidden, startDate, endDate, color}) {
       return {
-        title: isFeatured ? `🔥 ${title}` : title,
+        title: title,
         // Human readable short Date
-        subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : ''} ${
-          endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''
-        }`,
+        subtitle: getVisibilityState(startDate, endDate, hidden) + ` ${url}`,
         // Use Icon instead of Image if isHidden is true
-        media: isHidden ? EyeSlash : media
+        media: color?.hex ? getSwatch(color.hex.toUpperCase()) : media,
       }
     }
   }

@@ -1,6 +1,7 @@
 // redirects.js
 
 import {Signpost, Calendar} from '@phosphor-icons/react'
+import {getVisibilityState} from '../../lib/helpers'
 
 export default {
   name: 'redirect',
@@ -56,11 +57,11 @@ export default {
       to: 'toPath',
       type: 'statusCode',
       hidden: 'pub.isHidden',
-      start: 'pub.publishedAt',
-      end: 'pub.unpublishedAt'
+      startDate: 'pub.publishedAt',
+      endDate: 'pub.unpublishedAt'
     },
     prepare(selection) {
-      const {from, to, type, start, end, hidden} = selection
+      const {from, to, type, startDate, endDate, hidden} = selection
       return {
         title: `${from.current} 👉 ${to}`,
         // Format iso date to readable date
@@ -68,16 +69,10 @@ export default {
         // const now = new Date().toISOString().split('T')[0]
         // subtitle: `${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
         // Check if now() is within start and end
-        subtitle: ` ${
-          (hidden != true &&
-            new Date().toISOString().split('T')[0] > start &&
-            new Date().toISOString().split('T')[0] < end) ||
-          (hidden != true && start == null && end == null) ||
-          (hidden != true && new Date().toISOString().split('T')[0] < end) ||
-          (hidden != true && new Date().toISOString().split('T')[0] > start && end == null)
-            ? '🟢'
-            : '🔴'
-        } ${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
+
+        subtitle:  getVisibilityState(startDate, endDate, hidden) + `(${type}) ${startDate ? `from ${startDate.split('T')[0]}` : ''} ${endDate ? `until ${endDate.split('T')[0]}` : ''}`
+        
+        
       }
     }
   }
