@@ -1,10 +1,9 @@
 <script lang="ts">
   import Highlight from "svelte-highlight";
-    import javascript from "svelte-highlight/languages/javascript";
+    // import javascript from "svelte-highlight/languages/javascript";
     import typescript from "svelte-highlight/languages/typescript";
     import css from "svelte-highlight/languages/css";
     import json from "svelte-highlight/languages/json";
-    import xml from "svelte-highlight/languages/xml";
     import bash from "svelte-highlight/languages/bash";
     import markdown from "svelte-highlight/languages/markdown";
     import yaml from "svelte-highlight/languages/yaml"; 
