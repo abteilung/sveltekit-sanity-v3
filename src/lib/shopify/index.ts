@@ -97,9 +97,7 @@ export const shopify = {
                       image {
                         url
                       }
-                      priceV2 {
-                        amount
-                      }
+                      price
                       availableForSale
                       product {
                         title
@@ -129,7 +127,7 @@ export const shopify = {
                     handle: merch.product.handle,
                     title: merch.product.title,
                     image: merch.image.url,
-                    cost: Number(merch.priceV2.amount),
+                    cost: Number(merch.price),
                     available: merch.availableForSale
                   }
                 }
@@ -202,9 +200,7 @@ export const shopify = {
                   image {
                     url
                   }
-                  priceV2 {
-                    amount
-                  }
+                  price
                   availableForSale
                 }
               }
@@ -222,7 +218,7 @@ export const shopify = {
             description: data.product.descriptionHtml,
             handle: data.product.handle,
             image: variant.image.url,
-            cost: Number(variant.priceV2.amount),
+            cost: Number(variant.price),
             available: variant.availableForSale
           }
         }
@@ -247,9 +243,7 @@ export const shopify = {
                             image {
                               url
                             }
-                            priceV2 {
-                              amount
-                            }
+                            price
                             availableForSale
                           }
                         }
@@ -271,7 +265,7 @@ export const shopify = {
             title: node.title,
             handle: node.handle,
             image: variant.image.url,
-            cost: Number(variant.priceV2.amount),
+            cost: Number(variant.price),
             available: variant.availableForSale
           }
         })
