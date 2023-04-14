@@ -7,14 +7,8 @@ export default {
   type: 'document',
   icon: Storefront,
   groups: [
-    {
-      name: 'default',
-      title: 'Default',
-      description: 'Default fields',
-      default: true
-    },
+    {name: 'default', title: 'Default', description: 'Default fields', default: true},
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
-
   ],
   fields: [
     {
@@ -104,13 +98,14 @@ export default {
       media: 'image',
       start: 'pub.publishedAt',
       end: 'pub.unpublishedAt',
-      hidden: 'pub.isHidden',
+      hidden: 'pub.isHidden'
     },
     prepare(selection) {
       const {title, subtitle, start, end, hidden, media} = selection
       return {
         title,
         subtitle: ` ${
+          hidden == false ||
           (hidden != true &&
             new Date().toISOString().split('T')[0] > start &&
             new Date().toISOString().split('T')[0] < end) ||

@@ -1,7 +1,10 @@
-import {Article, EyeSlash} from '@phosphor-icons/react'
+import {Article, Calendar} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import authorType from './author'
+import {getVisibilityState} from '../../lib/helpers'
+
+
 
 export default defineType({
   name: 'post',
@@ -9,17 +12,8 @@ export default defineType({
   icon: Article,
   type: 'document',
   groups: [
-    {
-      title: 'Default',
-      name: 'default',
-      options: {collapsible: true},
-      default: true
-    },
-    {
-      title: 'Visibility',
-      name: 'visibility',
-      options: {collapsible: true}
-    }
+    {name: 'default', title: 'Default', description: 'Default fields', default: true},
+    {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
 
   // 2 columns
@@ -83,12 +77,6 @@ export default defineType({
       group: 'default'
     },
     {
-      name: 'publishedAt',
-      title: 'Publishing Date',
-      type: 'datetime',
-      group: 'visibility'
-    },
-    {
       name: 'author',
       title: 'Author',
       type: 'reference',
@@ -108,7 +96,7 @@ export default defineType({
       name: 'pub',
       title: 'Visibility',
       type: 'visibility',
-      group: 'visibility'
+      group: 'publication'
     }
   ],
   preview: {
@@ -116,19 +104,22 @@ export default defineType({
       title: 'title',
       author: 'author.name',
       media: 'image',
-      startDate: 'pub.startDate',
-      endDate: 'pub.endDate',
-      isHidden: 'pub.isHidden',
+      startDate: 'pub.publishedAt',
+      endDate: 'pub.unpublishedAt',
+      hidden: 'pub.isHidden'
     },
-    prepare({title, author, media, isHidden, startDate, endDate}) {
+    prepare({title, author, media, hidden, startDate, endDate}) {
       return {
-        title: title,
+
+        title:  title,
+
+        subtitle: getVisibilityState(startDate, endDate, hidden) + ` by ${author}`,
         // Human readable short Date
-        subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : ''} ${
-          endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''
-        }`,
-        // Use Icon instead of Image if isHidden is true
-        media: isHidden ? EyeSlash : media
+        // subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : ''} ${
+        //   endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''
+        // }`,
+        // Use Icon instead of Image if hidden is true
+        media: media
       }
     }
   }

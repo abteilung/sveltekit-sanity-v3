@@ -1,4 +1,4 @@
-import {Handshake, EyeSlash} from '@phosphor-icons/react'
+import {Handshake, EyeSlash, Calendar} from '@phosphor-icons/react'
 
 export default {
   name: 'service',
@@ -6,17 +6,8 @@ export default {
   type: 'document',
   icon: Handshake,
   groups: [
-    {
-      title: 'Default',
-      name: 'default',
-      options: {collapsible: true},
-      default: true
-    },
-    {
-      title: 'Visibility',
-      name: 'visibility',
-      options: {collapsible: true}
-    }
+    {name: 'default', title: 'Default', description: 'Default fields', default: true},
+    {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
 
   // 2 columns
@@ -97,7 +88,7 @@ export default {
       name: 'pub',
       title: 'Visibility',
       type: 'visibility',
-      group: 'visibility'
+      group: 'publication'
     }
   ],
 

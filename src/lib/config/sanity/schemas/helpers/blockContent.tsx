@@ -122,7 +122,19 @@ export default {
       type: 'testimonialReference'
     },
     {
-      type: 'code'
+      type: 'code',
+      options: {
+        language: 'javascript',
+        languageAlternatives: [
+          {title: 'JavaScript', value: 'javascript'},
+          {title: 'CSS', value: 'css'},
+          {title: 'JSON', value: 'json'},
+          {title: 'YAML', value: 'yaml'},
+          {title: 'Markdown', value: 'markdown'},
+          {title: 'bash', value: 'bash'},
+          {title: 'Groq', value: 'groq'},
+        ]
+      }
     }
   ]
 }

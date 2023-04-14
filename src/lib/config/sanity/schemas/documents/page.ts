@@ -12,13 +12,11 @@ export default defineType({
     {
       title: 'Default',
       name: 'default',
-      options: {collapsible: true},
       default: true
     },
     {
       title: 'Visibility',
       name: 'visibility',
-      options: {collapsible: true}
     }
   ],
 
@@ -28,7 +26,7 @@ export default defineType({
       name: 'twoCols',
       title: '',
       options: {collapsible: false, columns: 2}
-    }
+    },
   ],
 
   fields: [
@@ -98,28 +96,7 @@ export default defineType({
       title: 'Visibility',
       type: 'visibility',
       group: 'visibility'
-    }
-    // {
-    //   fieldset: 'twoCols',
-    //   name: 'isHidden',
-    //   title: 'Hidden',
-    //   type: 'boolean',
-    //   group: 'visibility'
-    // },
-    // {
-    //   fieldset: 'twoCols',
-    //   name: 'startDate',
-    //   title: 'Start Date',
-    //   type: 'datetime',
-    //   group: 'visibility'
-    // },
-    // {
-    //   name: 'endDate',
-    //   fieldset: 'twoCols',
-    //   title: 'End Date',
-    //   type: 'datetime',
-    //   group: 'visibility'
-    // }
+    },
   ],
   preview: {
     select: {

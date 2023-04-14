@@ -6,6 +6,7 @@
   body {
     @apply font-sans text-sm antialiased font-normal text-dark md:text-base;
     @apply bg-light;
+    @apply dark:bg-black;
   }
 
   p {

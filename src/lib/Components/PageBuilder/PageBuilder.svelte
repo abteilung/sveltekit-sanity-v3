@@ -5,6 +5,7 @@
   import TeaserGrid from '$lib/Components/PageBuilder/TeaserGrid.svelte'
   import EmptySpace from '$lib/Components/PageBuilder/EmptySpace.svelte'
   import Columns from '$lib/Components/PageBuilder/Columns.svelte'
+  import Code from '$lib/Components/PageBuilder/Code.svelte'
 
   export let blocks: any = []
 </script>
@@ -25,6 +26,9 @@
     {/if}
     {#if block._type === 'columns'}
       <Columns {block} />
+    {/if}
+    {#if block._type === 'code'}
+      <Code {block} />
     {/if}
   {/each}
 {/if}

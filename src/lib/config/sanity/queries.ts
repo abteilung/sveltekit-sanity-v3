@@ -6,7 +6,12 @@ export const shopID = `*[_type=="settings"][0].shop->_id`
 export const errorID = `*[_type=="settings"][0].error->_id`
 
 // Check if Dates are within a range (Publication Settings)
-const visibilityChecker = `pub.isHidden != true && (pub.publishedAt < now() || pub.publishedAt == null) && (pub.unpublishedAt == null || pub.unpublishedAt > now())`
+const visibilityChecker = `
+  (pub.isHidden != true ||
+  (pub.publishedAt < now() || pub.publishedAt == null) 
+  && (pub.unpublishedAt == null || pub.unpublishedAt > now()))
+`
+
 // Define URLs for all our link types
 const linkTypes = groq`
   "href": slug.current,
@@ -27,6 +32,9 @@ const linkTypes = groq`
   },
   _type == "brand" => {
     "href": url,
+  },
+  _type == "landingPage" => {
+    "href": "/landing/" + slug.current,
   }
 `
 
@@ -102,6 +110,10 @@ const modules = groq`
     "slides": @->slides[] {
       ...
     }
+  },
+  _type == "code" => {
+    "code": code,
+    "language": language
   },
   _type == "emptySpace" => {
     value, showRule

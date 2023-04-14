@@ -1,0 +1,8 @@
+Pagination:
+https://www.youtube.com/watch?v=G-tafjJzfQo
+
+Working Shop-Example with Basket:
+https://github.com/finlayacourt/sveltekit-ecommerce
+
+Full Screen BG Video:
+https://rishabhp.github.io/bideo.js/

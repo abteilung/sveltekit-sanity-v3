@@ -19,7 +19,6 @@ export default {
       description: 'Fields that are synced from Shopify'
     },
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
-
   ],
   fields: [
     {
@@ -108,7 +107,6 @@ export default {
       type: 'visibility',
       group: 'publication'
     }
-
   ],
 
   preview: {

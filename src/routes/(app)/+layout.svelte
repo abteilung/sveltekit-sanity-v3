@@ -1,8 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte'
-  import {fade} from 'svelte/transition'
 
-  import Header from '$lib/Components/Header/Header.svelte'
   import Footer from '$lib/Components/Footer.svelte'
   import Left from '$lib/Components/Left.svelte'
   import Favicons from '$lib/Components/Favicons.svelte'

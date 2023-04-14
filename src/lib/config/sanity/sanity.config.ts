@@ -1,6 +1,7 @@
 import {defineConfig, type Slug} from 'sanity'
 import {availability} from 'sanity-plugin-availability'
 import {googleMapsInput} from '@sanity/google-maps-input'
+import {codeInput} from '@sanity/code-input'
 
 import {PostsPreview} from './Components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
@@ -48,7 +49,6 @@ import brandCategory from './schemas/documents/categoryBrand'
 import video from './schemas/objects/video'
 import customImage from './schemas/objects/customImage'
 import testimonialReference from './schemas/objects/testimonialReference'
-import code from './schemas/objects/code'
 import faqReference from './schemas/objects/faqReference'
 
 import shopifyProduct from './schemas/objects/shopify/shopifyProduct'
@@ -121,7 +121,6 @@ export default defineConfig({
       video,
       customImage,
       testimonialReference,
-      code,
       faqReference,
 
       shopifyProduct,
@@ -174,6 +173,7 @@ export default defineConfig({
     }),
     media(),
     noteField(),
+    codeInput(),
     googleMapsInput({
       apiKey: import.meta.env.GOOGLE_MAPS_API_KEY
     }),
