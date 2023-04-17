@@ -7,6 +7,11 @@
   import {showSubMenu, subMenuItemsStore} from '$lib/stores/navigation'
   import {createEventDispatcher} from 'svelte'
 
+  import Open from '$lib/Components/Shop/Open.svelte'
+  import Sidebar from '$lib/Components/Shop/Sidebar.svelte'
+
+  export let cart
+
   // Component Imports
   import Dropdown from '$lib/Components/Navigation/Dropdown.svelte'
   import MenuLink from '$lib/Components/Navigation/MenuLink.svelte'
@@ -78,6 +83,9 @@
       </ul>
       Basket-Count: {$cartQuantity}
       <SearchBar />
+
+      <Open/>
+      <Sidebar {cart} />
 
       <button on:click={openCart} class="relative my-2 mx-4">
         <Icons strokeColor="#fff" type="cart" />
