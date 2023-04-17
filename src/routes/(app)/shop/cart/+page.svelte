@@ -4,6 +4,4 @@
   export let data: PageServerData
 </script>
 
-<article>
-  <Cart cart={data.cart} sidebar={false} />
-</article>
+<Cart cart={data.cart} sidebar={false} />

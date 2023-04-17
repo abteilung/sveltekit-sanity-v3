@@ -59,7 +59,7 @@
       </li>
     </ul>
   </nav>
-  <div class="min-h-screen">
+  <div>
     <slot />
   </div>
 </div>
