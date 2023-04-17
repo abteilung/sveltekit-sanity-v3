@@ -1,6 +1,6 @@
 // Get Queries from Sanity
 import {getSanityServerClient} from '$lib/config/sanity/client'
-import {getSiteConfig} from '$lib/config/sanity/queries'
+import {getLayoutData} from '$lib/config/sanity/queries'
 import {urlForImage} from '$lib/config/sanity'
 
 // Types
@@ -8,10 +8,10 @@ import {urlForImage} from '$lib/config/sanity'
 
 // Get all Data for Sitemap
 export async function GET({req}) {
-  const siteConfig = await getSanityServerClient(false).fetch(getSiteConfig)
+  const layoutStuff = await getSanityServerClient(false).fetch(getLayoutData)
 
   // Populate Body
-  const body = sitemap(siteConfig)
+  const body = sitemap(layoutStuff.siteConfig)
 
   // Return Response
   return new Response(body, {

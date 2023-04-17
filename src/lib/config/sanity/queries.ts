@@ -257,7 +257,7 @@ export const getProductBySlug = groq`
 }`
 
 // Site Config specific Queries
-export const getSiteConfig = groq`
+const getSiteConfig = groq`
   *[_type == 'settings'][0] {
     title,
     description,
@@ -305,7 +305,7 @@ const multiLevelNavigation = groq`
   }
 `
 
-export const getMenus = groq`
+const getMenus = groq`
 *[_type == 'navigationSettings'][0] {
   navMenuHeader->{
     ${multiLevelNavigation}
@@ -323,7 +323,7 @@ export const getMenus = groq`
 `
 
 // Get DSGVO specific Setetings
-export const getDsgvoSettings = groq`
+const getDsgvoSettings = groq`
 *[_type == 'settings'][0] {
   "menu": {
     "imprint": imprint -> {
@@ -376,12 +376,22 @@ export const site = groq`
   }
 `
 
-export const getSitemap = groq`
+const getSitemap = groq`
 {
   "siteUrl": *[_type == 'settings'][0].siteUrl,
   "sitePages": *[defined(slug) && ${visibilityChecker}] | order(_updatedAt desc) {
     "updatedAt": _updatedAt,
     ${linkTypes},
   }
+}
+`
+
+// Concentrated Output for Layout stuff
+export const getLayoutData = groq`
+{
+  "siteConfig": ${getSiteConfig},
+  "menus": ${getMenus},
+  "siteMap": ${getSitemap},
+  "dsgvoSettings": ${getDsgvoSettings},
 }
 `

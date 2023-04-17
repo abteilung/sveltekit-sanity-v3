@@ -24,7 +24,7 @@
             title={product.node.title}
             href={`/product/${product.node.handle}`}
             price={20 || product.node.priceRange.maxVariantPrice.amount}
-            currencyCode={"CHF" || product.node.priceRange.maxVariantPrice.currencyCode}
+            currencyCode={'CHF' || product.node.priceRange.maxVariantPrice.currencyCode}
           />
         </div>
       </li>
@@ -33,8 +33,6 @@
     {/each}
   </ul>
 </div>
-
-
 
 <!--           <GridTile
             title={product.node.title}

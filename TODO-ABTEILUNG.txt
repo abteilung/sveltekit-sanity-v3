@@ -12,3 +12,7 @@ https://rishabhp.github.io/bideo.js/
 
 Sveltekit Shopify Auth:
 https://github.com/unlocomqx/sveltekit-shopify-auth
+
+Caching Sveltekit with Redis:
+https://www.youtube.com/watch?v=y8MeJBX33oc
+https://github.com/huntabyte/sveltekit-redis-caching

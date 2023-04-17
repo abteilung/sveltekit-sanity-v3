@@ -5,8 +5,8 @@ export const cartQuantity = writable('')
 export const cart = writable([])
 export const search = writable('')
 
-export const cartOpen = writable(false);
-export const cartPending = writable(false);
+export const cartOpen = writable(false)
+export const cartPending = writable(false)
 
 export const getCartItems = async () => {
   let cartId = JSON.parse(localStorage.getItem('cartId'))

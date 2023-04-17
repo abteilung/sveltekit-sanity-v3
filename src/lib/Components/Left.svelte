@@ -84,7 +84,7 @@
       Basket-Count: {$cartQuantity}
       <SearchBar />
 
-      <Open/>
+      <Open />
       <Sidebar {cart} />
 
       <button on:click={openCart} class="relative my-2 mx-4">

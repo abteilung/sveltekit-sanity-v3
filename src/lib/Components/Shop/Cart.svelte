@@ -1,6 +1,6 @@
 <script lang="ts">
-  import  {cartPending} from '$lib/stores/shopify'
-  
+  import {cartPending} from '$lib/stores/shopify'
+
   import type {TCart} from '$lib/shopify'
   import type {SubmitFunction} from '$app/forms'
   import {flip} from 'svelte/animate'

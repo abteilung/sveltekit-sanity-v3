@@ -1,16 +1,16 @@
 // Get Queries from Sanity
 import {getSanityServerClient} from '$lib/config/sanity/client'
-import {getSitemap} from '$lib/config/sanity/queries'
+import {getLayoutData} from '$lib/config/sanity/queries'
 
 // Types
 /** @type {import('@sveltejs/kit').RequestHandler} */
 
 // Get all Data for Sitemap
 export async function GET({req}) {
-  const siteMap = await getSanityServerClient(false).fetch(getSitemap)
+  const layoutStuff = await getSanityServerClient(false).fetch(getLayoutData)
 
   // Populate Body
-  const body = sitemap(siteMap)
+  const body = sitemap(layoutStuff.siteMap)
 
   // Return Response
   return new Response(body, {

@@ -88,9 +88,9 @@
 
   export let data: any
 
-  $: ({siteConfig} = data)
-  $: ({menus} = data)
-  $: ({dsgvo} = data)
+  $: siteConfig = data.layoutData.siteConfig
+  $: menus = data.layoutData.menus
+  $: dsgvo = data.layoutData.dsgvoSettings
   $: ({services} = data)
   $: ({products} = data)
   $: ({cart} = data)
@@ -106,7 +106,7 @@
     meta={menus.navMenuMeta}
     navMenuMobile={menus.navMenuMobile}
     on:openCart={openCart}
-    {cart} 
+    {cart}
   />
   <div class="content">
     <div class="fixed px-6 py-2 space-x-6 top-6 right-6 rounded-full bg-black text-white z-40">

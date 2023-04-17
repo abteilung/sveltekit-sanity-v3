@@ -17,12 +17,12 @@
 
 <form on:submit|preventDefault={submit} class="relative flex w-full items-center border-primary border-2">
   <input
-  id="searchInput"
-  type="text"
-  bind:value
-  placeholder="Search for products..."
-  autocomplete="off"
-  class="w-full border border-white/30 bg-transparent p-2 placeholder-primary/60"
+    id="searchInput"
+    type="text"
+    bind:value
+    placeholder="Search for products..."
+    autocomplete="off"
+    class="w-full border border-white/30 bg-transparent p-2 placeholder-primary/60"
   />
   <div class="top-0 right-0 mr-2 cursor-pointer" on:click={submit}><Icons type="search" /></div>
 </form>

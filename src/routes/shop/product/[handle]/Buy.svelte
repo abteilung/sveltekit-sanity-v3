@@ -1,8 +1,8 @@
 <script lang="ts">
   import type {TCart, TProductDetail} from '$lib/shopify'
   import type {SubmitFunction} from '$app/forms'
-  import  {cartOpen} from '$lib/stores/shopify'
-  import  {cartPending} from '$lib/stores/shopify'
+  import {cartOpen} from '$lib/stores/shopify'
+  import {cartPending} from '$lib/stores/shopify'
 
   import {enhance, applyAction} from '$app/forms'
   import {invalidateAll} from '$app/navigation'
@@ -29,7 +29,9 @@
   {#if line !== undefined}
     <form action="/cart?/remove" method="post" use:enhance={handleForm}>
       <input hidden name="line_id" value={line.id} />
-      <button disabled={$cartPending} class:pending={$cartPending} class="primary" type="submit">Remove from cart</button>
+      <button disabled={$cartPending} class:pending={$cartPending} class="primary" type="submit"
+        >Remove from cart</button
+      >
     </form>
   {:else if !product.available}
     <button class:pending={$cartPending} disabled class="primary" type="submit">Sold</button>

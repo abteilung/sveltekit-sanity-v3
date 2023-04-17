@@ -25,16 +25,16 @@
     data-sveltekit-prefetch
     class="focus:border-blue-500 focus:border-2 relative flex h-full w-full items-center justify-center"
   >
-  {#if imageSrc}
-    <img
-      alt={title}
-      class={`w-full md:w-1/2 lg:w-full flex-none transition duration-300 ease-in-out ${hover ? 'scale-110' : ''}`}
-      fetchpriority={priority === 'eager' ? 'high' : 'low'}
-      decoding="async"
-      loading={priority}
-      src={imageSrc}
-    />
-  {/if}
+    {#if imageSrc}
+      <img
+        alt={title}
+        class={`w-full md:w-1/2 lg:w-full flex-none transition duration-300 ease-in-out ${hover ? 'scale-110' : ''}`}
+        fetchpriority={priority === 'eager' ? 'high' : 'low'}
+        decoding="async"
+        loading={priority}
+        src={imageSrc}
+      />
+    {/if}
     {#if !removeLabels}
       <div class="text-white">
         <div class=" p-3 text-xl font-medium">

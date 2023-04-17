@@ -28,7 +28,6 @@
   <meta property="og:description" content="Sue Williams A’Court is a fine artist and painter." />
 </svelte:head>
 
-
 <nav>
   {#each chunk(data.products, 3) as row}
     <div class="md:grid md:grid-cols-3">

@@ -1,6 +1,6 @@
 <script lang="ts">
-//   import {open} from './Cart.svelte'
-import  {cartOpen} from '$lib/stores/shopify'
+  //   import {open} from './Cart.svelte'
+  import {cartOpen} from '$lib/stores/shopify'
 </script>
 
 <a href="/" aria-label="Close cart" on:click|preventDefault={() => cartOpen.set(false)}>
