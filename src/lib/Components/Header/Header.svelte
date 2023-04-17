@@ -47,7 +47,7 @@
     >
       <input name="theme" value={nextTheme} hidden />
       <button class="w-8">
-        <ThemeToggleIcon />
+        <ThemeToggleIcon additionalClass="text-black hover:text-primary dark:text-white dark:hover:text-primary"/>
       </button>
     </form>
   </div>

@@ -1,4 +1,9 @@
-<svg class="w-full hover:text-emphasis-hover" aria-hidden="true" viewBox="0 0 24 24">
+<script lang="ts">
+  import classNames from 'classnames'
+  export let additionalClass: string
+</script>
+
+<svg class={classNames("w-full transition-all duration-150", additionalClass)} aria-hidden="true" viewBox="0 0 24 24">
   <mask class="moon" id="moon-mask">
     <rect x="0" y="0" width="100%" height="100%" fill="white" />
     <circle cx="24" cy="10" r="6" fill="black" />
