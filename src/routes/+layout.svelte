@@ -2,7 +2,7 @@
   // Sevelte imports
   import {page} from '$app/stores'
   import {browser} from '$app/environment'
-  import {theme} from '$lib/stores/theme.ts'
+  import { theme } from '$lib/stores/theme'
 
   // Local imports
   import type {LayoutData} from './$types'
