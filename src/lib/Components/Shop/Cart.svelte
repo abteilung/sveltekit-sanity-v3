@@ -25,7 +25,7 @@
   }
 </script>
 
-<header>
+<header class="flex justify-between items-center border-b-2 border-black pb-4 ">
   <div>Shopping Cart</div>
   {#if sidebar}<Close />{/if}
 </header>
@@ -46,7 +46,7 @@
         </div>
         <div class="heading">
           <div>{product.title}</div>
-          <form action="/cart?/remove" method="post" use:enhance={handleForm}>
+          <form action="/shop/cart?/remove" method="post" use:enhance={handleForm}>
             <input hidden name="line_id" value={id} />
             <button disabled={$cartPending} class="remove" type="submit">Remove</button>
           </form>
@@ -62,52 +62,33 @@
 <footer>
   <div class="row">
     <div class="heading">Subtotal</div>
-    <div class="price">£{cart.cost.toFixed(2)}</div>
+    <div class="price">CHF {cart.cost.toFixed(2)}</div>
   </div>
 
-  <form action="/cart?/checkout" method="post">
+  <form action="/shop/cart?/checkout" method="post">
     <button disabled={cart.lines.length === 0 || $cartPending} class="primary" type="submit">Checkout</button>
   </form>
 </footer>
 
-<style>
+<style lang="postcss">
   header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    border-bottom: 1px solid #dbdbdb;
-    padding-bottom: 1rem;
-
-    font-size: 1.3rem;
-    color: #313131;
+    @apply flex justify-between items-center border-b-[1px] border-black/20 pb-4 text-lg text-black;
   }
 
   main {
-    flex: 1;
-    overflow-y: auto;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    @apply flex-1 overflow-y-auto py-4;
   }
 
   footer {
-    border-top: 1px solid #dbdbdb;
-    padding-top: 1rem;
+    @apply border-t-[1px] border-black/20 pt-4;
   }
 
   .remove {
-    color: #847171;
-    text-decoration: underline;
-    transition: color 0.2s ease;
-    outline: 0;
-  }
-
-  .remove:hover {
-    color: #665757;
+    @apply text-black/20 underline outline-none hover:text-primary;
   }
 
   .empty {
-    color: #847171;
+    @apply text-black/20
   }
 
   main.cartPending {
@@ -116,24 +97,20 @@
   }
 
   .unavailable {
-    font-size: 0.8rem;
-    color: #ff4a58;
-    margin-top: 0.4rem;
+    @apply text-alert mt-2 text-sm;
   }
 
   .row {
-    display: flex;
-    margin-bottom: 1.1rem;
+    @apply flex mb-6
   }
   .image {
+    @apply mr-2;
     width: 9rem;
-    margin-right: 1.1rem;
   }
   .heading {
-    flex: 1;
-    margin-right: 1.1rem;
+    @apply flex-1 mr-6;
   }
   .price {
-    text-align: right;
+    @apply text-right;
   }
 </style>

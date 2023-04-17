@@ -231,12 +231,26 @@ export const shopify = {
     some: factory({
       query: /* GraphQL */ `
         query Products {
-          products(first: 10) {
+          products(first: 250) {
             edges {
               node {
                 id
                 title
                 handle
+                variants(first: 250) {
+                  edges {
+                    node {
+                      id
+                      image {
+                        url
+                      }
+                      priceV2 {
+                        amount
+                      }
+                      availableForSale
+                    }
+                  }
+                }
               }
             }
           }
@@ -248,7 +262,7 @@ export const shopify = {
           return <TProduct>{
             id: node.id,
             title: node.title,
-            handle: node.handle
+            handle: node.handle,
           }
         })
       }

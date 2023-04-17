@@ -29,7 +29,7 @@
 </svelte:head>
 
 <nav>
-  {#each chunk(data.products, 3) as row}
+  {#each chunk(products, 3) as row}
     <div class="md:grid md:grid-cols-3">
       {#each row as [product, index]}
         <Product {product} {index} />

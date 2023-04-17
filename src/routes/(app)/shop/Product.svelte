@@ -2,16 +2,13 @@
   import type {TProduct} from '$lib/shopify'
   import Image from '$lib/Components/Shop/Image.svelte'
 
-  import Buy from './product/[handle]/Buy.svelte'
-  import {dataset_dev} from 'svelte/internal'
-
   export let fetchpriority: string | undefined = undefined
   export let loading: string | undefined = undefined
   export let index: number
   export let product: TProduct
 </script>
 
-<a class:sold={!product.available} href="/product/{product.handle}">
+<a class:sold={!product.available} href="/shop/product/{product.handle}">
   <div class="overlay">
     <div>
       <h2>{product.title}</h2>

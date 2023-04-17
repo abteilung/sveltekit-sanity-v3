@@ -24,7 +24,7 @@
         <li>
           <div class="group relative block aspect-square overflow-hidden bg-dark">
             <GridTile
-              href={`/product/${product?.node?.handle}`}
+              href={`/shop/product/${product?.node?.handle}`}
               title={product?.node?.title}
               price={product?.node?.priceRange?.maxVariantPrice?.amount}
               currencyCode={product?.node?.priceRange?.maxVariantPrice?.currencyCode}

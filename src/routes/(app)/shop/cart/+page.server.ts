@@ -1,6 +1,6 @@
 import type {PageServerLoad, Actions} from './$types'
-import {shopify} from '$lib/shopify'
 import {error, redirect} from '@sveltejs/kit'
+import {shopify} from '$lib/shopify'
 import {tomorrow} from '$lib/tomorrow'
 
 export const load: PageServerLoad = async ({parent}) => {

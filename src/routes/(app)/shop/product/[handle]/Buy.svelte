@@ -27,7 +27,7 @@
 
 <form method="post">
   {#if line !== undefined}
-    <form action="/cart?/remove" method="post" use:enhance={handleForm}>
+    <form action="/shop/cart?/remove" method="post" use:enhance={handleForm}>
       <input hidden name="line_id" value={line.id} />
       <button disabled={$cartPending} class:pending={$cartPending} class="primary" type="submit"
         >Remove from cart</button
@@ -36,7 +36,7 @@
   {:else if !product.available}
     <button class:pending={$cartPending} disabled class="primary" type="submit">Sold</button>
   {:else}
-    <form action="/cart?/add" method="post" use:enhance={handleForm}>
+    <form action="/shop/cart?/add" method="post" use:enhance={handleForm}>
       <input hidden name="product_id" value={product.id} />
       <button disabled={$cartPending} class:pending={$cartPending} class="primary" type="submit">Add to cart</button>
     </form>

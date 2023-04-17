@@ -22,7 +22,7 @@
     bind:value
     placeholder="Search for products..."
     autocomplete="off"
-    class="w-full border border-white/30 bg-transparent p-2 placeholder-primary/60"
+    class="w-full border border-white/30 bg-transparent p-2 placeholder-primary/60 border-transparent focus:border-transparent focus:ring-0"
   />
   <div class="top-0 right-0 mr-2 cursor-pointer" on:click={submit}><Icons type="search" /></div>
 </form>

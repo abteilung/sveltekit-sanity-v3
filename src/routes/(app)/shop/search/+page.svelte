@@ -22,7 +22,7 @@
         <div class="group relative block aspect-square overflow-hidden bg-dark">
           <GridTile
             title={product.node.title}
-            href={`/product/${product.node.handle}`}
+            href={`/shop/product/${product.node.handle}`}
             price={20 || product.node.priceRange.maxVariantPrice.amount}
             currencyCode={'CHF' || product.node.priceRange.maxVariantPrice.currencyCode}
           />
@@ -36,7 +36,7 @@
 
 <!--           <GridTile
             title={product.node.title}
-            href={`/product/${product.node.handle}`}
+            href={`/shop/product/${product.node.handle}`}
             price={20 || product.node.priceRange.maxVariantPrice.amount}
             currencyCode={"CHF" || product.node.priceRange.maxVariantPrice.currencyCode}
             imageSrc={null || product.node.images.edges[0].node.originalSrc}
