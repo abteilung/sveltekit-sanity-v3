@@ -2,6 +2,8 @@
   import {page} from '$app/stores'
   import {goto} from '$app/navigation'
 
+  import Icons from '$lib/Components/Icons.svelte'
+
   let value = $page.url.searchParams.get('q')
 
   async function submit(e) {
@@ -9,29 +11,18 @@
     if (value) {
       query.set('q', value)
     }
-    await goto(`/search${query ? `?${query}` : ''}`, {keepFocus: true})
+    await goto(`/shop/search${query ? `?${query}` : ''}`, {keepFocus: true})
   }
 </script>
 
-<form on:submit|preventDefault={submit} class="relative flex w-full items-center">
-  <div class="absolute top-0 right-0 mr-2">SEARCH</div>
+<form on:submit|preventDefault={submit} class="relative flex w-full items-center border-primary border-2">
   <input
-    id="searchInput"
-    type="text"
-    bind:value
-    placeholder="Search for products..."
-    autocomplete="off"
-    class="w-full border border-white/30 bg-transparent p-2"
+  id="searchInput"
+  type="text"
+  bind:value
+  placeholder="Search for products..."
+  autocomplete="off"
+  class="w-full border border-white/30 bg-transparent p-2 placeholder-primary/60"
   />
+  <div class="top-0 right-0 mr-2 cursor-pointer" on:click={submit}><Icons type="search" /></div>
 </form>
-
-<style>
-  form {
-    margin: 0px;
-    padding: 0px;
-    display: inline;
-  }
-  input::placeholder {
-    color: rgb(85, 85, 85);
-  }
-</style>

@@ -30,12 +30,11 @@ export async function shopifyFetch({query, variables}) {
 export async function getAllProducts() {
   return shopifyFetch({
     query: `{
-      products(sortKey: TITLE, first: 100) {
+      products(sortKey: TITLE, first: 10) {
         edges{
           node {
             id
             handle
-            availableForSale
             title
             description
             descriptionHtml
@@ -44,17 +43,7 @@ export async function getAllProducts() {
               name
               values
             }
-            priceRange {
-              maxVariantPrice {
-                amount
-                currencyCode
-              }
-              minVariantPrice {
-                amount
-                currencyCode
-              }
-            }
-            variants(first: 250) {
+            variants(first: 25) {
               pageInfo {
                 hasNextPage
                 hasPreviousPage
@@ -65,18 +54,9 @@ export async function getAllProducts() {
                   title
                   sku
                   availableForSale
-                  requiresShipping
                   selectedOptions {
                     name
                     value
-                  }
-                  priceV2 {
-                    amount
-                    currencyCode
-                  }
-                  compareAtPriceV2 {
-                    amount
-                    currencyCode
                   }
                 }
               }
@@ -88,7 +68,6 @@ export async function getAllProducts() {
               }
               edges {
                 node {
-                  originalSrc
                   altText
                   width
                   height

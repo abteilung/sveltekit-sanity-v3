@@ -8,6 +8,7 @@ export const load: PageServerLoad = async ({parent}) => {
   return {cart}
 }
 
+
 export const actions: Actions = {
   async add({request, locals}) {
     let values = await request.formData()

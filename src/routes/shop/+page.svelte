@@ -17,6 +17,8 @@
     }
     return chunked
   }
+
+  $: ({products} = data)
 </script>
 
 <svelte:head>
@@ -26,25 +28,13 @@
   <meta property="og:description" content="Sue Williams A’Court is a fine artist and painter." />
 </svelte:head>
 
-{JSON.stringify(data, null, 2)}
 
 <nav>
   {#each chunk(data.products, 3) as row}
-    <div class="row">
+    <div class="md:grid md:grid-cols-3">
       {#each row as [product, index]}
         <Product {product} {index} />
       {/each}
     </div>
   {/each}
 </nav>
-
-<style>
-  nav {
-    position: relative;
-  }
-  @media (min-width: 38em) {
-    .row {
-      display: flex;
-    }
-  }
-</style>

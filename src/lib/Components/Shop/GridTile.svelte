@@ -17,7 +17,7 @@
   on:mouseleave={() => {
     hover = false
   }}
-  class="h-full w-full overflow-hidden"
+  class=""
 >
   <a
     data-test="grid-tile"
@@ -25,6 +25,7 @@
     data-sveltekit-prefetch
     class="focus:border-blue-500 focus:border-2 relative flex h-full w-full items-center justify-center"
   >
+  {#if imageSrc}
     <img
       alt={title}
       class={`w-full md:w-1/2 lg:w-full flex-none transition duration-300 ease-in-out ${hover ? 'scale-110' : ''}`}
@@ -33,14 +34,15 @@
       loading={priority}
       src={imageSrc}
     />
+  {/if}
     {#if !removeLabels}
-      <div class="absolute top-0 left-0">
-        <div class="bg-black p-3 text-2xl font-medium">
+      <div class="text-white">
+        <div class=" p-3 text-xl font-medium">
           {title}
         </div>
-        <div class="w-fit bg-black p-3 text-sm">
-          ${price}
+        <div class="w-fit bg-primary p-3 text-sm">
           {currencyCode}
+          {price}.–
         </div>
       </div>
     {/if}

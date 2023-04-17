@@ -13,6 +13,8 @@
     : data.body.allProducts.edges
 </script>
 
+<h1>xxx</h1>
+
 <div>
   <ul class="grid grid-flow-row gap-4 sm:grid-cols-2 md:grid-cols-3">
     {#each displayedProducts as product, i (product.node.id)}
@@ -21,9 +23,8 @@
           <GridTile
             title={product.node.title}
             href={`/product/${product.node.handle}`}
-            price={product.node.priceRange.maxVariantPrice.amount}
-            currencyCode={product.node.priceRange.maxVariantPrice.currencyCode}
-            imageSrc={product.node.images.edges[0].node.originalSrc}
+            price={20 || product.node.priceRange.maxVariantPrice.amount}
+            currencyCode={"CHF" || product.node.priceRange.maxVariantPrice.currencyCode}
           />
         </div>
       </li>
@@ -32,3 +33,14 @@
     {/each}
   </ul>
 </div>
+
+
+
+<!--           <GridTile
+            title={product.node.title}
+            href={`/product/${product.node.handle}`}
+            price={20 || product.node.priceRange.maxVariantPrice.amount}
+            currencyCode={"CHF" || product.node.priceRange.maxVariantPrice.currencyCode}
+            imageSrc={null || product.node.images.edges[0].node.originalSrc}
+          />
+ -->

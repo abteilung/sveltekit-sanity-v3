@@ -3,6 +3,9 @@ import {shopify} from '$lib/shopify'
 import {error} from '@sveltejs/kit'
 
 export const load: LayoutServerLoad = async ({locals, cookies}) => {
+  console.log("ididid", locals.cart_id)
+  
+
   let cart = await shopify.cart.one({cart_id: locals.cart_id})
   if (cart === undefined) {
     cookies.delete('CART_ID')
