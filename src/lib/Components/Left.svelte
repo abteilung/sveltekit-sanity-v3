@@ -1,6 +1,8 @@
 <script lang="ts">
   import Icons from '$lib/Components/Icons.svelte'
 
+  import ThemeToggleIcon from '$lib/Components/ThemeToggleIcon.svelte'
+
   import SearchBar from '$lib/Components/Shop/SearchBar.svelte'
   import AnimatedHamburger from '$lib/Components/AnimatedHamburger.svelte'
   import {cartQuantity} from '$lib/stores/shopify'
@@ -58,14 +60,14 @@
   let width
 </script>
 
-<div 
-  class="navBar dark:bg-black"  
-  bind:clientWidth={width}
->
+<div class="navBar dark:bg-black" bind:clientWidth={width}>
   <div class="h-full">
     <div class="flex md:block justify-between items-center">
       <a href="/" on:click={hideSubMenus}>
-        <Icons type="logo" additionalClass="text-primary w-full md:w-full h-full md:h-auto py-4 md:py-0" />
+        <Icons
+          type="logo"
+          additionalClass="stroke-white text-black dark:text-white w-full md:w-full h-full md:h-auto py-4 md:py-0"
+        />
       </a>
       <AnimatedHamburger {navMenuMobile} />
     </div>
@@ -113,6 +115,7 @@
           </li>
         {/each}
       </ul>
+      <ThemeToggleIcon additionalClass="text-black hover:text-primary dark:text-white dark:hover:text-primary" />
     </div>
   </div>
 </div>

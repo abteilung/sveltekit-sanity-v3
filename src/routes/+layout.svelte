@@ -25,7 +25,7 @@
   /**
    * Only show the preview banner on the following route id's.
    */
-  const previewRouteIds = ['/(app)/story/[slug]','/(app)/produkte/[slug]','/(app)/services/[slug]']
+  const previewRouteIds = ['/(app)/story/[slug]', '/(app)/produkte/[slug]', '/(app)/services/[slug]']
 
   $theme = data.theme
   $: browser && (document.documentElement.dataset.theme = $theme)
