@@ -58,7 +58,10 @@
   let width
 </script>
 
-<div class="navBar" bind:clientWidth={width}>
+<div 
+  class="navBar dark:bg-black"  
+  bind:clientWidth={width}
+>
   <div class="h-full">
     <div class="flex md:block justify-between items-center">
       <a href="/" on:click={hideSubMenus}>
@@ -88,10 +91,10 @@
       <Sidebar {cart} />
 
       <button on:click={openCart} class="relative my-2 mx-4">
-        <Icons strokeColor="#fff" type="cart" />
+        <Icons additionalClass="text-primary dark:text-white" type="cart" />
         <div
           data-test="cart-quantity"
-          class="absolute bottom-0 left-0 -ml-3 -mb-3 flex h-5 w-5 items-center justify-center rounded-full border border-black bg-white text-xs text-black"
+          class="absolute bottom-0 left-0 -ml-3 -mb-3 flex h-5 w-5 items-center justify-center rounded-full border border-black bg-white dark:bg-primary text-xs text-black dark:text-white"
         >
           {$cartQuantity}
         </div>
