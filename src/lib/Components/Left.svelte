@@ -65,7 +65,7 @@
   <div class="h-full">
     <div class="flex md:block justify-between items-center">
       <a href="/" on:click={hideSubMenus}>
-        <Icons icon="logo" additionalClass="text-primary w-full md:w-full h-full md:h-auto py-4 md:py-0" />
+        <Icons type="logo" additionalClass="text-primary w-full md:w-full h-full md:h-auto py-4 md:py-0" />
       </a>
       <AnimatedHamburger {navMenuMobile} />
     </div>

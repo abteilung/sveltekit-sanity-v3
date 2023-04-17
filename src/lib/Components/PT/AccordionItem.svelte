@@ -39,7 +39,7 @@
     <div class="w-full transition">{title}</div>
 
     <div class="w-8 transition transform" class:rotate-90={isCurrentActive}>
-      <Icons icon="arrow-right" />
+      <Icons type="arrow-right" />
     </div>
   </button>
   {#if isCurrentActive}

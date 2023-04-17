@@ -120,7 +120,7 @@
 </div>
 
 <!-- Abteilungs Icons -->
-{#if icon === 'logo'}
+{#if type === 'logo'}
   <svg
     class={additionalClass}
     width="171px"
@@ -149,7 +149,7 @@
   >
 {/if}
 
-{#if icon === 'arrow-right'}
+{#if type === 'arrow-right'}
   <svg
     class={additionalClass}
     width="22px"
