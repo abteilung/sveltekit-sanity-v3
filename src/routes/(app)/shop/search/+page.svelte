@@ -1,5 +1,4 @@
 <script>
-  import GridTile from '$lib/components/Shop/GridTile.svelte'
   import {page} from '$app/stores'
 
   /** @type {import('./$types').PageData} */
@@ -19,13 +18,13 @@
   <ul class="grid grid-flow-row gap-4 sm:grid-cols-2 md:grid-cols-3">
     {#each displayedProducts as product, i (product.node.id)}
       <li>
-        <div class="group relative block aspect-square overflow-hidden bg-dark">
-          <GridTile
-            title={product.node.title}
-            href={`/shop/product/${product.node.handle}`}
-            price={20 || product.node.priceRange.maxVariantPrice.amount}
-            currencyCode={'CHF' || product.node.priceRange.maxVariantPrice.currencyCode}
-          />
+        <div class="group relative block overflow-hidden ">
+          <div class="bg-white shadow-lg">
+            <a href={`/shop/product/${product.node.handle}`}>
+            <h3>{product.node.title}</h3>
+            <p>{'CHF' || product.node.priceRange.maxVariantPrice.currencyCode} {20 || product.node.priceRange.maxVariantPrice.amount}.–</p>
+            </a>
+          </div>
         </div>
       </li>
     {:else}
@@ -33,12 +32,3 @@
     {/each}
   </ul>
 </div>
-
-<!--           <GridTile
-            title={product.node.title}
-            href={`/shop/product/${product.node.handle}`}
-            price={20 || product.node.priceRange.maxVariantPrice.amount}
-            currencyCode={"CHF" || product.node.priceRange.maxVariantPrice.currencyCode}
-            imageSrc={null || product.node.images.edges[0].node.originalSrc}
-          />
- -->
