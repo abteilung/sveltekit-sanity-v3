@@ -1,14 +1,14 @@
 <script lang="ts">
   import {onMount} from 'svelte'
   import {goto} from '$app/navigation'
-  import Modal from '$lib/Components/Modal.svelte'
+  import Modal from '$lib/components/Modal.svelte'
 
   export let slug: string
   export let title
 
-  // Import Components
-  import Header from '$lib/Components/Header/Header.svelte'
-  import PageBuilder from '$lib/Components/PageBuilder/PageBuilder.svelte'
+  // Import components
+  import Header from '$lib/components/Header/Header.svelte'
+  import PageBuilder from '$lib/components/PageBuilder/PageBuilder.svelte'
 
   // Export Data
   export let data: PageData

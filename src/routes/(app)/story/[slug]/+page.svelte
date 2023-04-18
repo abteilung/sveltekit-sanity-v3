@@ -2,10 +2,10 @@
   // Import Types
   import type {PageData} from './$types'
 
-  // Import Components
+  // Import components
   import {urlForImage} from '$lib/config/sanity'
-  import PortableBlock from '$lib/Components/PortableBlock.svelte'
-  import Header from '$lib/Components/Header/Header.svelte'
+  import PortableBlock from '$lib/components/PortableBlock.svelte'
+  import Header from '$lib/components/Header/Header.svelte'
 
   // Export Data
   export let data: PageData

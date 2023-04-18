@@ -1,5 +1,5 @@
 <script>
-  import GridTile from '$lib/Components/Shop/GridTile.svelte'
+  import GridTile from '$lib/components/Shop/GridTile.svelte'
   import {page} from '$app/stores'
 
   /** @type {import('./$types').PageData} */

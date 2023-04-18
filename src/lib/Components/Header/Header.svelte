@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Image from '$lib/Components/PageBuilder/Image.svelte'
+  import Image from '$lib/components/PageBuilder/Image.svelte'
   export let bgImage
 
   export let subTitle: string = 'Page Eyebrow (h1)'

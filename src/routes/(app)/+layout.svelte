@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Footer from '$lib/Components/Footer.svelte'
-  import Left from '$lib/Components/Left.svelte'
-  import Favicons from '$lib/Components/Favicons.svelte'
-  import Navigation from '$lib/Components/Navigation/Navigation.svelte'
-  import Open from '$lib/Components/Shop/Open.svelte'
+  import Footer from '$lib/components/Footer.svelte'
+  import Left from '$lib/components/Left.svelte'
+  import Favicons from '$lib/components/Favicons.svelte'
+  import Navigation from '$lib/components/Navigation/Navigation.svelte'
+  import Open from '$lib/components/Shop/Open.svelte'
   import { cartItemCount } from '$lib/stores/shopify'
   
   export let data: any

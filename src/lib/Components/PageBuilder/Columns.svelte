@@ -1,7 +1,7 @@
 <script lang="ts">
   // Imports
   import classNames from 'classnames'
-  import PageBuilder from '$lib/Components/PageBuilder/PageBuilder.svelte'
+  import PageBuilder from '$lib/components/PageBuilder/PageBuilder.svelte'
 
   // API
   export let block

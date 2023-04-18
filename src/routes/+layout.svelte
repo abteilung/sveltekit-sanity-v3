@@ -20,7 +20,7 @@
   // 900 is black
   import '@fontsource/source-sans-pro/900.css'
   // Live Preveiew Banner
-  import PreviewBanner from '$lib/Components/PreviewBanner.svelte'
+  import PreviewBanner from '$lib/components/PreviewBanner.svelte'
 
   /**
    * Only show the preview banner on the following route id's.

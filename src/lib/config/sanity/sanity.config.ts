@@ -4,7 +4,7 @@ import {googleMapsInput} from '@sanity/google-maps-input'
 import {codeInput} from '@sanity/code-input'
 import {colorInput} from '@sanity/color-input'
 
-import {PostsPreview} from './Components/PostsPreview'
+import {PostsPreview} from './components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
 import app from '../app'
 
@@ -135,7 +135,7 @@ export default defineConfig({
       emptySpace,
       columns,
 
-      // Components
+      // components
       //   shcemas/objects
       menu,
       navigations,

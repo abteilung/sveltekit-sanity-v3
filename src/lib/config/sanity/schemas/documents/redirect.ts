@@ -38,7 +38,7 @@ export default {
       options: {
         list: [
           {title: 'Permanent', value: '301'},
-          {title: 'Temporary', value: '302'}
+          {title: 'Temporary', value: '307'}
         ]
       },
       group: 'redirect'

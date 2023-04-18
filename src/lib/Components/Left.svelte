@@ -1,20 +1,20 @@
 <script lang="ts">
-  import Icons from '$lib/Components/Icons.svelte'
+  import Icons from '$lib/components/Icons.svelte'
 
-  import ThemeToggleIcon from '$lib/Components/ThemeToggleIcon.svelte'
+  import ThemeToggleIcon from '$lib/components/ThemeToggleIcon.svelte'
 
-  import SearchBar from '$lib/Components/Shop/SearchBar.svelte'
-  import AnimatedHamburger from '$lib/Components/AnimatedHamburger.svelte'
+  import SearchBar from '$lib/components/Shop/SearchBar.svelte'
+  import AnimatedHamburger from '$lib/components/AnimatedHamburger.svelte'
   import {showSubMenu, subMenuItemsStore} from '$lib/stores/navigation'
 
-  import Sidebar from '$lib/Components/Shop/Sidebar.svelte'
+  import Sidebar from '$lib/components/Shop/Sidebar.svelte'
 
   export let cart
 
   // Component Imports
-  import Dropdown from '$lib/Components/Navigation/Dropdown.svelte'
-  import MenuLink from '$lib/Components/Navigation/MenuLink.svelte'
-  import MenuPage from '$lib/Components/Navigation/MenuPage.svelte'
+  import Dropdown from '$lib/components/Navigation/Dropdown.svelte'
+  import MenuLink from '$lib/components/Navigation/MenuLink.svelte'
+  import MenuPage from '$lib/components/Navigation/MenuPage.svelte'
 
   export let navMenuMobile
 

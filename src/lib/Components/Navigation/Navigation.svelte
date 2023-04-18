@@ -4,8 +4,8 @@
 
   // cubicInOut
   import {cubicInOut} from 'svelte/easing'
-  import MenuLink from '$lib/Components/Navigation/MenuLink.svelte'
-  import MenuPage from '$lib/Components/Navigation/MenuPage.svelte'
+  import MenuLink from '$lib/components/Navigation/MenuLink.svelte'
+  import MenuPage from '$lib/components/Navigation/MenuPage.svelte'
 
   // Stores
   import {page} from '$app/stores'

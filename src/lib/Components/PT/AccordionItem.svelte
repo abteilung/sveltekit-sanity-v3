@@ -3,9 +3,9 @@
   import {getContext} from 'svelte'
   import {slide} from 'svelte/transition'
 
-  // Components
-  import PortableBlock from '$lib/Components/PortableBlock.svelte'
-  import Icons from '$lib/Components/Icons.svelte'
+  // components
+  import PortableBlock from '$lib/components/PortableBlock.svelte'
+  import Icons from '$lib/components/Icons.svelte'
 
   // API
   export let id

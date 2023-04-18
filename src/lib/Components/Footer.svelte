@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Icons from '$lib/Components/Icons.svelte'
-  import CookieBanner from '$lib/Components/CookieBanner.svelte'
-  import SocialIcons from '$lib/Components/SocialIcons.svelte'
-  import MenuInline from '$lib/Components/Navigation/MenuInline.svelte'
+  import Icons from '$lib/components/Icons.svelte'
+  import CookieBanner from '$lib/components/CookieBanner.svelte'
+  import SocialIcons from '$lib/components/SocialIcons.svelte'
+  import MenuInline from '$lib/components/Navigation/MenuInline.svelte'
   export let menu: any
   export let dsgvo: any
   export let contact: any

@@ -3,8 +3,8 @@
   import {Swiper, SwiperSlide} from 'swiper/svelte'
   import 'swiper/css'
 
-  import IntersectionObserver from '$lib/Components/IntersectionObserver.svelte'
-  import Image from '$lib/Components/PageBuilder/Image.svelte'
+  import IntersectionObserver from '$lib/components/IntersectionObserver.svelte'
+  import Image from '$lib/components/PageBuilder/Image.svelte'
 
   export let teasers: any
   export let maxItems: number

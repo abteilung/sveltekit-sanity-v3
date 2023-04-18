@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {TCart} from '$lib/shopify'
   import {cartOpen} from '$lib/stores/shopify'
-  //   import {open} from '$lib/Components/Shop/Cart.svelte'
+  //   import {open} from '$lib/components/Shop/Cart.svelte'
 
   export let cart: TCart
 </script>

@@ -2,7 +2,7 @@
   import {page} from '$app/stores'
   import {goto} from '$app/navigation'
 
-  import Icons from '$lib/Components/Icons.svelte'
+  import Icons from '$lib/components/Icons.svelte'
 
   let value = $page.url.searchParams.get('q')
 

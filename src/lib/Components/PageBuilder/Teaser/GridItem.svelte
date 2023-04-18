@@ -1,8 +1,8 @@
 <script lang="ts">
   import {fly} from 'svelte/transition'
 
-  import IntersectionObserver from '$lib/Components/IntersectionObserver.svelte'
-  import Image from '$lib/Components/PageBuilder/Image.svelte'
+  import IntersectionObserver from '$lib/components/IntersectionObserver.svelte'
+  import Image from '$lib/components/PageBuilder/Image.svelte'
 
   export let teaser: any
   export let i: number

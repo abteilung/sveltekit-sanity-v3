@@ -6,9 +6,9 @@
   export let expanded: boolean = false
 
   // Component Imports
-  import MenuLink from '$lib/Components/Navigation/MenuLink.svelte'
-  import MenuPage from '$lib/Components/Navigation/MenuPage.svelte'
-  import Dropdown from '$lib/Components/Navigation/Dropdown.svelte'
+  import MenuLink from '$lib/components/Navigation/MenuLink.svelte'
+  import MenuPage from '$lib/components/Navigation/MenuPage.svelte'
+  import Dropdown from '$lib/components/Navigation/Dropdown.svelte'
 
   // Button to toggle submenus
   const toggleSubmenu = (e: any) => {

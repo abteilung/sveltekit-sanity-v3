@@ -2,7 +2,7 @@
   import type {TCart} from '$lib/shopify'
   import {cartOpen} from '$lib/stores/shopify'
 //   import {getCartItems} from '$lib/stores/shopify'
-  //   import {open} from '$lib/Components/Shop/Cart.svelte'
+  //   import {open} from '$lib/components/Shop/Cart.svelte'
   import { cartItemCount } from '$lib/stores/shopify'
 
   export let cart: TCart
