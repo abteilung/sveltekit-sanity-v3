@@ -15,8 +15,15 @@ const visibilityChecker = `
 // Define URLs for all our link types
 const linkTypes = groq`
   "href": slug.current,
+  _type,
+  _type == "author" => {
+    "href": "/author/" + slug.current,
+  },
   _type == "post" => {
     "href": "/story/" + slug.current,
+  },
+  _type == "casestudy" => {
+    "href": "/case/" + slug.current,
   },
   _type == "service" => {
     "href": "/services/" + slug.current,

@@ -1,7 +1,7 @@
 import {Trophy} from '@phosphor-icons/react'
 
 export default {
-  name: 'caseStudy',
+  name: 'casestudy',
   title: 'Case Studies',
   type: 'document',
   icon: Trophy,

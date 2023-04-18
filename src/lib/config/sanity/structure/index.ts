@@ -2,7 +2,7 @@
 
 // Documents
 import pageStructure from './documents/pages'
-import caseStudyStructure from './documents/caseStudies'
+import casestudyStructure from './documents/caseStudies'
 import landingPageStructure from './documents/landingPages'
 import landingPageFeatureStructure from './documents/landingPageFeatures'
 import navigationStructure from './documents/navigation'
@@ -34,7 +34,7 @@ export const structure = (S) => {
       S.divider(),
       brandsStructure(S),
       clientsStructure(S),
-      caseStudyStructure(S),
+      casestudyStructure(S),
       S.divider(),
       settingsStructure(S),
       S.divider(),
