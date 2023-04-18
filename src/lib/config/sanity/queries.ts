@@ -386,6 +386,7 @@ export const site = groq`
 const getSitemap = groq`
 {
   "siteUrl": *[_type == 'settings'][0].siteUrl,
+  "siteChangeDate": *[(_type == 'page' && _id == 'frontPage') && ${visibilityChecker}]{"updatedAt": _updatedAt}[0].updatedAt,
   "sitePages": *[defined(slug) && ${visibilityChecker}] | order(_updatedAt desc) {
     "updatedAt": _updatedAt,
     ${linkTypes},

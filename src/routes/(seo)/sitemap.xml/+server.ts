@@ -21,6 +21,16 @@ export async function GET({req}) {
   })
 }
 
+// Set a new Date if a change is made
+const changeDate = (date) => {
+  const newDate = new Date(date)
+  const year = newDate.getFullYear()
+  const month = newDate.getMonth() + 1
+  const day = 17
+  return `${year}-${month}-${day}`
+}
+
+
 // Create Sitemap
 const sitemap = (siteMap) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
@@ -33,8 +43,7 @@ const sitemap = (siteMap) => `<?xml version="1.0" encoding="UTF-8" ?>
 >
     <url>
         <loc>${siteMap.siteUrl}</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.7</priority>
+        <lastmod>${siteMap.siteChangeDate.split('T')[0]}</lastmod>
     </url>
     ${siteMap.sitePages
       .map(
