@@ -1,4 +1,4 @@
-import {Planet, Calendar, Crown, CallBell} from '@phosphor-icons/react'
+import {Planet, Calendar, Users, CallBell, Flask, Article, HandCoins} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import {getVisibilityState} from '../../lib/helpers'
@@ -11,8 +11,11 @@ export default defineType({
   type: 'document',
   groups: [
     {name: 'default', title: 'Default', description: 'Default fields', default: true},
-    {name: 'features', title: 'Features', description: 'Features', icon: Crown},
     {name: 'services', title: 'Services', description: 'Services', icon: CallBell},
+    {name: 'team', title: 'Team', description: 'This Landing Pages Team', icon: Users},
+    {name: 'expertise', title: 'Expertise', description: 'Expertise for this Landing Page', icon: Flask},
+    {name: 'posts', title: 'Posts', description: 'Posts for this Landing Page', icon: Article},
+    {name: 'prices', title: 'Prices', description: 'Price Objects for this Landing Page', icon: HandCoins},
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
 
@@ -33,12 +36,6 @@ export default defineType({
 
   fields: [
     {
-      name: 'subtitle',
-      title: 'eyebrow (H1)',
-      type: 'string',
-      group: 'default'
-    },
-    {
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -46,11 +43,26 @@ export default defineType({
       validation: (Rule) => Rule.required()
     },
     {
+      name: 'buttonText',
+      title: 'Button Text (CTA), short!',
+      type: 'string',
+      group: 'default',
+    },
+    {
       name: 'url',
       title: 'URL',
       type: 'url',
       group: 'default',
       validation: (Rule) => Rule.required()
+    },
+    {
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      group: 'default',
+      options: {
+        hotspot: false
+      }
     },
     {
       name: 'image',
@@ -61,6 +73,7 @@ export default defineType({
         hotspot: true
       }
     },
+   
     {
       name: 'color',
       title: 'Color',
@@ -85,27 +98,79 @@ export default defineType({
       name: 'featuresTitle',
       title: 'Features Title',
       type: 'string',
-      group: 'features'
+      group: 'services'
     },
     {
-      name: 'featuresIntro',
-      title: 'Features Intro',
-      type: 'blockContent',
-      group: 'features'
-    },
-    {
-      name: 'features',
-      title: 'Features',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'landingPageFeature'}}],
-      group: 'features'
+      name: 'featuresSubtitle',
+      title: 'Features Subtitle',
+      type: 'string',
+      group: 'services'
     },
     {
       name: 'services',
       title: 'Services',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'service'}}],
+      of: [{type: 'reference', to: {type: 'landingPageService'}}],
       group: 'services'
+    },
+    {
+      name: 'posts',
+      title: 'Posts',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'post'}}],
+      group: 'posts'
+    },
+    {
+      name: 'team',
+      title: 'Team',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'author'}}],
+      group: 'team'
+    },
+    {
+      name: 'expertiseTitle',
+      title: 'Expertise Title',
+      type: 'string',
+      group: 'expertise'
+    },
+    {
+      name: 'expertiseSubtitle',
+      title: 'Expertise Subtitle',
+      type: 'string',
+      group: 'expertise'
+    },
+    {
+      name: 'expertiseShort',
+      title: 'Expertise Short',
+      type: 'blockContent',
+      group: 'expertise'
+    },
+    {
+      name: 'expertiseIcons',
+      title: 'Expertise Icons',
+      type: 'array',
+      of: [{type: 'image', fields: [{name: 'alt', type: 'string'}]}],
+      group: 'expertise'
+    },
+
+    {
+      name: 'pricesTitle',
+      title: 'Prices Title',
+      type: 'string',
+      group: 'prices'
+    },
+    {
+      name: 'pricesInfo',
+      title: 'Prices Info',
+      type: 'string',
+      group: 'prices'
+    },
+    {
+      name: 'prices',
+      title: 'Prices',
+      type: 'array',
+      of: [{type: 'landingPagePrice'}],
+      group: 'prices'
     },
   
     // Visibility

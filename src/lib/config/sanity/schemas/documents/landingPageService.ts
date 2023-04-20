@@ -1,15 +1,16 @@
-import {Lifebuoy, Calendar} from '@phosphor-icons/react'
+import {Lifebuoy, Calendar, HandCoins} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import {getVisibilityState} from '../../lib/helpers'
 
 export default defineType({
-  name: 'landingPageFeature',
-  title: 'Landing Page Feature',
+  name: 'landingPageService',
+  title: 'Landing Page Service',
   icon: Lifebuoy,
   type: 'document',
   groups: [
     {name: 'default', title: 'Default', description: 'Default fields', default: true},
+    {name: 'prices', title: 'Prices', description: 'Price Objects for this Landing Page', icon: HandCoins},
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
 
@@ -36,13 +37,42 @@ export default defineType({
       validation: (Rule) => Rule.required()
     },
     {
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
+      group: 'default',
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      group: 'default',
+      validation: (Rule) => Rule.required(),
+      options: {
+        source: 'title',
+        maxLength: 96
+      }
+    },
+    {
       name: 'image',
-      title: 'Icon Image',
+      title: 'Service Main Image',
       type: 'image',
       group: 'default',
       options: {
         hotspot: false
       }
+    },
+    {
+      name: 'icon',
+      title: 'Icon Image',
+      type: 'image',
+      group: 'default',
+    },
+    {
+      name: 'buttonText',
+      title: 'Button Text (CTA), short!',
+      type: 'string',
+      group: 'default',
     },
     {
       name: 'body',
@@ -51,6 +81,14 @@ export default defineType({
       group: 'default'
     },
     
+    {
+      name: 'prices',
+      title: 'Prices',
+      type: 'array',
+      of: [{type: 'landingPagePrice'}],
+      group: 'prices'
+    },
+  
     // Visibility
     {
       name: 'pub',
@@ -74,7 +112,7 @@ export default defineType({
         // Human readable short Date
         subtitle: getVisibilityState(startDate, endDate, hidden) + ` ${excerpt ? excerpt[0]?.children[0]?.text : ''}`,
         // Use Icon instead of Image if isHidden is true
-        media: color?.hex ? getSwatch(color.hex.toUpperCase()) : media
+        media
       }
     }
   }
