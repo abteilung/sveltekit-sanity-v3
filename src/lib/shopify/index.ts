@@ -270,47 +270,93 @@ export const shopify = {
     all: factory({
       query: /* GraphQL */ `
         query Products {
-          collections(query: "title:Website", first: 1) {
-            edges {
+          products(sortKey: TITLE, first: 100) {
+            edges{
               node {
-                products(first: 250) {
+                id
+                handle
+                title
+                description
+                descriptionHtml
+                options {
+                  id
+                  name
+                  values
+                }
+                variants(first: 10) {
+                  pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                  }
                   edges {
                     node {
-                      descriptionHtml
+                      id
                       title
-                      handle
-                      variants(first: 1) {
-                        edges {
-                          node {
-                            id
-                            image {
-                              url
-                            }
-                            priceV2 {
-                              amount
-                            }
-                            availableForSale
-                          }
-                        }
+                      sku
+                      availableForSale
+                      selectedOptions {
+                        name
+                        value
                       }
+                    }
+                  }
+                }
+                images(first: 20) {
+                  pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                  }
+                  edges {
+                    node {
+                      altText
+                      width
+                      height
                     }
                   }
                 }
               }
             }
           }
+            
+          // collections(query: "title:Website", first: 1) {
+          //   edges {
+          //     node {
+          //       products(first: 250) {
+          //         edges {
+          //           node {
+          //             descriptionHtml
+          //             title
+          //             handle
+          //             variants(first: 1) {
+          //               edges {
+          //                 node {
+          //                   id
+          //                   image {
+          //                     url
+          //                   }
+          //                   priceV2 {
+          //                     amount
+          //                   }
+          //                   availableForSale
+          //                 }
+          //               }
+          //             }
+          //           }
+          //         }
+          //       }
+          //     }
+          //   }
+          // }
         }
       `,
       output: (data: any) => {
-        let products: any[] = data.collections.edges[0].node.products.edges
+        let products: any[] = data.products.edges
         return products.map(({node}: any) => {
           let variant = node.variants.edges[0].node
           return <TProduct>{
             id: variant.id,
             title: node.title,
             handle: node.handle,
-            image: variant.image.url,
-            cost: Number(variant.priceV2.amount),
             available: variant.availableForSale
           }
         })

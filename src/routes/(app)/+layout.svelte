@@ -3,6 +3,8 @@
   import Left from '$lib/components/Left.svelte'
   import Favicons from '$lib/components/Favicons.svelte'
   import Navigation from '$lib/components/Navigation/Navigation.svelte'
+
+  import SearchBar from '$lib/components/Shop/SearchBar.svelte'
   import Open from '$lib/components/Shop/Open.svelte'
   import { cartItemCount } from '$lib/stores/shopify'
   

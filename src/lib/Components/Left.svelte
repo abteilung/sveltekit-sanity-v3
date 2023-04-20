@@ -3,7 +3,6 @@
 
   import ThemeToggleIcon from '$lib/components/ThemeToggleIcon.svelte'
 
-  import SearchBar from '$lib/components/Shop/SearchBar.svelte'
   import AnimatedHamburger from '$lib/components/AnimatedHamburger.svelte'
   import {showSubMenu, subMenuItemsStore} from '$lib/stores/navigation'
 
@@ -76,7 +75,6 @@
           </li>
         {/each}
       </ul>
-      <SearchBar />
       <Sidebar {cart} />
     </div>
   </div>

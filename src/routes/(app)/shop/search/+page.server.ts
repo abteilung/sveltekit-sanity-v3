@@ -1,8 +1,9 @@
-import {getAllProducts} from '$lib/utils/shopify'
+import {getAllProducts} from '$lib/shopify'
 import {error} from '@sveltejs/kit'
+import {shopify} from '$lib/shopify'
 
 export async function load() {
-  const res = await getAllProducts()
+  const res = await shopify.product.all()
 
   if (res.status === 200) {
     const allProducts = res.body?.data?.products
