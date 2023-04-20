@@ -211,7 +211,7 @@
 
 // export async function getProduct(handle) {
 //   return shopifyFetch({
-//     query: ` 
+//     query: `
 //           query getProduct($handle: String!) {
 //               productByHandle(handle: $handle) {
 //                   id

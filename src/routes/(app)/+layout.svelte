@@ -6,10 +6,10 @@
 
   import SearchBar from '$lib/components/Shop/SearchBar.svelte'
   import Open from '$lib/components/Shop/Open.svelte'
-  import { cartItemCount } from '$lib/stores/shopify'
-  
+  import {cartItemCount} from '$lib/stores/shopify'
+
   export let data: any
-  
+
   // Set cartItemCount with value from server
   $: cartItemCount.set(data.cartItemsCount.length)
   $: siteConfig = data.layoutData.siteConfig
@@ -25,20 +25,15 @@
 </svelte:head>
 
 <div class="wrapper">
-  <Left
-    menu={menus.navMenuHeader}
-    meta={menus.navMenuMeta}
-    navMenuMobile={menus.navMenuMobile}
-    {cart}
-  />
+  <Left menu={menus.navMenuHeader} meta={menus.navMenuMeta} navMenuMobile={menus.navMenuMobile} {cart} />
   <div class="content">
     <div class="fixed px-6 py-2 space-x-6 top-6 right-6 rounded-full bg-black text-white z-40">
-    <div class="flex space-x-4">
-      <Open />
-      <SearchBar />
-      <button> Funktion X </button>
-      <button> Funktion Y </button>
-    </div>
+      <div class="flex space-x-4">
+        <Open />
+        <SearchBar />
+        <button> Funktion X </button>
+        <button> Funktion Y </button>
+      </div>
     </div>
     <slot />
     <Navigation />

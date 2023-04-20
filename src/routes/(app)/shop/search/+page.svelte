@@ -18,11 +18,14 @@
   <ul class="grid grid-flow-row gap-4 sm:grid-cols-2 md:grid-cols-3">
     {#each displayedProducts as product, i (product.node.id)}
       <li>
-        <div class="group relative block overflow-hidden ">
+        <div class="group relative block overflow-hidden">
           <div class="bg-white shadow-lg">
             <a href={`/shop/product/${product.node.handle}`}>
-            <h3>{product.node.title}</h3>
-            <p>{'CHF' || product.node.priceRange.maxVariantPrice.currencyCode} {20 || product.node.priceRange.maxVariantPrice.amount}.–</p>
+              <h3>{product.node.title}</h3>
+              <p>
+                {'CHF' || product.node.priceRange.maxVariantPrice.currencyCode}
+                {20 || product.node.priceRange.maxVariantPrice.amount}.–
+              </p>
             </a>
           </div>
         </div>

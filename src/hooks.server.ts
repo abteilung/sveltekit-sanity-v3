@@ -40,7 +40,7 @@ export const handle: Handle = async ({event, resolve}) => {
   const response = await resolve(event, {
     transformPageChunk: ({html}) => html.replace('%lang%', language).replace('%THEME%', theme)
   })
-  
+
   // End Timer for Speed Measurement
   console.timeEnd('handle')
 

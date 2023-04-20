@@ -262,7 +262,7 @@ export const shopify = {
           return <TProduct>{
             id: node.id,
             title: node.title,
-            handle: node.handle,
+            handle: node.handle
           }
         })
       }
