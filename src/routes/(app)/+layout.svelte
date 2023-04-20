@@ -35,6 +35,7 @@
     <div class="fixed px-6 py-2 space-x-6 top-6 right-6 rounded-full bg-black text-white z-40">
     <div class="flex space-x-4">
       <Open />
+      <SearchBar />
       <button> Funktion X </button>
       <button> Funktion Y </button>
     </div>
