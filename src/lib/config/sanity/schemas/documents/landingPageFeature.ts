@@ -1,5 +1,7 @@
-import {Lifebuoy, EyeSlash} from '@phosphor-icons/react'
+import {Lifebuoy, Calendar} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
+
+import {getVisibilityState} from '../../lib/helpers'
 
 export default defineType({
   name: 'landingPageFeature',
@@ -7,17 +9,8 @@ export default defineType({
   icon: Lifebuoy,
   type: 'document',
   groups: [
-    {
-      title: 'Default',
-      name: 'default',
-      options: {collapsible: true},
-      default: true
-    },
-    {
-      title: 'Visibility',
-      name: 'visibility',
-      options: {collapsible: true}
-    }
+    {name: 'default', title: 'Default', description: 'Default fields', default: true},
+    {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
 
   // 2 columns
@@ -57,61 +50,31 @@ export default defineType({
       type: 'blockContent',
       group: 'default'
     },
-    {
-      name: 'categories',
-      title: 'Belongs to…',
-      type: 'array',
-      group: 'default',
-      of: [{type: 'reference', to: {type: 'landingPage'}}]
-    },
+    
     // Visibility
     {
-      fieldset: 'publicationSettings',
-      name: 'isFeatured',
-      title: 'Featured',
-      type: 'boolean',
-      group: 'visibility'
-    },
-    {
-      fieldset: 'publicationSettings',
-      name: 'isHidden',
-      title: 'Hidden',
-      type: 'boolean',
-      group: 'visibility'
-    },
-    {
-      fieldset: 'dateColumns',
-      name: 'startDate',
-      title: 'Start Date',
-      type: 'datetime',
-      group: 'visibility'
-    },
-    {
-      name: 'endDate',
-      fieldset: 'dateColumns',
-      title: 'End Date',
-      type: 'datetime',
-      group: 'visibility'
+      name: 'pub',
+      title: 'Visibility',
+      type: 'visibility',
+      group: 'publication'
     }
   ],
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
       media: 'image',
-      startDate: 'startDate',
-      endDate: 'endDate',
-      isHidden: 'isHidden',
-      isFeatured: 'isFeatured',
-      categories: 'categories'
+      excerpt: 'body',
+      startDate: 'pub.publishedAt',
+      endDate: 'pub.unpublishedAt',
+      hidden: 'pub.isHidden'
     },
-    prepare({title, author, media, isHidden, startDate, endDate, isFeatured, categories}) {
+    prepare({title, media, hidden, startDate, endDate, color, excerpt}) {
       return {
-        title: isFeatured ? `🔥 ${title}` : title,
+        title: title,
         // Human readable short Date
-        subtitle: categories && categories.map((category) => category.title).join(', '),
+        subtitle: getVisibilityState(startDate, endDate, hidden) + ` ${excerpt[0]?.children[0]?.text}`,
         // Use Icon instead of Image if isHidden is true
-        media: isHidden ? EyeSlash : media
+        media: color?.hex ? getSwatch(color.hex.toUpperCase()) : media
       }
     }
   }

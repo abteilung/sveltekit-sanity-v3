@@ -1,4 +1,4 @@
-import {Planet, Calendar} from '@phosphor-icons/react'
+import {Planet, Calendar, Crown, CallBell} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import {getVisibilityState} from '../../lib/helpers'
@@ -11,6 +11,8 @@ export default defineType({
   type: 'document',
   groups: [
     {name: 'default', title: 'Default', description: 'Default fields', default: true},
+    {name: 'features', title: 'Features', description: 'Features', icon: Crown},
+    {name: 'services', title: 'Services', description: 'Services', icon: CallBell},
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
 
@@ -25,7 +27,8 @@ export default defineType({
       name: 'publicationSettings',
       title: 'Publication Settings',
       options: {collapsible: false, columns: 2}
-    }
+    },
+    
   ],
 
   fields: [
@@ -76,14 +79,35 @@ export default defineType({
       type: 'blockContent',
       group: 'default'
     },
-    {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      group: 'default',
-      of: [{type: 'reference', to: {type: 'category'}}]
-    },
 
+    // Content of Landing Page
+    {
+      name: 'featuresTitle',
+      title: 'Features Title',
+      type: 'string',
+      group: 'features'
+    },
+    {
+      name: 'featuresIntro',
+      title: 'Features Intro',
+      type: 'blockContent',
+      group: 'features'
+    },
+    {
+      name: 'features',
+      title: 'Features',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'landingPageFeature'}}],
+      group: 'features'
+    },
+    {
+      name: 'services',
+      title: 'Services',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'service'}}],
+      group: 'services'
+    },
+  
     // Visibility
     {
       name: 'pub',
