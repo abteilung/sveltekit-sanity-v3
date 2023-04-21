@@ -317,36 +317,6 @@ export const shopify = {
               }
             }
           }
-            
-          // collections(query: "title:Website", first: 1) {
-          //   edges {
-          //     node {
-          //       products(first: 250) {
-          //         edges {
-          //           node {
-          //             descriptionHtml
-          //             title
-          //             handle
-          //             variants(first: 1) {
-          //               edges {
-          //                 node {
-          //                   id
-          //                   image {
-          //                     url
-          //                   }
-          //                   priceV2 {
-          //                     amount
-          //                   }
-          //                   availableForSale
-          //                 }
-          //               }
-          //             }
-          //           }
-          //         }
-          //       }
-          //     }
-          //   }
-          // }
         }
       `,
       output: (data: any) => {
@@ -404,3 +374,39 @@ export const shopify = {
     })
   }
 }
+
+
+
+
+
+            
+          // collections(query: "title:Website", first: 1) {
+          //   edges {
+          //     node {
+          //       products(first: 250) {
+          //         edges {
+          //           node {
+          //             descriptionHtml
+          //             title
+          //             handle
+          //             variants(first: 1) {
+          //               edges {
+          //                 node {
+          //                   id
+          //                   image {
+          //                     url
+          //                   }
+          //                   priceV2 {
+          //                     amount
+          //                   }
+          //                   availableForSale
+          //                 }
+          //               }
+          //             }
+          //           }
+          //         }
+          //       }
+          //     }
+          //   }
+          // }
+        // }

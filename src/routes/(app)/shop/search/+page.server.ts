@@ -1,21 +1,36 @@
-import {getAllProducts} from '$lib/shopify'
 import {error} from '@sveltejs/kit'
 import {shopify} from '$lib/shopify'
 
-export async function load() {
-  const res = await shopify.product.all()
+// export const load = async ({parent}) => {
+//   const res = await shopify.product.all()
 
-  if (res.status === 200) {
-    const allProducts = res.body?.data?.products
+//   if (res.status === 200) {
+//     const products = res.body?.data?.products
 
-    if (allProducts) {
-      return {
-        body: {allProducts}
-      }
+//     if (products) {
+//       return {
+//         body: {products}
+//       }
+//     }
+
+//     throw error(404)
+//   } else {
+    
+
+//   throw error(404, 'Products not found')
+// }
+
+
+
+export const load = async ({parent}) => {
+  const allProducts = await shopify.product.all()
+
+  if (allProducts) {
+    return {
+       allProducts
     }
-
-    throw error(404)
   } else {
-    throw error(res.status)
+    throw error(404)
   }
 }
+ 
