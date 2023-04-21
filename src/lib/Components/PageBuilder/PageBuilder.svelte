@@ -1,11 +1,11 @@
 <script lang="ts">
   // Page Builder
-  import Image from '$lib/components/PageBuilder/Image.svelte'
-  import RichEditor from '$lib/components/PageBuilder/RichEditor.svelte'
-  import TeaserGrid from '$lib/components/PageBuilder/TeaserGrid.svelte'
-  import EmptySpace from '$lib/components/PageBuilder/EmptySpace.svelte'
-  import Columns from '$lib/components/PageBuilder/Columns.svelte'
-  import Code from '$lib/components/PageBuilder/Code.svelte'
+  import Image from '$lib/Components/PageBuilder/Image.svelte'
+  import RichEditor from '$lib/Components/PageBuilder/RichEditor.svelte'
+  import TeaserGrid from '$lib/Components/PageBuilder/TeaserGrid.svelte'
+  import EmptySpace from '$lib/Components/PageBuilder/EmptySpace.svelte'
+  import Columns from '$lib/Components/PageBuilder/Columns.svelte'
+  import Code from '$lib/Components/PageBuilder/Code.svelte'
 
   export let blocks: any = []
 </script>

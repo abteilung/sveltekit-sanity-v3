@@ -5,7 +5,7 @@ export default defineType({
   name: 'landingPagePrice',
   title: 'Landing Page Price',
   icon: Coins,
-  type: 'object',
+  type: 'document',
   groups: [
     {name: 'default', title: 'Default', description: 'Default fields', icon: Coins, default: true},
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
@@ -23,7 +23,7 @@ export default defineType({
       name: 'price',
       title: 'Price',
       type: 'string',
-      group: 'default',
+      group: 'default'
     },
     {
       name: 'image',
@@ -39,14 +39,13 @@ export default defineType({
       title: 'Content',
       type: 'blockContent',
       group: 'default'
-    },
-    
+    }
   ],
   preview: {
     select: {
       title: 'title',
       media: 'image',
-      excerpt: 'body',
+      excerpt: 'body'
     },
     prepare({title, media, excerpt}) {
       return {

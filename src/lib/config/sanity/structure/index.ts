@@ -4,8 +4,6 @@
 import pageStructure from './documents/pages'
 import casestudyStructure from './documents/caseStudies'
 import landingPageStructure from './documents/landingPages'
-import landingPageFeatureStructure from './documents/landingPageFeatures'
-import landingPageServiceStructure from './documents/landingPageServices'
 import navigationStructure from './documents/navigation'
 import frontPageStructure from './documents/frontPage'
 import postsStructure from './documents/posts'
@@ -28,8 +26,6 @@ export const structure = (S) => {
       productsStructure(S),
       S.divider(),
       landingPageStructure(S),
-      landingPageFeatureStructure(S),
-      landingPageServiceStructure(S),
       S.divider(),
       personsStructure(S),
       faqStructure(S),

@@ -1,4 +1,4 @@
-import {Lifebuoy, Calendar, HandCoins} from '@phosphor-icons/react'
+import {Lifebuoy, Calendar, CurrencyDollar} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import {getVisibilityState} from '../../lib/helpers'
@@ -10,7 +10,7 @@ export default defineType({
   type: 'document',
   groups: [
     {name: 'default', title: 'Default', description: 'Default fields', default: true},
-    {name: 'prices', title: 'Prices', description: 'Price Objects for this Landing Page', icon: HandCoins},
+    {name: 'prices', title: 'Prices', description: 'Price Objects for this Landing Page', icon: CurrencyDollar},
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
 
@@ -40,7 +40,7 @@ export default defineType({
       name: 'subtitle',
       title: 'Subtitle',
       type: 'string',
-      group: 'default',
+      group: 'default'
     },
     {
       name: 'slug',
@@ -66,13 +66,13 @@ export default defineType({
       name: 'icon',
       title: 'Icon Image',
       type: 'image',
-      group: 'default',
+      group: 'default'
     },
     {
       name: 'buttonText',
       title: 'Button Text (CTA), short!',
       type: 'string',
-      group: 'default',
+      group: 'default'
     },
     {
       name: 'body',
@@ -80,15 +80,16 @@ export default defineType({
       type: 'blockContent',
       group: 'default'
     },
-    
+
     {
       name: 'prices',
       title: 'Prices',
+      description: 'Prices for this Service. Overwrite the default prices in the Landing Page.',
       type: 'array',
-      of: [{type: 'landingPagePrice'}],
+      of: [{type: 'reference', to: {type: 'landingPagePrice'}}],
       group: 'prices'
     },
-  
+
     // Visibility
     {
       name: 'pub',

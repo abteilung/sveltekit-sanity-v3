@@ -51,14 +51,14 @@ export default defineType({
           lists: []
         }
       ]
-    },
+    }
   ],
 
   preview: {
     select: {
       title: 'name',
       subtitle: 'email',
-      media: 'image.image',
+      media: 'image.image'
     }
   }
 })

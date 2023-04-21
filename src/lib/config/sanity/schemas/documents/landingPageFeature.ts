@@ -50,7 +50,7 @@ export default defineType({
       type: 'blockContent',
       group: 'default'
     },
-    
+
     // Visibility
     {
       name: 'pub',
