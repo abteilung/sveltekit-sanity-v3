@@ -126,8 +126,8 @@ export const shopify = {
                   id: node.id,
                   product: {
                     id: merch.id,
-                    handle: merch.product.handle,
-                    title: merch.product.title,
+                    handle: merch.product?.handle,
+                    title: merch.product?.title,
                     image: merch.image.url,
                     cost: Number(merch.priceV2.amount),
                     available: merch.availableForSale
@@ -215,13 +215,13 @@ export const shopify = {
       input: (i: {handle: string}) => i,
       output: (data: any) => {
         if (data.product) {
-          let variant = data.product.variants.edges[0].node
+          let variant = data.product?.variants.edges[0].node
           return <TProductDetail>{
             id: variant.id,
-            title: data.product.title,
-            description: data.product.descriptionHtml,
-            handle: data.product.handle,
-            image: variant.image.url,
+            title: data.product?.title,
+            description: data.product?.descriptionHtml,
+            handle: data.product?.handle,
+            image: variant.image?.url,
             cost: Number(variant.priceV2.amount),
             available: variant.availableForSale
           }
@@ -293,6 +293,9 @@ export const shopify = {
                       id
                       title
                       sku
+                      priceV2 {
+                          amount
+                        }
                       availableForSale
                       selectedOptions {
                         name
@@ -327,6 +330,7 @@ export const shopify = {
             id: variant.id,
             title: node.title,
             handle: node.handle,
+            cost: Number(variant.priceV2.amount),
             available: variant.availableForSale
           }
         })

@@ -5,12 +5,13 @@
   import Buy from './Buy.svelte'
 
   export let data: PageData
+
   $: product = data.product
   $: cart = data.cart
 </script>
 
 <svelte:head>
-  <title>{data.product.title} &middot; Sue Williams A’Court</title>
+  <title>{data.product.title} Ades.ch</title>
   <meta property="og:title" content="{data.product.title} &middot; Sue Williams A’Court’s Shop" />
   <meta name="description" content="Sue Williams A’Court is a fine artist and painter." />
   <meta property="og:description" content="Sue Williams A’Court is a fine artist and painter." />
@@ -36,7 +37,7 @@
       {@html product.description}
     </div>
     <div>
-      <p>£{product.cost.toFixed(2)}<span>+ shipping</span></p>
+      <p>CHF {product.cost.toFixed(2)}.–<span>+ shipping</span></p>
     </div>
     <div class="buy"><Buy {product} {cart} /></div>
   </main>

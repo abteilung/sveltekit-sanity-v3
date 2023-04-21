@@ -1,10 +1,16 @@
-import type {PageServerLoad} from './$types'
-import {shopify} from '$lib/shopify'
 import {error} from '@sveltejs/kit'
+import {shopify} from '$lib/shopify'
 
-export const load: PageServerLoad = async ({params, parent}) => {
-  let product = await shopify.product.one({handle: params.handle})
-  if (product === undefined) throw error(404, 'Product not found')
+export const load = async ({params, parent}) => {
+  const product = await shopify.product.one({handle: params.handle})
   let {cart} = await parent()
-  return {product, cart}
+
+  if (product) {
+    return {
+      product,
+      cart
+    }
+  } else {
+    throw error(404)
+  }
 }
