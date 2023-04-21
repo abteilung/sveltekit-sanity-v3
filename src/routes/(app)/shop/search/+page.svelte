@@ -23,19 +23,16 @@
 <div>
   <ul class="grid grid-flow-row gap-4 sm:grid-cols-2 md:grid-cols-3">
     {#each displayedProducts as product, i (product.id)}
-      <li>
+      <li class="">
         <Animation iterator={i} delay={25} duration={250}>
-
-        <div class="group relative block overflow-hidden">
-          <div class="bg-white shadow-lg">
-            <a href={`/shop/product/${product.handle}`}>
-              <h3>{product.title}</h3>
-              <p>
-                CHF {product.cost.toFixed(2)}
-              </p>
-            </a>
-          </div>
-        </div>
+          <a href={`/shop/product/${product.handle}`}
+            class="p-6 group relative block overflow-hidden bg-white shadow-xl hover:shadow-md duration-150 block min-h-[280px]"
+          >
+            <h3>{product.title}</h3>
+            <p>
+              CHF {product.cost.toFixed(2)}
+            </p>
+          </a>
         </Animation>
       </li>
     {:else}
