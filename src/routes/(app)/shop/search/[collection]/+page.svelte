@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import {page} from '$app/stores'
 
   /** @type {import('./$types').PageData} */
@@ -39,4 +39,4 @@
   {:else}
     <div>There are no products in this collection.</div>
   {/if}
-</div>
+</div> -->
