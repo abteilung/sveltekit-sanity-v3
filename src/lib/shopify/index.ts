@@ -128,7 +128,7 @@ export const shopify = {
                     id: merch.id,
                     handle: merch.product?.handle,
                     title: merch.product?.title,
-                    image: merch.image.url,
+                    image: merch.image?.url,
                     cost: Number(merch.priceV2.amount),
                     available: merch.availableForSale
                   }
@@ -382,7 +382,7 @@ export const shopify = {
 
 
 
-
+// https://github.com/maugenst/tabletojson
             
           // collections(query: "title:Website", first: 1) {
           //   edges {
