@@ -1,31 +1,40 @@
 <script>
   import {page} from '$app/stores'
+  import Animation from '$lib/components/Animation.svelte'
 
-  /** @type {import('./$types').PageData} */
   export let data
+
   $: search = $page.url.searchParams.get('q')
 
+  $: displayedProducts = []
+
+  $: ({allProducts} = data)
+
   $: displayedProducts = search
-    ? data.body.allProducts.edges.filter((item) => {
-        return item.node.title.toLowerCase().includes(search.toLowerCase())
+    ? allProducts.filter((item) => {
+        return item.title.toLowerCase().includes(search.toLowerCase())
       })
-    : data.body.allProducts.edges
+    : allProducts
+
 </script>
 
 <h1>xxx</h1>
 
 <div>
   <ul class="grid grid-flow-row gap-4 sm:grid-cols-2 md:grid-cols-3">
-    {#each displayedProducts as product, i (product.node.id)}
-      <li>
-        <div class="group relative block overflow-hidden ">
-          <div class="bg-white shadow-lg">
-            <a href={`/shop/product/${product.node.handle}`}>
-            <h3>{product.node.title}</h3>
-            <p>{'CHF' || product.node.priceRange.maxVariantPrice.currencyCode} {20 || product.node.priceRange.maxVariantPrice.amount}.–</p>
-            </a>
-          </div>
-        </div>
+    {#each displayedProducts as product, i (product.id)}
+      <li class={product.available ? 'border-4 border-success' : 'border-4 border-accent'}>
+        <Animation iterator={i} delay={25} duration={250}>
+          <a href={`/shop/product/${product.handle}`}
+            class="p-6 group relative block overflow-hidden bg-white shadow-xl hover:shadow-md duration-150 block min-h-[280px]"
+          >
+            <h3>{product.title}</h3>
+            <p>
+              CHF {product.cost.toFixed(2)}
+            </p>
+            available: {product.available}
+          </a>
+        </Animation>
       </li>
     {:else}
       <p>No products :(</p>

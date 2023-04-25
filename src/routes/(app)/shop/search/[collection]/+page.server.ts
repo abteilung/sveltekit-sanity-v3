@@ -1,23 +1,23 @@
-import {getAllCollections} from '$lib/utils/shopify'
-import {error} from '@sveltejs/kit'
+// import {getAllCollections} from '$lib/utils/shopify'
+// import {error} from '@sveltejs/kit'
 
-export async function load() {
-  const res = await getAllCollections()
+// export async function load() {
+//   const res = await getAllCollections()
 
-  const stringedRes = JSON.stringify(res)
+//   const stringedRes = JSON.stringify(res)
 
-  console.log('xaca: ', stringedRes)
+//   console.log('xaca: ', stringedRes)
 
-  if (res.status === 200) {
-    const collections = res.body?.data?.collections?.edges || []
-    if (collections) {
-      return {
-        body: {collections}
-      }
-    }
+//   if (res.status === 200) {
+//     const collections = res.body?.data?.collections?.edges || []
+//     if (collections) {
+//       return {
+//         body: {collections}
+//       }
+//     }
 
-    throw error(404)
-  } else {
-    throw error(res.status)
-  }
-}
+//     throw error(404)
+//   } else {
+//     throw error(res.status)
+//   }
+// }

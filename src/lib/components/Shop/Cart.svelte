@@ -25,7 +25,7 @@
   }
 </script>
 
-<header class="flex justify-between items-center border-b-2 border-black pb-4 ">
+<header class="flex justify-between items-center border-b-2 border-black pb-4">
   <div>Shopping Cart</div>
   {#if sidebar}<Close />{/if}
 </header>
@@ -88,7 +88,7 @@
   }
 
   .empty {
-    @apply text-black/20
+    @apply text-black/20;
   }
 
   main.cartPending {
@@ -101,7 +101,7 @@
   }
 
   .row {
-    @apply flex mb-6
+    @apply flex mb-6;
   }
   .image {
     @apply mr-2;

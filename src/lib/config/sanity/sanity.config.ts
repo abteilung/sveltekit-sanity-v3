@@ -27,6 +27,8 @@ import postType from './schemas/documents/post'
 import pageType from './schemas/documents/page'
 import landingPageType from './schemas/documents/landingPage'
 import landingPageFeatureType from './schemas/documents/landingPageFeature'
+import landingPageServiceType from './schemas/documents/landingPageService'
+import landingPagePrice from './schemas/documents/landingPagePrice'
 import metaType from './schemas/documents/meta'
 import testimonialType from './schemas/documents/testimonial'
 import categoryType from './schemas/documents/category'
@@ -90,6 +92,7 @@ export default defineConfig({
       // Documents
       pageType,
       landingPageType,
+      landingPageServiceType,
       landingPageFeatureType,
       metaType,
       postType,
@@ -123,6 +126,7 @@ export default defineConfig({
       customImage,
       testimonialReference,
       faqReference,
+      landingPagePrice,
 
       shopifyProduct,
       shpifyProductVariant,

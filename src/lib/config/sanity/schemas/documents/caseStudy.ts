@@ -41,12 +41,6 @@ export default {
       type: 'url'
     },
     {
-      name: 'categories',
-      title: 'Belongs to…',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'landingPage'}}]
-    },
-    {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
@@ -56,13 +50,13 @@ export default {
   preview: {
     select: {
       title: 'title',
-      subTitle: 'subtitle',
+      subtitle: 'subtitle',
       media: 'image'
     },
     prepare(selection) {
-      const {subTitle} = selection
+      const {subtitle} = selection
       return Object.assign({}, selection, {
-        subtitle: subTitle && `${subTitle}`
+        subtitle: subtitle && `${subtitle}`
       })
     }
   }

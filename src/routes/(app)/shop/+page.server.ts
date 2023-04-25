@@ -1,4 +1,3 @@
-import type {PageServerLoad} from './$types'
 import {error} from '@sveltejs/kit'
 import {shopify} from '$lib/shopify'
 

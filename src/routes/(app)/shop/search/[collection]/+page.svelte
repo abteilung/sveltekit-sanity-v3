@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import {page} from '$app/stores'
 
   /** @type {import('./$types').PageData} */
@@ -24,9 +24,12 @@
           <div class="group relative block aspect-square overflow-hidden bg-dark">
             <div class="bg-white shadow-lg">
               <a href={`/shop/product/${product?.node?.handle}`}>
-              <h3>{product?.node?.title}</h3>
-              <p>{'CHF' || product?.node?.priceRange?.maxVariantPrice?.currencyCode} {20 || product?.node?.priceRange?.maxVariantPrice?.amount}.–</p>
-              {product?.node?.images?.edges[0].node?.originalSrc}
+                <h3>{product?.node?.title}</h3>
+                <p>
+                  {'CHF' || product?.node?.priceRange?.maxVariantPrice?.currencyCode}
+                  {20 || product?.node?.priceRange?.maxVariantPrice?.amount}.–
+                </p>
+                {product?.node?.images?.edges[0].node?.originalSrc}
               </a>
             </div>
           </div>
@@ -36,4 +39,4 @@
   {:else}
     <div>There are no products in this collection.</div>
   {/if}
-</div>
+</div> -->

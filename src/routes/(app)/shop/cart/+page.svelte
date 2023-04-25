@@ -3,6 +3,7 @@
   import Cart from '$lib/components/Shop/Cart.svelte'
   export let data: PageServerData
 </script>
+
 <div class="container">
-<Cart cart={data.cart} sidebar={false} />
+  <Cart cart={data.cart} sidebar={false} />
 </div>

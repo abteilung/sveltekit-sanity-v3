@@ -35,6 +35,11 @@ export default defineType({
       type: 'string'
     },
     {
+      name: 'jobTitle',
+      title: 'Job Title',
+      type: 'string'
+    },
+    {
       name: 'bio',
       title: 'Bio',
       type: 'array',
@@ -46,20 +51,14 @@ export default defineType({
           lists: []
         }
       ]
-    },
-    {
-      name: 'categories',
-      title: 'Belongs to…',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'landingPage'}}]
     }
   ],
 
   preview: {
     select: {
       title: 'name',
-      media: 'image.image',
-      subtitle: 'email'
+      subtitle: 'email',
+      media: 'image.image'
     }
   }
 })

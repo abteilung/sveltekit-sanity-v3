@@ -15,6 +15,8 @@
 
 {#if page}
   <Header bgImage={page.image} />
+
+  xxx
   <div class="contentArea">
     {#if page.subtitle}
       <h1 class="h3 mb-0">{page.subtitle}</h1>

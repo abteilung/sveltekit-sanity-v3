@@ -36,8 +36,6 @@ export const load = async ({locals, cookies}) => {
   }
 }
 
-
-
 // export const getCartItems = async () => {
 //   let cartId = JSON.parse(localStorage.getItem('cartId'))
 

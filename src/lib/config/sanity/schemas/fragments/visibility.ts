@@ -1,3 +1,4 @@
+import {Info} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
 
 export default {
@@ -21,6 +22,17 @@ export default {
     publishedAt: new Date().toISOString()
   }),
   fields: [
+    {
+      name: 'pubInfo',
+      title: 'Publication Information',
+      description:
+        'Publication Settings. Use Publish Date and Unpublish Date to schedule publication. Use Hidden to hide the document from the site.',
+      type: 'note',
+      options: {
+        tone: 'caution',
+        icon: Info
+      }
+    },
     {
       name: 'publishedAt',
       title: 'Publishing Date',

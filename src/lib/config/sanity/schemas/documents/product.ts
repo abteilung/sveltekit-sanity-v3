@@ -114,13 +114,13 @@ export default {
   preview: {
     select: {
       title: 'title',
-      subTitle: 'subtitle',
+      subtitle: 'subtitle',
       media: 'image'
     },
     prepare(selection) {
-      const {subTitle} = selection
+      const {subtitle} = selection
       return Object.assign({}, selection, {
-        subtitle: subTitle && `${subTitle}`
+        subtitle: subtitle && `${subtitle}`
       })
     }
   }
