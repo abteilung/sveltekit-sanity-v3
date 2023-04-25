@@ -16,6 +16,10 @@ export default {
       options: {collapsible: false, columns: 2}
     }
   ],
+  initialValue: () => ({
+    isHidden: false,
+    publishedAt: new Date().toISOString()
+  }),
   fields: [
     {
       name: 'publishedAt',
