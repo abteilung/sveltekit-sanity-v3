@@ -127,6 +127,8 @@ const modules = groq`
   },
   _type == "teaserGrid" => {
     // No Drafts!
+    ...,
+      
     "teasers": *[_type == ^.typeSelector && ${visibilityChecker}] {
       ...,
       ${imageMeta},

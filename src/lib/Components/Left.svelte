@@ -1,10 +1,13 @@
 <script lang="ts">
+  import {writable} from 'svelte/store'
+
+  // Stores for Menu States
+  let menuWidth = writable(0)
+  let menuTop = writable(0)
+
   import Icons from '$lib/components/Icons.svelte'
-
   import ThemeToggleIcon from '$lib/components/ThemeToggleIcon.svelte'
-
   import AnimatedHamburger from '$lib/components/AnimatedHamburger.svelte'
-  import {showSubMenu, subMenuItemsStore} from '$lib/stores/navigation'
 
   import Sidebar from '$lib/components/Shop/Sidebar.svelte'
 
@@ -32,27 +35,13 @@
     }
   ]
 
-  // Write submenus to navStore on Click
-  const storeSubMenu = (navItems) => {
-    subMenuItemsStore.set(navItems)
-  }
-
-  const hideSubMenus: any = () => {
-    showSubMenu.set(false)
-  }
-
-  const showSubMenus: any = () => {
-    showSubMenu.set(true)
-  }
   export let activeClass: string = ''
-
-  let width
 </script>
 
-<div class="navBar dark:bg-black" bind:clientWidth={width}>
+<div class="navBar dark:bg-black" bind:clientWidth={$menuWidth}>
   <div class="h-full">
     <div class="flex md:block justify-between items-center">
-      <a href="/" on:click={hideSubMenus}>
+      <a href="/">
         <Icons
           type="logo"
           additionalClass="stroke-white text-black dark:text-white w-full md:w-full h-full md:h-auto py-4 md:py-0"
@@ -61,23 +50,19 @@
       <AnimatedHamburger {navMenuMobile} />
     </div>
     <div class="mt-[100px] hidden md:block">
-      <ul>
+      <ul bind:offsetHeight={$menuTop}>
         {#each menu.items as menuItem}
           <li>
-            {#if menuItem._type === 'navDropdown'}
-              <div on:click={showSubMenus} on:click={storeSubMenu(menuItem.dropdownItems)}>
-                {menuItem.title}
-              </div>
-            {:else}
-              <MenuLink {menuItem} />
-              <MenuPage {menuItem} />
-            {/if}
+            <Dropdown {menuItem} width={$menuWidth} top={$menuTop} />
+            <MenuLink {menuItem} />
+            <MenuPage {menuItem} />
           </li>
         {/each}
       </ul>
       <Sidebar {cart} />
     </div>
   </div>
+
   <div class="hidden md:flex mt-auto pt-[50px] mb-0">
     <div class="">
       <ul class="text-sm flex gap-4">

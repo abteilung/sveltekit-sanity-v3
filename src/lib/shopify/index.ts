@@ -271,7 +271,7 @@ export const shopify = {
       query: /* GraphQL */ `
         query Products {
           products(sortKey: TITLE, first: 100) {
-            edges{
+            edges {
               node {
                 id
                 handle
@@ -294,8 +294,8 @@ export const shopify = {
                       title
                       sku
                       priceV2 {
-                          amount
-                        }
+                        amount
+                      }
                       availableForSale
                       selectedOptions {
                         name
@@ -379,38 +379,35 @@ export const shopify = {
   }
 }
 
-
-
-
 // https://github.com/maugenst/tabletojson
-            
-          // collections(query: "title:Website", first: 1) {
-          //   edges {
-          //     node {
-          //       products(first: 250) {
-          //         edges {
-          //           node {
-          //             descriptionHtml
-          //             title
-          //             handle
-          //             variants(first: 1) {
-          //               edges {
-          //                 node {
-          //                   id
-          //                   image {
-          //                     url
-          //                   }
-          //                   priceV2 {
-          //                     amount
-          //                   }
-          //                   availableForSale
-          //                 }
-          //               }
-          //             }
-          //           }
-          //         }
-          //       }
-          //     }
-          //   }
-          // }
-        // }
+
+// collections(query: "title:Website", first: 1) {
+//   edges {
+//     node {
+//       products(first: 250) {
+//         edges {
+//           node {
+//             descriptionHtml
+//             title
+//             handle
+//             variants(first: 1) {
+//               edges {
+//                 node {
+//                   id
+//                   image {
+//                     url
+//                   }
+//                   priceV2 {
+//                     amount
+//                   }
+//                   availableForSale
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// }

@@ -1,7 +1,7 @@
 <script lang="ts">
+  import {fade} from 'svelte/transition'
   // Store Imports
   import {page} from '$app/stores'
-  import classNames from 'classnames'
 
   export let expanded: boolean = false
 
@@ -10,50 +10,58 @@
   import MenuPage from '$lib/components/Navigation/MenuPage.svelte'
   import Dropdown from '$lib/components/Navigation/Dropdown.svelte'
 
-  // Button to toggle submenus
-  const toggleSubmenu = (e: any) => {
-    const target = e.target
-    const parent = target.parentNode
-    const subMenu = parent.querySelector('.subMenu')
+  import Accordion from '$lib/components/PT/Accordion.svelte'
 
-    if (subMenu) {
-      subMenu.classList.toggle('hidden')
-    }
+  // Function to toggle expanded subMenu Block (with ID)
+  const toggleExpanded = () => {
+    expanded = !expanded
   }
 
   // API
   export let menuItem: string
+  // Reactive variable for width
   export let width: number
+  export let top: number
+
+  let menuClass: string = ''
   let activeClass: string = ''
+  let style: string
+  
+  $: {
+    style = '--firstlevel-offset:' + width + 'px;'
+  }
 </script>
 
 <!-- Dropdown Navigation First Level-->
 {#if menuItem._type === 'navDropdown'}
-  <button class={activeClass} on:click={toggleSubmenu}>{menuItem.title || menuItem.pageTitle}</button>
-  {#if menuItem.dropdownItems}
-    <ul class={classNames('subMenu firstLevel', expanded ? '' : 'hidden')} style="--firstlevel-offset: {width}px">
-      {#each menuItem.dropdownItems as submenu}
-        <li>
-          <MenuLink menuItem={submenu} />
-          <MenuPage menuItem={submenu} />
-
-          <!-- Dropdown Navigation Consecutive Levels-->
-          {#if submenu._type === 'navDropdown'}
-            <button on:click={toggleSubmenu}>{submenu.title || submenu.pageTitle}</button>
-          {/if}
-          {#if submenu.dropdownItems}
-            <Dropdown menuItem={submenu} />
-          {/if}
-        </li>
-      {/each}
-    </ul>
+  <button class={activeClass} on:click={toggleExpanded}>
+    {menuItem.title || menuItem.pageTitle}
+  </button>
+  {#if expanded}
+    <div
+      in:fade={{duration: 200}}
+      out:fade={{duration: 200}}
+      class="bg-dark bg-opacity-30 h-screen backdrop-blur-lg absolute firstLevel w-96 top-0 z-50 p-12"
+      {style}
+    >
+    {#if menuItem.dropdownItems}
+        <ul class="relative" style={'top: ' + top + 'px;'}>
+          {#each menuItem.dropdownItems as submenu}
+            <li>
+              <MenuLink menuItem={submenu} />
+              <MenuPage menuItem={submenu} />
+              {#if submenu.dropdownItems}
+                <Dropdown menuItem={submenu} menuClass="secondLevel" />
+              {/if}
+            </li>
+          {/each}
+        </ul>
+      {/if}
+    </div>
   {/if}
 {/if}
 
 <style lang="postcss">
-  .subMenu {
-    @apply p-4;
-  }
   .firstLevel {
     left: var(--firstlevel-offset);
   }

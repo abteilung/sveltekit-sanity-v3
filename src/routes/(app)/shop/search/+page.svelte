@@ -15,7 +15,6 @@
         return item.title.toLowerCase().includes(search.toLowerCase())
       })
     : allProducts
-
 </script>
 
 <h1>xxx</h1>
@@ -25,7 +24,8 @@
     {#each displayedProducts as product, i (product.id)}
       <li class={product.available ? 'border-4 border-success' : 'border-4 border-accent'}>
         <Animation iterator={i} delay={25} duration={250}>
-          <a href={`/shop/product/${product.handle}`}
+          <a
+            href={`/shop/product/${product.handle}`}
             class="p-6 group relative block overflow-hidden bg-white shadow-xl hover:shadow-md duration-150 block min-h-[280px]"
           >
             <h3>{product.title}</h3>

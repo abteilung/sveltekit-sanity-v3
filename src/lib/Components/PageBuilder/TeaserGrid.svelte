@@ -8,7 +8,8 @@
   import Carousel from './Teaser/Carousel.svelte'
 
   export let block
-  $: ({title, teasers, bgColor, maxItems, layout, itemSelector, typeSelector, columns, container} = block)
+  $: ({title, skipItems, maxItems, teasers, bgColor, maxItems, layout, itemSelector, typeSelector, columns, container} =
+    block)
 </script>
 
 <div class={classNames(bgColor ? 'bg-' + bgColor : '', container ? 'py-12' : '')}>

@@ -6,10 +6,9 @@ export const load = async () => {
 
   if (allProducts) {
     return {
-       allProducts
+      allProducts
     }
   } else {
     throw error(404)
   }
 }
- 
