@@ -1,7 +1,7 @@
 import type {PageServerLoad, Actions} from './$types'
 import {error, redirect} from '@sveltejs/kit'
 import {shopify} from '$lib/shopify'
-import {tomorrow} from '$lib/tomorrow'
+import {tomorrow} from '$lib/datetime'
 
 export const load: PageServerLoad = async ({parent}) => {
   let {cart} = await parent()
