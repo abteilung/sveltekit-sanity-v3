@@ -41,18 +41,28 @@
     <div
       in:fade={{duration: 200}}
       out:fade={{duration: 200}}
-      class="bg-dark bg-opacity-30 h-screen backdrop-blur-lg absolute firstLevel w-96 top-0 z-50 p-12"
+      class="bg-dark bg-opacity-30 h-screen backdrop-blur-lg fixed firstLevel w-96 top-0 z-50 p-12"
       {style}
     >
     {#if menuItem.dropdownItems}
-        <ul class="relative" style={'top: ' + top + 'px;'}>
+        <ul class="absolute" style={'top: ' + top + 'px;'}>
           {#each menuItem.dropdownItems as submenu}
             <li>
               <MenuLink menuItem={submenu} />
               <MenuPage menuItem={submenu} />
+
               {#if submenu.dropdownItems}
-                <Dropdown menuItem={submenu} menuClass="secondLevel" />
+                {#each submenu.dropdownItems as subSubmenu}
+                  <MenuLink menuItem={subSubmenu} />
+                  <MenuPage menuItem={subSubmenu} />
+                  {#if subSubmenu._type === 'navDropdown'}
+                  <button class={activeClass} on:click={toggleExpanded}>
+                    <div>{subSubmenu.title || subSubmenu.pageTitle}</div>
+                  </button>
+                  {/if}
+                {/each}
               {/if}
+
             </li>
           {/each}
         </ul>

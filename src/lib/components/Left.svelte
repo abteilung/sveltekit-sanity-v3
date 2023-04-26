@@ -53,7 +53,7 @@
       <ul bind:offsetHeight={$menuTop}>
         {#each menu.items as menuItem}
           <li>
-            <Dropdown {menuItem} width={$menuWidth} top={$menuTop} />
+            <Dropdown {menuItem} width={$menuWidth} top={$menuTop} />{$menuTop}
             <MenuLink {menuItem} />
             <MenuPage {menuItem} />
           </li>
