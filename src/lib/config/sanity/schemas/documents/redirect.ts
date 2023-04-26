@@ -1,7 +1,7 @@
 // redirects.js
 
 import {Signpost, Calendar} from '@phosphor-icons/react'
-import {getVisibilityState} from '../../lib/helpers'
+import {getVisibilityState} from '../../lib/helpers/visibility'
 
 export default {
   name: 'redirect',

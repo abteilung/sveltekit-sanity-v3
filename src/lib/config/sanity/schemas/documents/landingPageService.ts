@@ -1,7 +1,7 @@
 import {Lifebuoy, Calendar, CurrencyDollar} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
-import {getVisibilityState} from '../../lib/helpers'
+import {getVisibilityState} from '../../lib/helpers/visibility'
 
 export default defineType({
   name: 'landingPageService',

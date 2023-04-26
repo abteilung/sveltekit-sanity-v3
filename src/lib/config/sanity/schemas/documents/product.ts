@@ -1,7 +1,7 @@
 import {Storefront, Calendar} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
 
-import {getVisibilityState} from '../../lib/helpers'
+import {getVisibilityState} from '../../lib/helpers/visibility'
 
 export default {
   name: 'product',

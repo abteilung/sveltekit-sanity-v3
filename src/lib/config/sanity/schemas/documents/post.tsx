@@ -2,7 +2,7 @@ import {Article, Calendar} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import authorType from './author'
-import {getVisibilityState} from '../../lib/helpers'
+import {getVisibilityState} from '../../lib/helpers/visibility'
 
 export default defineType({
   name: 'post',
