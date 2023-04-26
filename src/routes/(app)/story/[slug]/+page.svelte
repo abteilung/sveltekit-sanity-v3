@@ -1,7 +1,4 @@
 <script lang="ts">
-  // Import Types
-  import type {PageData} from './$types'
-
   // Import components
   import {urlForImage} from '$lib/config/sanity'
   import PortableBlock from '$lib/components/PortableBlock.svelte'

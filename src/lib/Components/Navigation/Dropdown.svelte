@@ -1,6 +1,7 @@
 <script lang="ts">
   import classNames from 'classnames'
   import {fade} from 'svelte/transition'
+  import {browser} from '$app/environment'
   import {onMount} from 'svelte'
   // Store Imports
   import {page} from '$app/stores'
@@ -42,6 +43,15 @@
   // Function to set store to false
   const closeSubMenu = () => {
     showSubMenu.set(false)
+  }
+
+  $: if (browser && $showSubMenu) {
+    document.body.classList.add('modal-open')
+  } else if (browser && !$showSubMenu) {
+    // Add Delay
+    setTimeout(() => {
+      document.body.classList.remove('modal-open')
+    }, 350)
   }
 </script>
 
