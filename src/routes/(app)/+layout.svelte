@@ -36,7 +36,6 @@
       </div>
     </div>
     <slot />
-    <Navigation />
   </div>
 </div>
 

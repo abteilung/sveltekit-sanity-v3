@@ -27,15 +27,10 @@
 
 <style>
   .rotate {
-    -moz-transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
   }
 
   .rotate.down {
-    -ms-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
   }
 </style>

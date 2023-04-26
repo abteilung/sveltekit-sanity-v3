@@ -1,5 +1,6 @@
 <script lang="ts">
   import {writable} from 'svelte/store'
+  import {subMenuItemsStore} from '$lib/stores/navigation'
 
   // Stores for Menu States
   let menuWidth = writable(0)
@@ -53,7 +54,7 @@
       <ul bind:offsetHeight={$menuTop}>
         {#each menu.items as menuItem}
           <li>
-            <Dropdown {menuItem} width={$menuWidth} top={$menuTop} />{$menuTop}
+            <Dropdown {menuItem} width={$menuWidth} top={$menuTop} />
             <MenuLink {menuItem} />
             <MenuPage {menuItem} />
           </li>

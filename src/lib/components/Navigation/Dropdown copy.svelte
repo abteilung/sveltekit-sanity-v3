@@ -1,71 +1,52 @@
 <script lang="ts">
   import classNames from 'classnames'
   import {fade} from 'svelte/transition'
-  import { onMount } from 'svelte'
   // Store Imports
   import {page} from '$app/stores'
-  import {showSubMenu, subMenuItemsStore} from '$lib/stores/navigation'
-
-  export let menuItem: any
-
-  // Function to write menuItems to subbMenuItemsStore
-  const fillStore = () => {
-    subMenuItemsStore.set(menuItem.dropdownItems)
-  }
-
-  const showSubMenus = () => {
-    showSubMenu.set(true)
-  }
+  import {navStore} from '$lib/stores/navigation'
 
   // Component Imports
   import MenuLink from '$lib/components/Navigation/MenuLink.svelte'
   import MenuPage from '$lib/components/Navigation/MenuPage.svelte'
   import Menu from '$lib/components/Navigation/Menu.svelte'
 
+  // Function to toggle open subMenu Block (with ID)
+  let open = {}
+  const toggle = (name) => (open[name] = !open[name])
+
   // API
+  export let menuItem: string
   // Reactive variable for width
   export let width: number
   export let top: number
 
+  let activeClass: string = ''
   let style: string
+
   $: {
     style = '--firstlevel-offset:' + width + 'px;'
   }
-
-  // Press Escape to set showSubMenu to false
-  const handleEscape = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      showSubMenu.set(false)
-    }
-  }
-
-  // Function to set store to false 
-  const closeSubMenu = () => {
-    showSubMenu.set(false)
-  }
-
 </script>
 
-<svelte:window on:keydown={handleEscape} />
-
+<!-- Dropdown Navigation First Level-->
 {#if menuItem._type === 'navDropdown'}
-  <button 
-    on:click={fillStore}
-    on:click={showSubMenus}
+  <button
+    class={classNames(activeClass, '')}
+    class:open={open[menuItem]}
+    on:click|preventDefault={() => toggle(menuItem)}
   >
     {menuItem.title || menuItem.pageTitle}
   </button>
-  {$showSubMenu}
-  {#if $showSubMenu}
-    <div
-      in:fade={{duration: 200}}
-      out:fade={{duration: 200}}
-      class="fixed firstLevel top-0 z-50 w-96 bg-white bg-opacity-30 h-screen backdrop-blur-lg"
-      {style}
-    >
-      <div class=" absolute px-12 w-full" style={'margin-top: ' + top + 'px;'}>
-      
-        {#each $subMenuItemsStore as submenu}
+  <div
+    in:fade={{duration: 200}}
+    out:fade={{duration: 200}}
+    class:open={open[menuItem]}
+    class="fixed firstLevel top-0 z-50 w-96 bg-dark bg-opacity-30 h-screen backdrop-blur-lg"
+    {style}
+  >
+    <div class=" absolute px-12 w-full" style={'margin-top: ' + top + 'px;'}>
+      <ul class="">
+        {#each menuItem.dropdownItems as submenu}
           <li>
             <MenuLink menuItem={submenu} />
             <MenuPage menuItem={submenu} />
@@ -75,12 +56,10 @@
             {/if}
           </li>
         {/each}
-
-      </div>
+      </ul>
     </div>
-  {/if}
+  </div>
 {/if}
-
 
 <style lang="postcss">
   .firstLevel {
