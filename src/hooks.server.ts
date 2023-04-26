@@ -3,7 +3,7 @@ import type {Handle} from '@sveltejs/kit'
 
 // Two Imports for Shopify and Date handling
 import {shopify} from '$lib/shopify'
-import {tomorrow} from '$lib/tomorrow'
+import {tomorrow} from '$lib/datetime'
 
 export type Theme = 'light' | 'dark' | 'auto'
 
