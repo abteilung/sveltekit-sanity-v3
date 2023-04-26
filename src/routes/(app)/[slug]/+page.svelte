@@ -11,8 +11,6 @@
   $: ({page} = data)
 </script>
 
-<h1>PAGE</h1>
-
 {#if page}
   <Header bgImage={page.image} />
   <div class="contentArea">

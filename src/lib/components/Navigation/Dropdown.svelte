@@ -1,7 +1,7 @@
 <script lang="ts">
   import classNames from 'classnames'
   import {fade} from 'svelte/transition'
-  import { onMount } from 'svelte'
+  import {onMount} from 'svelte'
   // Store Imports
   import {page} from '$app/stores'
   import {showSubMenu, subMenuItemsStore} from '$lib/stores/navigation'
@@ -39,32 +39,26 @@
     }
   }
 
-  // Function to set store to false 
+  // Function to set store to false
   const closeSubMenu = () => {
     showSubMenu.set(false)
   }
-
 </script>
 
 <svelte:window on:keydown={handleEscape} />
 
 {#if menuItem._type === 'navDropdown'}
-  <button 
-    on:click={fillStore}
-    on:click={showSubMenus}
-  >
+  <button on:click={fillStore} on:click={showSubMenus}>
     {menuItem.title || menuItem.pageTitle}
   </button>
-  {$showSubMenu}
   {#if $showSubMenu}
     <div
       in:fade={{duration: 200}}
       out:fade={{duration: 200}}
-      class="fixed firstLevel top-0 z-50 w-96 bg-white bg-opacity-30 h-screen backdrop-blur-lg"
+      class="fixed firstLevel top-0 z-50 w-96 bg-light bg-opacity-50 h-screen backdrop-blur-lg"
       {style}
     >
       <div class=" absolute px-12 w-full" style={'margin-top: ' + top + 'px;'}>
-      
         {#each $subMenuItemsStore as submenu}
           <li>
             <MenuLink menuItem={submenu} />
@@ -75,12 +69,10 @@
             {/if}
           </li>
         {/each}
-
       </div>
     </div>
   {/if}
 {/if}
-
 
 <style lang="postcss">
   .firstLevel {
