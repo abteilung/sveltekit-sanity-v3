@@ -4,7 +4,7 @@ import {googleMapsInput} from '@sanity/google-maps-input'
 import {codeInput} from '@sanity/code-input'
 import {colorInput} from '@sanity/color-input'
 
-import {PostsPreview} from './components/PostsPreview'
+import {PostsPreview} from './lib/Components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
 import app from '../app'
 
@@ -47,6 +47,9 @@ import categoryReferenceType from './schemas/documents/categoryReference'
 import clientType from './schemas/documents/client'
 import brandType from './schemas/documents/brand'
 import brandCategory from './schemas/documents/categoryBrand'
+
+import user from './schemas/documents/auth/user'
+import role from './schemas/documents/auth/role'
 
 // Objects
 import video from './schemas/objects/video'
@@ -115,6 +118,8 @@ export default defineConfig({
       clientType,
       brandType,
       brandCategory,
+      user,
+      role,
 
       // Settings
       settingsType,

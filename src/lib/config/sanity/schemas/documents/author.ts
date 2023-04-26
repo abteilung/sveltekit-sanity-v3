@@ -32,7 +32,8 @@ export default defineType({
     {
       name: 'email',
       title: 'E-Mail',
-      type: 'string'
+      type: 'string',
+      validation: (Rule) => Rule.regex(/.+@.+\..+/, {name: 'email'})
     },
     {
       name: 'jobTitle',

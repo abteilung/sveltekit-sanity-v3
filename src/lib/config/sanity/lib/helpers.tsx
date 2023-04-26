@@ -38,6 +38,8 @@ export const getSwatch = (color) => {
       color={color}
       weight="fill"
       style={{
+        width: '1rem',
+        height: '1rem',
         boxShadow: '0 0 0 1px rgba(255,255,255,.4), 0 0 0 1px rgba(0,0,0,.15)',
         borderRadius: '50%'
       }}
