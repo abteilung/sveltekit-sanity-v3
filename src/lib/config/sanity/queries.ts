@@ -280,6 +280,15 @@ export const getUserByEmail = groq`
   "hash": hash.current,  
 }`
 
+export const getUserById = groq`
+*[(_type == 'user' && _id == $id) && ${accessCheck}] | order(_updatedAt desc)[0] {
+  _id,
+  _type,
+  _updatedAt,
+  email,
+  "hash": hash.current,  
+}`
+
 // Site Config specific Queries
 const getSiteConfig = groq`
   *[_type == 'settings'][0] {

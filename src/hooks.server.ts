@@ -1,17 +1,42 @@
 import {getPreviewCookie} from './lib/utils'
 import type {Handle} from '@sveltejs/kit'
 
-// Two Imports for Shopify and Date handling
+// Import for Authentication
+import {getSanityServerClient} from '$lib/config/sanity/client'
+import {getUserByEmail} from '$lib/config/sanity/queries'
+import {JWT_ACCESS_SECRET} from '$env/static/private'
+import jwt from 'jsonwebtoken'
+
+// Imports for Shopify and Date handling
 import {shopify} from '$lib/shopify'
 import {tomorrow} from '$lib/datetime'
 
-export type Theme = 'light' | 'dark' | 'auto'
-
 // Theme Configuration
+export type Theme = 'light' | 'dark' | 'auto'
 export const isValidTheme = (theme: FormDataEntryValue | null): theme is Theme =>
   !!theme && (theme === 'light' || theme === 'dark' || theme === 'auto')
 
 export const handle: Handle = async ({event, resolve}) => {
+  // Authentication
+  const {headers} = event.request
+  const session = event.cookies.get('AuthorizationToken')
+  console.log('session', session)
+  if (session) {
+    const token = session.split(' ')[1] // Remove Bearer prefix
+    const jwtUser = jwt.verify(token, JWT_ACCESS_SECRET)
+    if (jwtUser) {
+      const user = await getSanityServerClient(false).fetch(getUserByEmail, {email: jwtUser.email})
+
+      if (user) {
+        event.locals.user = {
+          id: user._id,
+          email: user.email,
+          role: 'Admin'
+        }
+      }
+    }
+  }
+
   // Theme Settings
   const theme = event.cookies.get('theme') ?? 'auto'
   if (isValidTheme(theme)) {

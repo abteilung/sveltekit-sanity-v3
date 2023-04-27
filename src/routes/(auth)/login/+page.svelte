@@ -23,6 +23,14 @@
             <input type="password" name="password" id="password" required />
         </div>
 
+        {#if form?.invalid}
+            <p class="error">Username and password is required.</p>
+        {/if}
+    
+        {#if form?.error}
+        <p class="error">You have entered the wrong credentials.</p>
+      {/if}
+
         <div class="submit-container">
             <button type="submit">Login</button>
         </div>

@@ -6,7 +6,7 @@ export const load: PageServerLoad = (event) => {
   const user = event.locals.user
 
   if (user) {
-    throw redirect(302, '/guarded')
+    throw redirect(302, '/restricted')
   }
 }
 
@@ -16,7 +16,7 @@ export const actions: Actions = {
 
     if (!formData.email || !formData.password) {
       return fail(400, {
-        error: 'Missing email or password'
+        invalid: true
       })
     }
 
@@ -39,6 +39,6 @@ export const actions: Actions = {
       maxAge: 60 * 60 * 24 // 1 day
     })
 
-    throw redirect(302, '/login/success')
+    throw redirect(302, '/restricted')
   }
 }
