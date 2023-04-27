@@ -35,20 +35,3 @@ export const load = async ({locals, cookies}) => {
     products: products()
   }
 }
-
-// export const getCartItems = async () => {
-//   let cartId = JSON.parse(localStorage.getItem('cartId'))
-
-//   try {
-//     const shopifyResponse = await shopify.cart.products(cartId)
-
-//     let sum = 0
-//     shopifyResponse.body?.data?.cart?.lines?.edges?.forEach((d) => {
-//       sum += d.node.quantity
-//     })
-//     cartQuantity.set(sum)
-//     return shopifyResponse
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }

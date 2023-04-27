@@ -5,15 +5,13 @@ import {error} from '@sveltejs/kit'
 export const load = async ({parent, params}) => {
   const {previewMode} = await parent()
 
-  const post = async () => {
-    return await getSanityServerClient(false).fetch(getPostBySlug, {slug: params.slug})
-  }
+  const post = await getSanityServerClient(previewMode).fetch(getPostBySlug, {slug: params.slug})
 
   if (post) {
     return {
-      post: post()
+      post
     }
   } else {
-    throw error(404, 'Post not found')
+    throw error(404, 'Story not found')
   }
 }
