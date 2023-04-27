@@ -30,7 +30,6 @@ export const actions: Actions = {
     }
 
     // Set the cookie
-
     event.cookies.set('AuthorizationToken', `Bearer ${token}`, {
       path: '/',
       secure: true,

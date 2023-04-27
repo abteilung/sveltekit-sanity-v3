@@ -24,20 +24,20 @@
         </div>
 
         {#if form?.invalid}
-            <p class="error">Username and password is required.</p>
+            <p class="error bg-primary w-1/4">Username and password is required.</p>
         {/if}
     
         {#if form?.error}
-        <p class="error">You have entered the wrong credentials.</p>
+        <p class="error bg-primary w-1/4">You have entered the wrong credentials.</p>
       {/if}
 
         <div class="submit-container">
-            <button type="submit">Login</button>
+            <button class="bg-white whitespace-nowrap text-black px-6 py-2" type="submit">Login</button>
         </div>
     </form>
 
     <!-- <div class="actions"> -->
-    <!-- <a href="/signup">Sign Up</a> -->
+        <!-- <a href="/signup">Sign Up</a> -->
     <!-- </div> -->
     
 </section>
