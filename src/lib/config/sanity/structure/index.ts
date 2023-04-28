@@ -14,6 +14,7 @@ import redirectsStructure from './documents/redirects'
 import personsStructure from './documents/persons'
 import brandsStructure from './documents/brands'
 import clientsStructure from './documents/clients'
+import closedUserGroup from './documents/closedUserGroup'
 
 export const structure = (S) => {
   return S.list()
@@ -36,6 +37,7 @@ export const structure = (S) => {
       S.divider(),
       settingsStructure(S),
       S.divider(),
+      closedUserGroup(S),
       navigationStructure(S),
       redirectsStructure(S)
     ])

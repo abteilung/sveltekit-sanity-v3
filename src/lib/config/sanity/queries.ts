@@ -12,6 +12,12 @@ const visibilityChecker = `
   && (pub.unpublishedAt == null || pub.unpublishedAt > now()))
 `
 
+const accessCheck = `
+  (access.isHidden != true ||
+  (access.publishedAt < now() || access.publishedAt == null) 
+  && (access.unpublishedAt == null || access.unpublishedAt > now()))
+`
+
 // Define URLs for all our link types
 const linkTypes = groq`
   "href": slug.current,
@@ -263,6 +269,24 @@ export const getAllProducts = groq`
 export const getProductBySlug = groq`
 *[(_type == 'abteProduct' && slug.current == $slug) && ${visibilityChecker}] | order(_updatedAt desc)[0] {
   ${documentFields}
+}`
+
+export const getUserByEmail = groq`
+*[(_type == 'user' && email == $email) && ${accessCheck}] | order(_updatedAt desc)[0] {
+  _id,
+  _type,
+  _updatedAt,
+  email,
+  "hash": hash.current,  
+}`
+
+export const getUserById = groq`
+*[(_type == 'user' && _id == $id) && ${accessCheck}] | order(_updatedAt desc)[0] {
+  _id,
+  _type,
+  _updatedAt,
+  email,
+  "hash": hash.current,  
 }`
 
 // Site Config specific Queries

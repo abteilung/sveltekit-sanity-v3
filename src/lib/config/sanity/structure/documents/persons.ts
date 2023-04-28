@@ -1,4 +1,4 @@
-import {User, UsersThree} from '@phosphor-icons/react'
+import {User, UsersThree, UserCircle} from '@phosphor-icons/react'
 
 export function personsStructure(S) {
   return S.listItem()
