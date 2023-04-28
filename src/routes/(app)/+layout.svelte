@@ -31,8 +31,8 @@
       <div class="flex space-x-4">
         <Open />
         <SearchBar />
-        <button> Funktion X </button>
-        <button> Funktion Y </button>
+        <button class="whitespace-nowrap">f X</button>
+        <button class="whitespace-nowrap">f Y</button>
       </div>
     </div>
     <slot />
