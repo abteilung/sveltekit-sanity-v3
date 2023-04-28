@@ -1,6 +1,7 @@
 <script lang="ts">
   import classNames from 'classnames'
-  import {fade} from 'svelte/transition'
+  import {fade, fly} from 'svelte/transition'
+  import {cubicInOut} from 'svelte/easing'
   import {browser} from '$app/environment'
   import {onMount} from 'svelte'
   // Store Imports
@@ -69,15 +70,17 @@
       {style}
     >
       <div class=" absolute px-12 w-full" style={'margin-top: ' + top + 'px;'}>
-        {#each $subMenuItemsStore as submenu}
-          <li>
-            <MenuLink menuItem={submenu} />
-            <MenuPage menuItem={submenu} />
+        {#each $subMenuItemsStore as submenu, i}
+          {#key submenu}
+            <li in:fly={{x: -50, duration: 25, easing: cubicInOut, opacity: 0, delay: 50 * i}}>
+              <MenuLink menuItem={submenu} />
+              <MenuPage menuItem={submenu} />
 
-            {#if submenu.dropdownItems}
-              <Menu navigationTitle={submenu.title} items={submenu.dropdownItems} />
-            {/if}
-          </li>
+              {#if submenu.dropdownItems}
+                <Menu navigationTitle={submenu.title} items={submenu.dropdownItems} />
+              {/if}
+            </li>
+          {/key}
         {/each}
       </div>
     </div>

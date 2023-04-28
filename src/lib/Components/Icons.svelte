@@ -149,9 +149,21 @@
 
 <!-- Abteilungs Icons -->
 {#if type === 'star'}
-<svg class={additionalClass} id="Ebene_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.24 21.16"><defs><style>.cls-1{fill:currentColor;}</style></defs><g id="Ebene_1-2"><path class="cls-1" d="m2.84,18.48l3.36-5.91L0,9.72l1.42-4.32,6.71,1.36.74-6.77h4.55l.74,6.82,6.71-1.42,1.36,4.32-6.26,2.84,3.47,5.91-3.7,2.67-4.61-5.12-4.66,5.12-3.64-2.67Z"/></g></svg>
+  <svg class={additionalClass} id="Ebene_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.24 21.16"
+    ><defs
+      ><style>
+        .cls-1 {
+          fill: currentColor;
+        }
+      </style></defs
+    ><g id="Ebene_1-2"
+      ><path
+        class="cls-1"
+        d="m2.84,18.48l3.36-5.91L0,9.72l1.42-4.32,6.71,1.36.74-6.77h4.55l.74,6.82,6.71-1.42,1.36,4.32-6.26,2.84,3.47,5.91-3.7,2.67-4.61-5.12-4.66,5.12-3.64-2.67Z"
+      /></g
+    ></svg
+  >
 {/if}
-
 
 {#if type === 'logo'}
   <svg

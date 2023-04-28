@@ -86,5 +86,3 @@
     @apply text-primary;
   }
 </style>
-
-
