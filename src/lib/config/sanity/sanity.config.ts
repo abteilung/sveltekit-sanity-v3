@@ -4,7 +4,7 @@ import {googleMapsInput} from '@sanity/google-maps-input'
 import {codeInput} from '@sanity/code-input'
 import {colorInput} from '@sanity/color-input'
 
-import {PostsPreview} from './lib/Components/PostsPreview'
+import {PostsPreview} from './components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
 import app from '../app'
 
@@ -23,8 +23,9 @@ import redirectType from './schemas/documents/redirect'
 import settingsContactType from './schemas/documents/settingsContact'
 import settingsAnalyticsType from './schemas/documents/settingsAnalytics'
 
-import postType from './schemas/documents/post'
 import pageType from './schemas/documents/page'
+import postType from './schemas/documents/post'
+import eventType from './schemas/documents/event'
 import landingPageType from './schemas/documents/landingPage'
 import landingPageFeatureType from './schemas/documents/landingPageFeature'
 import landingPageServiceType from './schemas/documents/landingPageService'
@@ -97,6 +98,7 @@ export default defineConfig({
       landingPageType,
       landingPageServiceType,
       landingPageFeatureType,
+      eventType,
       metaType,
       postType,
       authorType,

@@ -15,6 +15,7 @@ import personsStructure from './documents/persons'
 import brandsStructure from './documents/brands'
 import clientsStructure from './documents/clients'
 import closedUserGroup from './documents/closedUserGroup'
+import eventsStructure from './documents/events'
 
 export const structure = (S) => {
   return S.list()
@@ -25,6 +26,8 @@ export const structure = (S) => {
       pageStructure(S),
       postsStructure(S),
       productsStructure(S),
+      S.divider(),
+      eventsStructure(S),
       S.divider(),
       landingPageStructure(S),
       S.divider(),
