@@ -56,12 +56,5 @@
   </div>
 {/if}
 
-<!-- 
-  {JSON.stringify(post.previous)}
-  {JSON.stringify(post.next)} 
--->
-
-{JSON.stringify($page.url)}
-{$page.params.slug}
-
-<img src="{$page.url}/card.png" />
+prev: {JSON.stringify(post.previous)}<br />
+next: {JSON.stringify(post.next)}<br />
