@@ -2,6 +2,8 @@
 import {getSanityServerClient} from '$lib/config/sanity/client'
 import {getLayoutData} from '$lib/config/sanity/queries'
 
+export const prerender = true
+
 // Types
 /** @type {import('@sveltejs/kit').RequestHandler} */
 
