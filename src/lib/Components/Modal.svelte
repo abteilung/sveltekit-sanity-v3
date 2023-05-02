@@ -3,7 +3,6 @@
   import {fade, fly} from 'svelte/transition'
   import {cubicInOut} from 'svelte/easing'
 
-  export let content = 'I am a Modal'
   let isModalOpen: boolean = false
 
   // Function to toggle State of Modal
@@ -50,7 +49,7 @@
       class="h-full w-full flex justify-center items-center"
     >
       <div class="w-1/2 p-12 h-96 bg-white" on:click|stopPropagation>
-        {content}
+        <slot />
       </div>
     </div>
   </div>

@@ -92,3 +92,12 @@ export const excludeCurrentReferences = ({parent}) => {
     }
   }
 }
+
+// Create Password input element for Sanity
+export const PasswordInput = React.forwardRef((props, ref) => {
+  return (
+    <div>
+      <input type="password" ref={ref} {...props} />
+    </div>
+  )
+})

@@ -5,7 +5,7 @@ import {z} from 'zod'
 import type {Actions, PageServerLoad} from '../../.svelte-kit/types/src/routes/$types'
 
 const schema = z.object({
-  first_name: z.string().min(1),
+  first_name: z.string().min(2),
   last_name: z.string().min(1),
   email: z.string().email(),
   phone: z.string(),

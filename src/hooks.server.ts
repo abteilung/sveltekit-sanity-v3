@@ -20,7 +20,7 @@ export const handle: Handle = async ({event, resolve}) => {
   // Authentication
   const {headers} = event.request
   const session = event.cookies.get('AuthorizationToken')
-  console.log('session', session)
+  // console.log('session', session)
   if (session) {
     const token = session.split(' ')[1] // Remove Bearer prefix
     const jwtUser = jwt.verify(token, JWT_ACCESS_SECRET)
@@ -62,9 +62,7 @@ export const handle: Handle = async ({event, resolve}) => {
   console.time('handle')
   const language = event.url.pathname.startsWith('/en') ? 'en' : 'de'
 
-  const response = await resolve(event, {
-    transformPageChunk: ({html}) => html.replace('%lang%', language).replace('%THEME%', theme)
-  })
+  const response = await resolve(event, {})
 
   // End Timer for Speed Measurement
   console.timeEnd('handle')

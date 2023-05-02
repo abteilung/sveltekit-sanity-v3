@@ -1,5 +1,5 @@
 import {getSanityServerClient} from '$lib/config/sanity/client'
-import {getLayoutData, getAllServices, getAllProducts} from '$lib/config/sanity/queries'
+import {getLayoutData} from '$lib/config/sanity/queries'
 import {shopify} from '$lib/shopify'
 import {error} from '@sveltejs/kit'
 
@@ -15,13 +15,6 @@ export const load = async ({locals, cookies}) => {
     return await getSanityServerClient(false).fetch(getLayoutData)
   }
 
-  const services = async () => {
-    return await getSanityServerClient(false).fetch(getAllServices)
-  }
-  const products = async () => {
-    return await getSanityServerClient(false).fetch(getAllProducts)
-  }
-
   const cartItemsCount = async () => {
     const {cart_id} = locals
     return await shopify.cart.products({cart_id})
@@ -30,8 +23,6 @@ export const load = async ({locals, cookies}) => {
   return {
     cart,
     cartItemsCount: cartItemsCount(),
-    layoutData: layoutStuff(),
-    services: services(),
-    products: products()
+    layoutData: layoutStuff()
   }
 }

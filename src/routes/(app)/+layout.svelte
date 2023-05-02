@@ -40,11 +40,4 @@
 </div>
 
 <!-- {JSON.stringify(menus)} -->
-<Footer
-  {dsgvo}
-  {products}
-  {services}
-  menu={menus.navMenuFooter}
-  contact={siteConfig.contact}
-  socialChannels={siteConfig.socialChannels}
-/>
+<Footer {dsgvo} menu={menus.navMenuFooter} contact={siteConfig.contact} socialChannels={siteConfig.socialChannels} />
