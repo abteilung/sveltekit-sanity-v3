@@ -2,7 +2,6 @@ import {getSanityServerClient} from '$lib/config/sanity/client'
 import {getPostBySlug} from '$lib/config/sanity/queries'
 
 import type {RequestHandler} from '@sveltejs/kit'
-import {componentToImageResponse} from '@ethercorps/sveltekit-og'
 
 import satori from 'satori'
 import {Resvg} from '@resvg/resvg-js'

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {page} from '$app/stores'
   // Import components
   import {urlForImage} from '$lib/config/sanity'
   import PortableBlock from '$lib/components/PortableBlock.svelte'
@@ -9,7 +10,15 @@
   $: ({post} = data)
 </script>
 
-<svelte:head />
+<svelte:head>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={post.current.title} />
+  <meta name="twitter:description" content={post.current.subtitle} />
+  <meta name="Description" content={post.current.subtitle} />
+
+  <meta name="twitter:image" content={$page.url + '/card.png'} />
+  <meta name="og:image" content={$page.url + '/card.png'} />
+</svelte:head>
 
 {#if post}
   <Header pageTitle={post.current.title} subTitle={post.current.subtitle} bgImage={post.current.image} />
@@ -51,3 +60,8 @@
   {JSON.stringify(post.previous)}
   {JSON.stringify(post.next)} 
 -->
+
+{JSON.stringify($page.url)}
+{$page.params.slug}
+
+<img src="{$page.url}/card.png" />
