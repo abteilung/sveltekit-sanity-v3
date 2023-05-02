@@ -5,7 +5,9 @@ import {redirect, error} from '@sveltejs/kit'
 // export const prerender = 'auto';
 
 export const load = async ({parent, params}) => {
-  const page = await getSanityServerClient(false).fetch(getPageBySlug, {slug: params.slug})
+  const page = async () => {
+    return await getSanityServerClient(false).fetch(getPageBySlug, {slug: params.slug})
+  }
 
   // TODO: handle Redirects containing Slashes (/).
   // E.g. /de/super -> https://google.com, as every slash is supposed to be a path segment.
@@ -17,8 +19,8 @@ export const load = async ({parent, params}) => {
 
   if (page) {
     return {
-      page
+      page: page()
     }
   }
-  throw error(404, 'Page not found')
+  throw error(404)
 }

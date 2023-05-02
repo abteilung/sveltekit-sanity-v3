@@ -1,3 +1,6 @@
+// Can we do this???
+// https://www.captaincodeman.com/speed-up-sveltekit-pages-with-a-redis-cache
+
 import {getPreviewCookie} from './lib/utils'
 import type {Handle} from '@sveltejs/kit'
 
