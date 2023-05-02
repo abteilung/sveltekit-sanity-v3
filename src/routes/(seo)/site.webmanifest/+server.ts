@@ -16,7 +16,7 @@ export async function GET({req}) {
   // Return Response
   return new Response(body, {
     headers: {
-      'Cache-Control': `max-age=0, s-maxage=${3600}`,
+      'Cache-Control': `max-age=0, s-maxage=${604800}`,
       'Content-Type': 'application/json'
     }
   })
