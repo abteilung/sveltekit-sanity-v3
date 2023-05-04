@@ -2,11 +2,11 @@
   import classNames from 'classnames'
 
   // Import Teasers:
-  import BrandItem from './Teaser/BrandItem.svelte'
-  import GridItem from './Teaser/GridItem.svelte'
-  import SliderLarge from './Teaser/SliderLarge.svelte'
-  import ListItem from './Teaser/ListItem.svelte'
-  import Carousel from './Teaser/Carousel.svelte'
+  import BrandItem from '$lib/components/PageBuilder/Teaser/BrandItem.svelte'
+  import GridItem from '$lib/components/PageBuilder/Teaser/GridItem.svelte'
+  import SliderLarge from '$lib/components/PageBuilder/Teaser/SliderLarge.svelte'
+  import ListItem from '$lib/components/PageBuilder/Teaser/ListItem.svelte'
+  import Carousel from '$lib/components/PageBuilder/Teaser/Carousel.svelte'
 
   export let block
   $: ({title, skipItems, maxItems, teasers, bgColor, maxItems, layout, itemSelector, typeSelector, columns, container} =
