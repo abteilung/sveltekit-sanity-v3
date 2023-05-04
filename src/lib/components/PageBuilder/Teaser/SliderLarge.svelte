@@ -34,8 +34,8 @@
 
 <IntersectionObserver let:intersecting top={200} once={true}>
   {#if intersecting}
-    <div class="grid grid-cols-2 gap-0 group">
-      <div class="aspect-[1/1]">
+    <div class="md:grid md:grid-cols-2 md:gap-0 group">
+      <div class="hidden md:block aspect-[1/1]">
         <Swiper
           modules={[Controller]}
           controller={{control: secondSwiper}}
@@ -65,7 +65,7 @@
         </Swiper>
       </div>
 
-      <div class="bg-black p-12 h-full swiper-2">
+      <div class=" bg-black p-12 h-full swiper-2">
         <Swiper
           modules={[Controller, Pagination, EffectCreative]}
           controller={{control: firstSwiper}}
