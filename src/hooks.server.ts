@@ -92,7 +92,7 @@ const auth: Handle = async ({event, resolve}) => {
   const {headers} = event.request
   const session = event.cookies.get('AuthorizationToken')
   if (session) {
-    console.log('session', session)
+    // console.log('session', session)
     const token = session.split(' ')[1] // Remove Bearer prefix
     const jwtUser = jwt.verify(token, JWT_ACCESS_SECRET)
     if (jwtUser) {
