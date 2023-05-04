@@ -154,4 +154,14 @@ const shopifyCart: Handle = async ({event, resolve}) => {
   return await resolve(event)
 }
 
-export const handle = sequence(lang, theme, shopifyCart)
+export const handle = sequence(
+  responseTime,
+  sequenceTimeStart,
+  redirects,
+  previewMode,
+  auth,
+  lang,
+  theme,
+  shopifyCart,
+  sequenceTimeEnd
+)
