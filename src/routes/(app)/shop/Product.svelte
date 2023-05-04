@@ -4,7 +4,7 @@
 
   export let fetchpriority: string | undefined = undefined
   export let loading: string | undefined = undefined
-  export let index: number
+  // export let index: number
   export let product: TProduct
 </script>
 

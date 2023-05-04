@@ -9,6 +9,7 @@ declare namespace App {
       email: string
     }
     theme: string
+    cart_id: string
     previewMode: boolean
   }
   // interface PageData {}

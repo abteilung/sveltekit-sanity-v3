@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  export let user: SessionUser
+  // export const user: SessionUser
 </script>
 
 <svelte:head>

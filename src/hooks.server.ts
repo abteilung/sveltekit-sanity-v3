@@ -23,15 +23,15 @@ export type Theme = 'light' | 'dark' | 'auto'
 export const isValidTheme = (theme: FormDataEntryValue | null): theme is Theme =>
   !!theme && (theme === 'light' || theme === 'dark' || theme === 'auto')
 
-export const handleFetch: HandleFetch = async ({request, fetch}) => {
-  // https redirect
-  if (request.url.startsWith('http')) {
-    const url = request.url.replace('http://', 'https://')
-    request = new Request(url, request)
-  }
-  console.log('handleFetch')
-  return fetch(request)
-}
+// export const handleFetch: HandleFetch = async ({request, fetch}) => {
+//   // https redirect
+//   if (request.url.startsWith('http')) {
+//     const url = request.url.replace('http://', 'https://')
+//     request = new Request(url, request)
+//   }
+//   console.log('handleFetch')
+//   return fetch(request)
+// }
 
 const responseTime: Handle = async ({event, resolve}) => {
   // Initial server response time
