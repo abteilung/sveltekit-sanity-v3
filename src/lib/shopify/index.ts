@@ -379,6 +379,7 @@ export const shopify = {
   }
 }
 
+// https://stackoverflow.com/questions/47789673/how-to-import-csv-to-sanity-io
 // https://github.com/maugenst/tabletojson
 
 // collections(query: "title:Website", first: 1) {
