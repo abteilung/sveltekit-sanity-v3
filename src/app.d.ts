@@ -3,12 +3,13 @@
 // and what to do when importing types
 declare namespace App {
   interface Locals {
-    previewMode: boolean
     user: {
       id: string
       role: string
       email: string
     }
+    theme: string
+    previewMode: boolean
   }
   // interface PageData {}
   // interface Platform {}
