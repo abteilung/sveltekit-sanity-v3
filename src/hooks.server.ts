@@ -3,7 +3,7 @@
 
 import {getPreviewCookie} from './lib/utils'
 import {sequence} from '@sveltejs/kit/hooks'
-import type {handle, handleFetch} from '@sveltejs/kit'
+import type {Handle, HandleFetch} from '@sveltejs/kit'
 
 //Import for Redirects
 import {getRedirectByPathname} from '$lib/config/sanity/queries'
