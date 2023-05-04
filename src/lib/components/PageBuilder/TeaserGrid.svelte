@@ -6,6 +6,7 @@
   import GridItem from './Teaser/GridItem.svelte'
   import ListItem from './Teaser/ListItem.svelte'
   import Carousel from './Teaser/Carousel.svelte'
+  import SliderLarge from './Teaser/SliderLarge.svelte'
 
   export let block
   $: ({title, skipItems, maxItems, teasers, bgColor, maxItems, layout, itemSelector, typeSelector, columns, container} =
@@ -63,6 +64,10 @@ itemSelector: {itemSelector}<br>
 
       {#if layout === 'carousel'}
         <Carousel {teasers} {maxItems} />
+      {/if}
+
+      {#if layout === 'sliderLarge'}
+        <SliderLarge {teasers} {maxItems} />
       {/if}
     {/if}
   </div>

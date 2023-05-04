@@ -90,7 +90,8 @@ export default {
         list: [
           {title: 'Grid', value: 'grid'},
           {title: 'List', value: 'list'},
-          {title: 'Carousel', value: 'carousel'}
+          {title: 'Carousel', value: 'carousel'},
+          {title: 'Large Slider', value: 'sliderLarge'}
         ]
       }
     },

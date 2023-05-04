@@ -61,8 +61,6 @@
     </div>
 
     <Swiper
-      spaceBetween={10}
-      slidesPerView="4"
       {breakpoints}
       on:slideChange={() => {
         activeSnapIndex = swiper.snapIndex
