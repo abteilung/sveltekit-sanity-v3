@@ -2,7 +2,7 @@
   export let socialChannels: any
   import classNames from 'classnames'
 
-  import IconSocial from '$lib/components/IconsSocial.svelte'
+  import IconSocial from '$lib/elements/media/IconsSocial.svelte'
   import Image from '$lib/components/PageBuilder/Image.svelte'
 
   export let textColor: string = 'hover:text-primary'

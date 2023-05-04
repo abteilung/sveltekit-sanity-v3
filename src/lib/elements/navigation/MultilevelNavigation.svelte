@@ -2,9 +2,9 @@
   import {page} from '$app/stores'
 
   // Component Imports
-  import Dropdown from '$lib/components/Navigation/Dropdown.svelte'
-  import MenuLink from '$lib/components/Navigation/MenuLink.svelte'
-  import MenuPage from '$lib/components/Navigation/MenuPage.svelte'
+  import Dropdown from '$lib/elements/navigation/Dropdown.svelte'
+  import MenuLink from '$lib/elements/navigation/MenuLink.svelte'
+  import MenuPage from '$lib/elements/navigation/MenuPage.svelte'
 
   // API
   export let menu: any = []

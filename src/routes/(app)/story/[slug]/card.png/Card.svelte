@@ -1,6 +1,6 @@
 <script lang="ts">
   import {urlForImage} from '$lib/config/sanity'
-  import Icons from '$lib/components/Icons.svelte'
+  import Icons from '$lib/elements/media/Icons.svelte'
 
   export let post
 </script>

@@ -1,5 +1,5 @@
 <script>
-  import Icons from '$lib/components/Icons.svelte'
+  import Icons from '$lib/elements/media/Icons.svelte'
   import {createEventDispatcher} from 'svelte'
   const dispatch = createEventDispatcher()
   export let loading = false

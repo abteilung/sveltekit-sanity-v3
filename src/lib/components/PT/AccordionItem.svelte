@@ -5,7 +5,7 @@
 
   // components
   import PortableBlock from '$lib/components/PortableBlock.svelte'
-  import Icons from '$lib/components/Icons.svelte'
+  import Icons from '$lib/elements/media/Icons.svelte'
 
   // API
   export let id

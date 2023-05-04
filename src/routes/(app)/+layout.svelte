@@ -1,8 +1,7 @@
 <script lang="ts">
-  import Footer from '$lib/components/Footer.svelte'
-  import Left from '$lib/components/Left.svelte'
-  import Favicons from '$lib/components/Favicons.svelte'
-  import Navigation from '$lib/components/Navigation/Navigation.svelte'
+  import Footer from '$lib/layout/Footer.svelte'
+  import Left from '$lib/layout/Left.svelte'
+  import Favicons from '$lib/elements/media/Favicons.svelte'
 
   import SearchBar from '$lib/components/Shop/SearchBar.svelte'
   import Open from '$lib/components/Shop/Open.svelte'
@@ -15,8 +14,6 @@
   $: siteConfig = data.layoutData.siteConfig
   $: menus = data.layoutData.menus
   $: dsgvo = data.layoutData.dsgvoSettings
-  $: ({services} = data)
-  $: ({products} = data)
   $: ({cart} = data)
 </script>
 

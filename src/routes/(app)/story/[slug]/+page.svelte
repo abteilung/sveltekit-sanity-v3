@@ -3,7 +3,8 @@
   // Import components
   import {urlForImage} from '$lib/config/sanity'
   import PortableBlock from '$lib/components/PortableBlock.svelte'
-  import Header from '$lib/components/Header/Header.svelte'
+  import Header from '$lib/layout/Header.svelte'
+  import PageSeo from '$lib/elements/seo/PageSeo.svelte'
 
   import GridItem from '$lib/components/PageBuilder/Teaser/GridItem.svelte'
 
@@ -12,12 +13,9 @@
   $: ({post} = data)
 </script>
 
-<svelte:head>
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={post.current.title} />
-  <meta name="twitter:description" content={post.current.subtitle} />
-  <meta name="Description" content={post.current.subtitle} />
+<PageSeo seoData={post.current.seoData} />
 
+<svelte:head>
   <meta name="twitter:image" content={$page.url + '/card.png'} />
   <meta name="og:image" content={$page.url + '/card.png'} />
 </svelte:head>

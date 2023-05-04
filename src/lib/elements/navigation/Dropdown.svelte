@@ -20,9 +20,9 @@
   }
 
   // Component Imports
-  import MenuLink from '$lib/components/Navigation/MenuLink.svelte'
-  import MenuPage from '$lib/components/Navigation/MenuPage.svelte'
-  import Menu from '$lib/components/Navigation/Menu.svelte'
+  import MenuLink from '$lib/elements/navigation/MenuLink.svelte'
+  import MenuPage from '$lib/elements/navigation/MenuPage.svelte'
+  import Menu from '$lib/elements/navigation/Menu.svelte'
 
   // API
   // Reactive variable for width

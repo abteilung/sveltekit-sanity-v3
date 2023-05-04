@@ -1,15 +1,15 @@
 <script lang="ts">
-  // Import Types
-  import type {PageData} from './$types'
-
   // Import components
-  import Header from '$lib/components/Header/Header.svelte'
+  import Header from '$lib/layout/Header.svelte'
   import PageBuilder from '$lib/components/PageBuilder/PageBuilder.svelte'
+  import PageSeo from '$lib/elements/seo/PageSeo.svelte'
 
   // Export Data
   export let data: PageData
   $: ({page} = data)
 </script>
+
+<PageSeo seoData={page.seoData} />
 
 <h1>SUPER</h1>
 {#if page}

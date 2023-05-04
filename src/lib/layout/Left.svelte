@@ -6,7 +6,7 @@
   let menuWidth = writable(0)
   let menuTop = writable(0)
 
-  import Icons from '$lib/components/Icons.svelte'
+  import Icons from '$lib/elements/media/Icons.svelte'
   import ThemeToggleIcon from '$lib/components/ThemeToggleIcon.svelte'
   import AnimatedHamburger from '$lib/components/AnimatedHamburger.svelte'
 
@@ -15,9 +15,9 @@
   export let cart
 
   // Component Imports
-  import Dropdown from '$lib/components/Navigation/Dropdown.svelte'
-  import MenuLink from '$lib/components/Navigation/MenuLink.svelte'
-  import MenuPage from '$lib/components/Navigation/MenuPage.svelte'
+  import Dropdown from '$lib/elements/navigation/Dropdown.svelte'
+  import MenuLink from '$lib/elements/navigation/MenuLink.svelte'
+  import MenuPage from '$lib/elements/navigation/MenuPage.svelte'
 
   export let navMenuMobile
 

@@ -3,7 +3,7 @@
   import {fade} from 'svelte/transition'
   import {page} from '$app/stores'
 
-  import Icon from '$lib/components/Icons.svelte'
+  import Icon from '$lib/elements/media/Icons.svelte'
 
   // Dropdown Navigation Stuff
   export let navigationTitle: string
