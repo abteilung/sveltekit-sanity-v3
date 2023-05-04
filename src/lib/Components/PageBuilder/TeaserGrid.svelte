@@ -4,12 +4,12 @@
   // Import Teasers:
   import BrandItem from './Teaser/BrandItem.svelte'
   import GridItem from './Teaser/GridItem.svelte'
+  import SliderLarge from './Teaser/SliderLarge.svelte'
   import ListItem from './Teaser/ListItem.svelte'
   import Carousel from './Teaser/Carousel.svelte'
-  import SliderLarge from './Teaser/SliderLarge.svelte'
 
   export let block
-  $: ({title, skipItems, maxItems, teasers, bgColor, maxItems, layout, itemSelector, typeSelector, columns, container} =
+  $: ({title, skipItems, maxItems, Teasers, bgColor, maxItems, layout, itemSelector, typeSelector, columns, container} =
     block)
 </script>
 
@@ -37,16 +37,16 @@ itemSelector: {itemSelector}<br>
           'grid  bg-light'
         )}
       >
-        {#each teasers as teaser, i}
-          <BrandItem {teaser} {i} />
+        {#each Teasers as Teaser, i}
+          <BrandItem {Teaser} {i} />
         {/each}
       </ul>
     {:else}
       {#if layout === 'grid'}
         <ul class={classNames('md:grid-cols-' + columns, 'grid')}>
-          {#each teasers as teaser, i}
+          {#each Teasers as Teaser, i}
             {#if i < maxItems}
-              <GridItem {teaser} {i} />
+              <GridItem {Teaser} {i} />
             {/if}
           {/each}
         </ul>
@@ -54,16 +54,16 @@ itemSelector: {itemSelector}<br>
 
       {#if layout === 'list'}
         <ul class="divide-y">
-          {#each teasers as teaser, i}
+          {#each Teasers as Teaser, i}
             {#if i < maxItems}
-              <ListItem {teaser} {i} />
+              <ListItem {Teaser} {i} />
             {/if}
           {/each}
         </ul>
       {/if}
 
       {#if layout === 'carousel'}
-        <Carousel {teasers} {maxItems} />
+        <Carousel {Teasers} {maxItems} />
       {/if}
 
       {#if layout === 'sliderLarge'}
