@@ -1,9 +1,9 @@
 <script lang="ts">
   import {fly} from 'svelte/transition'
-  import SwiperCore, {Controller, EffectFlip, Pagination} from 'swiper'
+  import SwiperCore, {Controller, EffectCreative, Pagination} from 'swiper'
   import {Swiper, SwiperSlide} from 'swiper/svelte'
   import 'swiper/css'
-  import 'swiper/css/effect-flip'
+  import 'swiper/css/effect-creative'
   import 'swiper/css/pagination'
 
   // store swiper instances
@@ -30,9 +30,6 @@
   export let teasers: any
   export let maxItems: number
   export let i: number
-
-  let swiper: Swiper
-  $: currentIndex = 0
 </script>
 
 <IntersectionObserver let:intersecting top={200} once={true}>
@@ -68,11 +65,24 @@
         </Swiper>
       </div>
 
-      <div class="bg-black p-12 h-full">
+      <div class="bg-black p-12 h-full swiper-2">
         <Swiper
-          modules={[Controller, Pagination, EffectFlip]}
+          modules={[Controller, Pagination, EffectCreative]}
           controller={{control: firstSwiper}}
-          effect="flip"
+          effect="creative"
+          creativeEffect={{
+            prev: {
+              shadow: false,
+              origin: 'left center',
+              translate: ['-5%', 0, -200],
+              rotate: [0, 100, 0]
+            },
+            next: {
+              origin: 'right center',
+              translate: ['5%', 0, -200],
+              rotate: [0, -100, 0]
+            }
+          }}
           threshold={5}
           spaceBetween={0}
           slidesPerView={1}
@@ -110,5 +120,9 @@
 
   :global(.swiper-pagination-bullet-active) {
     @apply bg-primary w-16 h-4 rounded-full;
+  }
+
+  :global(.swiper-2 .swiper-slide:not(.swiper-slide-visible)) {
+    @apply opacity-0 !important;
   }
 </style>
