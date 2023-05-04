@@ -2,8 +2,7 @@
   import Image from '$lib/components/PageBuilder/Image.svelte'
   export let bgImage
 
-  export let subTitle: string = 'Page Eyebrow (h1)'
-  export let pageTitle: string = 'Page Title'
+  export let pageTitle: string = 'Image Title'
 </script>
 
 <header

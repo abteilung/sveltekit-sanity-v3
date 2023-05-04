@@ -12,7 +12,7 @@
 </script>
 
 {#if page}
-  <Header bgImage={page.image} />
+  <Header bgImage={page.image} pageTitle={page.title} />
 
   <div class="contentArea">
     {#if page.subtitle}

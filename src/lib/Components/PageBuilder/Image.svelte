@@ -15,6 +15,7 @@
   export let height: number = 480
   export let customRatio: number = ''
   export let additionalClass: string = ''
+  export let alt: string = block.alt
 </script>
 
 <div style="background-size: cover; background-image: url({block.lqip}); background-color: {block.bgColor};">
@@ -27,7 +28,7 @@
         width="{width}px"
         height="{customRatio ? Math.round(width / customRatio) : height}px"
         class={'w-full ' + additionalClass}
-        alt={block.alt}
+        {alt}
       />
     {/key}
   {/if}

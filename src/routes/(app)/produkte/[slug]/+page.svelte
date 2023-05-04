@@ -30,7 +30,7 @@
 </script>
 
 {#if page}
-  <Header bgImage={page.image} />
+  <Header bgImage={page.image} pageTitle={page.title} />
   <Modal />
 
   <form>
