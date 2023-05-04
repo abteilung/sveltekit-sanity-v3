@@ -1,5 +1,4 @@
 <script lang="ts">
-  import {fly} from 'svelte/transition'
   import SwiperCore, {Controller, EffectCreative, Pagination} from 'swiper'
   import {Swiper, SwiperSlide} from 'swiper/svelte'
   import 'swiper/css'
