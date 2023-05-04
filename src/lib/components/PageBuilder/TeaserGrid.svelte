@@ -2,14 +2,14 @@
   import classNames from 'classnames'
 
   // Import Teasers:
-  import BrandItem from './Teaser/BrandItem.svelte'
-  import GridItem from './Teaser/GridItem.svelte'
-  import SliderLarge from './Teaser/SliderLarge.svelte'
-  import ListItem from './Teaser/ListItem.svelte'
-  import Carousel from './Teaser/Carousel.svelte'
+  import BrandItem from '$lib/components/PageBuilder/Teaser/BrandItem.svelte'
+  import GridItem from '$lib/components/PageBuilder/Teaser/GridItem.svelte'
+  import SliderLarge from '$lib/components/PageBuilder/Teaser/SliderLarge.svelte'
+  import ListItem from '$lib/components/PageBuilder/Teaser/ListItem.svelte'
+  import Carousel from '$lib/components/PageBuilder/Teaser/Carousel.svelte'
 
   export let block
-  $: ({title, skipItems, maxItems, Teasers, bgColor, maxItems, layout, itemSelector, typeSelector, columns, container} =
+  $: ({title, skipItems, maxItems, teasers, bgColor, maxItems, layout, itemSelector, typeSelector, columns, container} =
     block)
 </script>
 
@@ -37,16 +37,16 @@ itemSelector: {itemSelector}<br>
           'grid  bg-light'
         )}
       >
-        {#each Teasers as Teaser, i}
-          <BrandItem {Teaser} {i} />
+        {#each teasers as teaser, i}
+          <BrandItem {teaser} {i} />
         {/each}
       </ul>
     {:else}
       {#if layout === 'grid'}
         <ul class={classNames('md:grid-cols-' + columns, 'grid')}>
-          {#each Teasers as Teaser, i}
+          {#each teasers as teaser, i}
             {#if i < maxItems}
-              <GridItem {Teaser} {i} />
+              <GridItem {teaser} {i} />
             {/if}
           {/each}
         </ul>
@@ -54,20 +54,20 @@ itemSelector: {itemSelector}<br>
 
       {#if layout === 'list'}
         <ul class="divide-y">
-          {#each Teasers as Teaser, i}
+          {#each teasers as teaser, i}
             {#if i < maxItems}
-              <ListItem {Teaser} {i} />
+              <ListItem {teaser} {i} />
             {/if}
           {/each}
         </ul>
       {/if}
 
       {#if layout === 'carousel'}
-        <Carousel {Teasers} {maxItems} />
+        <Carousel {teasers} {maxItems} />
       {/if}
 
       {#if layout === 'sliderLarge'}
-        <SliderLarge {teasers} />
+        <SliderLarge {teasers} {maxItems} />
       {/if}
     {/if}
   </div>
