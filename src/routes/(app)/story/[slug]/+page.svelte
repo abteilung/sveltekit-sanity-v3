@@ -5,6 +5,8 @@
   import PortableBlock from '$lib/components/PortableBlock.svelte'
   import Header from '$lib/components/Header/Header.svelte'
 
+  import GridItem from '$lib/components/PageBuilder/Teaser/GridItem.svelte'
+
   // Export Data
   export let data: PageData
   $: ({post} = data)
@@ -56,5 +58,14 @@
   </div>
 {/if}
 
-prev: {JSON.stringify(post.previous)}<br />
-next: {JSON.stringify(post.next)}<br />
+<div class="contentArea">
+  <h3>PREV & NEXT Post</h3>
+  <ul class="grid grid-cols-2">
+    {#if post.next}
+      <GridItem teaser={post.next} />
+    {/if}
+    {#if post.previous}
+      <GridItem teaser={post.previous} />
+    {/if}
+  </ul>
+</div>
