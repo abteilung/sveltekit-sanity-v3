@@ -67,7 +67,7 @@ itemSelector: {itemSelector}<br>
       {/if}
 
       {#if layout === 'sliderLarge'}
-        <SliderLarge {teasers} {maxItems} />
+        <SliderLarge {teasers} />
       {/if}
     {/if}
   </div>
