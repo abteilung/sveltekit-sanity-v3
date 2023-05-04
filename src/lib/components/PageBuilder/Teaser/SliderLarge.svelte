@@ -1,14 +1,14 @@
 <script lang="ts">
   import {fly} from 'svelte/transition'
-  import SwiperCore, {Controller, Navigation, Pagination} from 'swiper'
+  import SwiperCore, {Controller, EffectCreative, Pagination} from 'swiper'
   import {Swiper, SwiperSlide} from 'swiper/svelte'
   import 'swiper/css'
-  import 'swiper/css/navigation'
+  import 'swiper/css/effect-creative'
   import 'swiper/css/pagination'
 
   // store swiper instances
-  let firstSwiper = null
-  let secondSwiper = null
+  let firstSwiper: Swiper = null
+  let secondSwiper: Swiper = null
 
   const setFirstSwiper = (e) => {
     const [swiper] = e.detail
@@ -30,36 +30,34 @@
   export let teasers: any
   export let maxItems: number
   export let i: number
-
-  let swiper: Swiper
-  $: activeSnapIndex = 0
-  $: snapGridTotal = 1
 </script>
 
 <IntersectionObserver let:intersecting top={200} once={true}>
   {#if intersecting}
-    <div class="grid grid-cols-2 gap-0">
-      <div>
+    <div class="grid grid-cols-2 gap-0 group">
+      <div class="aspect-[1/1]">
         <Swiper
           modules={[Controller]}
           controller={{control: secondSwiper}}
+          threshold={5}
           spaceBetween={0}
           slidesPerView={1}
-          on:slideChange={() => {
-            activeSnapIndex = swiper.snapIndex
-          }}
-          on:resize={() => {
-            snapGridTotal = swiper?.snapGrid.length
-          }}
           on:swiper={setFirstSwiper}
         >
           {#each teasers as teaser, i}
             {#if i < maxItems}
               <SwiperSlide>
                 {#if teaser.image}
-                  <div class="overflow-hidden">
-                    <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
-                  </div>
+                  <a href={teaser.href} class="block space-y-4 group">
+                    <div class="overflow-hidden">
+                      <Image
+                        block={teaser.image}
+                        width={600}
+                        height={600}
+                        additionalClass="group-hover:scale-105 duration-300 transition-all"
+                      />
+                    </div>
+                  </a>
                 {/if}
               </SwiperSlide>
             {/if}
@@ -67,20 +65,28 @@
         </Swiper>
       </div>
 
-      <div class="bg-black p-12 h-full">
+      <div class="bg-black p-12 h-full swiper-2">
         <Swiper
-          modules={[Controller, Navigation, Pagination]}
-          on:swiper={setSecondSwiper}
+          modules={[Controller, Pagination, EffectCreative]}
           controller={{control: firstSwiper}}
+          effect="creative"
+          creativeEffect={{
+            prev: {
+              shadow: false,
+              origin: 'left center',
+              translate: ['-5%', 0, -200],
+              rotate: [0, 100, 0]
+            },
+            next: {
+              origin: 'right center',
+              translate: ['5%', 0, -200],
+              rotate: [0, -100, 0]
+            }
+          }}
+          threshold={5}
           spaceBetween={0}
           slidesPerView={1}
           pagination={{clickable: true}}
-          on:slideChange={() => {
-            activeSnapIndex = swiper.snapIndex
-          }}
-          on:resize={() => {
-            snapGridTotal = swiper?.snapGrid.length
-          }}
           on:swiper={setSecondSwiper}
         >
           {#each teasers as teaser, i}
@@ -90,6 +96,9 @@
                   <div>
                     <h4 class="mb-2">{teaser.subtitle}</h4>
                     <h3>{teaser.title}</h3>
+                  </div>
+                  <div class="button inline-block border-2 border-white hover:bg-white hover:text-black px-6 py-2">
+                    Weiter lesen…
                   </div>
                 </a>
               </SwiperSlide>
@@ -102,11 +111,18 @@
 </IntersectionObserver>
 
 <style lang="postcss">
-  :global(.swiper-pagination-bullet) {
+  :global(.swiper-2 .swiper) {
+    @apply h-full;
+  }
+  :global(.swiper-2 .swiper-pagination-bullet) {
     @apply bg-white w-4 h-4 rounded-full opacity-100;
   }
 
-  :global(.swiper-pagination-bullet-active) {
+  :global(.swiper-2 .swiper-pagination-bullet-active) {
     @apply bg-primary w-16 h-4 rounded-full;
+  }
+
+  :global(.swiper-2 .swiper-slide:not(.swiper-slide-visible)) {
+    @apply opacity-0 !important;
   }
 </style>
