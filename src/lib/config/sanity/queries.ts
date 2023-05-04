@@ -390,13 +390,14 @@ const getDsgvoSettings = groq`
 `
 
 // Get Redirects
-export const getRedirectBySlug = groq`
-*[_type == 'redirect' && fromPath.current == $slug && ${visibilityChecker}][0] {
-  "fromPath": fromPath.current,
+export const getRedirectByPathname = groq`
+*[_type == 'redirect' && fromPath.current == $path && ${visibilityChecker}][0] {
+  _id,
   toPath,
+  "fromPath": fromPath.current,
   "start": pub.publishedAt,
   "end": pub.unpublishedAt,
-  statusCode,
+  'type': statusCode
 }
 `
 

@@ -20,9 +20,13 @@ export default {
     {
       name: 'fromPath',
       title: 'From',
-      descriptioin: 'Original page path (without https://yoursite.com)',
+      description: 'Original page path (without https://yoursite.com)',
       type: 'slug',
-      group: 'redirect'
+      group: 'redirect',
+      validation: (Rule) =>
+        Rule.required()
+          .custom((slug) => (slug.current.startsWith('/') ? true : 'Must start with a slash'))
+          .warning()
     },
     {
       name: 'toPath',
@@ -34,14 +38,14 @@ export default {
       name: 'statusCode',
       title: 'Type',
       type: 'string',
+      group: 'redirect',
       validation: (Rule) => Rule.required(),
       options: {
         list: [
-          {title: 'Permanent', value: '301'},
-          {title: 'Temporary', value: '307'}
+          {title: '301 - Permanent', value: '301'},
+          {title: '302 - Temporary', value: '302'}
         ]
-      },
-      group: 'redirect'
+      }
     },
     // Visibility
     {
