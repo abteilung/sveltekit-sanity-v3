@@ -5,12 +5,6 @@ const config = {
   plugins: [sveltekit()],
   optimizeDeps: {
     include: ['sanity']
-  },
-  build: {
-    manualChunks: {
-      'lodash-es': ['lodash-es'],
-      lodash: ['lodash']
-    }
   }
 }
 
