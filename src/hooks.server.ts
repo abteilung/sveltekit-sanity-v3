@@ -11,7 +11,7 @@ import {getRedirectByPathname} from '$lib/config/sanity/queries'
 // Import for Authentication
 import {getSanityServerClient} from '$lib/config/sanity/client'
 import {getUserByEmail} from '$lib/config/sanity/queries'
-import {JWT_ACCESS_SECRET} from '$env/static/private'
+import JWT_ACCESS_SECRET from '$env/static/private'
 import jwt from 'jsonwebtoken'
 
 // Imports for Shopify and Date handling
