@@ -111,14 +111,14 @@
 </IntersectionObserver>
 
 <style lang="postcss">
-  :global(.swiper) {
+  :global(.swiper-2 .swiper) {
     @apply h-full;
   }
-  :global(.swiper-pagination-bullet) {
+  :global(.swiper-2 .swiper-pagination-bullet) {
     @apply bg-white w-4 h-4 rounded-full opacity-100;
   }
 
-  :global(.swiper-pagination-bullet-active) {
+  :global(.swiper-2 .swiper-pagination-bullet-active) {
     @apply bg-primary w-16 h-4 rounded-full;
   }
 
