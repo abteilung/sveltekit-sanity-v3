@@ -54,7 +54,7 @@ const sequenceTimeStart: Handle = async ({event, resolve}) => {
   // Server handling time start
   console.log('init hook sequence time start')
   console.time('renderTime')
-  return resolve(event)
+  return await resolve(event)
 }
 
 const sequenceTimeEnd: Handle = async ({event, resolve}) => {
@@ -128,7 +128,7 @@ const redirects: Handle = async ({event, resolve}) => {
       return new Response('Redirect', {status: redirect.type, headers: {Location: redirect.toPath}})
     }
   }
-  return resolve(event)
+  return await resolve(event)
 }
 
 const theme: Handle = async ({event, resolve}) => {
@@ -138,7 +138,7 @@ const theme: Handle = async ({event, resolve}) => {
   if (isValidTheme(theme)) {
     event.locals.theme = theme
   }
-  return resolve(event)
+  return await resolve(event)
 }
 
 const shopifyCart: Handle = async ({event, resolve}) => {
@@ -151,7 +151,7 @@ const shopifyCart: Handle = async ({event, resolve}) => {
   }
   event.locals.cart_id = cart_id
 
-  return resolve(event)
+  return await resolve(event)
 }
 
 export const handle = sequence(
