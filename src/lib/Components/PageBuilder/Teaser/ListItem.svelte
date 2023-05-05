@@ -2,7 +2,7 @@
   import {fly} from 'svelte/transition'
 
   import IntersectionObserver from '$lib/components/IntersectionObserver.svelte'
-  import Image from '$lib/components/PageBuilder/Image.svelte'
+  import Image from '$lib/elements/media/Image.svelte'
 
   export let teaser: any
   export let i: number

@@ -1,6 +1,6 @@
 <script lang="ts">
   // Page Builder
-  import Image from '$lib/components/PageBuilder/Image.svelte'
+  import Image from '$lib/elements/media/Image.svelte'
   import RichEditor from '$lib/components/PageBuilder/RichEditor.svelte'
   import TeaserGrid from '$lib/components/PageBuilder/TeaserGrid.svelte'
   import EmptySpace from '$lib/components/PageBuilder/EmptySpace.svelte'

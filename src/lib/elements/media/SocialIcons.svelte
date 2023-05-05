@@ -3,7 +3,7 @@
   import classNames from 'classnames'
 
   import IconSocial from '$lib/elements/media/IconsSocial.svelte'
-  import Image from '$lib/components/PageBuilder/Image.svelte'
+  import Image from '$lib/elements/media/Image.svelte'
 
   export let textColor: string = 'hover:text-primary'
   export let iconSize: string = 'w-6 h-6'
