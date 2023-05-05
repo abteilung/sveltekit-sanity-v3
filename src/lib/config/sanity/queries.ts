@@ -211,7 +211,6 @@ const documentFields = groq`
   "seoData": {
     "title":  title + ' | ' + *[_type == 'settings'][0].title,
     "description": pt::text(content[]),
-    ${imageMeta},
     "ogType": "article",
     "ogTitle": title,
     "ogDescription": pt::text(content[]),

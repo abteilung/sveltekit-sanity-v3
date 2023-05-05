@@ -52,21 +52,21 @@ const responseTime: Handle = async ({event, resolve}) => {
 
 const sequenceTimeStart: Handle = async ({event, resolve}) => {
   // Server handling time start
-  console.log('init hook sequence time start')
+  // console.log('init hook sequence time start')
   console.time('renderTime')
   return await resolve(event)
 }
 
 const sequenceTimeEnd: Handle = async ({event, resolve}) => {
   // Server handling time end
-  console.log('init hook sequence time end')
+  // console.log('init hook sequence time end')
   console.timeEnd('renderTime')
   return await resolve(event)
 }
 
 const previewMode: Handle = async ({event, resolve}) => {
   // Preview mode
-  console.log('init hook preview mode')
+  // console.log('init hook preview mode')
   const previewModeCookie = getPreviewCookie(event.cookies)
   event.locals.previewMode = false
   if (previewModeCookie === 'true') {
@@ -77,7 +77,7 @@ const previewMode: Handle = async ({event, resolve}) => {
 
 const lang: Handle = async ({event, resolve}) => {
   // Language switch
-  console.log('init hook lang')
+  // console.log('init hook lang')
   const response = await resolve(event, {
     // pass through any other props
     transformPageChunk: ({html}) =>
@@ -88,7 +88,7 @@ const lang: Handle = async ({event, resolve}) => {
 
 const auth: Handle = async ({event, resolve}) => {
   // Authentication
-  console.log('init hook auth')
+  // console.log('init hook auth')
   const {headers} = event.request
   const session = event.cookies.get('AuthorizationToken')
   if (session) {
@@ -112,7 +112,7 @@ const auth: Handle = async ({event, resolve}) => {
 
 const redirects: Handle = async ({event, resolve}) => {
   // Redirects
-  console.log('init hook redirects')
+  // console.log('init hook redirects')
   // console.log(' - ', event.url.pathname)
   if (
     event.url.pathname.length > 1 &&
@@ -131,19 +131,24 @@ const redirects: Handle = async ({event, resolve}) => {
   return await resolve(event)
 }
 
+const FIVE_MINUTES_IN_SECONDS = 5 * 60
+
 const theme: Handle = async ({event, resolve}) => {
   // Theme Settings
-  console.log('init hook theme')
+  // console.log('init hook theme')
   const theme = event.cookies.get('theme') ?? 'auto'
   if (isValidTheme(theme)) {
     event.locals.theme = theme
   }
+  event.setHeaders({
+    'Cache-Control': `max-age=0, s-maxage=${FIVE_MINUTES_IN_SECONDS}`
+  })
   return await resolve(event)
 }
 
 const shopifyCart: Handle = async ({event, resolve}) => {
   // Shopify Cart Stuff
-  console.log('init hook shopify cart')
+  // console.log('init hook shopify cart')
   let cart_id = event.cookies.get('CART_ID')
   if (cart_id === undefined) {
     cart_id = await shopify.cart.create()

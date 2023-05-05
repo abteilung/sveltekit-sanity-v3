@@ -32,10 +32,9 @@ export const GET: RequestHandler = async ({url, params}) => {
     fonts: [
       {
         name: 'Source Sans Pro',
-        // data: await Buffer.from(SourceSansProBlack),
         data: fontData900,
         style: 'black',
-        weiht: 900
+        weight: 900
       }
     ],
     height,
