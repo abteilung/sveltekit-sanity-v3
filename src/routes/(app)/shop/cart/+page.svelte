@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {PageServerData} from './$types'
-  import Cart from '$lib/components/Shop/Cart.svelte'
+  import Cart from '$lib/elements/Shop/Cart.svelte'
   export let data: PageServerData
 </script>
 

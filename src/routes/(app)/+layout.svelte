@@ -3,8 +3,8 @@
   import Left from '$lib/layout/Left.svelte'
   import Favicons from '$lib/elements/media/Favicons.svelte'
 
-  import SearchBar from '$lib/components/Shop/SearchBar.svelte'
-  import Open from '$lib/components/Shop/Open.svelte'
+  import SearchBar from '$lib/elements/Shop/SearchBar.svelte'
+  import Open from '$lib/elements/Shop/Open.svelte'
   import {cartItemCount} from '$lib/stores/shopify'
 
   export let data: any

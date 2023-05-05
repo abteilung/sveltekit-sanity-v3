@@ -7,7 +7,7 @@
   import {applyAction} from '$app/forms'
   import {enhance} from '$app/forms'
   import {invalidateAll} from '$app/navigation'
-  import Image from '$lib/components/Shop/Image.svelte'
+  import Image from '$lib/elements/Shop/Image.svelte'
   import Close from './Close.svelte'
 
   export let cart: TCart

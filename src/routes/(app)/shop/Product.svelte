@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {TProduct} from '$lib/shopify'
-  import Image from '$lib/components/Shop/Image.svelte'
+  import Image from '$lib/elements/Shop/Image.svelte'
 
   export let fetchpriority: string | undefined = undefined
   export let loading: string | undefined = undefined
