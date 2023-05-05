@@ -198,6 +198,9 @@ const documentFields = groq`
     ${columns}
   },  
   ${imageMeta},
+  "image": {
+    ${imageMeta}
+  },
   "slug": slug.current,
   ${linkTypes},
   "author": author->{name, "image": image.image},

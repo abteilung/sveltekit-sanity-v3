@@ -50,7 +50,7 @@
                   <a href={teaser.href} class="block space-y-4 group">
                     <div class="overflow-hidden">
                       <Image
-                        block={teaser.image}
+                        block={teaser}
                         width={600}
                         height={600}
                         additionalClass="group-hover:scale-105 duration-300 transition-all"

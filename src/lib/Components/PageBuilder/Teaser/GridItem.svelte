@@ -15,7 +15,7 @@
           <a href={teaser.href} class="block space-y-4 group" id="block">
             {#if teaser.image}
               <div class="overflow-hidden">
-                <Image block={teaser.image} additionalClass="group-hover:scale-105 duration-300 transition-all" />
+                <Image block={teaser} additionalClass="group-hover:scale-105 duration-300 transition-all" />
               </div>
             {/if}
             <div>

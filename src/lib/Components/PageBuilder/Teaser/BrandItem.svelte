@@ -14,7 +14,7 @@
         <Animation iterator={i} delay={25} duration={250}>
           <a href={teaser.href} target="_blank">
             <Image
-              block={teaser.image}
+              block={teaser}
               width={483}
               height={244}
               alt={teaser.title}
