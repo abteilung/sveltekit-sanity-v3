@@ -2,7 +2,7 @@ import {getSanityServerClient} from '$lib/config/sanity/client'
 import {getPostBySlug} from '$lib/config/sanity/queries'
 
 import type {RequestHandler} from '@sveltejs/kit'
-
+import {page} from '$app/stores'
 import satori from 'satori'
 import {Resvg} from '@resvg/resvg-js'
 import SourceSansProBlack from './SourceSansPro-Black.woff'
@@ -16,8 +16,7 @@ const width = 1200
 
 export const prerender = 'auto'
 
-console.log('xaca: ', Buffer.from(SourceSansProBlack))
-export const GET: RequestHandler = async ({params}) => {
+export const GET: RequestHandler = async ({url, params}) => {
   const post = await getSanityServerClient(false).fetch(getPostBySlug, {slug: params.slug})
 
   if (!post) {
@@ -25,10 +24,9 @@ export const GET: RequestHandler = async ({params}) => {
   }
 
   const result = Card.render({post})
-  const element = toReactNode(`${result.html}<style>${result.css.code}</style>`)
 
-  const fontFile400 = await fetch('https://og-playground.vercel.app/inter-latin-ext-400-normal.woff')
-  const fontData400 = await fontFile400.arrayBuffer()
+  const fontFile900 = await fetch(url.protocol + '//' + url.host + '/SourceSansPro-Black.ttf')
+  const fontData900 = await fontFile900.arrayBuffer()
 
   const template = toReactNode(`${result.html}`)
 
@@ -37,7 +35,7 @@ export const GET: RequestHandler = async ({params}) => {
       {
         name: 'Source Sans Pro',
         // data: await Buffer.from(SourceSansProBlack),
-        data: fontData400,
+        data: fontData900,
         style: 'black',
         weiht: 900
       }

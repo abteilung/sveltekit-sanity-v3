@@ -213,6 +213,8 @@ const documentFields = groq`
     "description": pt::text(content[]),
     ${imageMeta},
     "ogType": "article",
+    "ogTitle": title,
+    "ogDescription": pt::text(content[]),
   },
 `
 

@@ -10,7 +10,7 @@
     <title>{seoData.title}</title>
   {/if}
   {#if seoData.description != null}
-    <meta name="description" content={seoData.description} />
+    <meta name="description" content={seoData.ogDescription || seoData.description} />
   {/if}
   {#if seoData.image}
     <meta property="og:image" content={urlForImage(seoData.image, 1200, 630)} />
