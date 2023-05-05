@@ -9,9 +9,10 @@
   import yaml from 'svelte-highlight/languages/yaml'
 
   import tokyoNightDark from 'svelte-highlight/styles/tokyo-night-dark'
+  export let block: any = []
 
   export let portableText: any
-  $: ({value} = portableText)
+  $: ({value} = portableText || block)
 </script>
 
 <svelte:head>

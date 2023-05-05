@@ -5,7 +5,7 @@
   import TeaserGrid from '$lib/components/PageBuilder/TeaserGrid.svelte'
   import EmptySpace from '$lib/components/PageBuilder/EmptySpace.svelte'
   import Columns from '$lib/components/PageBuilder/Columns.svelte'
-  import Code from '$lib/components/PageBuilder/Code.svelte'
+  import Code from '$lib/elements/generalContent/Code.svelte'
 
   export let blocks: any = []
 </script>

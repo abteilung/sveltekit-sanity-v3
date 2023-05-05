@@ -3,7 +3,7 @@
   import {Swiper, SwiperSlide} from 'swiper/svelte'
   import 'swiper/css'
 
-  import IntersectionObserver from '$lib/components/IntersectionObserver.svelte'
+  import IntersectionObserver from '$lib/elements/utilities/IntersectionObserver.svelte'
   import Image from '$lib/elements/media/Image.svelte'
 
   export let teasers: any
