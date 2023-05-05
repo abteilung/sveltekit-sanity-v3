@@ -2,10 +2,8 @@ import {getSanityServerClient} from '$lib/config/sanity/client'
 import {getPostBySlug} from '$lib/config/sanity/queries'
 
 import type {RequestHandler} from '@sveltejs/kit'
-import {page} from '$app/stores'
 import satori from 'satori'
 import {Resvg} from '@resvg/resvg-js'
-import SourceSansProBlack from './SourceSansPro-Black.woff'
 import {html as toReactNode} from 'satori-html'
 
 import {error} from '@sveltejs/kit'
