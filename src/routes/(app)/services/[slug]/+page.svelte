@@ -5,11 +5,14 @@
   // Import components
   import Header from '$lib/layout/Header.svelte'
   import PageBuilder from '$lib/components/PageBuilder/PageBuilder.svelte'
+  import PageSeo from '$lib/elements/seo/PageSeo.svelte'
 
   // Export Data
   export let data: PageData
   $: ({page} = data)
 </script>
+
+<PageSeo seoData={page.seoData} cartImage={true} />
 
 {#if page}
   <Header bgImage={page.image} pageTitle={page.title} />

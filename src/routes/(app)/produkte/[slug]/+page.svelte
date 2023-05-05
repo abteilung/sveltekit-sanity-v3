@@ -4,6 +4,7 @@
 
   export let slug: string
   export let title
+  import PageSeo from '$lib/elements/seo/PageSeo.svelte'
 
   // Import components
   import Header from '$lib/layout/Header.svelte'
@@ -29,6 +30,7 @@
   }
 </script>
 
+<PageSeo seoData={page.seoData} cartImage={true} />
 {#if page}
   <Header bgImage={page.image} pageTitle={page.title} />
   <Modal />

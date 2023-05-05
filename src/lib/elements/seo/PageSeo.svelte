@@ -24,5 +24,10 @@
     <meta property="og:type" content={seoData.ogType} />
   {/if}
 
+  {#if cartImage}
+    <meta name="twitter:image" content={$page.url + '/card.png'} />
+    <meta name="og:image" content={$page.url + '/card.png'} />
+  {/if}
+
   <meta property="og:url" content={$page.url} />
 </svelte:head>
