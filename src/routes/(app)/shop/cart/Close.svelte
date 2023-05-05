@@ -1,5 +1,4 @@
 <script lang="ts">
-  //   import {open} from './Cart.svelte'
   import {cartOpen} from '$lib/stores/shopify'
 </script>
 
@@ -10,18 +9,15 @@
   </svg>
 </a>
 
-<style>
+<style lang="postcss">
   svg {
-    width: 1rem;
-    stroke: #313131;
-    fill: none;
+    @apply w-4 stroke-black fill-none block;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 2;
-    display: block;
     transition: stroke 0.2s ease;
   }
   svg:hover {
-    stroke: #847171;
+    @apply stroke-primary;
   }
 </style>

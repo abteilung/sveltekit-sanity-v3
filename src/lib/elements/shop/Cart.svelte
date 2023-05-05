@@ -8,7 +8,7 @@
   import {enhance} from '$app/forms'
   import {invalidateAll} from '$app/navigation'
   import Image from '$lib/elements/Shop/Image.svelte'
-  import Close from './Close.svelte'
+  import Close from '../../../routes/(app)/shop/cart/Close.svelte'
 
   export let cart: TCart
   export let sidebar = true
@@ -26,12 +26,12 @@
 </script>
 
 <header class="flex justify-between items-center border-b-2 border-black pb-4">
-  <div>Shopping Cart</div>
+  <div>Warenkorb</div>
   {#if sidebar}<Close />{/if}
 </header>
 <main class:pending={$cartPending}>
   {#if cart.lines.length === 0}
-    <span class="empty">Your cart is empty</span>
+    <span class="empty">Ihr Warenkorb ist leer.</span>
   {:else}
     {#each cart.lines as { id, product } (id)}
       <div animate:flip={{duration: 400}} class="row">

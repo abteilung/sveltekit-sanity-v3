@@ -1,7 +1,6 @@
 <script lang="ts">
-  import {writable} from 'svelte/store'
   import type {TCart} from '$lib/shopify'
-  import Cart from '$lib/elements/Shop/Cart.svelte'
+  import Cart from './Cart.svelte'
   import {cartOpen} from '$lib/stores/shopify'
 
   import {fade, slide} from '$lib/transitions'

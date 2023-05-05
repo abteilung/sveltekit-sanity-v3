@@ -4,7 +4,7 @@
   import Favicons from '$lib/elements/media/Favicons.svelte'
 
   import SearchBar from '$lib/elements/Shop/SearchBar.svelte'
-  import Open from '$lib/elements/Shop/Open.svelte'
+  import Open from './shop/cart/Open.svelte'
   import {cartItemCount} from '$lib/stores/shopify'
 
   export let data: any

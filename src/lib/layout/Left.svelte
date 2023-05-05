@@ -10,7 +10,7 @@
   import ThemeToggleIcon from '$lib/components/ThemeToggleIcon.svelte'
   import AnimatedHamburger from '$lib/components/AnimatedHamburger.svelte'
 
-  import Sidebar from '$lib/elements/Shop/Sidebar.svelte'
+  import Sidebar from '../elements/shop/Sidebar.svelte'
 
   export let cart
 

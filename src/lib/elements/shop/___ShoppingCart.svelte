@@ -38,8 +38,7 @@
     loading = false
   }
 </script>
-
-<div on:click|self class="absolute inset-0 z-50 flex max-h-screen w-full justify-end overflow-hidden bg-black/50">
+<div class="absolute inset-0 z-50 flex max-h-screen w-full justify-end overflow-hidden bg-black/50" on:click={}|self>
   <div class="z-50 w-full bg-black p-6 md:w-1/2 lg:w-1/3 relative">
     {#if loading}
       <div class="absolute inset-0 bg-black/50 z-50" />
