@@ -7,7 +7,7 @@
   export let i: number
 </script>
 
-<IntersectionObserver let:intersecting top={200} once={true}>
+<IntersectionObserver let:intersecting once={true}>
   {#if intersecting}
     {#if teaser.image}
       <li class="group">

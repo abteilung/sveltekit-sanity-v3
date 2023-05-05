@@ -8,7 +8,7 @@
   export let i: number
 </script>
 
-<IntersectionObserver let:intersecting top={200} once={true}>
+<IntersectionObserver let:intersecting once={true}>
   {#if intersecting}
     {#if teaser.image}
       <li class="py-2 my-2" in:fly={{x: -50, y: -20, delay: i * 75, duration: 500, opacity: 0}}>

@@ -41,7 +41,7 @@
   }
 </script>
 
-<IntersectionObserver let:intersecting top={200} once={true}>
+<IntersectionObserver let:intersecting once={true}>
   {#if intersecting}
     <div class="flex items-center justify-between">
       <button

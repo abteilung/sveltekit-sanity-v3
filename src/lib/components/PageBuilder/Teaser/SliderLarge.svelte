@@ -31,7 +31,7 @@
   export let i: number
 </script>
 
-<IntersectionObserver let:intersecting top={200} once={true}>
+<IntersectionObserver let:intersecting once={true}>
   {#if intersecting}
     <div class="md:grid md:grid-cols-2 md:gap-0 group">
       <div class="hidden md:block aspect-[1/1]">
