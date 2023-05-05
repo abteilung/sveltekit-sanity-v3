@@ -3,6 +3,7 @@
   import {urlForImage} from '$lib/config/sanity'
 
   export let seoData: any
+  export let cartImage: boolean = false
 </script>
 
 <svelte:head>
@@ -22,5 +23,6 @@
   {#if seoData.ogType}
     <meta property="og:type" content={seoData.ogType} />
   {/if}
+
   <meta property="og:url" content={$page.url} />
 </svelte:head>

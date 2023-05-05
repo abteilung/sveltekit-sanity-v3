@@ -5,7 +5,7 @@ export const sanityConfig = {
   dataset: import.meta.env.VITE_SANITY_DATASET,
   // Override for now to test for fewer requests
   // useCdn: typeof document !== 'undefined' && isProd,
-  useCdn: true,
+  useCdn: false,
   // useCdn == true gives fast, cheap responses using a globally distributed cache.
   // When in production the Sanity API is only queried on build-time, and on-demand when responding to webhooks.
   // Thus the data need to be fresh and API response time is less important.

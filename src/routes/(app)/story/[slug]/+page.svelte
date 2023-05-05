@@ -13,12 +13,7 @@
   $: ({post} = data)
 </script>
 
-<PageSeo seoData={post.current.seoData} />
-
-<svelte:head>
-  <meta name="twitter:image" content={$page.url + '/card.png'} />
-  <meta name="og:image" content={$page.url + '/card.png'} />
-</svelte:head>
+<PageSeo seoData={post.current.seoData} cartImage={true} />
 
 {#if post}
   <Header pageTitle={post.current.title} subTitle={post.current.subtitle} bgImage={post.current.image} />

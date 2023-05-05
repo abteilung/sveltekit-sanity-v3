@@ -37,6 +37,9 @@ const linkTypes = groq`
   _type == "abteProduct" => {
     "href": "/produkte/" + slug.current,
   },
+  _type == "product" => {
+    "href": "/produkte/" + slug.current,
+  },
   _type == "page" => {
     "href": "/" + slug.current,
   },
@@ -134,7 +137,6 @@ const modules = groq`
   _type == "teaserGrid" => {
     // No Drafts!
     ...,
-      
     "teasers": *[_type == ^.typeSelector && ${visibilityChecker}] {
       ...,
       ${imageMeta},
@@ -142,15 +144,6 @@ const modules = groq`
     }
     | order(publishDate desc)
   },
-  // _type == "teaserGrid" && defined(maxItems) || defined(skipItems) => {
-  //   // No Drafts!
-  //   "teasers": *[_type == ^.typeSelector][$skipItems..$maxItems] {
-  //     ...,
-  //     ${imageMeta},
-  //     ${linkTypes},
-  //   }
-  //   | order(publishDate desc)
-  // },
 `
 
 const columns = groq`
