@@ -11,7 +11,6 @@
 
 <PageSeo seoData={page.seoData} />
 
-<h1>SUPER</h1>
 {#if page}
   <Header bgImage={page.image} pageTitle={page.title} />
 

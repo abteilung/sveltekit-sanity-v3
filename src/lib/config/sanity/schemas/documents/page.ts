@@ -2,6 +2,7 @@ import {File, EyeSlash} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import authorType from './author'
+import {getVisibilityState} from '../../lib/helpers/visibility'
 
 export default defineType({
   name: 'page',
@@ -101,22 +102,21 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
+      subtitle: 'subtitle',
       author: 'author.name',
+      excerpt: 'body',
       media: 'image',
-      startDate: 'pub.startDate',
-      endDate: 'pub.endDate',
-      isHidden: 'pub.isHidden',
-      isFeatured: 'pub.isFeatured'
+      startDate: 'pub.publishedAt',
+      endDate: 'pub.unpublishedAt',
+      isHidden: 'pub.isHidden'
     },
-    prepare({title, author, media, isHidden, startDate, endDate, isFeatured}) {
+    prepare({title, media, hidden, startDate, endDate, subtitle, excerpt}) {
       return {
-        title: isFeatured ? `🔥 ${title}` : title,
+        title: title,
         // Human readable short Date
-        subtitle: `by ${author} ${startDate ? new Date(startDate).toLocaleDateString() : ''} ${
-          endDate ? ' – ' + new Date(endDate).toLocaleDateString() : ''
-        }`,
+        subtitle: getVisibilityState(startDate, endDate, hidden) + ` ${subtitle ? subtitle : ''}`,
         // Use Icon instead of Image if isHidden is true
-        media: isHidden ? EyeSlash : media
+        media
       }
     }
   }
