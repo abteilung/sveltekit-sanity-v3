@@ -3,6 +3,11 @@
   import Left from '$lib/layout/Left.svelte'
   import Favicons from '$lib/elements/media/Favicons.svelte'
 
+  import {navigating} from '$app/stores'
+  import {page} from '$app/stores'
+  import {fade} from 'svelte/transition'
+  import {cubicInOut} from 'svelte/easing'
+
   import SearchBar from '$lib/elements/Shop/SearchBar.svelte'
   import Open from './shop/cart/Open.svelte'
   import {cartItemCount} from '$lib/stores/shopify'
@@ -32,7 +37,9 @@
         <button class="whitespace-nowrap">f Y</button>
       </div>
     </div>
-    <slot />
+    {#key $page.url}
+      <slot />
+    {/key}
   </div>
 </div>
 
