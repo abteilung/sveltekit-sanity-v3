@@ -26,26 +26,26 @@ export default {
         ]
       }
     },
-    {
-      title: 'Columns Configuration (lg)',
-      name: 'columnNumberLg',
-      type: 'string',
-      initialValue: '2_6-6',
-      options: {
-        list: [
-          {title: '1: 100%', value: '1_100'},
-          {title: '2: 50% 50%', value: '2_6-6'},
-          {title: '2: 40% 60%', value: '2_5-7'},
-          {title: '2: 75% 25%', value: '2_9-3'},
-          {title: '2: 25% 75%', value: '2_3-9'},
-          {title: '3: 33% 33% 33%', value: '3_4-4-4'},
-          {title: '3: 50% 25% 25%', value: '3_6-3-3'},
-          {title: '3: 25% 50% 25%', value: '3_3-6-3'},
-          {title: '3: 25% 25% 50%', value: '3_3-3-6'},
-          {title: '4: 25% 25% 25% 25%', value: '4_3-3-3-3'}
-        ]
-      }
-    },
+    // {
+    //   title: 'Columns Configuration (lg)',
+    //   name: 'columnNumberLg',
+    //   type: 'string',
+    //   initialValue: '2_6-6',
+    //   options: {
+    //     list: [
+    //       {title: '1: 100%', value: '1_100'},
+    //       {title: '2: 50% 50%', value: '2_6-6'},
+    //       {title: '2: 40% 60%', value: '2_5-7'},
+    //       {title: '2: 75% 25%', value: '2_9-3'},
+    //       {title: '2: 25% 75%', value: '2_3-9'},
+    //       {title: '3: 33% 33% 33%', value: '3_4-4-4'},
+    //       {title: '3: 50% 25% 25%', value: '3_6-3-3'},
+    //       {title: '3: 25% 50% 25%', value: '3_3-6-3'},
+    //       {title: '3: 25% 25% 50%', value: '3_3-3-6'},
+    //       {title: '4: 25% 25% 25% 25%', value: '4_3-3-3-3'}
+    //     ]
+    //   }
+    // },
     {
       title: 'Column #1',
       name: 'column_1',
@@ -87,14 +87,13 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
       columnNumber: 'columnNumber'
     },
-    prepare({columnNumber, title}) {
+    prepare({columnNumber}) {
       return {
         icon: Columns,
-        title: 'Columns: ' + title,
-        subtitle: columnNumber ? columnNumber.split('_')[1] : '2'
+        title: `Columns Element: md:${columnNumber ? columnNumber.split('_')[1] : '2'}`,
+        subtitle: `${columnNumber ? columnNumber.split('_')[1] : '2'}`
       }
     }
   }

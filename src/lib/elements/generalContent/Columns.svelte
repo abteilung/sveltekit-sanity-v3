@@ -8,14 +8,14 @@
   export let additionalClass: string
 
   let style = block.columnNumber
-  let styleLg = block.columnNumberLg
+  //   let styleLg = block.columnNumberLg
   let content = block.content
 
   const [colsNumber, colsStyle] = style.split('_')
   const colWidth = colsStyle.split('-').map((col) => col)
 
-  const [colsNumberLg, colsStyleLg] = styleLg.split('_')
-  const colWidthLg = colsStyleLg.split('-').map((col) => col)
+  //   const [colsNumberLg, colsStyleLg] = styleLg.split('_')
+  //   const colWidthLg = colsStyleLg.split('-').map((col) => col)
 
   const columns = Object.values(content).filter((col) => col)
 </script>
@@ -26,7 +26,7 @@
     {#each columns as column, i}
       <!-- make sure the colsNumber Settings is respected by the rendering -->
       {#if colsNumber >= i}
-        <div class="column md:col-span-{colWidth[i]} lg:col-span-{colWidthLg[i]}">
+        <div class="column md:col-span-{colWidth[i]}">
           <PageBuilder blocks={column} />
         </div>
       {/if}
