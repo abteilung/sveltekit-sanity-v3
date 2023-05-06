@@ -135,7 +135,6 @@ const modules = groq`
     value, showRule
   },
   _type == "teaserGrid" => {
-    // No Drafts!
     ...,
     "teasers": *[_type == ^.typeSelector && ${visibilityChecker}] {
       ...,
@@ -144,6 +143,39 @@ const modules = groq`
     }
     | order(publishDate desc)
   },
+  _type == "teaserGrid" && maxItems == 4 => {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..4] {
+      ...,
+      ${imageMeta},
+      ${linkTypes},
+    }
+    | order(publishDate desc)
+
+  },
+  _type == "teaserGrid" && maxItems == 12 => {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..12] {
+      ...,
+      ${imageMeta},
+      ${linkTypes},
+    }
+    | order(publishDate desc)
+  },
+  _type == "teaserGrid" && maxItems == 24 => {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..24] {
+      ...,
+      ${imageMeta},
+      ${linkTypes},
+    }
+    | order(publishDate desc)
+  },
+  _type == "teaserGrid" && maxItems == 999 => {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..999] {
+      ...,
+      ${imageMeta},
+      ${linkTypes},
+    }
+    | order(publishDate desc)
+  },  
 `
 
 const columns = groq`

@@ -22,8 +22,7 @@ export default {
     container: true,
     bgColor: 'white',
     columns: 3,
-    maxItems: 99,
-    skipItems: 0
+    maxItems: 999
   },
   fields: [
     {
@@ -47,29 +46,17 @@ export default {
       }
     },
     {
-      name: 'itemSelector',
-      title: 'Items',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'All', value: 'all'},
-          {title: 'Latest', value: 'latest'},
-          {title: 'Featured', value: 'featured'},
-          {title: 'Custom', value: 'custom'}
-        ]
-      }
-    },
-    {
       name: 'maxItems',
       title: 'Max Items to show',
       type: 'number',
-      fieldset: 'itemsSettings'
-    },
-    {
-      name: 'skipItems',
-      title: 'Skip Items (Offset)',
-      type: 'number',
-      fieldset: 'itemsSettings'
+      options: {
+        list: [
+          {title: 'Show 4 Items', value: 4},
+          {title: 'Show 12 Items', value: 12},
+          {title: 'Show 24', value: 24},
+          {title: 'Show all Items', value: 999}
+        ]
+      }
     },
     //   {
     //     title: 'Limit to Categories',
@@ -135,15 +122,14 @@ export default {
     select: {
       title: 'title',
       typeSelector: 'typeSelector',
-      itemSelector: 'itemSelector',
       maxItems: 'maxItems',
       layout: 'layout',
       columns: 'columns'
     },
-    prepare({title, typeSelector, itemSelector, layout, columns, maxItems}) {
+    prepare({title, typeSelector, layout, columns, maxItems}) {
       return {
-        title: title || 'Teaser Grid',
-        subtitle: `${typeSelector} - ${itemSelector} - ${layout} - ${
+        title: title || 'Teaser',
+        subtitle: `${typeSelector} - ${layout} - ${
           maxItems ? 'Max. ' + maxItems + ' Items in ' : ''
         } ${columns} columns`,
         icon: SquaresFour
