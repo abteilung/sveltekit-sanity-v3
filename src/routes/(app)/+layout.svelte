@@ -8,7 +8,7 @@
   import {fade} from 'svelte/transition'
   import {cubicInOut} from 'svelte/easing'
 
-  import SearchBar from '$lib/elements/Shop/SearchBar.svelte'
+  import SearchBar from '$lib/elements/shop/SearchBar.svelte'
   import Open from './shop/cart/Open.svelte'
   import {cartItemCount} from '$lib/stores/shopify'
 

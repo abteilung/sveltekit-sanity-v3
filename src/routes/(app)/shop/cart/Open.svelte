@@ -2,7 +2,7 @@
   import type {TCart} from '$lib/shopify'
   import {cartOpen} from '$lib/stores/shopify'
   //   import {getCartItems} from '$lib/stores/shopify'
-  //   import {open} from '$lib/elements/Shop/Cart.svelte'
+  //   import {open} from '$lib/elements/shop/Cart.svelte'
   import {cartItemCount} from '$lib/stores/shopify'
   import Icons from '$lib/elements/media/Icons.svelte'
 

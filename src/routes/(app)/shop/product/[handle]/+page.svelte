@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {PageData} from './$types'
-  import Image from '$lib/elements/Shop/Image.svelte'
+  import Image from '$lib/elements/shop/Image.svelte'
   import Back from './Back.svelte'
   import Buy from './Buy.svelte'
 
