@@ -18,8 +18,8 @@
   <meta property="og:image" content="" />
 </svelte:head>
 
-<article>
-  <section>
+<article class="block md:flex">
+  <section class="w-full mr-0 md:flex-1 md:mr-4">
     <Image
       src={product.image}
       alt={product.title}
@@ -28,62 +28,17 @@
       sizes="(min-width: 1182px) 500px, (min-width: 608px) 42vw, 88vw"
     />
   </section>
-  <main>
+  <main class="flex-1 space-y-4">
     <div class="back">
-      <Back href="/">Back to shop</Back>
+      <Back class="hidden md:block" href="/">Back to shop</Back>
     </div>
     <div>
       <h1>{product.title}</h1>
       {@html product.description}
     </div>
     <div>
-      <p>CHF {product.cost.toFixed(2)}.–<span>+ shipping</span></p>
+      <p class="text-lg text-primary">CHF {product.cost.toFixed(2)}.–<span class="text-sm ml-2">+ shipping</span></p>
     </div>
-    <div class="buy"><Buy {product} {cart} /></div>
+    <div class="buy w-full md:w-3/4"><Buy {product} {cart} /></div>
   </main>
 </article>
-
-<style>
-  article {
-    display: flex;
-  }
-  section {
-    flex: 1;
-    margin-right: 1.8rem;
-  }
-  main {
-    flex: 1;
-  }
-  div {
-    margin-bottom: 1.1rem;
-  }
-  p {
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: #ff4a58;
-  }
-  span {
-    font-size: 0.85rem;
-    margin-left: 0.2rem;
-  }
-  .buy {
-    width: 10rem;
-  }
-
-  @media (max-width: 38em) {
-    article {
-      display: block;
-    }
-    section {
-      width: 100%;
-      margin-right: 0;
-      margin-bottom: 1.8rem;
-    }
-    .back {
-      display: none;
-    }
-    .buy {
-      width: 100%;
-    }
-  }
-</style>
