@@ -136,45 +136,39 @@ const modules = groq`
   },
   _type == "teaserGrid" => {
     ...,
-    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}] {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}] | order(string(pub.publishedAt) desc) {
       ...,
       ${imageMeta},
       ${linkTypes},
     }
-    | order(publishDate desc)
   },
   _type == "teaserGrid" && maxItems == 4 => {
-    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..4] {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..4] | order(string(pub.publishedAt) desc) {
       ...,
       ${imageMeta},
       ${linkTypes},
     }
-    | order(publishDate desc)
-
   },
   _type == "teaserGrid" && maxItems == 12 => {
-    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..12] {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..12] | order(string(pub.publishedAt) desc) {
       ...,
       ${imageMeta},
       ${linkTypes},
     }
-    | order(publishDate desc)
   },
   _type == "teaserGrid" && maxItems == 24 => {
-    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..24] {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..24] | order(string(pub.publishedAt) desc) {
       ...,
       ${imageMeta},
       ${linkTypes},
     }
-    | order(publishDate desc)
   },
   _type == "teaserGrid" && maxItems == 999 => {
-    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..999] {
+    "teasers": *[_type == ^.typeSelector && ${visibilityChecker}][0..999] | order(string(pub.publishedAt) desc) {
       ...,
       ${imageMeta},
       ${linkTypes},
     }
-    | order(publishDate desc)
   },  
 `
 
