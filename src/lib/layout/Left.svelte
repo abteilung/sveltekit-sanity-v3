@@ -65,24 +65,49 @@
   </div>
 
   <div class="hidden md:flex mt-auto pt-[50px] mb-0">
-    <div class="">
-      <ul class="text-sm flex gap-4">
-        {#each meta.items as menuItem}
-          <li>
-            <a class="whitespace-nowrap" href={menuItem.page?.href}>{menuItem.title || menuItem.pageTitle}</a>
-            {#if menuItem._type === 'navDropdown'}
-              ->
-            {/if}
-          </li>
-        {/each}
+    <div class="w-full">
+      <ul class="mb-16 divide-y-[1px] divide-dashed divide-black/30 worldNavigation">
+        <li class="active">
+          <a href="/">Aufenthalt & Besuch</a>
+        </li>
+        <li>
+          <a href="/">Zuweisende Ärzte</a>
+        </li>
+        <li>
+          <a href="/">Kantonsspital Baselland</a>
+        </li>
+        <li>
+          <a href="/">Arbeiten im KSBL</a>
+        </li>
       </ul>
-      <ThemeToggleIcon additionalClass="text-black hover:text-primary dark:text-white dark:hover:text-primary" />
+      <div class="flex justify-between border-t-[1px] w-full pt-2">
+        <ul class="text-sm flex gap-4">
+          {#each meta.items as menuItem}
+            <li>
+              <a class="whitespace-nowrap" href={menuItem.page?.href}>{menuItem.title || menuItem.pageTitle}</a>
+              {#if menuItem._type === 'navDropdown'}
+                ->
+              {/if}
+            </li>
+          {/each}
+        </ul>
+        <ThemeToggleIcon additionalClass="text-black hover:text-primary dark:text-white dark:hover:text-primary" />
+      </div>
     </div>
   </div>
 </div>
 
 <style lang="postcss">
-  .active {
+  .active,
+  .active a {
     @apply text-primary;
+  }
+
+  .worldNavigation a {
+    @apply text-sm opacity-50 block hover:opacity-100 py-1;
+  }
+
+  .worldNavigation .active a {
+    @apply opacity-100 text-black;
   }
 </style>
