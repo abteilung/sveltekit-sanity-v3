@@ -1,4 +1,5 @@
-<script>
+<!-- https://stackblitz.com/github/huntabyte/svelte-search-filter?file=src%2Flib%2Fstores%2Fsearch.ts -->
+<script lang="ts">
   import {page} from '$app/stores'
   import Animation from '$lib/components/Animation.svelte'
 
