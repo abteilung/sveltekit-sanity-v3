@@ -18,7 +18,10 @@ export const load = async ({parent, params}) => {
     } else {
       console.log('🟥 Cache.Miss')
       const freshPage = await getSanityServerClient(false).fetch(getHomepage)
-      await redis.set(cacheKey, JSON.stringify(freshPage), 'EX', 60 * 5)
+      await redis.set(cacheKey, JSON.stringify(freshPage), {
+        // Expires after 60 seconds. For testing purposes.
+        EX: 60
+      })
       return freshPage
     }
   }
@@ -28,7 +31,7 @@ export const load = async ({parent, params}) => {
       page: page()
     }
   }
-  throw error(404)
+  throw error(404, 'Page not found')
 }
 
 // For Light and Dark Mode

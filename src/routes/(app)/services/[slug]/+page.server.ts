@@ -14,8 +14,8 @@ export const load = async ({parent, params, context}) => {
       console.log('🟥 Cache.Miss')
       const freshPage = await getSanityServerClient(false).fetch(getServiceBySlug, {slug: params.slug})
       await redis.set(cacheKey, JSON.stringify(freshPage), {
-        // Expires after 30 seconds. For testing purposes.
-        EX: 30
+        // Expires after 60 seconds. For testing purposes.
+        EX: 60
       })
       return freshPage
     }
