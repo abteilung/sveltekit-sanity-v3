@@ -1,6 +1,8 @@
 import {fail, type Actions} from '@sveltejs/kit'
 import {isValidTheme} from '../../hooks.server'
 
+import {redis} from '$lib/server/redis'
+
 import {getSanityServerClient, overlayDrafts} from '$lib/config/sanity/client'
 import {getHomepage} from '$lib/config/sanity/queries'
 import {error} from '@sveltejs/kit'
@@ -8,7 +10,17 @@ import {error} from '@sveltejs/kit'
 // export const prerender = 'auto';
 export const load = async ({parent, params}) => {
   const page = async () => {
-    return await getSanityServerClient(false).fetch(getHomepage)
+    const cacheKey = 'homepage'
+    const cachedPage = await redis.get(cacheKey)
+    if (cachedPage) {
+      console.log('Cache.Hit')
+      return JSON.parse(cachedPage)
+    } else {
+      console.log('Cache.Miss')
+      const freshPage = await getSanityServerClient(false).fetch(getHomepage)
+      await redis.set(cacheKey, JSON.stringify(freshPage))
+      return freshPage
+    }
   }
 
   if (page) {
