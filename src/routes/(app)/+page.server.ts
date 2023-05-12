@@ -13,12 +13,12 @@ export const load = async ({parent, params}) => {
     const cacheKey = 'homepage'
     const cachedPage = await redis.get(cacheKey)
     if (cachedPage) {
-      console.log('Cache.Hit')
+      console.log('🟩 Cache.Hit')
       return JSON.parse(cachedPage)
     } else {
-      console.log('Cache.Miss')
+      console.log('🟥 Cache.Miss')
       const freshPage = await getSanityServerClient(false).fetch(getHomepage)
-      await redis.set(cacheKey, JSON.stringify(freshPage))
+      await redis.set(cacheKey, JSON.stringify(freshPage), 'EX', 60 * 5)
       return freshPage
     }
   }
