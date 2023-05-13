@@ -14,6 +14,8 @@ import {getUserByEmail} from '$lib/config/sanity/queries'
 import {JWT_ACCESS_SECRET} from '$env/static/private'
 import jwt from 'jsonwebtoken'
 
+import {redis} from '$lib/server/redis'
+
 // Imports for Shopify and Date handling
 import {shopify} from '$lib/shopify'
 import {tomorrow} from '$lib/datetime'
@@ -33,34 +35,34 @@ export const isValidTheme = (theme: FormDataEntryValue | null): theme is Theme =
 //   return fetch(request)
 // }
 
-const responseTime: Handle = async ({event, resolve}) => {
-  // Initial server response time
-  const route = event.url
-  const start = performance.now()
-  const response = await resolve(event)
-  const end = performance.now()
-  const responseTime = end - start
+// const dataResponse = async ({event, resolve}) => {
+//   // Initial server response time
+//   const {url} = event
+//   const key = `rendered:v1:${url.pathname}`
 
-  if (responseTime > 2000) {
-    console.log(`🐢 ${route} took ${responseTime.toFixed(2)} ms`)
-  }
-  if (responseTime < 1000) {
-    console.log(`🚀 ${route} took ${responseTime.toFixed(2)} ms`)
-  }
-  return response
-}
+//   let cached = await redis.hGetAll(key)
+//   if (!cached.body) {
+//     console.log('🟥 Cache.Miss')
+//     const response = await resolve(event)
 
-const sequenceTimeStart: Handle = async ({event, resolve}) => {
-  // Server handling time start
-  // console.log('init hook sequence time start')
-  console.time('renderTime')
-  return await resolve(event)
-}
+//     // then convert it into a cachable object
+//     cached = Object.fromEntries(response.headers.entries())
 
-const sequenceTimeEnd: Handle = async ({event, resolve}) => {
-  // Server handling time end
-  // console.log('init hook sequence time end')
-  console.timeEnd('renderTime')
+//     cached.body = await response.text()
+
+//     if (response.status === 200) {
+//       redis.hSet(key, cached)
+//     }
+//   } else {
+//     console.log('🟩 Cache.Hit')
+//   }
+
+//   const {body, ...headers} = cached
+//   const responseHeaders = new Headers(headers)
+//   responseHeaders.set('Content-Type', 'text/html')
+//   return new Response(body, {headers: responseHeaders})
+// }
+const dataResponse: Handle = async ({event, resolve}) => {
   return await resolve(event)
 }
 
@@ -159,14 +161,4 @@ const shopifyCart: Handle = async ({event, resolve}) => {
   return await resolve(event)
 }
 
-export const handle = sequence(
-  responseTime,
-  sequenceTimeStart,
-  redirects,
-  previewMode,
-  auth,
-  lang,
-  theme,
-  shopifyCart,
-  sequenceTimeEnd
-)
+export const handle = sequence(dataResponse, redirects, previewMode, auth, lang, theme, shopifyCart)
