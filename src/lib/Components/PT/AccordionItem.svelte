@@ -2,6 +2,7 @@
   // Svelte Imports
   import {getContext} from 'svelte'
   import {slide} from 'svelte/transition'
+  import classNames from 'classnames'
 
   // components
   import PortableBlock from '$lib/components/PortableBlock.svelte'
@@ -30,23 +31,32 @@
   }
 </script>
 
-<div class="w-full p-4 shadow-lg">
-  <button
-    on:click={onClickHandler}
-    class:active={isCurrentActive}
-    class="flex items-center w-full text-left focus:outline-none"
-  >
-    <div class="w-full transition">{title}</div>
+<div class:active={isCurrentActive}>
+  <div class={classNames(isCurrentActive ? 'p-8 mb-12' : '')}>
+    <button
+      on:click={onClickHandler}
+      class="flex items-center w-full text-left focus:outline-none pb-4 mb-4 border-dashed border-b-black/30 border-b-[1px]"
+    >
+      <div class="w-full transition text-xl">
+        {title}
+      </div>
 
-    <div class="w-8 transition transform" class:rotate-90={isCurrentActive}>
-      <Icons type="arrow-right" />
-    </div>
-  </button>
-  {#if isCurrentActive}
-    <div transition:slide class="[&>*:last-of-type]:mb-0">
-      {#if content}
-        <PortableBlock {content} />
-      {/if}
-    </div>
-  {/if}
+      <div class="w-8 transition text-primary transform" class:rotate-45={isCurrentActive}>
+        <Icons type="plus" additionalClass="w-full h-full" />
+      </div>
+    </button>
+    {#if isCurrentActive}
+      <div transition:slide class="[&>*:last-of-type]:mb-0">
+        {#if content}
+          <PortableBlock {content} />
+        {/if}
+      </div>
+    {/if}
+  </div>
 </div>
+
+<style lang="postcss">
+  .active {
+    @apply shadow-xl shadow-black/30  transition-all -my-4 -mx-8;
+  }
+</style>

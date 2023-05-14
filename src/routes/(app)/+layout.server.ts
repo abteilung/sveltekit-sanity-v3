@@ -3,6 +3,7 @@ import {getLayoutData} from '$lib/config/sanity/queries'
 import {shopify} from '$lib/shopify'
 import {redis} from '$lib/server/redis'
 import {error} from '@sveltejs/kit'
+import {isDev} from '$lib/config/environment'
 
 export const load = async ({locals, cookies}) => {
   let cart = await shopify.cart.one({cart_id: locals.cart_id})
@@ -17,27 +18,22 @@ export const load = async ({locals, cookies}) => {
   }
 
   const layoutData = async () => {
-    const key = 'layoutData'
+    const key = `rendered:v1:layoutData`
+    if (locals.previewMode || isDev) {
+      console.log('🟧 Cache.Bypass')
+      const response = await getSanityServerClient(true).fetch(getLayoutData)
+      return response
+    }
     let cached = await redis.get(key)
     if (!cached) {
       console.log('🟥 Cache.Miss')
-      const response = await getSanityServerClient(false).fetch(getLayoutData, {
-        // Set Headers for Cache-Control
-        headers: {
-          'Cache-Control': 'max-age=0, s-maxage=86400'
-        }
-      })
+      const response = await getSanityServerClient(false).fetch(getLayoutData)
 
       // Convert response to JSON
       redis.set(key, JSON.stringify(response), {
-        EX: 86400,
+        EX: 60 * 60 * 24,
         NX: true
       })
-
-      // const {...headers} = response
-      // const responseHeaders = new Headers(headers)
-      // return new Response(response, {headers: responseHeaders})
-
       return response
     } else {
       console.log('🟩 Cache.Hit')
@@ -51,3 +47,7 @@ export const load = async ({locals, cookies}) => {
     layoutData: layoutData()
   }
 }
+
+// const {...headers} = response
+// const responseHeaders = new Headers(headers)
+// return new Response(response, {headers: responseHeaders})

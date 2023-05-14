@@ -4,7 +4,8 @@
   // Import Teasers:
   import BrandItem from '$lib/components/PageBuilder/Teaser/BrandItem.svelte'
   import GridItem from '$lib/components/PageBuilder/Teaser/GridItem.svelte'
-  import SliderLarge from '$lib/components/PageBuilder/Teaser/SliderLarge.svelte'
+  import SliderLarge from '$lib/components/PageBuilder/Teaser/Slider.Large.svelte'
+  import SliderTimer from '$lib/components/PageBuilder/Teaser/Slider.Timer.svelte'
   import ListItem from '$lib/components/PageBuilder/Teaser/ListItem.svelte'
   import Carousel from '$lib/components/PageBuilder/Teaser/Carousel.svelte'
 
@@ -68,6 +69,7 @@ itemSelector: {itemSelector}<br>
 
       {#if layout === 'sliderLarge'}
         <SliderLarge {teasers} {maxItems} />
+        <!-- <SliderTimer {teasers} {maxItems} /> -->
       {/if}
     {/if}
   </div>

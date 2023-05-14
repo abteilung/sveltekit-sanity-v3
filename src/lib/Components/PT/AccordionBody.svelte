@@ -17,6 +17,8 @@
   setContext('context', activeStore)
 </script>
 
-<div class="space-y-4">
-  <slot />
+<div class="container my-12">
+  <div class="space-y-">
+    <slot />
+  </div>
 </div>

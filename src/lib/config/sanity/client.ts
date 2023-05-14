@@ -9,13 +9,11 @@ const createClient = (config: ClientConfig): SanityClient => {
 
 export const previewClient = createClient({
   ...sanityConfig,
-  useCdn: false,
   token: env.SANITY_API_READ_TOKEN || env.SANITY_API_WRITE_TOKEN || ''
 })
 
 export const writeClient = createClient({
   ...sanityConfig,
-  useCdn: false,
   token: env.SANITY_API_WRITE_TOKEN || ''
 })
 

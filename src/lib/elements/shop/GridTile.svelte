@@ -22,7 +22,6 @@
   <a
     data-test="grid-tile"
     {href}
-    data-sveltekit-prefetch
     class="focus:border-blue-500 focus:border-2 relative flex h-full w-full items-center justify-center"
   >
     {#if imageSrc}
