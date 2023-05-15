@@ -17,7 +17,6 @@
   import PostsGrid from './PT/PostsGrid.svelte'
   import SmallCaps from './PT/SmallCaps.svelte'
 
-
   const components: any = {
     marks: {
       smallCaps: SmallCaps,
