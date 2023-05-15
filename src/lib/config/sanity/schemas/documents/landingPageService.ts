@@ -51,7 +51,7 @@ export default defineType({
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -61,8 +61,8 @@ export default defineType({
         source: 'title',
         maxLength: 96
       }
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Service Main Image',
       type: 'image',
@@ -70,34 +70,34 @@ export default defineType({
       options: {
         hotspot: false
       }
-    },
-    {
+    }),
+    defineField({
       name: 'icon',
       title: 'Icon Image',
       type: 'image',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'buttonText',
       title: 'Button Text (CTA), short!',
       type: 'string',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Content',
       type: 'blockContent',
       group: 'default'
-    },
+    }),
 
-    {
+    defineField({
       name: 'prices',
       title: 'Prices',
       description: 'Prices for this Service. Overwrite the default prices in the Landing Page.',
       type: 'array',
       of: [{type: 'reference', to: {type: 'landingPagePrice'}}],
       group: 'prices'
-    },
+    }),
 
     // Visibility
     {

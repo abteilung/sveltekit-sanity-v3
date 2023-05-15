@@ -2,8 +2,9 @@
 
 import {Signpost, Calendar} from '@phosphor-icons/react'
 import {getVisibilityState} from '../../lib/helpers/visibility'
+import {defineField, defineType} from 'sanity'
 
-export default {
+export default defineType({
   name: 'redirect',
   title: 'Redirect',
   type: 'document',
@@ -17,7 +18,7 @@ export default {
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
   fields: [
-    {
+    defineField({
       name: 'fromPath',
       title: 'From',
       description: 'Original page path (without https://yoursite.com)',
@@ -27,14 +28,14 @@ export default {
         Rule.required()
           .custom((slug) => (slug.current.startsWith('/') ? true : 'Must start with a slash'))
           .warning()
-    },
-    {
+    }),
+    defineField({
       name: 'toPath',
       title: 'To',
       type: 'string',
       group: 'redirect'
-    },
-    {
+    }),
+    defineField({
       name: 'statusCode',
       title: 'Type',
       type: 'string',
@@ -46,7 +47,7 @@ export default {
           {title: '302 - Temporary', value: '302'}
         ]
       }
-    },
+    }),
     // Visibility
     {
       name: 'pub',
@@ -83,4 +84,4 @@ export default {
       }
     }
   }
-}
+})

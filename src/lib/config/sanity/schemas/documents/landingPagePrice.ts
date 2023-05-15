@@ -23,13 +23,13 @@ export default defineType({
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'price',
       title: 'Price',
       type: 'string',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Service Main Image',
       type: 'image',
@@ -37,13 +37,13 @@ export default defineType({
       options: {
         hotspot: false
       }
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Content',
       type: 'blockContent',
       group: 'default'
-    }
+    })
   ],
   preview: {
     select: {

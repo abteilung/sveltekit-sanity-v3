@@ -1,5 +1,5 @@
 import {GearSix, ShareNetwork, AddressBook, Factory} from '@phosphor-icons/react'
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'settingsContact',
@@ -12,29 +12,29 @@ export default defineType({
   ],
   fields: [
     // Contact
-    {
+    defineField({
       name: 'companyName',
       title: 'Company Name',
       type: 'string',
       description: 'Enter your company name.',
       group: 'contact'
-    },
-    {
+    }),
+    defineField({
       name: 'email',
       title: 'Email',
       type: 'string',
       description: 'Enter your email address.',
       validation: (Rule) => Rule.regex(/.+@.+\..+/, {name: 'email'}),
       group: 'contact'
-    },
-    {
+    }),
+    defineField({
       name: 'phone',
       title: 'Phone',
       type: 'string',
       description: 'Enter your phone number (+41 xx xxx xx xx).',
       group: 'contact'
-    },
-    {
+    }),
+    defineField({
       name: 'locations',
       title: 'Locations',
       type: 'array',
@@ -89,10 +89,10 @@ export default defineType({
       ],
       description: 'Enter your Business Locations.',
       group: 'contact'
-    },
+    }),
 
     // Social
-    {
+    defineField({
       name: 'socialChannels',
       title: 'Social Channels',
       type: 'array',
@@ -132,6 +132,6 @@ export default defineType({
       ],
       description: 'Enter your social channels.',
       group: 'social'
-    }
+    })
   ]
 })

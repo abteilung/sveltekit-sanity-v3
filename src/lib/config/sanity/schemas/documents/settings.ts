@@ -1,5 +1,5 @@
 import {GearSix, Globe, ShareNetwork, Palette, AddressBook, MagnifyingGlass, Scales} from '@phosphor-icons/react'
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'settings',
@@ -28,7 +28,7 @@ export default defineType({
     {name: 'dsgvo', title: 'DSGVO', description: 'DSGVO settings', icon: Scales}
   ],
   fields: [
-    {
+    defineField({
       name: 'title',
       description: 'This field is the title of your Site.',
       title: 'Title',
@@ -36,8 +36,8 @@ export default defineType({
       initialValue: 'Site Title',
       group: 'site',
       validation: (rule) => rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       description: 'This field is the default description of your Site.',
       title: 'Description',
@@ -45,8 +45,8 @@ export default defineType({
       initialValue: 'A blog built with SvelteKit and Sanity.io.',
       group: 'site',
       validation: (rule) => rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'siteUrl',
       description: 'This field is the default siteUrl of your Site.',
       title: 'Site URL',
@@ -54,8 +54,8 @@ export default defineType({
       group: 'site',
       initialValue: 'https://blog.example.com',
       validation: (rule) => rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'favicon',
       description: 'Add transparent PNG for favicon (min. 512px x 512px).',
       title: 'Favicon',
@@ -66,7 +66,7 @@ export default defineType({
       group: 'site',
       initialValue: 'https://blog.example.com/images/favicon.png',
       validation: (rule) => rule.required()
-    },
+    }),
 
     // Theme
     // {
@@ -95,55 +95,55 @@ export default defineType({
     //   group: 'seo'
     // },
     // EntryPages
-    {
+    defineField({
       name: 'home',
       title: 'Home Page',
       type: 'reference',
       to: [{type: 'page'}],
       description: 'Add Home Page.',
       group: 'entryPages'
-    },
-    {
+    }),
+    defineField({
       name: 'shop',
       title: 'Shop Page',
       type: 'reference',
       to: [{type: 'page'}],
       description: 'Add Shop Page.',
       group: 'entryPages'
-    },
+    }),
     // DSGVO
-    {
+    defineField({
       name: 'imprint',
       title: 'Imprint Page',
       type: 'reference',
       to: [{type: 'page'}, {type: 'meta'}],
       description: 'Add Imprint Page.',
       group: 'dsgvo'
-    },
-    {
+    }),
+    defineField({
       name: 'privacy',
       title: 'Privacy Page',
       type: 'reference',
       to: [{type: 'page'}, {type: 'meta'}],
       description: 'Add Privacy Page.',
       group: 'dsgvo'
-    },
-    {
+    }),
+    defineField({
       name: 'terms',
       title: 'Terms Page',
       type: 'reference',
       to: [{type: 'page'}, {type: 'meta'}],
       description: 'Add Terms Page.',
       group: 'dsgvo'
-    },
-    {
+    }),
+    defineField({
       name: 'cookieBanner',
       title: 'Cookie Banner',
       type: 'boolean',
       description: 'Add Cookie Banner.',
       group: 'dsgvo'
-    },
-    {
+    }),
+    defineField({
       name: 'cookeExpires',
       title: 'Cooke Expires',
       type: 'number',
@@ -151,8 +151,8 @@ export default defineType({
       group: 'dsgvo',
       // Show only if cookieBanner is set
       hidden: ({parent}) => !parent.cookieBanner
-    },
-    {
+    }),
+    defineField({
       name: 'cookieBannerText',
       title: 'Cookie Banner Text',
       type: 'string',
@@ -160,8 +160,8 @@ export default defineType({
       group: 'dsgvo',
       // Show only if cookieBanner is set
       hidden: ({parent}) => !parent.cookieBanner
-    },
-    {
+    }),
+    defineField({
       name: 'cookieBannerLink',
       title: 'Cookie Banner Link',
       type: 'reference',
@@ -170,8 +170,8 @@ export default defineType({
       group: 'dsgvo',
       // Show only if cookieBanner is set
       hidden: ({parent}) => !parent.cookieBanner
-    },
-    {
+    }),
+    defineField({
       name: 'cookieBannerLinkText',
       title: 'Cookie Banner Link Text',
       type: 'string',
@@ -179,8 +179,8 @@ export default defineType({
       group: 'dsgvo',
       // Show only if cookieBanner is set
       hidden: ({parent}) => !parent.cookieBanner || !parent.cookieBannerLink
-    },
-    {
+    }),
+    defineField({
       name: 'cookieBannerMoreLink',
       title: 'Cookie Banner More Link',
       type: 'reference',
@@ -189,7 +189,7 @@ export default defineType({
       group: 'dsgvo',
       // Show only if cookieBanner is set
       hidden: ({parent}) => !parent.cookieBanner
-    },
+    }),
     {
       name: 'cookieBannerMoreLinkText',
       title: 'Cookie Banner More Link Text',

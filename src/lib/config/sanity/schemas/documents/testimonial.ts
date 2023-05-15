@@ -1,28 +1,29 @@
 import {HandsClapping} from '@phosphor-icons/react'
+import {defineField, defineType} from 'sanity'
 
-export default {
+export default defineType({
   name: 'testimonial',
   title: 'Testimonial',
   type: 'document',
   icon: HandsClapping,
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string'
-    },
-    {
+    }),
+    defineField({
       name: 'testimonial',
       title: 'Testimonial',
       type: 'text',
       rows: 5
-    },
-    {
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: [{type: 'author'}]
-    }
+    })
   ],
 
   preview: {
@@ -40,4 +41,4 @@ export default {
       }
     }
   }
-}
+})

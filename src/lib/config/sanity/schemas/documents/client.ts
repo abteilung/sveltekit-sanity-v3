@@ -18,13 +18,13 @@ export default defineType({
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'url',
       title: 'URL',
       type: 'url',
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Client Logo Image',
       type: 'image',
@@ -32,18 +32,18 @@ export default defineType({
         hotspot: true
       },
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text'
-    },
-    {
+    }),
+    defineField({
       name: 'categories',
       title: 'Belongs to…',
       type: 'array',
       of: [{type: 'reference', to: {type: 'landingPage'}}]
-    }
+    })
   ],
 
   preview: {

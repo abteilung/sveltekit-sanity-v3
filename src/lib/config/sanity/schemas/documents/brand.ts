@@ -22,14 +22,14 @@ export default defineType({
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'url',
       title: 'URL',
       type: 'url',
       group: 'default',
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Brand Logo Image',
       type: 'image',
@@ -38,27 +38,27 @@ export default defineType({
         hotspot: true
       },
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'categories',
       title: 'Belongs to…',
       type: 'array',
       group: 'default',
       of: [{type: 'reference', to: {type: 'landingPage'}}]
-    },
+    }),
     // Visibility
-    {
+    defineField({
       name: 'pub',
       title: 'Visibility',
       type: 'visibility',
       group: 'publication'
-    }
+    })
   ],
 
   preview: {

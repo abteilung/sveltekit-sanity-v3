@@ -51,7 +51,7 @@ export default defineType({
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -61,8 +61,8 @@ export default defineType({
         maxLength: 96
       },
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Cover Image',
       type: 'image',
@@ -70,33 +70,33 @@ export default defineType({
       options: {
         hotspot: true
       }
-    },
-    {
+    }),
+    defineField({
       name: 'content',
       title: 'Page Content',
       type: 'pageBuilder',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Content',
       type: 'blockContent',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: [{type: authorType.name}],
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'reference',
       to: [{type: 'category'}],
       group: 'default'
-    },
+    }),
 
     // Visibility
     {

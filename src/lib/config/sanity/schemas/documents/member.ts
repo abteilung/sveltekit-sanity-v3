@@ -1,5 +1,5 @@
 import {UsersThree} from '@phosphor-icons/react'
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'member',
@@ -7,24 +7,24 @@ export default defineType({
   icon: UsersThree,
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: [{type: 'author'}]
-    },
-    {
+    }),
+    defineField({
       name: 'role',
       title: 'Role',
       type: 'string',
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'categories',
       title: 'Belongs to…',
       type: 'array',
       of: [{type: 'reference', to: {type: 'landingPage'}}]
-    }
+    })
   ],
 
   preview: {

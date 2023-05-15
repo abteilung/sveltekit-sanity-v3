@@ -13,13 +13,13 @@ export default {
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
   fields: [
-    {
+    defineField({
       name: 'seats',
       title: 'Seats',
       type: 'number',
       hidden: false,
       group: 'default'
-    },
+    }),
     defineField({
       name: 'title',
       title: 'Title',
@@ -31,7 +31,7 @@ export default {
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -41,14 +41,14 @@ export default {
         maxLength: 96
       },
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'teaser',
       title: 'Teaser',
       type: 'blockContent',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Main image',
       type: 'image',
@@ -57,13 +57,13 @@ export default {
         hotspot: true
       },
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'content',
       title: 'Page Content',
       type: 'pageBuilder',
       group: 'default'
-    },
+    }),
 
     // Visibility
     {

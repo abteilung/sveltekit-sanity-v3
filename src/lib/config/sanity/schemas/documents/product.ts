@@ -45,7 +45,7 @@ export default {
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -55,8 +55,7 @@ export default {
         maxLength: 96
       },
       group: 'default'
-    },
-
+    }),
     defineField({
       name: 'store',
       title: 'Shopify',
@@ -64,19 +63,19 @@ export default {
       description: 'Product data from Shopify (read-only)',
       group: 'shopifySync'
     }),
-    {
+    defineField({
       name: 'teaser',
       title: 'Teaser',
       type: 'blockContent',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'youtube',
       title: 'Youtube or Vimeo URL',
       type: 'string',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Main image',
       type: 'image',
@@ -85,25 +84,24 @@ export default {
         hotspot: true
       },
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'productIcon',
       title: 'Product Icon',
       type: 'customImage',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'content',
       title: 'Page Content',
       type: 'pageBuilder',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent'
-    },
-
+    }),
     // Visibility
     {
       name: 'pub',

@@ -1,7 +1,7 @@
 import {Handshake, EyeSlash, Calendar} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
 
-export default {
+export default defineType({
   name: 'service',
   title: 'Services',
   type: 'document',
@@ -48,7 +48,7 @@ export default {
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -58,14 +58,14 @@ export default {
         source: 'subtitle',
         maxLength: 96
       }
-    },
-    {
+    }),
+    defineField({
       name: 'teaser',
       title: 'Teaser',
       type: 'blockContent',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Main image',
       type: 'image',
@@ -74,25 +74,25 @@ export default {
       options: {
         hotspot: true
       }
-    },
-    {
+    }),
+    defineField({
       name: 'youtube',
       title: 'Youtube or Vimeo URL',
       type: 'url',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'productIcon',
       title: 'Product Icon',
       type: 'customImage',
       group: 'default'
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
       group: 'default'
-    },
+    }),
 
     // Visibility
     {
@@ -118,4 +118,4 @@ export default {
       }
     }
   }
-}
+})

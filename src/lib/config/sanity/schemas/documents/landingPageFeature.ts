@@ -39,7 +39,7 @@ export default defineType({
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'image',
       title: 'Icon Image',
       type: 'image',
@@ -47,13 +47,13 @@ export default defineType({
       options: {
         hotspot: false
       }
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Content',
       type: 'blockContent',
       group: 'default'
-    },
+    }),
 
     // Visibility
     {

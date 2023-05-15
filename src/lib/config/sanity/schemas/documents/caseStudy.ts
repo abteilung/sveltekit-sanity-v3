@@ -29,7 +29,7 @@ export default defineType({
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -38,8 +38,8 @@ export default defineType({
         source: 'title',
         maxLength: 96
       }
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Main image',
       type: 'image',
@@ -47,17 +47,17 @@ export default defineType({
       options: {
         hotspot: true
       }
-    },
-    {
+    }),
+    defineField({
       name: 'youtube',
       title: 'Youtube or Vimeo URL',
       type: 'url'
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent'
-    }
+    })
   ],
 
   preview: {

@@ -22,7 +22,7 @@ export default defineType({
         (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
       ]
     }),
-    {
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -32,13 +32,13 @@ export default defineType({
         maxLength: 96
       },
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Content',
       type: 'blockContent',
       group: 'default'
-    },
+    }),
 
     // Visibility
     {

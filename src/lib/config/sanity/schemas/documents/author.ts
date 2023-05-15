@@ -1,5 +1,5 @@
 import {User} from '@phosphor-icons/react'
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'author',
@@ -7,13 +7,13 @@ export default defineType({
   icon: User,
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -22,25 +22,25 @@ export default defineType({
         source: 'name',
         maxLength: 96
       }
-    },
-    {
+    }),
+    defineField({
       name: 'image',
       title: 'Portrait Image',
       type: 'customImage',
       validation: (Rule) => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'email',
       title: 'E-Mail',
       type: 'string',
       validation: (Rule) => Rule.regex(/.+@.+\..+/, {name: 'email'})
-    },
-    {
+    }),
+    defineField({
       name: 'jobTitle',
       title: 'Job Title',
       type: 'string'
-    },
-    {
+    }),
+    defineField({
       name: 'bio',
       title: 'Bio',
       type: 'array',
@@ -52,7 +52,7 @@ export default defineType({
           lists: []
         }
       ]
-    }
+    })
   ],
 
   preview: {
