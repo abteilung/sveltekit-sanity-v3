@@ -1,6 +1,8 @@
 import {CalendarX, Calendar} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
 
+import {getVisibilityState} from '../../lib/helpers/visibility'
+
 export default {
   name: 'event',
   title: 'Event',
@@ -72,27 +74,20 @@ export default {
     select: {
       title: 'title',
       subtitle: 'seats',
+      author: 'author.name',
+      excerpt: 'body',
       media: 'image',
-      start: 'pub.publishedAt',
-      end: 'pub.unpublishedAt',
-      hidden: 'pub.isHidden'
+      startDate: 'pub.publishedAt',
+      endDate: 'pub.unpublishedAt',
+      isHidden: 'pub.isHidden'
     },
-    prepare(selection) {
-      const {title, subtitle, start, end, hidden, media} = selection
+    prepare({title, media, hidden, startDate, endDate, subtitle, excerpt}) {
       return {
-        title,
-        subtitle: ` ${
-          hidden == false ||
-          (hidden != true &&
-            new Date().toISOString().split('T')[0] > start &&
-            new Date().toISOString().split('T')[0] < end) ||
-          (hidden != true && start == null && end == null) ||
-          (hidden != true && new Date().toISOString().split('T')[0] < end) ||
-          (hidden != true && new Date().toISOString().split('T')[0] > start && end == null)
-            ? ''
-            : '🔴'
-        } ${subtitle} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`,
-        media: media
+        title: title,
+        // Human readable short Date
+        subtitle: getVisibilityState(startDate, endDate, hidden) + ` ${subtitle ? subtitle : ''}`,
+        // Use Icon instead of Image if isHidden is true
+        media
       }
     }
   }
