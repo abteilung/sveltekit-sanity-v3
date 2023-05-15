@@ -31,8 +31,8 @@
   }
 </script>
 
-<div class:active={isCurrentActive}>
-  <div class={classNames(isCurrentActive ? 'p-8 mb-12' : '')}>
+<div class="group hover:shadow-2xl hover:-my-4 hover:-mx-8" class:active={isCurrentActive}>
+  <div class={classNames(isCurrentActive ? 'p-8 mb-12' : 'group-hover:px-8 group-hover:pt-4 ')}>
     <button
       on:click={onClickHandler}
       class="flex items-center w-full text-left focus:outline-none pb-4 mb-4 border-dashed border-b-black/30 border-b-[1px]"
