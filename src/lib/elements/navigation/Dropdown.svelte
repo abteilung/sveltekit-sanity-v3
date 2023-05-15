@@ -66,10 +66,10 @@
     <div
       in:fade={{duration: 200}}
       out:fade={{duration: 200}}
-      class="fixed firstLevel top-0 z-50 w-96 bg-light bg-opacity-50 h-screen backdrop-blur-lg"
+      class="fixed translate-x-full -ml-[50px] firstLevel top-0 z-50 w-96 bg-light bg-opacity-50 h-screen backdrop-blur-lg"
       {style}
     >
-      <div class=" absolute px-12 w-full" style={'margin-top: ' + top + 'px;'}>
+      <div class="absolute px-12 w-full" style={'margin-top: ' + top + 'px;'}>
         {#each $subMenuItemsStore as submenu, i}
           {#key submenu}
             <li in:fly={{x: -50, duration: 25, easing: cubicInOut, opacity: 0, delay: 50 * i}}>
@@ -89,7 +89,8 @@
 
 <style lang="postcss">
   .firstLevel {
-    left: var(--firstlevel-offset);
+    /* @apply left-[var(--firstlevel-offset)]; */
+    /* @apply -left-[20px] md:-left-[30px] lg:-left-[40px] xl:-left-[50px];  */
   }
 
   .open {
