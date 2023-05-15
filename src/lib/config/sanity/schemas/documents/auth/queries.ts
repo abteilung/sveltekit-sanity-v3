@@ -13,6 +13,14 @@ export const getUserByEmail = groq`
   _type,
   _updatedAt,
   email,
-  hash,
-  access  
+  "hash": hash.current,  
+}`
+
+export const getUserById = groq`
+*[(_type == 'user' && _id == $id) && ${accessCheck}] | order(_updatedAt desc)[0] {
+  _id,
+  _type,
+  _updatedAt,
+  email,
+  "hash": hash.current,  
 }`
