@@ -23,7 +23,7 @@ export default {
     bgColor: 'white',
     columns: 3,
     maxItems: 999
-  },
+  }),
   fields: [
     {
       name: 'title',
