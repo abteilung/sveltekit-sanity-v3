@@ -10,7 +10,7 @@ import {cachedQuery} from '$lib/utils/cachedQuery'
 // export const prerender = 'auto'
 
 export const load = async ({parent, params, locals}) => {
-  const query = getSanityServerClient(true).fetch(getHomepage)
+  const query = getSanityServerClient(false).fetch(getHomepage)
   const page = cachedQuery(true, 'rendered:v1:Homepage', query, locals)
 
   if (page) {

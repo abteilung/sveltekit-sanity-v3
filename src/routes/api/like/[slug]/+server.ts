@@ -17,7 +17,7 @@ export async function POST(requestEvent) {
   const {params} = requestEvent
   const {slug} = params
 
-  const res = await getSanityServerClient(true).patch(`${slug}`).inc({likes: 1}).commit()
+  const res = await getSanityServerClient(false).patch(`${slug}`).inc({likes: 1}).commit()
   const item = await res.json()
 
   return json(item, {status: 200})

@@ -455,3 +455,9 @@ export const getLayoutData = groq`
   "dsgvoSettings": ${getDsgvoSettings},
 }
 `
+
+export const getSearchResults = groq`
+  *[_type == "*" && defined(slug) && ${visibilityChecker}] {
+    title
+  }
+`
