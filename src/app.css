@@ -178,6 +178,7 @@
     @apply overflow-hidden;
   }
 
+  /* For Theme toggler Icon: */
   * {
     --transition-duration-short: 0.15s;
     --transition-duration-long: 0.4s;
