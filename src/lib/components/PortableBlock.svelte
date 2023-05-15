@@ -15,12 +15,15 @@
   import Testimonial from './PT/Testimonial.svelte'
   import FAQ from './PT/FAQ.svelte'
   import PostsGrid from './PT/PostsGrid.svelte'
+  import SmallCaps from './PT/SmallCaps.svelte'
+
 
   const components: any = {
     marks: {
-      highlight: Highlight,
+      smallCaps: SmallCaps,
       sup: Sup,
       sub: Sub,
+      highlight: Highlight,
       link: Link
     },
     list: {

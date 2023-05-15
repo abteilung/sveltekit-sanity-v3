@@ -1,4 +1,4 @@
-import {File, EyeSlash} from '@phosphor-icons/react'
+import {File, Pen, Eye, EyeSlash, ProjectorScreenChart} from '@phosphor-icons/react'
 import {defineType} from 'sanity'
 
 import authorType from './author'
@@ -13,11 +13,18 @@ export default defineType({
     {
       title: 'Default',
       name: 'default',
+      icon: Pen,
       default: true
     },
     {
       title: 'Visibility',
-      name: 'visibility'
+      name: 'visibility',
+      icon: Eye
+    },
+    {
+      title: 'SEO',
+      name: 'seo',
+      icon: ProjectorScreenChart
     }
   ],
 
@@ -97,6 +104,12 @@ export default defineType({
       title: 'Visibility',
       type: 'visibility',
       group: 'visibility'
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+      group: 'seo'
     }
   ],
   preview: {

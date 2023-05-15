@@ -78,6 +78,7 @@ import navLink from './schemas/objects/nav-link'
 import navSection from './schemas/objects/nav-section'
 
 // Fragments
+import seo from './schemas/fragments/seo'
 import visibility from './schemas/fragments/visibility'
 
 /*------------------------------------*/
@@ -156,6 +157,7 @@ export default defineConfig({
       navSection,
 
       // Fragments
+      seo,
       visibility
     ]
     // If you want to add more schemas, you can add them here

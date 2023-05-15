@@ -15,7 +15,7 @@ export default {
       }
     }
   ],
-  initialValue: {
+  initialValue: () => ({
     typeSelector: 'services',
     itemSelector: 'latest',
     layout: 'grid',

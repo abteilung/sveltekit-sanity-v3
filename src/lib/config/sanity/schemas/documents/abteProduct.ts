@@ -1,5 +1,8 @@
+import {React} from 'react'
 import {Storefront, Calendar} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
+import {color} from '@sanity/color-input'
+import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
 
 export default {
   name: 'abteProduct',
@@ -96,12 +99,13 @@ export default {
       title: 'title',
       subtitle: 'subtitle',
       media: 'image',
+      imgUrl: 'image.asset.url',
       start: 'pub.publishedAt',
       end: 'pub.unpublishedAt',
       hidden: 'pub.isHidden'
     },
     prepare(selection) {
-      const {title, subtitle, start, end, hidden, media} = selection
+      const {title, subtitle, start, end, hidden, media, imgUrl} = selection
       return {
         title,
         subtitle: ` ${
@@ -115,6 +119,7 @@ export default {
             ? ''
             : '🔴'
         } ${subtitle} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`,
+        // overlay icon based on visibility
         media: media
       }
     }

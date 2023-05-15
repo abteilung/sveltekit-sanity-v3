@@ -73,7 +73,8 @@ export default {
         // const now = new Date().toISOString().split('T')[0]
         // subtitle: `${type} ${start ? `from ${start.split('T')[0]}` : ''} ${end ? `until ${end.split('T')[0]}` : ''}`
         // Check if now() is within start and end
-
+        // media:  Signpost + &lt;span class="small" &gt;+ ` getVisibilityState(startDate, endDate, hidden) ` +  &lt;/span &gt;
+        // media:
         subtitle:
           getVisibilityState(startDate, endDate, hidden) +
           `(${type}) ${startDate ? `from ${startDate.split('T')[0]}` : ''} ${
