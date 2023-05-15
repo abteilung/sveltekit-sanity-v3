@@ -9,7 +9,7 @@ export const getVisibilityState = (start, end, isHidden, showGreen) => {
   if (isHidden) {
     return '⭕ '
   } else if ((startDate < now || startDate == null) && (endDate == null || endDate > now)) {
-    return showGreenBullet ? '🟢 ' : ' '
+    return showGreenBullet ? '🟩 ' : ' '
   } else {
     return ' '
   }

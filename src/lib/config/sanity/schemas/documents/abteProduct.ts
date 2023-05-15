@@ -1,8 +1,5 @@
-import {React} from 'react'
 import {Storefront, Calendar} from '@phosphor-icons/react'
 import {defineField, defineType} from 'sanity'
-import {color} from '@sanity/color-input'
-import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
 
 export default {
   name: 'abteProduct',
