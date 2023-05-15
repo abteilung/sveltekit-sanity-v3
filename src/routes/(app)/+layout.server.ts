@@ -18,7 +18,6 @@ export const load = async ({locals, cookies}) => {
   }
 
   const queryString = getSanityServerClient(false).fetch(getLayoutData)
-
   const layoutData = cachedQuery(`rendered:v1:layoutData`, queryString, locals)
 
   return {

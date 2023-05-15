@@ -5,8 +5,8 @@ import {isDev} from '$lib/config/environment'
 // This function will take in a key and a query and return the response.
 
 export const cachedQuery = async (key, query, locals) => {
-  if (isDev || locals.previewMode) {
-    console.log('🟧 Cache.Bypass, preview-mode: ', locals.previewMode)
+  if (isDev || locals?.previewMode ? true : false) {
+    console.log('🟧 Cache.Bypass, preview-mode: ', locals?.previewMode ? true : false)
     const response = await query
     return response
   }
