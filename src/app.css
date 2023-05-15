@@ -97,6 +97,14 @@
   ul.ul {
     @apply list-disc list-inside;
   }
+  ul.ul li {
+    @apply ml-2;
+  }
+
+  ul.ul li::marker {
+    @apply text-primary content -ml-2;
+    content: '— ';
+  }
 
   ol.ol {
     @apply list-decimal list-inside;

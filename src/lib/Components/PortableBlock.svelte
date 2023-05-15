@@ -2,6 +2,7 @@
   import {PortableText} from '@portabletext/svelte'
   import Link from './PT/Link.svelte'
   import Lists from './PT/Lists.svelte'
+  import ListItems from './PT/ListItems.svelte'
   import Highlight from './PT/Highlight.svelte'
   import Sup from './PT/Sup.svelte'
   import Sub from './PT/Sub.svelte'
@@ -25,6 +26,10 @@
     list: {
       bullet: Lists,
       number: Lists
+    },
+    listItem: {
+      bullet: ListItems,
+      number: ListItems
     },
     types: {
       customImage: Image,

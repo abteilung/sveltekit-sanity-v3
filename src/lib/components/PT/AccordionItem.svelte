@@ -57,6 +57,6 @@
 
 <style lang="postcss">
   .active {
-    @apply shadow-xl shadow-black/30  transition-all -my-4 -mx-8;
+    @apply shadow-2xl transition-all -my-4 -mx-8;
   }
 </style>
