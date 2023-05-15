@@ -12,7 +12,7 @@ import Card from './Card.svelte'
 const height = 630
 const width = 1200
 
-export const prerender = 'auto'
+// export const prerender = 'auto'
 
 export const GET: RequestHandler = async ({url, params}) => {
   const page = await getSanityServerClient(false).fetch(getServiceBySlug, {slug: params.slug})
