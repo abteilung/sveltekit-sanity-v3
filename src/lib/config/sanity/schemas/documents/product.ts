@@ -23,26 +23,28 @@ export default {
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
   fields: [
-    {
-      name: 'likes',
-      title: 'Likes',
-      type: 'number',
-      hidden: false,
-      group: 'default'
-    },
-    {
+    defineField({
       name: 'subtitle',
       title: 'eyebrow (H1)',
       type: 'string',
-      group: 'default'
-    },
-    {
+      group: 'default',
+      validation: (Rule) => [
+        (Rule) => Rule.required(),
+        (Rule) => Rule.min(10).warning('Ein Titel sollte mindestens 10 Zeichen lang sein!'),
+        (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
+      ]
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
-      group: 'default'
-    },
+      group: 'default',
+      validation: (Rule) => [
+        (Rule) => Rule.required(),
+        (Rule) => Rule.min(10).warning('Ein Titel sollte mindestens 10 Zeichen lang sein!'),
+        (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
+      ]
+    }),
     {
       name: 'slug',
       title: 'Slug',

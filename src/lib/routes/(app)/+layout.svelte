@@ -33,8 +33,8 @@
       <div class="flex space-x-4">
         <Open />
         <SearchBar />
-        <button class="whitespace-nowrap">f X</button>
-        <button class="whitespace-nowrap">f Y</button>
+        <button class="whitespace-nowrap">X</button>
+        <button class="whitespace-nowrap">Y</button>
       </div>
     </div>
     {#key $page.url}

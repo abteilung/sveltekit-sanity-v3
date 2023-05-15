@@ -1,21 +1,34 @@
 import {Trophy} from '@phosphor-icons/react'
+import {defineField, defineType} from 'sanity'
 
-export default {
+export default defineType({
   name: 'casestudy',
   title: 'Case Studies',
   type: 'document',
   icon: Trophy,
   fields: [
-    {
+    defineField({
       name: 'subtitle',
       title: 'eyebrow (H1)',
-      type: 'string'
-    },
-    {
+      type: 'string',
+      group: 'default',
+      validation: (Rule) => [
+        (Rule) => Rule.required(),
+        (Rule) => Rule.min(10).warning('Ein Titel sollte mindestens 10 Zeichen lang sein!'),
+        (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
+      ]
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
-      type: 'string'
-    },
+      type: 'string',
+      group: 'default',
+      validation: (Rule) => [
+        (Rule) => Rule.required(),
+        (Rule) => Rule.min(10).warning('Ein Titel sollte mindestens 10 Zeichen lang sein!'),
+        (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
+      ]
+    }),
     {
       name: 'slug',
       title: 'Slug',
@@ -60,4 +73,4 @@ export default {
       })
     }
   }
-}
+})

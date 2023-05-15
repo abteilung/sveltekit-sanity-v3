@@ -1,5 +1,5 @@
 import {File, Pen, Eye, EyeSlash, ProjectorScreenChart} from '@phosphor-icons/react'
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 import authorType from './author'
 import {getVisibilityState} from '../../lib/helpers/visibility'
@@ -38,19 +38,28 @@ export default defineType({
   ],
 
   fields: [
-    {
+    defineField({
       name: 'subtitle',
       title: 'eyebrow (H1)',
       type: 'string',
-      group: 'default'
-    },
-    {
+      group: 'default',
+      validation: (Rule) => [
+        (Rule) => Rule.required(),
+        (Rule) => Rule.min(10).warning('Ein Titel sollte mindestens 10 Zeichen lang sein!'),
+        (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
+      ]
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
       group: 'default',
-      validation: (Rule) => Rule.required()
-    },
+      validation: (Rule) => [
+        (Rule) => Rule.required(),
+        (Rule) => Rule.min(10).warning('Ein Titel sollte mindestens 10 Zeichen lang sein!'),
+        (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
+      ]
+    }),
     {
       name: 'slug',
       title: 'Slug',

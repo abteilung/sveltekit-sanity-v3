@@ -1,7 +1,7 @@
 import {AppleLogo, Calendar} from '@phosphor-icons/react'
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
-export default {
+export default defineType({
   name: 'brand',
   title: 'Brand',
   icon: AppleLogo,
@@ -11,13 +11,17 @@ export default {
     {name: 'publication', title: 'Publication', description: 'Publication settings', icon: Calendar}
   ],
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
       group: 'default',
-      validation: (Rule) => Rule.required()
-    },
+      validation: (Rule) => [
+        (Rule) => Rule.required(),
+        (Rule) => Rule.min(10).warning('Ein Titel sollte mindestens 10 Zeichen lang sein!'),
+        (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
+      ]
+    }),
     {
       name: 'url',
       title: 'URL',
@@ -74,4 +78,4 @@ export default {
       }
     }
   }
-}
+})

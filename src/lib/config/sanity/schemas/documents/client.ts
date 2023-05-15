@@ -1,5 +1,5 @@
 import {ShootingStar} from '@phosphor-icons/react'
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'client',
@@ -7,12 +7,17 @@ export default defineType({
   icon: ShootingStar,
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required()
-    },
+      group: 'default',
+      validation: (Rule) => [
+        (Rule) => Rule.required(),
+        (Rule) => Rule.min(10).warning('Ein Titel sollte mindestens 10 Zeichen lang sein!'),
+        (Rule) => Rule.max(120).warning('Bitte kurz fassen!')
+      ]
+    }),
     {
       name: 'url',
       title: 'URL',
