@@ -16,10 +16,9 @@ export const load = async ({locals, cookies}) => {
     const {cart_id} = locals
     return await shopify.cart.products({cart_id})
   }
-
   const layoutData = async () => {
     const key = `rendered:v1:layoutData`
-    if (locals.previewMode || isDev) {
+    if (isDev || locals.previewMode) {
       console.log('🟧 Cache.Bypass')
       const response = await getSanityServerClient(true).fetch(getLayoutData)
       return response
