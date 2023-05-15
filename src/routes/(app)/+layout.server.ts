@@ -1,9 +1,9 @@
 import {getSanityServerClient} from '$lib/config/sanity/client'
 import {getLayoutData} from '$lib/config/sanity/queries'
 import {shopify} from '$lib/shopify'
-import {redis} from '$lib/server/redis'
 import {error} from '@sveltejs/kit'
-import {isDev} from '$lib/config/environment'
+
+import {cachedQuery} from '$lib/utils/cachedQuery'
 
 export const load = async ({locals, cookies}) => {
   let cart = await shopify.cart.one({cart_id: locals.cart_id})
@@ -16,34 +16,15 @@ export const load = async ({locals, cookies}) => {
     const {cart_id} = locals
     return await shopify.cart.products({cart_id})
   }
-  const layoutData = async () => {
-    const key = `rendered:v1:layoutData`
-    if (isDev || locals.previewMode) {
-      console.log('🟧 Cache.Bypass')
-      const response = await getSanityServerClient(true).fetch(getLayoutData)
-      return response
-    }
-    let cached = await redis.get(key)
-    if (!cached) {
-      console.log('🟥 Cache.Miss')
-      const response = await getSanityServerClient(false).fetch(getLayoutData)
 
-      // Convert response to JSON
-      redis.set(key, JSON.stringify(response), {
-        EX: 60 * 60 * 24,
-        NX: true
-      })
-      return response
-    } else {
-      console.log('🟩 Cache.Hit')
-      return JSON.parse(cached)
-    }
-  }
+  const queryString = getSanityServerClient(false).fetch(getLayoutData)
+
+  const layoutData = cachedQuery(`rendered:v1:layoutData`, queryString, locals)
 
   return {
     cart,
     cartItemsCount: cartItemsCount(),
-    layoutData: layoutData()
+    layoutData: layoutData
   }
 }
 

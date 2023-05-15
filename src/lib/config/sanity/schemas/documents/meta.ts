@@ -1,5 +1,6 @@
 import {FilePlus, Calendar} from '@phosphor-icons/react'
-import {defineField, defineType} from 'sanity'
+import {SanityDefaultPreview, defineField, defineType} from 'sanity'
+import sanityConfig from '../../sanity.config'
 
 export default defineType({
   name: 'meta',

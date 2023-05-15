@@ -27,6 +27,14 @@ const Button = ({isButton, styles, children}) => {
   )
 }
 
+const ListItem = ({children}) => {
+  return (
+    <li>
+      <span>{children}</span>
+    </li>
+  )
+}
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
