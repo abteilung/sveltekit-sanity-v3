@@ -5,11 +5,9 @@ import {isDev} from '$lib/config/environment'
 // This function will take in a key and a query and return the response.
 
 export const cachedQuery = async (key, query, locals) => {
-  if (isDev || locals?.previewMode ? true : false) {
-    console.log('🟧 Cache.Bypass, preview-mode: ', locals?.previewMode ? true : false)
-    const response = await query
-    return response
-  }
+  console.log('🟧 Cache.Bypass, preview-mode: ', locals?.previewMode ? true : false)
+  const response = await query
+  return response
   let cached = await redis.get(key)
   if (!cached) {
     console.log('🟥 Cache.Miss')
