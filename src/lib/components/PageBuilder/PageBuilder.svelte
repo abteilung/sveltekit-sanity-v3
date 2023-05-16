@@ -32,7 +32,7 @@
       <Code {block} />
     {/if}
     {#if block._type === 'video'}
-      <Video portableText={block} />
+      <Video content={block} />
     {/if}
   {/each}
 {/if}

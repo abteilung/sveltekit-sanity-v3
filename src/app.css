@@ -78,7 +78,7 @@
   }
 
   .eyebrow {
-    @apply font-sans text-sm font-normal uppercase tracking-wider;
+    @apply font-sans text-sm font-normal tracking-wider uppercase;
     @apply mb-2;
   }
 
@@ -91,18 +91,19 @@
   }
 
   .highlight {
-    @apply bg-primary text-light px-1 -mx-1;
+    @apply px-1 -mx-1 bg-primary text-light;
   }
 
   ul.ul {
     @apply list-disc list-inside;
   }
-  ul.ul li {
-    @apply ml-2;
+
+  ul.ul li span {
+    @apply inline-block;
   }
 
   ul.ul li::marker {
-    @apply text-primary content -ml-2;
+    @apply absolute top-0 text-primary;
     content: '— ';
   }
 
@@ -111,7 +112,7 @@
   }
 
   .button {
-    @apply font-roboto tracking-widest uppercase font-light;
+    @apply font-light tracking-widest uppercase font-roboto;
   }
 
   /* Layout */
@@ -123,7 +124,7 @@
   }
 
   .contentWrapper {
-    @apply min-h-fit flex flex-col bg-white max-w-full;
+    @apply flex flex-col max-w-full bg-white min-h-fit;
   }
 
   .contentArea {
@@ -133,7 +134,7 @@
   }
 
   .content {
-    @apply bg-white w-full;
+    @apply w-full bg-white;
   }
 
   .mainContent {
@@ -148,7 +149,7 @@
   }
 
   .headerContent {
-    @apply lg:container relative z-10;
+    @apply relative z-10 lg:container;
     @apply px-[20px] sm:px-[30px] md:px-[50px] xl:px-[100px] 2xl:px-[150px];
   }
 
@@ -159,12 +160,12 @@
 
   .footerContent {
     @apply p-[20px] sm:p-[30px] md:p-[50px] h-[350px];
-    @apply 2xl:container relative z-10;
+    @apply relative z-10 2xl:container;
   }
 
   .navBar {
-    @apply sticky z-50 top-0 md:flex md:flex-col flex-none shadow-xl h-16 sm:h-24;
-    @apply md:min-h-screen h-fit w-full bg-white;
+    @apply sticky top-0 z-50 flex-none h-16 shadow-xl md:flex md:flex-col sm:h-24;
+    @apply w-full bg-white md:min-h-screen h-fit;
     @apply px-[20px] md:p-[30px] lg:p-[40px] xl:p-[50px];
     @apply md:w-[260px] xl:w-[320px] 2xl:w-[384px];
   }

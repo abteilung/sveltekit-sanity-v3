@@ -134,6 +134,9 @@ const modules = groq`
   _type == "emptySpace" => {
     value, showRule
   },
+  _type == "video" => {
+      ...
+  },
   _type == "teaserGrid" => {
     ...,
     "teasers": *[_type == ^.typeSelector && ${visibilityChecker}] | order(string(pub.publishedAt) desc) {

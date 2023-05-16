@@ -2,7 +2,7 @@
   import {PortableText} from '@portabletext/svelte'
   import Link from './PT/Link.svelte'
   import Lists from './PT/Lists.svelte'
-  import ListItems from './PT/ListItems.svelte'
+  import listItem from './PT/ListItems.svelte'
   import Highlight from './PT/Highlight.svelte'
   import Sup from './PT/Sup.svelte'
   import Sub from './PT/Sub.svelte'
@@ -15,9 +15,15 @@
   import Testimonial from './PT/Testimonial.svelte'
   import FAQ from './PT/FAQ.svelte'
   import PostsGrid from './PT/PostsGrid.svelte'
+  import CustomHeading from './PT/CustomHeading.svelte'
   import SmallCaps from './PT/SmallCaps.svelte'
 
-  const components: any = {
+  export let components: any = {
+    block: {
+      h1: CustomHeading,
+      h2: CustomHeading,
+      h3: CustomHeading
+    },
     marks: {
       smallCaps: SmallCaps,
       sup: Sup,
@@ -30,8 +36,7 @@
       number: Lists
     },
     listItem: {
-      bullet: ListItems,
-      number: ListItems
+      normal: listItem
     },
     types: {
       customImage: Image,
