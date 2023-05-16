@@ -1,12 +1,16 @@
+import {copyPaste} from '@superside-oss/sanity-plugin-copy-paste'
+import {defineField, defineType} from 'sanity'
 import {LinkSimpleHorizontal} from '@phosphor-icons/react'
 
-export default {
+export default defineType({
   title: 'Pagebuilder',
   name: 'pageBuilder',
   type: 'object',
   icon: LinkSimpleHorizontal,
   fields: [
-    {
+    // defineField(copyPaste),
+
+    defineField({
       title: 'Page Builder',
       name: 'pageBuilder',
       type: 'array',
@@ -26,7 +30,7 @@ export default {
         // {type: 'team'},
         // {type: 'contact'},
       ]
-    }
+    })
   ],
   preview: {
     select: {
@@ -40,4 +44,4 @@ export default {
       }
     }
   }
-}
+})

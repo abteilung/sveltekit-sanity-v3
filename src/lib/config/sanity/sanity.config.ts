@@ -3,6 +3,8 @@ import {availability} from 'sanity-plugin-availability'
 import {googleMapsInput} from '@sanity/google-maps-input'
 import {codeInput} from '@sanity/code-input'
 import {colorInput} from '@sanity/color-input'
+import {copyPastePlugin} from '@superside-oss/sanity-plugin-copy-paste'
+import {openaiImageAsset} from 'sanity-plugin-asset-source-openai'
 
 import {PostsPreview} from './components/PostsPreview'
 import {noteField} from 'sanity-plugin-note-field'
@@ -180,6 +182,10 @@ export default defineConfig({
     }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
+    copyPastePlugin(),
+    openaiImageAsset({
+      API_KEY: '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'
+    }),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({
