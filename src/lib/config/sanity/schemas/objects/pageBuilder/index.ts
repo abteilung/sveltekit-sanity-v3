@@ -20,7 +20,10 @@ export default defineType({
         {type: 'teaserGrid'},
         {type: 'customImage'},
         {type: 'emptySpace'},
-        {type: 'columns'}
+        {type: 'columns'},
+        {type: 'testimonialReference'},
+        {type: 'video'},
+        {type: 'accordion'}
         // {type: 'accordions'},
         // {type: 'gallery'},
         // {type: 'cta'},

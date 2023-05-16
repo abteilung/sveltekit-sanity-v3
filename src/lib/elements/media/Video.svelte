@@ -1,17 +1,24 @@
 <script lang="ts">
   import {onMount, onDestroy} from 'svelte'
+
+  export let portableText
+  $: ({value} = portableText)
+
+  // create random string as ID
+  const id = Math.random().toString(36).substring(7)
+
   import plyr from 'plyr'
   import 'plyr/dist/plyr.css'
 
   onMount(() => {
-    const player = new plyr('#player', {
+    const player = new plyr('#' + id, {
       controls: [
         // 'play-large', // The large play button in the center
         'autoplay', // Auto play
         // 'restart', // Restart playback
-        // 'rewind', // Rewind by the seek time (default 10 seconds)
-        // 'play', // Play/pause playback
-        // 'fast-forward', // Fast forward by the seek time (default 10 seconds)
+        'rewind', // Rewind by the seek time (default 10 seconds)
+        'play', // Play/pause playback
+        'fast-forward', // Fast forward by the seek time (default 10 seconds)
         // 'progress', // The progress bar and scrubber for playback and buffering
         // 'current-time', // The current time of playback
         // 'duration', // The full duration of the media
@@ -27,7 +34,9 @@
     })
   })
 
-  export let video = page.youtube
+  let video: string
+
+  // export let video = page.youtube
   let videoType
 
   // Find out if it's youtube or vimeo
@@ -42,6 +51,10 @@
   }
 </script>
 
-{#if video}
-  <div id="player" data-plyr-provider={videoType} data-plyr-embed-id={getVideoType(video)} />
+{#if portableText.url || value.url}
+  <div
+    {id}
+    data-plyr-provider={videoType}
+    data-plyr-embed-id={getVideoType(portableText.url ? portableText.url : value.url)}
+  />
 {/if}

@@ -5,4 +5,6 @@
   $: ({content} = block)
 </script>
 
-<PortableBlock {content} />
+<div class="container">
+  <PortableBlock {content} />
+</div>

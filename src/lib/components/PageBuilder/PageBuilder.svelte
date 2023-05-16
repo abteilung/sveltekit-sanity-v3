@@ -6,6 +6,7 @@
   import EmptySpace from '$lib/components/PageBuilder/EmptySpace.svelte'
   import Columns from '$lib/elements/generalContent/Columns.svelte'
   import Code from '$lib/elements/generalContent/Code.svelte'
+  import Video from '$lib/elements/media/Video.svelte'
 
   export let blocks: any = []
 </script>
@@ -29,6 +30,9 @@
     {/if}
     {#if block._type === 'code'}
       <Code {block} />
+    {/if}
+    {#if block._type === 'video'}
+      <Video portableText={block} />
     {/if}
   {/each}
 {/if}
