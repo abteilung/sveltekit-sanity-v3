@@ -184,7 +184,7 @@ export default defineConfig({
     unsplashImageAsset(),
     copyPastePlugin(),
     openaiImageAsset({
-      API_KEY: import.meta.env.OPENAI_API_KEY
+      API_KEY: import.meta.env.VITE_OPENAI_API_KEY
     }),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
@@ -196,7 +196,7 @@ export default defineConfig({
     codeInput(),
     colorInput(),
     googleMapsInput({
-      apiKey: import.meta.env.GOOGLE_MAPS_API_KEY
+      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     }),
     availability()
   ],
