@@ -184,7 +184,7 @@ export default defineConfig({
     unsplashImageAsset(),
     copyPastePlugin(),
     openaiImageAsset({
-      API_KEY: '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'
+      API_KEY: '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'
     }),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
