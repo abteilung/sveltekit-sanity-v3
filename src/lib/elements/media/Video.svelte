@@ -1,3 +1,4 @@
+<!-- Todo: Make it load faster! Many Videos on the same page seem to load scripts multiple times. Speed is slow -->
 <script lang="ts">
   import Plyr from '$lib/components/PlyrWrapper.svelte'
 

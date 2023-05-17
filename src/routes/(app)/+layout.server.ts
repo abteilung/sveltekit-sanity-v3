@@ -18,7 +18,7 @@ export const load = async ({locals, cookies}) => {
   }
 
   const queryString = getSanityServerClient(false).fetch(getLayoutData)
-  const layoutData = cachedQuery(true, 'rendered:v1:layoutData', queryString, locals)
+  const layoutData = cachedQuery(true, 'rendered:v1:layoutData', queryString, false, locals)
 
   return {
     cart,

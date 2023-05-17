@@ -242,6 +242,22 @@ const documentFields = groq`
   },
 `
 
+const searchFields = groq`
+  _id,
+  _type,
+  _updatedAt,
+  ${linkTypes},
+  title,
+  subtitle,
+  "description": pt::text(content[]),
+  "content": content.pageBuilder[] {
+    _type == 'richEditor' => {
+      "content": pt::text(content)
+    }
+  }
+  | order(_updatedAt desc)
+`
+
 // Posts Stuff
 export const getPostBySlug = groq`
 *[_type == "post" && slug.current == $slug && ${visibilityChecker}] | order(_updatedAt desc)[0] {
@@ -460,7 +476,7 @@ export const getLayoutData = groq`
 `
 
 export const getSearchResults = groq`
-  *[_type == "*" && defined(slug) && ${visibilityChecker}] {
-    title
+*[_type == "page" && defined(slug.current) && ${visibilityChecker}] | order(date desc, _updatedAt desc) {
+    ${searchFields}
   }
 `

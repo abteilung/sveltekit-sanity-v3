@@ -1,19 +1,15 @@
 import {getSanityServerClient} from '$lib/config/sanity/client'
 import {getSearchResults} from '$lib/config/sanity/queries'
 import {error} from '@sveltejs/kit'
+import {json} from '@sveltejs/kit'
 
 import {cachedQuery} from '$lib/utils/cachedQuery'
 
-// export const prerender = 'auto'
+export async function GET() {
+  const headers = {'Content-Type': 'application/json'}
 
-export const load = async ({parent, params, locals}) => {
   const query = getSanityServerClient(false).fetch(getSearchResults)
-  const page = cachedQuery(false, 'rendered:v1:SearchResults', query, locals)
+  const searchResults = await cachedQuery(true, 'rendered:v1:SearchResults', query, true, null)
 
-  if (page) {
-    return {
-      page: page
-    }
-  }
-  throw error(404)
+  return new Response(JSON.stringify(searchResults), {headers})
 }

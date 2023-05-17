@@ -7,7 +7,7 @@ import {cachedQuery} from '$lib/utils/cachedQuery'
 
 export const load = async ({parent, params, locals}) => {
   const queryString = getSanityServerClient(false).fetch(getPageBySlug, {slug: params.slug})
-  const page = cachedQuery(true, `rendered:services:${params.slug}`, queryString, locals)
+  const page = cachedQuery(true, `rendered:services:${params.slug}`, queryString, false, locals)
 
   if (page) {
     return {
